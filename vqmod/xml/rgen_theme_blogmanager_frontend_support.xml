@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>R.Gen OpenCart Theme - Blog Manager front-end support</id>
+	<version>2.8</version>
+	<vqmver>2.3.1</vqmver>
+	<author>R_GENESIS</author>
+
+	<file name="catalog/view/theme/rgen-opencart/template/common/header.tpl">
+		<operation info="RGen theme data">
+			<search position="after"><![CDATA[<?php // BLOG MANAGER CSS ?>]]></search>
+			<add><![CDATA[<link rel="stylesheet" type="text/css" href="<?php echo $cssPath; ?>rgen-blog.css" />]]></add>
+		</operation>
+		<operation info="RGen theme data">
+			<search position="before"><![CDATA[</head>]]></search>
+			<add><![CDATA[
+				<script>
+					$(document).ready(function(){
+						/* BLOG STYLES */
+						$("#commentRespond").addClass("box-form");
+						$("#commentRespond table").addClass("form");
+						$("#articleComments > h4, #blogArticle .articleHeader h1, #blogCatArticles .articleHeader h3").addClass("header-1");
+						$("#commentRespond h4").addClass("header-3");
+						$("#tabs a[href='#tab-related-article']").appendTo("#tabs");
+						$(".left.tabs-wrapper #tab-related-article").wrapInner("<div class='scrollPane'></div>");
+					});
+				</script>
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/view/theme/default/template/blog/" name="category.tpl,article.tpl">
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[
+				<?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
+			]]></search>
+			<add><![CDATA[ 
+				<span><?php echo $breadcrumb['separator']; ?></span><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
+			]]></add>
+		</operation>
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[<?php echo $column_left; ?><?php echo $column_right; ?>]]></search>
+			<add><![CDATA[ ]]></add>
+		</operation>
+		<operation info="RGen theme data">
+			<search position="after"><![CDATA[ <div id="content"> ]]></search>
+			<add><![CDATA[ <?php echo $column_left; ?><?php echo $column_right; ?> ]]></add>
+		</operation>
+		<operation info="RGen theme data">
+			<search position="before"><![CDATA[ <div class="breadcrumb"> ]]></search>
+			<add><![CDATA[ <div class="content-body"> ]]></add>
+		</operation>
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[ <?php echo $content_bottom; ?> ]]></search>
+			<add><![CDATA[ </div><?php echo $content_bottom; ?> ]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/default/template/blog/category.tpl">
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[ <h1><?php echo $heading_title; ?></h1> ]]></search>
+			<add><![CDATA[ <h1 class="page-heading"><strong><?php echo $heading_title; ?></strong></h1> ]]></add>
+		</operation>
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[ <h3 itemprop="name"> ]]></search>
+			<add><![CDATA[ <h3 itemprop="name" class="header-1"> ]]></add>
+		</operation>
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[ <h4><?php echo $text_subcategory; ?></h4> ]]></search>
+			<add><![CDATA[ <h4 class="header-3"><?php echo $text_subcategory; ?></h4> ]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/default/template/blog/article.tpl">
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[ <h1 itemprop="headline"> ]]></search>
+			<add><![CDATA[ <h1 itemprop="headline" class="header-1"> ]]></add>
+		</operation>
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[ <a onclick="addToCart('<?php echo $prodRelated['product_id']; ?>');" class="button"> ]]></search>
+			<add><![CDATA[<a onclick="addToCart('<?php echo $prodRelated['product_id']; ?>');" class="sml-button dark-bt">]]></add>
+		</operation>
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[<h4><?php echo $text_related_product; ?></h4>]]></search>
+			<add><![CDATA[<h4 class="header-1"><?php echo $text_related_product; ?></h4>]]></add>
+		</operation>
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[ style="width:<?php echo (100/$prodPerRow)-0.5 . '%';?>"]]></search>
+			<add><![CDATA[]]></add>
+		</operation>
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[ <h4><?php echo $text_related; ?></h4> ]]></search>
+			<add><![CDATA[ <h4 class="header-3"><?php echo $text_related; ?></h4> ]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/default/template/module/blogarchive.tpl">
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[blogArchives]]></search><add><![CDATA[blogArchives col-links]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/default/template/module/blogcategory.tpl">
+		<operation info="RGen theme data">
+			<search position="replace"><![CDATA[blogCategories]]></search><add><![CDATA[blogCategories col-links]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/product/product.tpl">
+		<operation error="skip">
+			<search position="after"><![CDATA[href="#tab-description"]]></search>
+			<add><![CDATA[
+			<?php if (isset($articleRelated)) { ?>
+			<a href="#tab-related-article"><?php echo $text_related_article; ?> (<?php echo count($articleRelated); ?>)</a>
+			<?php } ?>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/product/search.tpl">
+		<operation error="skip">
+			<search position="replace"><![CDATA[<h2><?php echo $text_search_blog; ?></h2>]]></search>
+			<add><![CDATA[
+			<h2 class="header-2"><?php echo $text_search_blog; ?></h2>
+			]]></add>
+		</operation>
+	</file>
+</modification>
