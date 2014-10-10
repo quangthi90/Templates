@@ -230,6 +230,9 @@ class ControllerCommonHeader extends Controller {
 				$this->children[] = 'module/rgen_theme';
 				$this->children[] = 'module/rgen_megamenu';
 				$this->children[] = 'common/rgen-positions/rgen_header_top';
+				$this->children[] = 'common/rgen-positions/rgen_header_bottom';
+				$this->children[] = 'common/rgen-positions/rgen_slideshow_full';
+				$this->children[] = 'common/rgen-positions/rgen_content_top_upper';
 			}
 			
 			$this->data['text_account'] = $this->language->get('text_account');
@@ -239,8 +242,8 @@ class ControllerCommonHeader extends Controller {
 			$this->data['account'] = $this->url->link('account/account', '', 'SSL');
 			$this->data['order'] = $this->url->link('account/order', '', 'SSL');
 			$this->data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
-			
-			//echo "<pre style='color:#fff;'>" . print_r($this->document->themecss, TRUE) . "</pre>";
+
+			//echo "<pre style='color:;'>" . print_r($this->data['styles'], TRUE) . "</pre>";
 
 			
 		$this->render();

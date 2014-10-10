@@ -100,6 +100,7 @@ class ControllerCommonFooter extends Controller {
 		}
 
 
+			$this->load->library('rgen/rgen_lib');	
 			
 			/* RGen data
 			******************************/
@@ -108,8 +109,8 @@ class ControllerCommonFooter extends Controller {
 				$this->children[] = 'module/rgen_custom';
 				$this->children[] = 'common/rgen-positions/rgen_sticky';
 				$this->children[] = 'common/rgen-positions/rgen_footer';
-				$this->children[] = 'common/rgen-positions/rgen_footer_cards';					$this->children[] = 'common/rgen-positions/rgen_footer_bottom';
-				
+				$this->children[] = 'common/rgen-positions/rgen_footer_cards';
+				$this->children[] = 'common/rgen-positions/rgen_footer_bottom';
 			}
 			
 		$this->render();

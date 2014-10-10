@@ -259,6 +259,8 @@ $(document).ready(function(){
 						<li><a class="cacheRemove" data-type="removeAll" data-name="/rgen_banners">Clear - R.Gen Banners</a></li>
 						<li><a class="cacheRemove" data-type="removeAll" data-name="/rgen_gallery">Clear - R.Gen Image Gallery</a></li>
 						<li><a class="cacheRemove" data-type="removeAll" data-name="/rgen_contentblocks">Clear - R.Gen Content Blocks</a></li>
+						<li><a class="cacheRemove" data-type="removeAll" data-name="/rgen_gridmanager">Clear - R.Gen Grid Manager</a></li>
+						<li><a class="cacheRemove" data-type="removeAll" data-name="/rgen_simpleslideshow">Clear - R.Gen Simple Slideshow</a></li>
 					</ul>
 				</li>
 			</ul>
