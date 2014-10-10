@@ -1,0 +1,18 @@
+---------- Date: 2014-10-10 16:43:31 ~ IP : ::1 ----------
+REQUEST URI : /templates/
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\Templates\vqmod/xml/rgen_theme_blogmanager_frontend_support.xml
+   id        : R.Gen OpenCart Theme - Blog Manager front-end support
+   version   : 2.8
+   vqmver    : 2.3.1
+   author    : R_GENESIS
+VQModObject::parseMods - Could not resolve path for [catalog/view/theme/default/template/blog/category.tpl] (SKIPPED)
+VQModObject::parseMods - Could not resolve path for [catalog/view/theme/default/template/blog/article.tpl] (SKIPPED)
+VQModObject::parseMods - Could not resolve path for [catalog/view/theme/default/template/blog/category.tpl] (SKIPPED)
+VQModObject::parseMods - Could not resolve path for [catalog/view/theme/default/template/blog/article.tpl] (SKIPPED)
+VQModObject::parseMods - Could not resolve path for [catalog/view/theme/default/template/module/blogarchive.tpl] (SKIPPED)
+VQModObject::parseMods - Could not resolve path for [catalog/view/theme/default/template/module/blogcategory.tpl] (SKIPPED)
+
+----------------------------------------------------------------------
+
+
