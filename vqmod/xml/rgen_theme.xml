@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modification>
 	<id>R.Gen OpenCart Theme</id>
-	<version>3.08</version>
+	<version>3.11</version>
 	<vqmver required="true">2.4.1</vqmver>
 	<author>R_GENESIS</author>
 	<!-- 
@@ -94,6 +94,9 @@
 				$this->children[] = 'module/rgen_theme';
 				$this->children[] = 'module/rgen_megamenu';
 				$this->children[] = 'common/rgen-positions/rgen_header_top';
+				$this->children[] = 'common/rgen-positions/rgen_header_bottom';
+				$this->children[] = 'common/rgen-positions/rgen_slideshow_full';
+				$this->children[] = 'common/rgen-positions/rgen_content_top_upper';
 			}
 			
 			$this->data['text_account'] = $this->language->get('text_account');
@@ -103,8 +106,8 @@
 			$this->data['account'] = $this->url->link('account/account', '', 'SSL');
 			$this->data['order'] = $this->url->link('account/order', '', 'SSL');
 			$this->data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
-			
-			//echo "<pre style='color:#fff;'>" . print_r($this->document->themecss, TRUE) . "</pre>";
+
+			//echo "<pre style='color:;'>" . print_r($this->data['styles'], TRUE) . "</pre>";
 
 			]]></add>
 		</operation>
@@ -152,6 +155,7 @@
 			]]></search>
 			
 			<add><![CDATA[
+			$this->load->library('rgen/rgen_lib');	
 			
 			/* RGen data
 			******************************/
@@ -160,8 +164,8 @@
 				$this->children[] = 'module/rgen_custom';
 				$this->children[] = 'common/rgen-positions/rgen_sticky';
 				$this->children[] = 'common/rgen-positions/rgen_footer';
-				$this->children[] = 'common/rgen-positions/rgen_footer_cards';					$this->children[] = 'common/rgen-positions/rgen_footer_bottom';
-				
+				$this->children[] = 'common/rgen-positions/rgen_footer_cards';
+				$this->children[] = 'common/rgen-positions/rgen_footer_bottom';
 			}
 			]]></add>
 		</operation>
@@ -487,6 +491,8 @@
 						<li><a class="cacheRemove" data-type="removeAll" data-name="/rgen_banners">Clear - R.Gen Banners</a></li>
 						<li><a class="cacheRemove" data-type="removeAll" data-name="/rgen_gallery">Clear - R.Gen Image Gallery</a></li>
 						<li><a class="cacheRemove" data-type="removeAll" data-name="/rgen_contentblocks">Clear - R.Gen Content Blocks</a></li>
+						<li><a class="cacheRemove" data-type="removeAll" data-name="/rgen_gridmanager">Clear - R.Gen Grid Manager</a></li>
+						<li><a class="cacheRemove" data-type="removeAll" data-name="/rgen_simpleslideshow">Clear - R.Gen Simple Slideshow</a></li>
 					</ul>
 				</li>
 			</ul>

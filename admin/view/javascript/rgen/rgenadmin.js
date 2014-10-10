@@ -133,7 +133,11 @@ $(document).ready(function(){
 	});*/
 	
 });
-
+function getRandomInt() {
+	var d = new Date();
+    var n = d.getTime();
+	return n;
+}
 
 $.fn.summary = function(options) { 
 	var settings = $.extend({

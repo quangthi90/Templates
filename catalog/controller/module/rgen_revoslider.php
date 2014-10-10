@@ -60,31 +60,34 @@ class ControllerModuleRGenRevoSlider extends Controller {
 		$this->data['module'] = $module++;
 
 		if($theme == "rgen-opencart"){
-			$tmp = array();
-			foreach ($this->data['setting'] as $key => $value) { if ($value) { $tmp[] = $value; } }
-			if ($cache) {
-				//$modName = implode("-", $tmp);
-				$modName = serialize($tmp);
-				$modFile = md5($modName)."_".$this->config->get('config_language_id').$device.$this->config->get('config_store_id');;
-				$cache_file = $this->rgen->cacheFilePath($theme, $dir, $modFile);
+			isset($this->data['setting']['ext_access']) ? $this->data['extCheck'] = $this->data['setting']['ext_access'] : $this->data['extCheck'] = 'n';
+			if($this->data['extCheck'] == 'n') {
+				$tmp = array();
+				foreach ($this->data['setting'] as $key => $value) { if ($value) { $tmp[] = $value; } }
+				if ($cache) {
+					//$modName = implode("-", $tmp);
+					$modName = serialize($tmp);
+					$modFile = md5($modName)."_".$this->config->get('config_language_id').$device.$this->config->get('config_store_id');;
+					$cache_file = $this->rgen->cacheFilePath($theme, $dir, $modFile);
 
-				if(!file_exists($cache_file)) {
+					if(!file_exists($cache_file)) {
+						$this->buildSlider();
+						if (file_exists(DIR_TEMPLATE . $theme . '/template/module/rgen_revoslider.tpl')) {
+							$this->template = $theme . '/template/module/rgen_revoslider.tpl';
+						}
+						$this->render();
+						$this->rgen->cacheFile($this->render(), $cache_file);
+					}else{
+						$tpl = str_replace(DIR_TEMPLATE, '', $cache_file);
+						$this->template = $tpl;
+						$this->render();
+					}
+				}else{
 					$this->buildSlider();
 					if (file_exists(DIR_TEMPLATE . $theme . '/template/module/rgen_revoslider.tpl')) {
 						$this->template = $theme . '/template/module/rgen_revoslider.tpl';
+						$this->render();
 					}
-					$this->render();
-					$this->rgen->cacheFile($this->render(), $cache_file);
-				}else{
-					$tpl = str_replace(DIR_TEMPLATE, '', $cache_file);
-					$this->template = $tpl;
-					$this->render();
-				}
-			}else{
-				$this->buildSlider();
-				if (file_exists(DIR_TEMPLATE . $theme . '/template/module/rgen_revoslider.tpl')) {
-					$this->template = $theme . '/template/module/rgen_revoslider.tpl';
-					$this->render();
 				}
 			}
 		}
@@ -96,6 +99,65 @@ class ControllerModuleRGenRevoSlider extends Controller {
 		//Render the page with the chosen template
 		//$this->render();
 
+	}
+
+	public function ext_access($extKey){
+		include('catalog/rgen/tools/layout_info/layout_info.php');
+		$this->document->Layout = $this->data['layouts'];
+
+		$setting = $this->config->get('rgen_revoslider_module');
+		
+		$ext = explode("|", $extKey);
+		$ext_mod = $ext[0];
+		$ext_id = $ext[1];
+
+		/***************/
+		//static $module = 0;
+		$this->data['module'] = $this->rgen->uid(); //$module++;
+
+		$this->load->library('rgen/rgen_lib');
+		$rgen_optimize = $this->config->get('RGen_optimize');
+		$cache = $rgen_optimize['cache_revo'];
+		$theme = $this->config->get('config_template');
+		$dir = 'rgen_revoslider';
+
+		$device = $this->rgen->device;
+		
+		$this->document->addScript('catalog/view/theme/' . $this->config->get('config_template') . '/revo/rs-plugin/js/jquery.themepunch.plugins.min.js');
+		$this->document->addScript('catalog/view/theme/' . $this->config->get('config_template') . '/revo/rs-plugin/js/jquery.themepunch.revolution.min.js');
+		$this->document->addStyle('catalog/view/theme/' . $this->config->get('config_template') . '/revo/rs-plugin/css/settings.css');
+		$this->document->addStyle('catalog/view/theme/' . $this->config->get('config_template') . '/revo/rs-plugin/css/style.css');
+
+		/***************/
+
+
+		/* TPL loader Settings
+		*******************************/
+		$tpl     = 'module/rgen_revoslider.tpl';
+		$theme   = $this->config->get('config_template');
+		$extData = '';
+		if (isset($setting)) {
+			foreach ($setting as $key => $setting) {
+				if (
+					$setting['mod_id'] == $ext_mod && 
+					$setting['ext_id'] == $ext_id && 
+					$setting['status'] == 1 && 
+					$setting['ext_access'] == 'y' && 
+					file_exists(DIR_TEMPLATE . $theme . '/template/'.$tpl)
+					) {
+					isset($setting['ext_access']) ? $this->data['extCheck'] = $setting['ext_access'] : $this->data['extCheck'] = 'n';
+					$this->data['setting'] = $setting;
+					$this->data['setting']['slider_size'] = 'normal';
+					$this->data['setting']['prdonrevo'] = 0;
+					$this->data['rvclass'] = ' bannercontainer';
+					$this->data['position'] = $setting["position"];
+					$this->buildSlider();
+					$this->template = $theme . '/template/'.$tpl;
+					$extData = $this->render();
+				}
+			}
+		}
+		return $extData;
 	}
 
 	protected function buildSlider() {

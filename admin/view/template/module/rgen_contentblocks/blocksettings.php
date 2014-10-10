@@ -43,7 +43,7 @@
 				</table>
 			</div>
 		</div>
-		
+
 		<div class="control-group">
 			<label class="control-label">Inline style on block</label>
 			<div class="controls">
@@ -73,6 +73,13 @@
 		</div>
 
 		<div class="control-group">
+			<label class="control-label">Link on full block</label>
+			<div class="controls">
+				<input type="text" class="full-url" style="width:95%;" value="">
+			</div>
+		</div>
+
+		<div class="control-group apply-bar">
 			<label class="control-label"></label>
 			<div class="controls">
 				<a class="btn apply btn-success">Apply</a>
@@ -83,12 +90,12 @@
 <br><br><br><br><br><br><br><br><br><br><br><br>
 <script>
 var obj = '#pop_mod_setting';
-var dataSource = ".apply, .model-box .ui-icon-closethick";
+var dataSource = ".apply, .model-box .ui-icon-closethick, .apply-bar";
 
 var oldData = $('.pop-active').next("input[type='hidden']").val();
 if(oldData){
 	var oldData_ar = oldData.split('|');
-	console.log(oldData_ar);
+	//console.log(oldData_ar);
 	$(obj).find(".bg input").attr('value',oldData_ar[0]);
 	$(obj).find(".border input").attr('value',oldData_ar[1]);
 	$(obj).find(".title-color input").attr('value',oldData_ar[2]);
@@ -97,6 +104,7 @@ if(oldData){
 	$(obj).find(".inline-image").attr('value',oldData_ar[5]);
 	$(obj).find(".inline-title").attr('value',oldData_ar[6]);
 	$(obj).find(".inline-content").attr('value',oldData_ar[7]);
+	$(obj).find(".full-url").attr('value',oldData_ar[8]);
 }
 
 $(obj).find(dataSource).off('change click focus input blur');
@@ -108,7 +116,9 @@ $(obj).find(dataSource).on('change click focus input blur', function(){
 				  $(obj).find(".inline-block").val()+"|"+
 				  $(obj).find(".inline-image").val()+"|"+
 				  $(obj).find(".inline-title").val()+"|"+
-				  $(obj).find(".inline-content").val();
+				  $(obj).find(".inline-content").val()+"|"+
+				  $(obj).find(".full-url").val();
+				  
 				 
 				 //console.log(dataStr);
 	$('.pop-active').next("input[type='hidden']").attr('data-style', $(obj).find(".style .active input[type='radio']").val());

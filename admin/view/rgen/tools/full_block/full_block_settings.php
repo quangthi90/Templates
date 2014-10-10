@@ -51,7 +51,10 @@ $bodyBgAttachment = array( 'inherit', 'fixed');
 				<label class="control-label">Apply CSS class</label>
 				<div class="controls">
 					<input type="text" class="input-medium fullB-class" value="" />
-					<a class="btn btn-mini" data-val="dark-thm">On dark</a>
+					<div class="help-block">
+						Apply CSS class "<strong>dark-thm</strong>" to display content on dark background. <br>
+						Apply CSS class "<strong>force-full</strong>" to extend block in full width force fully.
+					</div>
 				</div>
 			</div>
 			<div class="control-group">
@@ -148,7 +151,7 @@ $bodyBgAttachment = array( 'inherit', 'fixed');
 			</div>
 		</div>
 
-		<div class="control-group">
+		<div class="control-group apply-bar">
 			<label class="control-label"></label>
 			<div class="controls">
 				<a class="btn apply btn-success">Apply</a>
@@ -170,7 +173,7 @@ $.getScript( "view/javascript/rgen/rgenadmin.js", function(data, textStatus, jqx
 });
 
 var obj = '#fullB_setting';
-var dataSource = ".apply, .model-box .ui-icon-closethick, .model-box .ui-dialog-titlebar-close";
+var dataSource = ".apply, .model-box .ui-icon-closethick, .model-box .ui-dialog-titlebar-close, .apply-bar";
 
 var oldData = $('.pop-active').next("input[type='hidden']").val();
 if(oldData){

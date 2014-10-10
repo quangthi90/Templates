@@ -377,6 +377,8 @@ class ControllerModuleRGenContentblocks extends Controller {
 			$this->language->get('text_column_right') 	=> 'column_right'
 		);*/
 		include 'view/rgen/tools/positions/positions.php';
+		// Extra positions
+		$this->data['positions']['Header - Bottom'] = 'header_bottom';
 
 		$this->data['ImgRepeat'] = array( 
 			'no-repeat',

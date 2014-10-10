@@ -55,7 +55,7 @@ include 'view/rgen/tools/positions/positions.php';
 								<div class="controls">
 									<a data-url="view/template/module/<?php echo $module_name; ?>/settings.php" data-title="Image display settings" class="popup btn mb10">Edit</a>
 									<?php 
-										$dbKey 	= isset($module['bannerSettings']) ? $module['bannerSettings'] : 'Grid|4|10|40|40|y|rgb(0, 0, 0, 0.3)|rgb(255, 255, 255)';
+										$dbKey 	= isset($module['bannerSettings']) ? $module['bannerSettings'] : 'Grid|4|10|40|40|y|rgb(0, 0, 0, 0.3)|rgb(255, 255, 255)|n|y';
 										$name	= $module_key.'['.$module_row.'][bannerSettings]';
 									?>
 									<input type="hidden" class="bannerSettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
@@ -112,6 +112,11 @@ include 'view/rgen/tools/positions/positions.php';
 								</div>
 							</div>
 
+							<?php 
+							// Generate extension access
+							include 'view/rgen/tools/ext_access/ext_access_assign.tpl';?>
+							
+							<div class="mod-setting-wrp"<?php echo $extStatus == 'y' ? ' style="display:none;"' : null; ?>>
 							<div class="control-group">
 								<label class="control-label">Select position</label>
 								<div class="controls">
@@ -240,6 +245,7 @@ include 'view/rgen/tools/positions/positions.php';
 									</div>
 								</div>
 							</div>
+							</div>
 
 						</div>
 					</td>
@@ -298,13 +304,16 @@ $(window).on('click', '.popup', function(event) {
 					$(popup).find('.apply').click(function(event) {
 						var bnrLayout = 'view/image/rgen_theme/rgen_bnr_mod_typ'+$('.pop-active + input[type="hidden"].bannerSettings').attr('data-style')+'.png';
 						$('.pop-active + .bannerSettings + br + img').attr('src', bnrLayout);
-						$(popup).dialog("close");
+						blockSection(".ui-dialog", '#d8d1c7');
+						setTimeout(function(){
+							$(popup).dialog("close");
+							$('.ui-dialog').unblock();
+						}, 500);
 					});
 				},
 				close: function (event, ui) {
 					$('#dialog-data').html('');
 					$('.pop-active').removeClass('pop-active');
-					//
 				},
 				width: 800,
 				resizable: false,
@@ -366,7 +375,7 @@ function addModule() {
 	html += '				<div class="controls">';
 	html += '					<a data-url="view/template/module/<?php echo $module_name; ?>/settings.php" data-title="Banners display settings" class="popup btn mb10">Edit</a>';
 								name = '<?php echo $module_key ?>['+module_row+'][bannerSettings]';
-	html += '					<input type="hidden" class="bannerSettings" name="'+name+'" value="Grid|4|10|40|40|y|rgb(0, 0, 0, 0.3)|rgb(255, 255, 255)" />';
+	html += '					<input type="hidden" class="bannerSettings" name="'+name+'" value="Grid|4|10|40|40|y|rgb(0, 0, 0, 0.3)|rgb(255, 255, 255)|n|y" />';
 	html += '					<br><img src="view/image/rgen_theme/rgen_bnr_mod_typGrid.png" alt="Grid type" width="300" class="mb10" />'
 	html += '				</div>';
 	html += '			</div>';
@@ -402,7 +411,11 @@ function addModule() {
 	html += '				</div>';
 	html += '			</div>';
 
-	html += '			<div class="control-group">';
+	<?php 
+	// Generate extension access
+	include 'view/rgen/tools/ext_access/ext_access_assign_js.tpl'; ?>
+
+	html += '			<div class="mod-setting-wrp"><div class="control-group">';
 	html += '				<label class="control-label">Select position</label>';
 	html += '				<div class="controls">';
 								<?php $ar 	= $positions; ?>
@@ -490,7 +503,7 @@ function addModule() {
 								<?php include 'view/rgen/tools/layout_selector/layout_selector_js.tpl'; ?>
 	html += '					</div>';
 	html += '				</div>';
-	html += '			</div>';
+	html += '			</div></div>';
 	html += '		</div>';
 	html += '	</td>';
 	html += '	<td class="tc">';
@@ -546,6 +559,8 @@ function layoutSelector() {
 		$($(this).find("option:selected").attr('data-container')).find('[data-auto="'+$(this).find("option:selected").attr('data-route')+'"]').show();
 
 		$($(this).find("option:selected").attr('data-container')).find('.scrollbox').html(null);
+		$($(this).find("option:selected").attr('data-container')).find(".btn").removeClass('active');
+		$($(this).find("option:selected").attr('data-container')).find("input[value='all']").prop('checked', true).parent().addClass('active');
 		
 	});	
 } layoutSelector();
@@ -553,5 +568,8 @@ $('.layout-select').each(function() {
 	$(this).next('.layoutRoute').val($(this).find("option:selected").attr('data-route'));	
 });
 
+<?php
+// Generate extension access
+include 'view/rgen/tools/ext_access/ext_access_assign_fn.tpl'; ?>
 
 //--></script>

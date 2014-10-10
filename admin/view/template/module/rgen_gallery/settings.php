@@ -8,46 +8,6 @@
 </style>
 <div class="getValue model-box" id="pop_mod_setting">
 	<div class="form-horizontal frm-small">
-		<!-- <div class="control-group">
-			<label class="control-label">Caption setting</label>
-			<div class="controls">
-				<table class="subfields withbdr">
-					<tr>
-						<td>
-							<span class="lbl">Caption display</span>
-							<?php 
-								$ar 	= array("Yes" => 'y', "No" => 'n');
-								$id		= 'caption';
-							?>
-							<div class="btn-group caption" data-toggle="buttons-radio">
-							<?php foreach ($ar as $key => $value) { ?>
-								<label for="<?php echo $id . '-' . $value; ?>"  type="button" class="btn-mini btn">
-									<input type="radio" id="<?php echo $id . '-' . $value; ?>" value="<?php echo $value; ?>">
-									<?php echo $key; ?>
-								</label>
-							<?php } ?>
-							</div>
-						</td>
-						<td>
-							<span class="lbl">Hover effect</span>
-							<?php 
-								$ar 	= array("Yes" => 'y', "No" => 'n');
-								$id		= 'h-effect';
-							?>
-							<div class="btn-group h-effect" data-toggle="buttons-radio">
-							<?php foreach ($ar as $key => $value) { ?>
-								<label for="<?php echo $id . '-' . $value; ?>"  type="button" class="btn-mini btn">
-									<input type="radio" id="<?php echo $id . '-' . $value; ?>" value="<?php echo $value; ?>">
-									<?php echo $key; ?>
-								</label>
-							<?php } ?>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div> -->
-
 		<div class="control-group">
 			<label class="control-label">Hover colors</label>
 			<div class="controls">
@@ -61,10 +21,6 @@
 							<span class="lbl">Icon color</span>
 							<input type="text" class="rgb" value="" />
 						</td>
-						<!-- <td class="cp-innerborder">
-							<span class="lbl">Inner border</span>
-							<input type="text" class="rgb" value="" />
-						</td> -->
 					</tr>
 				</table>
 			</div>
@@ -91,6 +47,42 @@
 				</div>
 			</div>
 		</div>
+		<div class="control-group">
+			<label class="control-label">Pagination display in Carousel</label>
+			<div class="controls">
+				<?php 
+					$ar 	= array("Yes" => 'y', "No" => 'n');
+					$id		= 'pgstatus';
+				?>
+				<div class="btn-group page-status" data-toggle="buttons-radio">
+				<?php foreach ($ar as $key => $value) { ?>
+					<label for="<?php echo $id . '-' . $value; ?>"  type="button" class="btn-mini btn">
+						<input type="radio" id="<?php echo $id . '-' . $value; ?>" value="<?php echo $value; ?>">
+						<?php echo $key; ?>
+					</label>
+				<?php } ?>
+				</div>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label">Arrows display in Carousel</label>
+			<div class="controls">
+				<?php 
+					$ar 	= array("Yes" => 'y', "No" => 'n');
+					$id		= 'arrowstatus';
+				?>
+				<div class="btn-group arrow-status" data-toggle="buttons-radio">
+				<?php foreach ($ar as $key => $value) { ?>
+					<label for="<?php echo $id . '-' . $value; ?>"  type="button" class="btn-mini btn">
+						<input type="radio" id="<?php echo $id . '-' . $value; ?>" value="<?php echo $value; ?>">
+						<?php echo $key; ?>
+					</label>
+				<?php } ?>
+				</div>
+			</div>
+		</div>
+
 		<div class="control-group">
 			<label class="control-label">Images display in row</label>
 			<div class="controls">
@@ -152,7 +144,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="control-group apply-bar">
 			<label class="control-label"></label>
 			<div class="controls">
 				<a class="btn apply btn-success">Apply</a>
@@ -162,7 +154,7 @@
 </div>
 <script>
 var obj = '#pop_mod_setting';
-var dataSource = ".apply, .model-box .ui-icon-closethick";
+var dataSource = ".apply, .model-box .ui-icon-closethick, .apply-bar";
 
 $(obj).find('.style .btn').off('click');
 $(obj).find('.style .btn').on('click', function(event) {
@@ -187,11 +179,10 @@ if(oldData){
 	$(obj).find(".tb .t").attr('value',oldData_ar[3]);
 	$(obj).find(".tb .b").attr('value',oldData_ar[4]);
 	$(obj).find(".sep input[value='"+oldData_ar[5]+"']").prop('checked', true).parent().addClass('active');
-	//$(obj).find(".h-effect input[value='"+oldData_ar[6]+"']").prop('checked', true).parent().addClass('active');
-	//$(obj).find(".caption input[value='"+oldData_ar[7]+"']").prop('checked', true).parent().addClass('active');
 	$(obj).find(".cp-bg .rgb").attr('value',oldData_ar[6]);
 	$(obj).find(".cp-text .rgb").attr('value',oldData_ar[7]);
-	//$(obj).find(".cp-innerborder .rgb").attr('value',oldData_ar[10]);
+	$(obj).find(".page-status input[value='"+oldData_ar[8]+"']").prop('checked', true).parent().addClass('active');
+	$(obj).find(".arrow-status input[value='"+oldData_ar[9]+"']").prop('checked', true).parent().addClass('active');
 }
 
 $(obj).find(dataSource).off('change click focus input blur');
@@ -202,13 +193,12 @@ $(obj).find(dataSource).on('change click focus input blur', function(){
 				  $(obj).find(".tb .t").val()+"|"+
 				  $(obj).find(".tb .b").val()+"|"+
 				  $(obj).find(".sep .active input[type='radio']").val()+"|"+
-				  /*$(obj).find(".h-effect .active input[type='radio']").val()+"|"+
-				  $(obj).find(".caption .active input[type='radio']").val()+"|"+*/
 				  $(obj).find(".cp-bg input").val()+"|"+
-				  $(obj).find(".cp-text input").val();
-				  //$(obj).find(".cp-innerborder input").val();
+				  $(obj).find(".cp-text input").val()+"|"+
+				  $(obj).find(".page-status .active input[type='radio']").val()+"|"+
+				  $(obj).find(".arrow-status .active input[type='radio']").val();
 				  //console.log(dataStr);
-				  //Grid|4|10|40|40|y|rgb(0, 0, 0, 0.3)|rgb(255, 255, 255)
+				  //Grid|4|10|40|40|y|rgb(0, 0, 0, 0.3)|rgb(255, 255, 255)|n|y
 	$('.pop-active').next("input[type='hidden']").attr('data-style', $(obj).find(".style .active input[type='radio']").val());
 	$('.pop-active').next("input[type='hidden']").attr('value', dataStr);
 });

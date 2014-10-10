@@ -12,6 +12,7 @@ input[disabled="disabled"]{ opacity: 0.4; }
 <?php
 $positions = array(
 			$text_content_top				=> 'content_top',
+			'Content Top Upper' 			=> 'rgen_content_top_upper',
 			$text_content_bottom			=> 'content_bottom',
 			$text_column_left				=> 'column_left',
 			$text_column_right				=> 'column_right'
@@ -58,9 +59,8 @@ $sliderType = array(
 			<table class="table table-bordered">
 				<tr class="table-header">
 					<th width="220">Slider</th>
-					<th width="300">Settings</th>
-					<th style="text-align:center;">Layout</th>
-					<th style="text-align:center;">Position</th>
+					<th width="300">Slideer settings</th>
+					<th style="text-align:center;">Other settings</th>
 					<th style="text-align:center;">Status</th>
 					<th style="text-align:center;">Sort order</th>
 					<th style="text-align:center;"></th>
@@ -187,36 +187,75 @@ $sliderType = array(
 							</script>
 						</div>
 					</td>
-					<td>
-						<?php 
-						$ar 	= $layouts;
-						$dbKey 	= isset($module['layout_id']) ? $module['layout_id'] : 'home';
-						$name	= 'rgen_revoslider_module[' . $module_row . '][layout_id]';
-						?>
-						<span class='select'>
-							<select name="<?php echo $name; ?>" class="input-medium">
+					<td style="text-align:left;">
+						<div class="mb10">
+							<span class="lbl-1">Access in grid manager</span>
+							<?php 
+								$ar 	= array('Yes' => 'y', 'No' => 'n');
+								$dbKey 	= isset($module['ext_access']) ? $module['ext_access'] : 'n';
+								$name	= 'rgen_revoslider_module[' . $module_row . '][ext_access]';
+								$id		= 'ext_access'.$module_row;
+								$extStatus = $dbKey;
+							?>
+							<div class="btn-group ext-access" data-clone="ext_access" data-toggle="buttons-radio">
 								<?php foreach ($ar as $key => $value) { ?>
-									<?php ($value['layout_id'] ==  $dbKey) ? $selected = 'selected' : $selected=''; ?>
-									<option value="<?php echo $value['layout_id']; ?>" <?php echo $selected; ?>><?php echo $value['name']; ?></option>
+									<?php ($value ==  $dbKey) ? $selected = ' active' : $selected=''; ?>
+									<label for="<?php echo $id . '-' . $value; ?>"  type="button" class="btn btn-small<?php echo $selected; ?>">
+										<input type="radio" id="<?php echo $id . '-' . $value; ?>" name="<?php echo $name; ?>" value="<?php echo $value; ?>" <?php if ($dbKey == $value) { ?>checked<?php }?>>
+										<?php echo $key; ?>
+									</label>
 								<?php } ?>
-							</select>
-						</span>
+							</div>
+							<div style="margin-top:5px;margin-bottom:8px;<?php echo $extStatus == 'n' ? 'display:none;' : null; ?>">
+								<?php 
+									$dbKey 	= isset($module['ext_id']) ? $module['ext_id'] : 'ext_'.md5($module_row.time());
+									$name	= 'rgen_revoslider_module[' . $module_row . '][ext_id]';
+								?>
+								<input type="hidden" data-clone="ext_id" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
+								<?php 
+									$dbKey 	= isset($module['ext_name']) ? $module['ext_name'] : 'Module-'.($module_row+1);
+									$name	= 'rgen_revoslider_module[' . $module_row . '][ext_name]';
+								?>
+								<input type="text" data-clone="ext_name" class="ext-name" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
+								<div class="help-block">
+									This name will display in Grid Manager module list. <br>
+									Slider display with only normal view settings in grid manager all other settings will not work in grid manager.
+								</div>
+							</div>
+						</div>
+
+						<div class="mod-setting-wrp"<?php echo $extStatus == 'y' ? ' style="display:none;"' : null; ?>>
+							<?php 
+							$ar 	= $layouts;
+							$dbKey 	= isset($module['layout_id']) ? $module['layout_id'] : 'home';
+							$name	= 'rgen_revoslider_module[' . $module_row . '][layout_id]';
+							?>
+							<span class='select'>
+								<select name="<?php echo $name; ?>" class="input-medium">
+									<?php foreach ($ar as $key => $value) { ?>
+										<?php ($value['layout_id'] ==  $dbKey) ? $selected = 'selected' : $selected=''; ?>
+										<option value="<?php echo $value['layout_id']; ?>" <?php echo $selected; ?>><?php echo $value['name']; ?></option>
+									<?php } ?>
+								</select>
+							</span>
+
+							<?php 
+							$ar 	= $positions;
+							$dbKey 	= isset($module['position']) ? $module['position'] : 'content_top';
+							$name	= 'rgen_revoslider_module[' . $module_row . '][position]';
+							?>
+							<span class='select'>
+								<select name="<?php echo $name; ?>" class="input-medium">
+									<?php foreach ($ar as $key => $value) { ?>
+										<?php ($value ==  $dbKey) ? $selected = 'selected' : $selected=''; ?>
+										<option value="<?php echo $value; ?>" <?php echo $selected; ?>><?php echo $key; ?></option>
+									<?php } ?>
+								</select>
+							</span>
+						</div>
+
 					</td>
-					<td>
-						<?php 
-						$ar 	= $positions;
-						$dbKey 	= isset($module['position']) ? $module['position'] : 'content_top';
-						$name	= 'rgen_revoslider_module[' . $module_row . '][position]';
-						?>
-						<span class='select'>
-							<select name="<?php echo $name; ?>" class="input-medium">
-								<?php foreach ($ar as $key => $value) { ?>
-									<?php ($value ==  $dbKey) ? $selected = 'selected' : $selected=''; ?>
-									<option value="<?php echo $value; ?>" <?php echo $selected; ?>><?php echo $key; ?></option>
-								<?php } ?>
-							</select>
-						</span>
-					</td>
+
 					<td style="text-align:center;">
 						<?php 
 							$dbKey 	= isset($module['status']) ? $module['status'] : '0';
@@ -243,7 +282,7 @@ $sliderType = array(
 				<?php $module_row++; ?>
 				<?php } ?>
 				<tr class="addModBtn">
-					<td colspan="6"></td>
+					<td colspan="5"></td>
 					<td style="text-align:center;"><a id="addMod" onclick="addModule();" class="btn btn-success">Add</a></td>
 				</tr>
 			</table>
@@ -277,7 +316,6 @@ function setswitch(){
 	});
 }
 setswitch();
-
 
 var module_row = <?php echo $module_row; ?>;
 function addModule() {	
@@ -365,26 +403,49 @@ function addModule() {
 	html += '		</div>';
 	html += '	</td>';
 	
-	html += '	<td>';
-	html += '		<span class="select">';
+	html += '	<td style="text-align:left;">';
+
+	html += '		<div class="mb10">';
+	html += '			<span class="lbl-1">Access in grid manager</span>';
+						<?php 
+							$ar 	= array('Yes' => 'y', 'No' => 'n');
+							$dbKey 	= 'n';
+						?>
+						var name 	= 'rgen_revoslider_module[' + module_row + '][ext_access]';
+						var id 	= 'ext_access'+module_row;
+	html += '			<div class="btn-group ext-access" data-clone="ext_access" data-toggle="buttons-radio">';
+							<?php foreach ($ar as $key => $value) { ?>
+								<?php ($value ==  $dbKey) ? $selected = ' active' : $selected=''; ?>
+	html += '					<label for="'+id+'<?php echo "-" . $value; ?>"  type="button" class="btn btn-small<?php echo $selected; ?>">';
+	html += '						<input type="radio" id="'+id+'<?php echo "-" . $value; ?>" name="'+name+'" value="<?php echo $value; ?>" <?php if ($dbKey == $value) { ?>checked<?php }?>><?php echo $key; ?>';
+	html += '					</label>';
+							<?php } ?>
+	html += '			</div>';
+	html += '			<div style="margin-top:5px;margin-bottom:8px;display:none;">';
+							var name 	= 'rgen_revoslider_module[' + module_row + '][ext_id]';
+	html += '				<input type="hidden" data-clone="ext_id" name="'+ name +'" value="ext_'+ getRandomInt() +'" />';
+							var name 	= 'rgen_revoslider_module[' + module_row + '][ext_name]';
+	html += '				<input type="text" data-clone="ext_name" class="ext-name" name="'+ name +'" value="Module-'+(module_row+1)+'" />';
+	html += '				<div class="help-block">This name will display in Grid Manager module list. <br> Slider display with only normal view settings in grid manager all other settings will not work in grid manager.</div>';
+	html += '			</div>';
+	html += '		</div>';
+
+	html += '		<div class="mod-setting-wrp"><span class="select">';
 	html += '			<select name="rgen_revoslider_module[' + module_row + '][layout_id]" class="input-medium">';
 							<?php foreach ($layouts as $key) { ?>
 	html += '				<option value="<?php echo $key["layout_id"]; ?>"><?php echo $key["name"]; ?></option>';
 							<?php } ?>
 	html += '			</select>';
 	html += '		</span>';
-	html += '	</td>';
-	
-	html += '	<td>';
 	html += '		<span class="select">';
 	html += '			<select name="rgen_revoslider_module[' + module_row + '][position]" class="input-medium">';
 							<?php foreach ($positions as $key => $value) { ?>
 	html += '				<option value="<?php echo $value; ?>"><?php echo $key; ?></option>';
 							<?php } ?>
 	html += '			</select>';
-	html += '		</span>';
+	html += '		</span></div>';
 	html += '	</td>';
-
+	
 	html += '	<td style="text-align:center;">';
 	html += '		<span class="switch"><input type="checkbox" id="rgen_revoslider_module-' + module_row + '-status" name="rgen_revoslider_module[' + module_row + '][status]" value="1"><label for="rgen_revoslider_module-' + module_row + '-status" class="switch-img"></label><input type="hidden" name="rgen_revoslider_module[' + module_row + '][status]" value="0"></span>';
 	html += '	</td>';
@@ -433,6 +494,22 @@ $("#saveBtn").click(function(){
 		}
 	});
 });
+
+function extAccess(){
+	console.log('function called');
+	$(window).off( "click", ".ext-access input[type='radio']");
+	$(window).on('click', ".ext-access input[type='radio']", function() {
+		console.log($(this).val());
+		if ($(this).val() == 'y') {
+			$(this).parent().parent().next('div').show();
+			$(this).parent().parent().parent().next('.mod-setting-wrp').hide();
+		}else {
+			$(this).parent().parent().parent().next('.mod-setting-wrp').show();
+			$(this).parent().parent().next('div').hide();
+		};
+	});
+}
+extAccess();
 
 </script>
 <?php echo $footer; ?>

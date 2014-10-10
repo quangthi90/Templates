@@ -1,6 +1,6 @@
-<?php if ($position != 'column_left' && $position != 'column_right'){ ?>
+<?php if ($position != 'column_left' && $position != 'column_right' && $extCheck == 'n'){ ?>
 <div class="<?php 
-	echo isset($setting['fullB']) && $setting['fullB'] == 'y' ? 'fullblock' : null; 
+	echo isset($setting['fullB']) && $setting['fullB'] == 'y' ? 'fullb' : null; 
 	echo isset($fullB_class) ? $fullB_class : null;
 	?>"<?php 
 	echo isset($fullB_settings) ? ' style="'.$fullB_settings.'"' : null; 
@@ -33,11 +33,14 @@
 <?php } ?>
 
 
-<?php if ($position != 'column_left' && $position != 'column_right'){ ?>
+<?php if ($position != 'column_left' && $position != 'column_right' && $extCheck == 'n'){ ?>
 	<?php if (isset($setting['fullB']) && $setting['fullB'] == 'y') { ?>
 	<script>
 	jQuery(document).ready(function($) {
-		$("#customhtml-fullB<?php echo $module ?>").fullblock({ child: ".fullB-inner" });
+		$(window).resize(function(){
+			fullB("#customhtml-fullB<?php echo $module ?>", ".fullB-inner");
+		});
+		fullB("#customhtml-fullB<?php echo $module ?>", ".fullB-inner");
 	});
 	</script>
 	<?php } ?>

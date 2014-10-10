@@ -77,7 +77,7 @@
 					<li><a href="#RGen_themes">R.GEN THEMES</a></li>
 					<li><a href="#ThemeSetting">THEME COLORS</a></li>
 					<li><a href="#CustomCSS">CUSTOM CODE</a></li>
-					<?php if(is_dir(DIR_APPLICATION."model/rgen/sampledata/") == 1){ ?>
+					<?php if(is_dir(DIR_APPLICATION."model/rgen/sampledata/") == 1 && is_file('view/rgen/sampledata/rgen_sampledata.php') == 1){ ?>
 					<li><a href="#SampleData">SAMPLE DATA</a></li>
 					<?php }; ?>
 				</ul>
@@ -147,9 +147,11 @@
 				<?php include "rgen_customcode.php"; ?>
 			</div>
 			
-			<?php if(is_dir(DIR_APPLICATION."model/rgen/sampledata/") == 1){ ?>
+			<?php if(is_dir(DIR_APPLICATION."model/rgen/sampledata/") == 1 && is_file('view/rgen/sampledata/rgen_sampledata.php') == 1){ ?>
 			<div id="SampleData" class="tab-pane">
-				<?php include "rgen_sampledata.php"; ?>
+				<?php 
+					include 'view/rgen/sampledata/rgen_sampledata.php';
+				?>
 			</div>
 			<?php }; ?>
 

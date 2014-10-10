@@ -1,6 +1,6 @@
 <?php
 $modprd = $modSettings['prdboxStyle'];
-
+$m = ' m3-col-2 m2-col-2 m1-col-1';
 /* Mobile optimize view
 ******************************/	
 if(
@@ -30,42 +30,29 @@ if(
 		if ($modprd == 'prd1' || $modprd == '') { echo ' modprd1'; }
 		if ($modprd == 'prd4') { echo ' modprd4'; }
 		?>">
-		<div class="box-product<?php $modSettings['prdStyle'] == 'scroll' ? ' owl-carousel' : null; ?>">
-			<?php foreach ($modSettings['products'] as $product) { ?>
-				<div class="item">
-					<?php
-						if ($modprd == 'prd1' || $modprd == '') {
-							include VQMod::modCheck('catalog/view/theme/rgen-opencart/template/common/RGen_mod_productblock1.php');
-						} elseif ($modprd == 'prd2') {
-							include VQMod::modCheck('catalog/view/theme/rgen-opencart/template/common/RGen_mod_productblock2.php');
-						} elseif ($modprd == 'prd3') {
-							include VQMod::modCheck('catalog/view/theme/rgen-opencart/template/common/RGen_mod_productblock3.php');
-						} elseif ($modprd == 'prd4') {
-							include VQMod::modCheck('catalog/view/theme/rgen-opencart/template/common/RGen_mod_productblock4.php');
-						}
-					?>
+		<div class="box-product">
+			<div class="grid-wrp gt-<?php echo isset($gridSettings['gutter']) ? $gridSettings['gutter'] : '20'; ?>">
+				<div class="row<?php echo $modSettings['prdStyle'] == 'scroll' ? ' col-5' : $m; ?>" data-n=''>
+					<?php echo $modSettings['prdStyle'] == 'scroll' ? '<div class="owl-carousel prdStyle-scroll">' : null; ?>
+					<?php foreach ($modSettings['products'] as $product) { ?>
+						<div class="col" <?php echo $modSettings['prdStyle'] != 'scroll' ? 'data-mh="'.$module.'-rgen_customproducts-prd"' : null; ?>>
+							<?php
+								if ($modprd == 'prd1' || $modprd == '') {
+									include VQMod::modCheck('catalog/view/theme/rgen-opencart/template/common/RGen_mod_productblock1.php');
+								} elseif ($modprd == 'prd2') {
+									include VQMod::modCheck('catalog/view/theme/rgen-opencart/template/common/RGen_mod_productblock2.php');
+								} elseif ($modprd == 'prd3') {
+									include VQMod::modCheck('catalog/view/theme/rgen-opencart/template/common/RGen_mod_productblock3.php');
+								} elseif ($modprd == 'prd4') {
+									include VQMod::modCheck('catalog/view/theme/rgen-opencart/template/common/RGen_mod_productblock4.php');
+								}
+							?>
+						</div>
+					<?php } ?>
+					<?php echo $modSettings['prdStyle'] == 'scroll' ? '</div>' : null; ?>
+					<b class="clearfix"></b>
 				</div>
-			<?php } ?>
+			</div>
 		</div>
 	</div>
-	<?php if ($modSettings['prdStyle'] == 'scroll') { ?>
-	<script type="text/javascript">
-	var owl<?php echo $modSettings['key'].$modSettings['moduleCount']; ?> = $("#tb-<?php echo $modSettings['key'].$modSettings['moduleCount']; ?> .box-product");
-	$(document).ready(function(){
-		owl<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>.owlCarousel({
-			itemsCustom : [ [0, 1], [420, 2], [600, 3], [768, 4], [980, 5] ],
-			navigation : true,
-			navigationText : ["",""],
-			responsiveBaseWidth: "#tb-<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>"
-		});
-		$(".owl-prev").addClass('prev');
-		$(".owl-next").addClass('next');
-		$(".owl-controls").addClass('carousel-controls');
-	});
-	$(window).on("click",".custom-tabs > a",function(){
-		owl<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>.owlCarousel();
-	});
-	</script>
-	<?php } ?>
-
 <?php } ?>

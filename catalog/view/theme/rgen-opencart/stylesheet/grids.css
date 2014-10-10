@@ -7,8 +7,50 @@
 .banner-grid.res-img img { width: auto; }
 .banner-grid .vr-col img,
 .grid-wrp img { width: auto; height: auto !important; max-width: 100%; }
-
 .grid-wrp .row > .col { padding-left: 15px; padding-right: 15px; }
+
+.custom-section .grid-wrp .prd-block,
+.custom-section .grid-wrp .prd-block1,
+.custom-section .grid-wrp .prd-block2,
+.custom-section .grid-wrp .prd-block2 .image,
+.custom-section .grid-wrp .prd-block3 {
+	width: auto !important;
+	float: none;
+	margin: auto;
+	min-height: inherit;
+}
+.custom-section .mod-grid .prd-block1 {
+	margin-bottom: 30px;
+}
+.grid-wrp .sec-box { margin-bottom: 0px; }
+
+/* .grid-wrp .prd-block img,
+.grid-wrp .prd-block1 img,
+.grid-wrp .prd-block2 img {
+	width: 100%;
+} */
+
+/* GRID SYSTEM */
+.rw { text-align: left; }
+.rw > * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.rw:after, .rw:before { content: ''; display: table; clear: both; }
+.rw > [class^=col] { float: left; }
+.rw > .col-d-12 { width: 100%; }
+.rw > .col-d-11 { width: 91.66666666666666%; }
+.rw > .col-d-10 { width: 83.33333333333334%; }
+.rw > .col-d-9 { width: 75%; }
+.rw > .col-d-8 { width: 66.66666666666666%; }
+.rw > .col-d-7 { width: 58.333333333333336%; }
+.rw > .col-d-6 { width: 50%; }
+.rw > .col-d-5 { width: 41.66666666666667%; }
+.rw > .col-d-4 { width: 33.33333333333333%; }
+.rw > .col-d-3 { width: 25%; }
+.rw > .col-d-2 { width: 16.666666666666664%; }
+.rw > .col-d-1 { width: 8.333333333333332%; }
 
 /* Grid bottom margin */
 .grid-wrp .mb { font-size: 0px; }
@@ -47,7 +89,7 @@
 .grid-wrp .vr-col.b-70 .col, .banner-grid .vr-col.b-70 .bnr { margin-bottom: 70px; }
 .grid-wrp .vr-col.b-80 .col, .banner-grid .vr-col.b-80 .bnr { margin-bottom: 80px; }
 
-.row [class^="col"], .row:before, .row:after {
+.row [class^="col"], .row:before, .row:after, .rw [class^=col] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -71,51 +113,51 @@
 	float: left;
 }
 
-.gt-0 .row [class^="col"] 	{ padding-right: 0px;  padding-left: 0px; margin-bottom: 0px; }
-.gt-1 .row [class^="col"] 	{ padding-right: 1px;  padding-left: 0px; margin-bottom: 1px; }
-.gt-2 .row [class^="col"] 	{ padding-right: 1px;  padding-left: 1px; margin-bottom: 2px; }
-.gt-4 .row [class^="col"] 	{ padding-right: 2px;  padding-left: 2px; margin-bottom: 4px; }
-.gt-10 .row [class^="col"] 	{ padding-right: 5px;  padding-left: 5px; margin-bottom: 10px; }
-.gt-12 .row [class^="col"] 	{ padding-right: 6px;  padding-left: 6px; margin-bottom: 6px; }
-.gt-14 .row [class^="col"] 	{ padding-right: 7px;  padding-left: 7px; margin-bottom: 14px; }
-.gt-16 .row [class^="col"] 	{ padding-right: 8px;  padding-left: 8px; margin-bottom: 16px; }
-.gt-18 .row [class^="col"] 	{ padding-right: 9px;  padding-left: 9px; margin-bottom: 18px; }
-.gt-20 .row [class^="col"] 	{ padding-right: 10px; padding-left: 10px; margin-bottom: 20px; }
-.gt-22 .row [class^="col"] 	{ padding-right: 11px; padding-left: 11px; margin-bottom: 22px; }
-.gt-24 .row [class^="col"] 	{ padding-right: 12px; padding-left: 12px; margin-bottom: 24px; }
-.gt-26 .row [class^="col"] 	{ padding-right: 13px; padding-left: 13px; margin-bottom: 26px; }
-.gt-28 .row [class^="col"] 	{ padding-right: 14px; padding-left: 14px; margin-bottom: 28px; }
-.gt-30 .row [class^="col"] 	{ padding-right: 15px; padding-left: 15px; margin-bottom: 30px; }
-.gt-40 .row [class^="col"] 	{ padding-right: 20px; padding-left: 20px; margin-bottom: 40px; }
-.gt-50 .row [class^="col"] 	{ padding-right: 25px; padding-left: 25px; margin-bottom: 50px; }
-.gt-60 .row [class^="col"] 	{ padding-right: 30px; padding-left: 30px; margin-bottom: 60px; }
-.gt-70 .row [class^="col"] 	{ padding-right: 35px; padding-left: 35px; margin-bottom: 70px; }
-.gt-80 .row [class^="col"] 	{ padding-right: 40px; padding-left: 40px; margin-bottom: 80px; }
-.gt-90 .row [class^="col"] 	{ padding-right: 45px; padding-left: 45px; margin-bottom: 90px; }
-.gt-100 .row [class^="col"] { padding-right: 50px; padding-left: 50px; margin-bottom: 100px; }
+.gut-0.rw > [class^="col"], .gt-0 .row [class^="col"] 	{ padding-right: 0px;  padding-left: 0px; margin-bottom: 0px; }
+.gut-1.rw > [class^="col"], .gt-1 .row [class^="col"] 	{ padding-right: 1px;  padding-left: 0px; margin-bottom: 1px; }
+.gut-2.rw > [class^="col"], .gt-2 .row [class^="col"] 	{ padding-right: 1px;  padding-left: 1px; margin-bottom: 2px; }
+.gut-4.rw > [class^="col"], .gt-4 .row [class^="col"] 	{ padding-right: 2px;  padding-left: 2px; margin-bottom: 4px; }
+.gut-10.rw > [class^="col"], .gt-10 .row [class^="col"] 	{ padding-right: 5px;  padding-left: 5px; margin-bottom: 10px; }
+.gut-12.rw > [class^="col"], .gt-12 .row [class^="col"] 	{ padding-right: 6px;  padding-left: 6px; margin-bottom: 6px; }
+.gut-14.rw > [class^="col"], .gt-14 .row [class^="col"] 	{ padding-right: 7px;  padding-left: 7px; margin-bottom: 14px; }
+.gut-16.rw > [class^="col"], .gt-16 .row [class^="col"] 	{ padding-right: 8px;  padding-left: 8px; margin-bottom: 16px; }
+.gut-18.rw > [class^="col"], .gt-18 .row [class^="col"] 	{ padding-right: 9px;  padding-left: 9px; margin-bottom: 18px; }
+.gut-20.rw > [class^="col"], .gt-20 .row [class^="col"] 	{ padding-right: 10px; padding-left: 10px; margin-bottom: 20px; }
+.gut-22.rw > [class^="col"], .gt-22 .row [class^="col"] 	{ padding-right: 11px; padding-left: 11px; margin-bottom: 22px; }
+.gut-24.rw > [class^="col"], .gt-24 .row [class^="col"] 	{ padding-right: 12px; padding-left: 12px; margin-bottom: 24px; }
+.gut-26.rw > [class^="col"], .gt-26 .row [class^="col"] 	{ padding-right: 13px; padding-left: 13px; margin-bottom: 26px; }
+.gut-28.rw > [class^="col"], .gt-28 .row [class^="col"] 	{ padding-right: 14px; padding-left: 14px; margin-bottom: 28px; }
+.gut-30.rw > [class^="col"], .gt-30 .row [class^="col"] 	{ padding-right: 15px; padding-left: 15px; margin-bottom: 30px; }
+.gut-40.rw > [class^="col"], .gt-40 .row [class^="col"] 	{ padding-right: 20px; padding-left: 20px; margin-bottom: 40px; }
+.gut-50.rw > [class^="col"], .gt-50 .row [class^="col"] 	{ padding-right: 25px; padding-left: 25px; margin-bottom: 50px; }
+.gut-60.rw > [class^="col"], .gt-60 .row [class^="col"] 	{ padding-right: 30px; padding-left: 30px; margin-bottom: 60px; }
+.gut-70.rw > [class^="col"], .gt-70 .row [class^="col"] 	{ padding-right: 35px; padding-left: 35px; margin-bottom: 70px; }
+.gut-80.rw > [class^="col"], .gt-80 .row [class^="col"] 	{ padding-right: 40px; padding-left: 40px; margin-bottom: 80px; }
+.gut-90.rw > [class^="col"], .gt-90 .row [class^="col"] 	{ padding-right: 45px; padding-left: 45px; margin-bottom: 90px; }
+.gut-100.rw > [class^="col"], .gt-100 .row [class^="col"] { padding-right: 50px; padding-left: 50px; margin-bottom: 100px; }
 
-.gt-0 .row	{ margin-right: 0px; margin-left: 0px; }
-.gt-1 .row	{ margin-right: -1px; margin-left: 0px; }
-.gt-2 .row	{ margin-right: -1px;  margin-left: -1px; }
-.gt-4 .row	{ margin-right: -2px;  margin-left: -2px; }
-.gt-10 .row	{ margin-right: -5px;  margin-left: -5px; }
-.gt-12 .row	{ margin-right: -6px;  margin-left: -6px; }
-.gt-14 .row	{ margin-right: -7px;  margin-left: -7px; }
-.gt-16 .row	{ margin-right: -8px;  margin-left: -8px; }
-.gt-18 .row	{ margin-right: -9px;  margin-left: -9px; }
-.gt-20 .row	{ margin-right: -10px; margin-left: -10px; }
-.gt-22 .row	{ margin-right: -11px; margin-left: -11px; }
-.gt-24 .row	{ margin-right: -12px; margin-left: -12px; }
-.gt-26 .row	{ margin-right: -13px; margin-left: -13px; }
-.gt-28 .row	{ margin-right: -14px; margin-left: -14px; }
-.gt-30 .row	{ margin-right: -15px; margin-left: -15px; }
-.gt-40 .row	{ margin-right: -20px; margin-left: -20px; }
-.gt-50 .row	{ margin-right: -25px; margin-left: -25px; }
-.gt-60 .row	{ margin-right: -30px; margin-left: -30px; }
-.gt-70 .row	{ margin-right: -35px; margin-left: -35px; }
-.gt-80 .row	{ margin-right: -40px; margin-left: -40px; }
-.gt-90 .row	{ margin-right: -45px; margin-left: -45px; }
-.gt-100 .row{ margin-right: -50px; margin-left: -50px; }
+.gut-0.rw, .gt-0 .row	{ margin-right: 0px; margin-left: 0px; }
+.gut-1.rw, .gt-1 .row	{ margin-right: -1px; margin-left: 0px; }
+.gut-2.rw, .gt-2 .row	{ margin-right: -1px;  margin-left: -1px; }
+.gut-4.rw, .gt-4 .row	{ margin-right: -2px;  margin-left: -2px; }
+.gut-10.rw, .gt-10 .row	{ margin-right: -5px;  margin-left: -5px; }
+.gut-12.rw, .gt-12 .row	{ margin-right: -6px;  margin-left: -6px; }
+.gut-14.rw, .gt-14 .row	{ margin-right: -7px;  margin-left: -7px; }
+.gut-16.rw, .gt-16 .row	{ margin-right: -8px;  margin-left: -8px; }
+.gut-18.rw, .gt-18 .row	{ margin-right: -9px;  margin-left: -9px; }
+.gut-20.rw, .gt-20 .row	{ margin-right: -10px; margin-left: -10px; }
+.gut-22.rw, .gt-22 .row	{ margin-right: -11px; margin-left: -11px; }
+.gut-24.rw, .gt-24 .row	{ margin-right: -12px; margin-left: -12px; }
+.gut-26.rw, .gt-26 .row	{ margin-right: -13px; margin-left: -13px; }
+.gut-28.rw, .gt-28 .row	{ margin-right: -14px; margin-left: -14px; }
+.gut-30.rw, .gt-30 .row	{ margin-right: -15px; margin-left: -15px; }
+.gut-40.rw, .gt-40 .row	{ margin-right: -20px; margin-left: -20px; }
+.gut-50.rw, .gt-50 .row	{ margin-right: -25px; margin-left: -25px; }
+.gut-60.rw, .gt-60 .row	{ margin-right: -30px; margin-left: -30px; }
+.gut-70.rw, .gt-70 .row	{ margin-right: -35px; margin-left: -35px; }
+.gut-80.rw, .gt-80 .row	{ margin-right: -40px; margin-left: -40px; }
+.gut-90.rw, .gt-90 .row	{ margin-right: -45px; margin-left: -45px; }
+.gut-100.rw, .gt-100 .row{ margin-right: -50px; margin-left: -50px; }
 
 .banner-grid .vr-col .bnr { display: block; margin-right: auto; margin-left: auto; text-align: center; }
 
@@ -133,6 +175,10 @@
 [data-col="10"] > .col, .col-10 > .col { width: 10%; }
 [data-col="11"] > .col, .col-11 > .col { width: 9.090909090909091%; }
 [data-col="12"] > .col, .col-12 > .col { width: 8.333333333333333%; }
+
+
+
+
 
 /* CONTENT STYLES */
 .contentbox .cbox-main-hd {

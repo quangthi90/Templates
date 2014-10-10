@@ -46,6 +46,7 @@ jQuery(document).ready(function($) {
 					open: function(event, ui) {
 						var popup = this;
 						$(popup).find('.apply').click(function(event) {
+							blockSection(".ui-dialog", '#d8d1c7');
 							var bnrLayout = 'view/image/rgen_theme/rgen_bnr_mod_typ'+$('.pop-active + input[type="hidden"].bannerSettings').attr('data-style')+'.png';
 							$('.pop-active + .bannerSettings + br + img').attr('src', bnrLayout);
 
@@ -69,7 +70,10 @@ jQuery(document).ready(function($) {
 									return val; 
 								}
 							});
-							$(popup).dialog("close");
+							setTimeout(function(){
+								$(popup).dialog("close");
+								$('.ui-dialog').unblock();
+							}, 500);
 						});
 					},
 					close: function (event, ui) {

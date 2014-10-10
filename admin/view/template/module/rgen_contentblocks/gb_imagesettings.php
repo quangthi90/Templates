@@ -9,10 +9,28 @@
 <div class="getValue model-box" id="pop_mod_setting">
 	<div class="form-horizontal frm-small">
 		<div class="control-group">
+			<label class="control-label">Display image</label>
+			<div class="controls">
+				<?php 
+					$ar 	= array("Yes" => 'y', "No" => 'n');
+					$id		= 'imgstatus';
+				?>
+				<div class="btn-group img-status" data-toggle="buttons-radio">
+				<?php foreach ($ar as $key => $value) { ?>
+					<label for="<?php echo $id . '-' . $value; ?>"  type="button" class="btn-mini btn">
+						<input type="radio" id="<?php echo $id . '-' . $value; ?>" value="<?php echo $value; ?>">
+						<?php echo $key; ?>
+					</label>
+				<?php } ?>
+				</div>
+			</div>
+		</div>
+
+		<div class="control-group">
 			<label class="control-label">Image position</label>
 			<div class="controls">
 				<?php 
-					$ar 	= array("Top" => 't', "Left" => 'l');
+					$ar 	= array("Top" => 't', "Left" => 'l', "Right" => 'r');
 					$id		= 'img_position';
 				?>
 				<div class="btn-group img-position" data-toggle="buttons-radio">
@@ -136,7 +154,7 @@
 			</div>
 		</div>
 
-		<div class="control-group">
+		<div class="control-group apply-bar">
 			<label class="control-label"></label>
 			<div class="controls">
 				<a class="btn apply btn-success">Apply</a>
@@ -146,7 +164,7 @@
 </div>
 <script>
 var obj = '#pop_mod_setting';
-var dataSource = ".apply, .model-box .ui-icon-closethick";
+var dataSource = ".apply, .model-box .ui-icon-closethick, .apply-bar";
 
 var oldData = $('.pop-active').next("input[type='hidden']").val();
 if(oldData){
@@ -163,12 +181,13 @@ if(oldData){
 	$(obj).find(".img-r-r").attr('value',oldData_ar[9]);
 	$(obj).find(".img-r-b").attr('value',oldData_ar[10]);
 	$(obj).find(".img-r-l").attr('value',oldData_ar[11]);
-	if (oldData_ar[0] == 'l') {
+	if (oldData_ar[0] == 'l' || oldData_ar[0] == 'r') {
 		$(obj).find(".l").show();
 	}else{
 		$(obj).find(".l").hide();
 	};
 	$(obj).find(".text-wrp input[value='"+oldData_ar[12]+"']").prop('checked', true).parent().addClass('active');
+	$(obj).find(".img-status input[value='"+oldData_ar[13]+"']").prop('checked', true).parent().addClass('active');
 }
 
 $(obj).find(dataSource).off('change click focus input blur');
@@ -185,13 +204,15 @@ $(obj).find(dataSource).on('change click focus input blur', function(){
 				  $(obj).find(".img-r-r").val()+"|"+
 				  $(obj).find(".img-r-b").val()+"|"+
 				  $(obj).find(".img-r-l").val()+"|"+
-				  $(obj).find(".text-wrp .active input[type='radio']").val();
+				  $(obj).find(".text-wrp .active input[type='radio']").val()+"|"+
+				  $(obj).find(".img-status .active input[type='radio']").val();
+				  
 				  //console.log(dataStr);
 	$('.pop-active').next("input[type='hidden']").attr('data-style', $(obj).find(".style .active input[type='radio']").val());
 	$('.pop-active').next("input[type='hidden']").attr('value', dataStr);
 });
 
-$('.img-position label').off('click');
+$('.img-position .btn').off('click');
 $('.img-position .btn').on('click', function() {
 	setTimeout(function(){
 		if ($(".img-position .active input[type='radio']").val() == 't') {

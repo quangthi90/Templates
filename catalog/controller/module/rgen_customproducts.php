@@ -21,15 +21,15 @@ class ControllerModuleRGenCustomProducts extends Controller {
 		$this->load->library('rgen/rgen_lib');
 	
 		$rgen_optimize = $this->config->get('RGen_optimize');
-		$cache = $rgen_optimize['cache_pcb'];
-		$theme = $this->config->get('config_template');
-		$dir = 'rgen_pcb';
-		$loggedIn = $this->customer->isLogged();
-		$device = $this->rgen->device;
-        $priceStatus = ($this->config->get('config_customer_price') && $loggedIn) || !$this->config->get('config_customer_price') ? 'py' : 'pn';
-        $mobStatus = $this->config->get('RGen_optimizemob') == 1 && $device == 'm' ? 'm' : 'd';
-        $taxStatus = $this->config->get('config_tax') ? 'ty' : 'tn';
-        $reviewStatus = $this->config->get('config_review_status') ? 'ry' : 'rn';
+		$cache         = $rgen_optimize['cache_pcb'];
+		$theme         = $this->config->get('config_template');
+		$dir           = 'rgen_pcb';
+		$loggedIn      = $this->customer->isLogged();
+		$device        = $this->rgen->device;
+		$priceStatus   = ($this->config->get('config_customer_price') && $loggedIn) || !$this->config->get('config_customer_price') ? 'py' : 'pn';
+		$mobStatus     = $this->config->get('RGen_optimizemob') == 1 && $device == 'm' ? 'm' : 'd';
+		$taxStatus     = $this->config->get('config_tax') ? 'ty' : 'tn';
+		$reviewStatus  = $this->config->get('config_review_status') ? 'ry' : 'rn';
         
 		/***************/
 
@@ -124,59 +124,165 @@ class ControllerModuleRGenCustomProducts extends Controller {
 
 		if($this->data['setting']) {
 			
-			/* Section full block style
-			******************************/
-			if (isset($setting['fullB']) && $setting['fullB'] == 'y') {
-				
-				$this->data['fullB_class'] = isset($setting['fullB_class']) && $setting['fullB_class'] != '' ? ' '.$setting['fullB_class'] : null;
+			isset($setting['ext_access']) ? $this->data['extCheck'] = $setting['ext_access'] : $this->data['extCheck'] = 'n';
+			if($this->data['extCheck'] == 'n') {
 
-				$setting['fullB_bgps1'] = isset($setting['fullB_bgps1']) ? $setting['fullB_bgps1'] : null;
-				$setting['fullB_bgps2'] = isset($setting['fullB_bgps2']) ? $setting['fullB_bgps2'] : null;
+				$this->modSettings($setting);
 				
-				if (isset($setting['fullB_bgposition']) && $setting['fullB_bgposition'] != "other" && $setting['fullB_bgimg'] != '') {
-					$bgPosition = $setting['fullB_bgposition'] != '' ? 'background-position: '.$setting['fullB_bgposition'].';' : 'background-position: left top;';
-				}else{
-					$bgPosition = $setting['fullB_bgposition'] == 'other' ? 'background-position: '.$setting['fullB_bgps1'].' '.$setting['fullB_bgps2'].';' : 'background-position: left top;';
+				/* Section full block style
+				******************************/
+				if (isset($setting['fullB']) && $setting['fullB'] == 'y') {
+					
+					$this->data['fullB_class'] = isset($setting['fullB_class']) && $setting['fullB_class'] != '' ? ' '.$setting['fullB_class'] : null;
+
+					$setting['fullB_bgps1'] = isset($setting['fullB_bgps1']) ? $setting['fullB_bgps1'] : null;
+					$setting['fullB_bgps2'] = isset($setting['fullB_bgps2']) ? $setting['fullB_bgps2'] : null;
+					
+					if (isset($setting['fullB_bgposition']) && $setting['fullB_bgposition'] != "other" && $setting['fullB_bgimg'] != '') {
+						$bgPosition = $setting['fullB_bgposition'] != '' ? 'background-position: '.$setting['fullB_bgposition'].';' : 'background-position: left top;';
+					}else{
+						$bgPosition = $setting['fullB_bgposition'] == 'other' ? 'background-position: '.$setting['fullB_bgps1'].' '.$setting['fullB_bgps2'].';' : 'background-position: left top;';
+					}
+
+					$this->data['fullB_settings'] = isset($setting['fullB_bgcolor']) && $setting['fullB_bgcolor'] != '' ? 'background-color: '.$setting['fullB_bgcolor'].';' : null;
+					$this->data['fullB_settings'] .= isset($setting['fullB_bgimg']) && $setting['fullB_bgimg'] != '' ? 'background-image: url(image/'.$setting['fullB_bgimg'].');' : null;
+					$this->data['fullB_settings'] .= isset($setting['fullB_bgrepeat']) && $setting['fullB_bgimg'] != '' && $setting['fullB_bgrepeat'] != '' ? 'background-repeat: '.$setting['fullB_bgrepeat'].';' : 'background-repeat: repeat;';
+					$this->data['fullB_settings'] .= $bgPosition;
+					$this->data['fullB_settings'] .= isset($setting['fullB_bgAttachment']) && $setting['fullB_bgimg'] != '' && $setting['fullB_bgAttachment'] != '' ? 'background-attachment: '.$setting['fullB_bgAttachment'].';' : 'background-attachment: inherit;';
 				}
+				/*echo "<pre>".print_r($this->data['setting'],true)."</pre>";
+				echo "<pre>".print_r($this->data['fullB_settings'],true)."</pre>";*/
 
-				$this->data['fullB_settings'] = isset($setting['fullB_bgcolor']) && $setting['fullB_bgcolor'] != '' ? 'background-color: '.$setting['fullB_bgcolor'].';' : null;
-				$this->data['fullB_settings'] .= isset($setting['fullB_bgimg']) && $setting['fullB_bgimg'] != '' ? 'background-image: url(image/'.$setting['fullB_bgimg'].');' : null;
-				$this->data['fullB_settings'] .= isset($setting['fullB_bgrepeat']) && $setting['fullB_bgimg'] != '' && $setting['fullB_bgrepeat'] != '' ? 'background-repeat: '.$setting['fullB_bgrepeat'].';' : 'background-repeat: repeat;';
-				$this->data['fullB_settings'] .= $bgPosition;
-				$this->data['fullB_settings'] .= isset($setting['fullB_bgAttachment']) && $setting['fullB_bgimg'] != '' && $setting['fullB_bgAttachment'] != '' ? 'background-attachment: '.$setting['fullB_bgAttachment'].';' : 'background-attachment: inherit;';
-			}
-			/*echo "<pre>".print_r($this->data['setting'],true)."</pre>";
-			echo "<pre>".print_r($this->data['fullB_settings'],true)."</pre>";*/
-
-			$tmp = array();
-			foreach ($this->data['setting'] as $key => $value) { if ($value) { $tmp[] = $value; } }
-			if($theme == "rgen-opencart"){
-				if ($cache) {
-					//$modName = implode("-", $tmp).$this->currency->getCode();
-					$modName = serialize($tmp).$this->currency->getCode();
-					$modFile = md5($modName)."_".$this->config->get('config_language_id').$mobStatus.$priceStatus.$taxStatus.$reviewStatus.$this->config->get('config_store_id');
-					$cache_file = $this->rgen->cacheFilePath($theme, $dir, $modFile);
-					if(!file_exists($cache_file)) {
+				$tmp = array();
+				foreach ($this->data['setting'] as $key => $value) { if ($value) { $tmp[] = $value; } }
+				if($theme == "rgen-opencart"){
+					if ($cache) {
+						//$modName = implode("-", $tmp).$this->currency->getCode();
+						$modName = serialize($tmp).$this->currency->getCode();
+						$modFile = md5($modName)."_".$this->config->get('config_language_id').$mobStatus.$priceStatus.$taxStatus.$reviewStatus.$this->config->get('config_store_id');
+						$cache_file = $this->rgen->cacheFilePath($theme, $dir, $modFile);
+						if(!file_exists($cache_file)) {
+							$this->getMod($setting);
+							if (file_exists(DIR_TEMPLATE . $theme . '/template/module/rgen_customproducts.tpl')) {
+								$this->template = $theme . '/template/module/rgen_customproducts.tpl';
+							}
+							$this->render();
+							$this->rgen->cacheFile($this->render(), $cache_file);
+						}else{
+							$tpl = str_replace(DIR_TEMPLATE, '', $cache_file);
+							$this->template = $tpl;
+							$this->render();
+						}
+					}else{
 						$this->getMod($setting);
 						if (file_exists(DIR_TEMPLATE . $theme . '/template/module/rgen_customproducts.tpl')) {
 							$this->template = $theme . '/template/module/rgen_customproducts.tpl';
+							$this->render();
 						}
-						$this->render();
-						$this->rgen->cacheFile($this->render(), $cache_file);
-					}else{
-						$tpl = str_replace(DIR_TEMPLATE, '', $cache_file);
-						$this->template = $tpl;
-						$this->render();
-					}
-				}else{
-					$this->getMod($setting);
-					if (file_exists(DIR_TEMPLATE . $theme . '/template/module/rgen_customproducts.tpl')) {
-						$this->template = $theme . '/template/module/rgen_customproducts.tpl';
-						$this->render();
 					}
 				}
 			}
 		}
+	}
+
+	public function ext_access($extKey){
+
+		/***************/
+		$this->load->library('rgen/rgen_lib');
+	
+		$rgen_optimize = $this->config->get('RGen_optimize');
+		$cache = $rgen_optimize['cache_pcb'];
+		$theme = $this->config->get('config_template');
+		$dir = 'rgen_pcb';
+		$loggedIn = $this->customer->isLogged();
+		$device = $this->rgen->device;
+        $priceStatus = ($this->config->get('config_customer_price') && $loggedIn) || !$this->config->get('config_customer_price') ? 'py' : 'pn';
+        $mobStatus = $this->config->get('RGen_optimizemob') == 1 && $device == 'm' ? 'm' : 'd';
+        $taxStatus = $this->config->get('config_tax') ? 'ty' : 'tn';
+        $reviewStatus = $this->config->get('config_review_status') ? 'ry' : 'rn';
+        
+		/***************/
+
+		$this->load->model('rgen/rgencustomprd');
+		$this->load->model('catalog/manufacturer');
+		$this->load->model('catalog/category');
+		$this->load->model('catalog/product');
+		$this->load->model('tool/image');
+
+		$this->data['button_cart']     = $this->language->get('button_cart');
+		$this->data['button_moreinfo'] = $this->language->get('button_moreinfo');
+		$this->data['button_wishlist'] = $this->language->get('button_wishlist');
+		$this->data['button_compare']  = $this->language->get('button_compare');
+		$this->data['review_status']   = $this->config->get('config_review_status');
+		$this->data['text_offertag']   = $this->language->get('text_offertag');
+
+		//$this->commonData();
+		$setting = $this->config->get('rgen_customproducts_module');
+
+		//echo "<pre>Module data get ==> ".print_r($setting,true)."</pre>";
+		
+		$ext = explode("|", $extKey);
+		$ext_mod = $ext[0];
+		$ext_id = $ext[1];
+
+		/* TPL loader Settings
+		*******************************/
+		$tpl     = 'module/rgen_customproducts.tpl';
+		$theme   = $this->config->get('config_template');
+		$extData = '';
+		$this->data['module'] = 0;
+		if (isset($setting)) {
+			foreach ($setting as $key => $setting) {
+				//echo "<pre>".print_r($setting,true)."</pre>";
+				isset($setting['ext_access']) ? $setting['ext_access'] : $setting['ext_access'] = 'n';
+				if (
+					$setting['mod_id'] == $ext_mod && 
+					$setting['ext_id'] == $ext_id && 
+					$setting['status'] == 1 && 
+					$setting['ext_access'] == 'y' && 
+					file_exists(DIR_TEMPLATE . $theme . '/template/'.$tpl)
+					) {
+					isset($setting['ext_access']) ? $this->data['extCheck'] = $setting['ext_access'] : $this->data['extCheck'] = 'n';
+					$this->modSettings($setting);
+					$this->data['setting'] = $setting;
+					$this->data['position'] = $setting["position"];
+					$this->getMod($setting);
+					$this->template = $theme . '/template/'.$tpl;
+					$extData = $this->render();
+				}
+			$this->data['module']++;
+			}
+		}
+		return $extData;
+	}
+
+	public function modSettings($setting){
+		if (isset($setting['moduleSettings'])) {
+			$tmpSetting = explode("|", $setting['moduleSettings']);
+			$this->data['gridSettings'] = array(
+				//"in_row_d" 			=> isset($tmpSetting[0]) ? $tmpSetting[0] : '5',
+				"gutter" 			=> isset($tmpSetting[0]) ? $tmpSetting[0] : '20',
+				"pd-top" 			=> isset($tmpSetting[1]) ? $tmpSetting[1] : '40',
+				"pd-bottom" 		=> isset($tmpSetting[2]) ? $tmpSetting[2] : '40',
+				"mr-top" 			=> isset($tmpSetting[3]) ? $tmpSetting[3] : '0',
+				"mr-bottom" 		=> isset($tmpSetting[4]) ? $tmpSetting[4] : '0',
+				"hr" 				=> isset($tmpSetting[5]) ? $tmpSetting[5] : 'y',
+				"other_in_row" 		=> isset($tmpSetting[6]) ? $tmpSetting[6] : '7'
+			);
+			return $this->data['gridSettings'];
+		}else {
+			$this->data['gridSettings'] = array(
+				"gutter" 			=> '20',
+				"pd-top" 			=> '50',
+				"pd-bottom" 		=> '50',
+				"mr-top" 			=> '0',
+				"mr-bottom" 		=> '0',
+				"hr" 				=> 'y',
+				"other_in_row" 		=> '7'
+			); 
+			return $this->data['gridSettings'];
+		}
+		
 	}
 
 	public function getMod($setting){

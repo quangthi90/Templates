@@ -3,6 +3,7 @@ $_['my_module_example'] = 'Example Extra Text';
 
 // Heading Goes here:
 $_['heading_title']    = '<strong style="color:#e45e39;">R.Gen Banners</strong>';
+$_['module_name']    = 'R.Gen Banners';
 
 
 // Text

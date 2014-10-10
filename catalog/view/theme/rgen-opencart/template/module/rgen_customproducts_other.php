@@ -1,24 +1,29 @@
 <?php 
 /* Single category display section
 ******************************/
+$m = ' m3-col-4 m2-col-3 m1-col-2';
 if ($value['prdTypes'] == 'catSection') { ?>
 <?php 
 
+//echo "<pre>".print_r($gridSettings,true)."</pre>";
 /* Content area 
 ******************************/
 if ($position != 'column_left' && $position != 'column_right') { ?>
-	<div class="box custom-section<?php echo $modSettings['class'].$modSettings['css_class']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+	<div class="box custom-section<?php echo $modSettings['class'].$modSettings['css_class']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>" style="<?php echo $mrgTB; ?>">
 		
 		<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
 		<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 		<div class="box-heading header-1"><?php echo $modSettings['title']; ?><a href="<?php echo $modSettings['categories']['maincat']['href']; ?>" class="link-bt"><?php echo $this->language->get('text_viewall'); ?></a></div>
+
+		<div class="grid-wrp gt-<?php echo isset($gridSettings['gutter']) ? $gridSettings['gutter'] : '20'; ?>">
 		<?php } }
 
 		if (isset($modSettings['categories']['maincat'])) {
-			if (isset($modSettings['prdStyle']) && $modSettings['prdStyle'] != 'scroll') { $row = 1; ?>
-				<div class="row" data-col="6">
+			$col = isset($gridSettings['other_in_row']) ? $gridSettings['other_in_row'] : 6;
+			if (isset($modSettings['prdStyle']) && $modSettings['prdStyle'] != 'scroll') { //$row = 1; ?>
+				<div class="row col-<?php echo $col.$m; ?>">
 					<?php foreach ($modSettings['categories']['level_1'] as $level_1_k => $level_1_v) { ?>
-					<div class="col">
+					<div class="col" data-mh="<?php echo $module.'-rgen_customproducts'; ?>-sec">
 						<div class="sec-box">
 							<div class="sec-main">
 								<a href="<?php echo $level_1_v['href']; ?>" class="img"><img src="<?php echo $level_1_v['image']; ?>" alt=""></a>
@@ -36,7 +41,8 @@ if ($position != 'column_left' && $position != 'column_right') { ?>
 							</ul>
 						</div>
 					</div>
-					<?php if ($row >= 6){ echo '<b class="clearfix"></b>'; $row = 1; }; $row++; } ?>
+					<?php /*if ($row >= 6){ echo '<b class="clearfix"></b>'; $row = 1; }; $row++;*/ } ?>
+					<b class="clearfix"></b>
 				</div>
 			<?php }else{ ?>
 				<div class="row scroll">
@@ -68,8 +74,9 @@ if ($position != 'column_left' && $position != 'column_right') { ?>
 			<?php }
 		} ?>
 
+		</div>
 		<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
-		<div class="clearfix hr"></div>
+		<div class="clearfix<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? ' hr' : '' ?>" style="<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? 'margin-top:'.$mrgT.'px;' : null; ?>"></div>
 		<?php } ?>
 		
 	</div>
@@ -78,7 +85,8 @@ if ($position != 'column_left' && $position != 'column_right') { ?>
 	$(document).ready(function() {
 		var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>";
 		$(obj + " .owl-carousel").owlCarousel({
-			itemsCustom : [ [0, 1], [390, 3], [530, 4], [700, 5], [940, 6], [1180, 7] ],
+			//itemsCustom : [ [0, 1], [390, 3], [530, 4], [700, 5], [940, 6], [1180, 7] ],
+			itemsCustom : [ [0, 1], [300, 2], [400, 3], [500, 4], [600, 5], [700, 6], [800, 7], [900, <?php echo $col ?>], [1000, <?php echo $col ?>] ],
 			navigation : false,
 			navigationText : ["",""],
 			responsiveBaseWidth: obj
@@ -93,7 +101,7 @@ if ($position != 'column_left' && $position != 'column_right') { ?>
 /* Side column
 ******************************/
 }else{ ?>
-	<div class="box custom-section<?php echo $modSettings['class'].$modSettings['css_class']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+	<div class="box custom-section<?php echo $modSettings['class'].$modSettings['css_class']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col" style="<?php echo $mrgTB; ?>">
 		<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 		<div class="box-heading header-3"><a href="<?php echo $modSettings['categories']['maincat']['href']; ?>"><?php echo $modSettings['title']; ?></a></div>
 		<?php }
@@ -144,7 +152,7 @@ if ($position != 'column_left' && $position != 'column_right') { ?>
 	<?php if ($value['prdStyle'] == 'scroll') { ?>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>";
+		var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col";
 		$(obj + " .owl-carousel").owlCarousel({
 			singleItem: true,
 			navigation : false,
@@ -178,18 +186,20 @@ if ($position != 'column_left' && $position != 'column_right') {
 		******************************/
 		if ($modSettings['sectionStyle'] == '1') { ?>
 		
-			<div class="selcat-prdsec-style1 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+			<div class="selcat-prdsec-style1 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>" style="<?php echo $mrgTB; ?>">
 				<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
 				<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 				<div class="box-heading header-1"><?php echo $modSettings['title']; ?></div>
+				<div class="grid-wrp gt-<?php echo isset($gridSettings['gutter']) ? $gridSettings['gutter'] : '20'; ?>">
 				<?php } }
 				if (isset($modSettings['categories']) && !empty($modSettings['categories'])) {
 					if (isset($modSettings['prdStyle']) && $modSettings['prdStyle'] != 'scroll') { 
-						$row = 1; $grid = 3; 
+						$col = isset($gridSettings['other_in_row']) ? $gridSettings['other_in_row'] : 3;
+						//$row = 1; $grid = 3; 
 						?>
-						<div class="row" data-col="<?php echo $grid; ?>">
+						<div class="row col-<?php echo $col; ?> m3-col-1 m2-col-1 m1-col-1">
 							<?php foreach ($modSettings['categories'] as $selcat_k => $selcat_v) { ?>
-							<div class="col<?php if ($row >= $grid){ echo ' last'; } ?>">
+							<div class="col<?php /*if ($row >= $grid){ echo ' last'; }*/ ?>" data-mh="<?php echo $module.'-rgen_customproducts'; ?>-sec">
 								<div class="sec-box-wrp">
 									<div class="sec-box">
 										<b class="hov-img"></b>
@@ -222,7 +232,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 									</ul>
 								</div>
 							</div>
-							<?php if ($row >= $grid){ echo '<b class="clearfix hr"></b>'; $row = 0; }; $row++; } ?>
+							<?php /*if ($row >= $grid){ echo '<b class="clearfix hr"></b>'; $row = 0; }; $row++;*/ } ?>
 						</div>
 					<?php }else{ ?>
 						<div class="row">
@@ -266,8 +276,9 @@ if ($position != 'column_left' && $position != 'column_right') {
 						</div>
 					<?php }
 				} ?>
+				</div>
 				<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
-				<div class="clearfix hr"></div>
+				<div class="clearfix<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? ' hr' : '' ?>" style="<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? 'margin-top:'.$mrgT.'px;' : null; ?>"></div>
 				<?php } ?>
 			</div>
 			<?php if ($value['prdStyle'] == 'scroll') { ?>
@@ -291,18 +302,20 @@ if ($position != 'column_left' && $position != 'column_right') {
 
 		/* Section style 2
 		******************************/?>
-			<div class="selcat-prdsec-style2 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+			<div class="selcat-prdsec-style2 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>" style="<?php echo $mrgTB; ?>">
 				<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
 				<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 				<div class="box-heading header-1"><?php echo $modSettings['title']; ?></div>
+				<div class="grid-wrp gt-<?php echo isset($gridSettings['gutter']) ? $gridSettings['gutter'] : '20'; ?>">
 				<?php } }
 				if (isset($modSettings['categories']) && !empty($modSettings['categories'])) {
 					if (isset($modSettings['prdStyle']) && $modSettings['prdStyle'] != 'scroll') { 
-						$row = 1; $grid = 3; 
+						$col = isset($gridSettings['other_in_row']) ? $gridSettings['other_in_row'] : 3;
+						//$row = 1; $grid = 3; 
 						?>
-						<div class="row" data-col="<?php echo $grid; ?>">
+						<div class="row col-<?php echo $col; ?> m3-col-1 m2-col-1 m1-col-1">
 							<?php foreach ($modSettings['categories'] as $selcat_k => $selcat_v) { ?>
-							<div class="col<?php if ($row >= $grid){ echo ' last'; } ?>">
+							<div class="col<?php /*if ($row >= $grid){ echo ' last'; }*/ ?>" data-mh="<?php echo $module.'-rgen_customproducts'; ?>-sec-box-wrp1">
 								<div class="sec-box-wrp1">
 									<div class="sec-box-hd">
 										<a href="<?php echo $selcat_v['href']; ?>" class="hd"><?php echo $selcat_v['name']; ?></a>
@@ -342,7 +355,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 									</div>
 								</div>
 							</div>
-							<?php if ($row >= $grid){ echo '<b class="clearfix hr"></b>'; $row = 0; }; $row++; } ?>
+							<?php /*if ($row >= $grid){ echo '<b class="clearfix hr"></b>'; $row = 0; }; $row++;*/ } ?>
 
 							<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
 							<script type="text/javascript">
@@ -403,8 +416,9 @@ if ($position != 'column_left' && $position != 'column_right') {
 						</div>
 					<?php }
 				} ?>
+				</div>
 				<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
-				<div class="clearfix hr"></div>
+				<div class="clearfix<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? ' hr' : '' ?>" style="<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? 'margin-top:'.$mrgT.'px;' : null; ?>"></div>
 				<?php } ?>
 			</div>
 			<?php if ($value['prdStyle'] == 'scroll') { ?>
@@ -435,18 +449,21 @@ if ($position != 'column_left' && $position != 'column_right') {
 	******************************/
 	else { ?>
 
-		<div class="box custom-section<?php echo $modSettings['class'].$modSettings['css_class']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+		<div class="box custom-section<?php echo $modSettings['class'].$modSettings['css_class']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>" style="<?php echo $mrgTB; ?>">
 			
 			<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
 			<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 			<div class="box-heading header-1"><?php echo $modSettings['title']; ?></div>
+			<div class="grid-wrp gt-<?php echo isset($gridSettings['gutter']) ? $gridSettings['gutter'] : '20'; ?>">
 			<?php } }
 
 			if (isset($modSettings['categories']) && !empty($modSettings['categories'])) {
-				if (isset($modSettings['prdStyle']) && $modSettings['prdStyle'] != 'scroll') { $row = 1; ?>
-					<div class="row" data-col="6">
+				if (isset($modSettings['prdStyle']) && $modSettings['prdStyle'] != 'scroll') { 
+					$col = isset($gridSettings['other_in_row']) ? $gridSettings['other_in_row'] : 6;
+					//$row = 1; 
+					?><div class="row col-<?php echo $col.$m; ?>">
 						<?php foreach ($modSettings['categories'] as $selcat_k => $selcat_v) { ?>
-						<div class="col">
+						<div class="col" data-mh="<?php echo $module.'-rgen_customproducts'; ?>-sec-box">
 							<div class="sec-box">
 								<div class="sec-main">
 									<a href="<?php echo $selcat_v['href']; ?>" class="img"><img src="<?php echo $selcat_v['image']; ?>" alt=""></a>
@@ -454,7 +471,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 								</div>
 							</div>
 						</div>
-						<?php if ($row >= 6){ echo '<b class="clearfix"></b>'; $row = 1; }; $row++; } ?>
+						<?php /*if ($row >= 6){ echo '<b class="clearfix"></b>'; $row = 1; }; $row++;*/ } ?>
 					</div>
 				<?php }else{ ?>
 					<div class="row scroll">
@@ -473,8 +490,9 @@ if ($position != 'column_left' && $position != 'column_right') {
 					</div>
 				<?php }
 			} ?>
+			</div>
 			<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
-			<div class="clearfix hr"></div>
+			<div class="clearfix<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? ' hr' : '' ?>" style="<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? 'margin-top:'.$mrgT.'px;' : null; ?>"></div>
 			<?php } ?>
 		</div>
 		<?php if ($modSettings['prdStyle'] == 'scroll') { ?>
@@ -510,7 +528,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 		******************************/
 		if ($modSettings['sectionStyle'] == '1') { ?>
 		
-			<div class="selcat-prdsec-style1 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+			<div class="selcat-prdsec-style1 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col" style="<?php echo $mrgTB; ?>">
 				
 				<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 				<div class="box-heading header-3"><?php echo $modSettings['title']; ?></div>
@@ -551,7 +569,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 							<a href="<?php echo $selcat_v['href']; ?>" class="view-bt"><?php echo $this->language->get('text_viewall'); ?></a>
 							
 						</div>
-						<b class="clearfix hr"></b>
+						<div class="clearfix<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? ' hr' : '' ?>" style="<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? 'margin-top:'.$mrgT.'px;' : null; ?>"></div>
 						<?php } ?>
 					<?php }else{ ?>
 						<div class="owl-carousel box-product">
@@ -592,13 +610,13 @@ if ($position != 'column_left' && $position != 'column_right') {
 					<?php }
 				} ?>
 				<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
-				<div class="clearfix hr"></div>
+				<div class="clearfix<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? ' hr' : '' ?>" style="<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? 'margin-top:'.$mrgT.'px;' : null; ?>"></div>
 				<?php } ?>
 			</div>
 			<?php if ($value['prdStyle'] == 'scroll') { ?>
 			<script type="text/javascript">
 			$(document).ready(function() {
-				var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>";
+				var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col";
 				$(obj + " .owl-carousel").owlCarousel({
 					singleItem: true,
 					navigation : false,
@@ -615,7 +633,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 
 		/* Section style 2
 		******************************/?>
-			<div class="selcat-prdsec-style2 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+			<div class="selcat-prdsec-style2 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col" style="<?php echo $mrgTB; ?>">
 				<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
 				<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 				<div class="box-heading header-3"><?php echo $modSettings['title']; ?></div>
@@ -661,12 +679,12 @@ if ($position != 'column_left' && $position != 'column_right') {
 								</div>
 							</div>
 						</div>
-						<b class="clearfix hr"></b>
+						<div class="clearfix<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? ' hr' : '' ?>" style="<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? 'margin-top:'.$mrgT.'px;' : null; ?>"></div>
 						<?php } ?>
 
 						<script type="text/javascript">
 						$(document).ready(function() {
-							var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>";
+							var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col";
 							inOwl_grid_column(obj);
 						});
 						</script>
@@ -720,7 +738,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 			<?php if ($value['prdStyle'] == 'scroll') { ?>
 			<script type="text/javascript">
 			$(document).ready(function() {
-				var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>";
+				var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col";
 				inOwl_scroll_column(obj);
 				$(obj + " .box-product").owlCarousel({
 					singleItem : true,
@@ -742,7 +760,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 	******************************/
 	else { ?>
 
-		<div class="box custom-section<?php echo $modSettings['class'].$modSettings['css_class']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+		<div class="box custom-section<?php echo $modSettings['class'].$modSettings['css_class']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col" style="<?php echo $mrgTB; ?>">
 			
 			<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 			<div class="box-heading header-3"><?php echo $modSettings['title']; ?></div>
@@ -771,13 +789,13 @@ if ($position != 'column_left' && $position != 'column_right') {
 				<?php }
 			} ?>
 			<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
-			<div class="clearfix hr"></div>
+			<div class="clearfix<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? ' hr' : '' ?>" style="<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? 'margin-top:'.$mrgT.'px;' : null; ?>"></div>
 			<?php } ?>
 		</div>
 		<?php if ($modSettings['prdStyle'] == 'scroll') { ?>
 		<script type="text/javascript">
 		$(document).ready(function() {
-			var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>";
+			var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col";
 			$(obj + " .owl-carousel").owlCarousel({
 				singleItem: true,
 				navigation : false,
@@ -814,20 +832,22 @@ if ($position != 'column_left' && $position != 'column_right') {
 		/* Section style 1
 		******************************/
 		if ($modSettings['sectionStyle'] == '1') { ?>
-			<div class="brand-prdsec-style1 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+			<div class="brand-prdsec-style1 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>" style="<?php echo $mrgTB; ?>">
 				
 				<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
 				<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 				<div class="box-heading header-1"><?php echo $modSettings['title']; ?></div>
+				<div class="grid-wrp gt-<?php echo isset($gridSettings['gutter']) ? $gridSettings['gutter'] : '20'; ?>">
 				<?php } }
 
 				if (isset($modSettings['brands']) && !empty($modSettings['brands'])) {
 					if (isset($modSettings['prdStyle']) && $modSettings['prdStyle'] != 'scroll') { 
-						$row = 1; $grid = 3; 
+						$col = isset($gridSettings['other_in_row']) ? $gridSettings['other_in_row'] : 3;
+						//$row = 1; $grid = 3; 
 						?>
-						<div class="row" data-col="<?php echo $grid; ?>">
+						<div class="row col-<?php echo $col; ?> m3-col-1 m2-col-1 m1-col-1">
 							<?php foreach ($modSettings['brands'] as $selbrand_k => $selbrand_v) { ?>
-							<div class="col<?php if ($row >= $grid){ echo ' last'; } ?>">
+							<div class="col<?php /*if ($row >= $grid){ echo ' last'; }*/ ?>" data-mh="<?php echo $module.'-rgen_customproducts'; ?>-brd-box-prd">
 								<div class="brd-box-prd">
 									<div class="brd-hd">
 										<a href="<?php echo $selbrand_v['href']; ?>" class="img"><img src="<?php echo $selbrand_v['image']; ?>" alt=""></a>
@@ -858,7 +878,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 								</div>
 								
 							</div>
-							<?php if ($row >= $grid){ echo '<b class="clearfix hr"></b>'; $row = 0; }; $row++; } ?>
+							<?php /*if ($row >= $grid){ echo '<b class="clearfix hr"></b>'; $row = 0; }; $row++;*/ } ?>
 						</div>
 					<?php }else{ ?>
 						<div class="row">
@@ -899,8 +919,9 @@ if ($position != 'column_left' && $position != 'column_right') {
 						</div>
 					<?php }
 				} ?>
+				</div>
 				<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
-				<div class="clearfix hr"></div>
+				<div class="clearfix<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? ' hr' : '' ?>" style="<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? 'margin-top:'.$mrgT.'px;' : null; ?>"></div>
 				<?php } ?>
 			</div>
 			<?php if ($modSettings['prdStyle'] == 'scroll') { ?>
@@ -925,20 +946,22 @@ if ($position != 'column_left' && $position != 'column_right') {
 		/* Section style 2
 		******************************/
 		else { ?>
-			<div class="brand-prdsec-style2 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+			<div class="brand-prdsec-style2 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>" style="<?php echo $mrgTB; ?>">
 				
 				<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
 				<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 				<div class="box-heading header-1"><?php echo $modSettings['title']; ?></div>
+				<div class="grid-wrp gt-<?php echo isset($gridSettings['gutter']) ? $gridSettings['gutter'] : '20'; ?>">
 				<?php } }
 
 				if (isset($modSettings['brands']) && !empty($modSettings['brands'])) {
 					if (isset($modSettings['prdStyle']) && $modSettings['prdStyle'] != 'scroll') { 
-						$row = 1; $grid = 3; 
+						$col = isset($gridSettings['other_in_row']) ? $gridSettings['other_in_row'] : 3;
+						//$row = 1; $grid = 3; 
 						?>
-						<div class="row" data-col="<?php echo $grid; ?>">
+						<div class="row col-<?php echo $col; ?> m3-col-1 m2-col-1 m1-col-1">
 							<?php foreach ($modSettings['brands'] as $selbrand_k => $selbrand_v) { ?>
-							<div class="col<?php if ($row >= $grid){ echo ' last'; } ?>">
+							<div class="col<?php /*if ($row >= $grid){ echo ' last'; }*/ ?>" data-mh="<?php echo $module.'-rgen_customproducts'; ?>-sec-box-wrp1">
 								<div class="sec-box-wrp1">
 									<div class="sec-box-hd">
 										<a href="<?php echo $selbrand_v['href']; ?>" class="hd"><?php echo $selbrand_v['name']; ?></a>
@@ -978,7 +1001,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 									</div>
 								</div>
 							</div>
-							<?php if ($row >= $grid){ echo '<b class="clearfix hr"></b>'; $row = 0; }; $row++; } ?>
+							<?php /*if ($row >= $grid){ echo '<b class="clearfix hr"></b>'; $row = 0; }; $row++;*/ } ?>
 							
 							<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
 							<script type="text/javascript">
@@ -1038,8 +1061,9 @@ if ($position != 'column_left' && $position != 'column_right') {
 						</div>
 					<?php }
 				} ?>
+				</div>
 				<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
-				<div class="clearfix hr"></div>
+				<div class="clearfix<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? ' hr' : '' ?>" style="<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? 'margin-top:'.$mrgT.'px;' : null; ?>"></div>
 				<?php } ?>
 			</div>
 			<?php if ($modSettings['prdStyle'] == 'scroll') { ?>
@@ -1070,20 +1094,22 @@ if ($position != 'column_left' && $position != 'column_right') {
 	******************************/
 	else { ?>
 
-		<div class="box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+		<div class="box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>" style="<?php echo $mrgTB; ?>">
 				
 			<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
 			<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 			<div class="box-heading header-1"><?php echo $modSettings['title']; ?></div>
+			<div class="grid-wrp gt-<?php echo isset($gridSettings['gutter']) ? $gridSettings['gutter'] : '20'; ?>">
 			<?php } }
 
 			if (isset($modSettings['brands']) && !empty($modSettings['brands'])) {
 				if (isset($modSettings['prdStyle']) && $modSettings['prdStyle'] != 'scroll') { 
-					$row = 1; $grid = 8;
+					$col = isset($gridSettings['other_in_row']) ? $gridSettings['other_in_row'] : 8;
+					//$row = 1; $grid = 8;
 					?>
-					<div class="row" data-col="<?php echo $grid; ?>">
+					<div class="row col-<?php echo $col.$m; ?>">
 						<?php foreach ($modSettings['brands'] as $selbrand_k => $selbrand_v) { ?>
-						<div class="col<?php if ($row >= $grid){ echo ' last'; } ?>">
+						<div class="col<?php /*if ($row >= $grid){ echo ' last'; }*/ ?>" data-mh="<?php echo $module.'-rgen_customproducts'; ?>-sec-box">
 							<div class="sec-box">
 								<div class="sec-main">
 									<a href="<?php echo $selbrand_v['href']; ?>" class="img"><img src="<?php echo $selbrand_v['image']; ?>" alt=""></a>
@@ -1091,7 +1117,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 								</div>
 							</div>
 						</div>
-						<?php if ($row >= $grid){ echo '<b class="clearfix"></b>'; $row = 0; }; $row++; } ?>
+						<?php /*if ($row >= $grid){ echo '<b class="clearfix"></b>'; $row = 0; }; $row++;*/ } ?>
 					</div>
 				<?php }else{ ?>
 					<div class="row">
@@ -1110,8 +1136,9 @@ if ($position != 'column_left' && $position != 'column_right') {
 					</div>
 				<?php }
 			} ?>
+			</div>
 			<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
-			<div class="clearfix hr"></div>
+			<div class="clearfix<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? ' hr' : '' ?>" style="<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? 'margin-top:'.$mrgT.'px;' : null; ?>"></div>
 			<?php } ?>
 		</div>
 		<?php if ($modSettings['prdStyle'] == 'scroll') { ?>
@@ -1146,7 +1173,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 		/* Section style 1
 		******************************/
 		if ($modSettings['sectionStyle'] == '1') { ?>
-			<div class="brand-prdsec-style1 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+			<div class="brand-prdsec-style1 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col" style="<?php echo $mrgTB; ?>">
 				
 				<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 				<div class="box-heading header-3"><?php echo $modSettings['title']; ?></div>
@@ -1223,7 +1250,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 			<?php if ($modSettings['prdStyle'] == 'scroll') { ?>
 			<script type="text/javascript">
 			$(document).ready(function() {
-				var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>";
+				var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col";
 				$(obj + " .owl-carousel").owlCarousel({
 					singleItem: true,
 					navigation : false,
@@ -1241,7 +1268,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 		/* Section style 2
 		******************************/
 		else { ?>
-			<div class="brand-prdsec-style2 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+			<div class="brand-prdsec-style2 box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col" style="<?php echo $mrgTB; ?>">
 				
 				<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 				<div class="box-heading header-3"><?php echo $modSettings['title']; ?></div>
@@ -1292,7 +1319,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 						
 						<script type="text/javascript">
 						$(document).ready(function() {
-							var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>";
+							var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col";
 							inOwl_grid_column(obj);
 						});
 						</script>
@@ -1342,13 +1369,13 @@ if ($position != 'column_left' && $position != 'column_right') {
 					<?php }
 				} ?>
 				<?php if ($setting['modStyle'] != "tab" && $position != 'column_left' && $position != 'column_right') { ?>
-				<div class="clearfix hr"></div>
+				<div class="clearfix<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? ' hr' : '' ?>" style="<?php echo isset($gridSettings['hr']) && $gridSettings['hr'] == 'y' ? 'margin-top:'.$mrgT.'px;' : null; ?>"></div>
 				<?php } ?>
 			</div>
 			<?php if ($modSettings['prdStyle'] == 'scroll') { ?>
 			<script type="text/javascript">
 			$(document).ready(function() {
-				var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>";
+				var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col";
 				inOwl_scroll_column(obj);
 				$(obj + " .box-product").owlCarousel({
 					singleItem: true,
@@ -1370,7 +1397,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 	******************************/
 	else { ?>
 
-		<div class="box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>">
+		<div class="box custom-section<?php echo $modSettings['class'].$modSettings['css_class'].$modSettings['class1']; ?>" id="custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col" style="<?php echo $mrgTB; ?>">
 				
 			<?php if(isset($modSettings['title']) && !empty($modSettings['title'])) { ?>
 			<div class="box-heading header-1"><?php echo $modSettings['title']; ?></div>
@@ -1403,7 +1430,7 @@ if ($position != 'column_left' && $position != 'column_right') {
 		<?php if ($modSettings['prdStyle'] == 'scroll') { ?>
 		<script type="text/javascript">
 		$(document).ready(function() {
-			var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>";
+			var obj = "#custom-section<?php echo $modSettings['key'].$modSettings['moduleCount']; ?>-col";
 			$(obj + " .owl-carousel").owlCarousel({
 				singleItem: true,
 				navigation : false,

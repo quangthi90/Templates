@@ -99,10 +99,10 @@
 						11 Border size
 						12 Content wrap to image
 						*/
-						$dbKey 	= isset($module['gb_imgsettings']) ? $module['gb_imgsettings'] : 't|100|100|||||0|||||n';
+						$dbKey 	= isset($module['gb_imgsettings']) ? $module['gb_imgsettings'] : 't|100|100|||||0|||||n|y';
 						$name	= $module_key.'[gb_imgsettings]';
 					?>
-					<input type="hidden" class="gb_imgsettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" data-labels="Image position|Image container - Width|Image container - Height|Margin Top|Margin Right|Margin Bottom|Margin Left|Radius - Top Left|Radius - Top Right|Radius - Bottom Left|Radius - Bottom Right|Border size|Content wrap to image" />
+					<input type="hidden" class="gb_imgsettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" data-labels="Image position|Image container - Width|Image container - Height|Margin Top|Margin Right|Margin Bottom|Margin Left|Radius - Top Left|Radius - Top Right|Radius - Bottom Left|Radius - Bottom Right|Border size|Content wrap to image|Display image" />
 					<script>
 					var obj = '.gb_imgsettings';
 					$(obj).summary({
@@ -112,6 +112,7 @@
 						callback: function(index, val){
 							if (val == 't') { val = 'Top'; };
 							if (val == 'l') { val = 'Left'; };
+							if (val == 'r') { val = 'Right'; };
 							if (val == 'n') { val = 'No'; };
 							if (val == 'y') { val = 'Yes'; };
 							return val; 
@@ -139,10 +140,10 @@
 						10 Radius - Bottom Right
 						11 Title size
 						*/
-						$dbKey 	= isset($module['gb_blocksettings']) ? $module['gb_blocksettings'] : 'b|c|0|0|0|0|1|0|0|0|0|4';
+						$dbKey 	= isset($module['gb_blocksettings']) ? $module['gb_blocksettings'] : 'b|c|0|0|0|0|1|0|0|0|0|4|0|0|0';
 						$name	= $module_key.'[gb_blocksettings]';
 					?>
-					<input type="hidden" class="gb_blocksettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" data-labels="Title position|Content alignment|Padding Top|Padding Right|Padding Bottom|Padding Left|Border size|Radius - Top Left|Radius - Top Right|Radius - Bottom Left|Radius - Bottom Right|Title size" />
+					<input type="hidden" class="gb_blocksettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" data-labels="Title position|Content alignment|Padding Top|Padding Right|Padding Bottom|Padding Left|Border size - Top|Radius - Top Left|Radius - Top Right|Radius - Bottom Left|Radius - Bottom Right|Title size|Border size - Right|Border size - Bottom|Border size - Left" />
 					<script>
 					var obj = '.gb_blocksettings';
 					$(obj).summary({
@@ -220,11 +221,12 @@
 								5 Image inline css
 								6 Title inline css
 								7 content inline css
+								8 Link on full block
 								*/
-								$dbKey 	= isset($data_v['blocksettings']) ? $data_v['blocksettings'] : 'rgba(0,0,0,0)|rgba(0,0,0,0)||||||';
+								$dbKey 	= isset($data_v['blocksettings']) ? $data_v['blocksettings'] : 'rgba(0,0,0,0)|rgba(0,0,0,0)|||||||';
 								$name	= $module_key.'[mod_data]['.$i.'][blocksettings]';
 							?>
-							<input type="hidden" class="blocksettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" data-labels="Block background|Block border color|Block title color|Block text color|Block inline css|Image inline css|Title inline css|Content inline css" />
+							<input type="hidden" class="blocksettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" data-labels="Block background|Block border color|Block title color|Block text color|Block inline css|Image inline css|Title inline css|Content inline css|Link on full block" />
 							<script>
 							var obj = '#tab-block-<?php echo $i+1; ?> .blocksettings';
 							$(obj).summary({
@@ -250,11 +252,13 @@
 								3 Image src
 								4 Icon class
 								5 Icon size
-								6 Icon color */
-								$dbKey 	= isset($data_v['imgsettings']) ? $data_v['imgsettings'] : 'rgba(0,0,0,0)|rgba(0,0,0,0)|img|||20|rgba(255,255,255,1)';
+								6 Icon color 
+								7 URL 
+								*/
+								$dbKey 	= isset($data_v['imgsettings']) ? $data_v['imgsettings'] : 'rgba(0,0,0,0)|rgba(0,0,0,0)|img|||20|rgba(255,255,255,1)|';
 								$name	= $module_key.'[mod_data]['.$i.'][imgsettings]';
 							?>
-							<input type="hidden" class="imgsettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" data-labels="Image background|Image border color|Image type|Image src|Icon class|Icon size|Icon color" />
+							<input type="hidden" class="imgsettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" data-labels="Image background|Image border color|Image type|Image src|Icon class|Icon size|Icon color|Link on image" />
 							<script>
 							var obj = '#tab-block-<?php echo $i+1; ?> .imgsettings';
 							$(obj).summary({

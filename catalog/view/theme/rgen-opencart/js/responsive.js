@@ -212,7 +212,6 @@ function mobMenuReset(){
 
 }
 
-
 /*==============================================*/
 
 $(document).ready(function(e) {
@@ -229,6 +228,7 @@ $(document).ready(function(e) {
 			mobMenuReset();
 			bnrOnSlideBack();
 			logoActionBack();
+			$.fn.matchHeight._update(true);
 
 			if ($("div[data-head='lg-c']").length == 1) {
 				$("div[data-head='lg-c']").addClass('head-c');
@@ -255,6 +255,7 @@ $(document).ready(function(e) {
 			customFootHeigh($('.custom-footer'));
 			mobMenuReset();
 			bnrOnSlide();
+			$.fn.matchHeight._update(true);
 			
 			if ($("div[data-head='lg-c']").length == 1) {
 				$("div[data-head='lg-c']").removeClass('head-c');
@@ -295,6 +296,7 @@ $(document).ready(function(e) {
 			slideshowPrd();
 			productInfo();
 			bnrOnSlide();
+			$.fn.matchHeight._update(true);
 			
 			if ($("div[data-head='lg-c']").length == 1) {
 				$("div[data-head='lg-c']").removeClass('head-c');
@@ -342,317 +344,24 @@ $(document).ready(function(e) {
 		},
 		unmatch : function() {
 			$(".prdoptions-wrapper .price").prependTo('.product-info > .prdoptions-wrapper > .r');
+			$.fn.matchHeight._update(true);
 		}
 		
+	}).register("only screen and (min-width: 200px) and (max-width: 419px)", {
+		match : function() { $.fn.matchHeight._update(true); },
+		unmatch : function() { $.fn.matchHeight._update(true); }
+	}).register("only screen and (min-width: 420px) and (max-width: 599px)", {
+		match : function() { $.fn.matchHeight._update(true); },
+		unmatch : function() { $.fn.matchHeight._update(true); }
+	}).register("only screen and (min-width: 600px) and (max-width: 767px)", {
+		match : function() { $.fn.matchHeight._update(true); },
+		unmatch : function() { $.fn.matchHeight._update(true); }
 	}).listen();
 	
-	// Category grids 
-	if ($(".cat-grid").length > 0 && $(".cat-grid").parent().hasClass("column") == false){
-		$(".cat-grid").each(function(){
-			var gridObj = "#"+$(this).attr("id");
-			enquire.register("only screen and (min-width: 1200px)", {
-				match : function() { 
-					$(gridObj+" .row .clearfix").remove();
-					$(gridObj+" .row").attr("data-col", "7");
-					$(gridObj+" .row .col:nth-child(7n)").after('<b class="clearfix"></b>');
-				}
-			}).register("only screen and (min-width: 980px) and (max-width: 1199px)", {
-				match : function() { 
-					$(gridObj+" .row .clearfix").remove();
-					$(gridObj+" .row").attr("data-col", "6");
-					$(gridObj+" .row .col:nth-child(6n)").after('<b class="clearfix"></b>');
-				}
-			}).register("only screen and (min-width: 768px) and (max-width: 979px)", {
-				match : function() { 
-					$(gridObj+" .row .clearfix").remove();
-					$(gridObj+" .row").attr("data-col", "5");
-					$(gridObj+" .row .col:nth-child(5n)").after('<b class="clearfix"></b>');
-				}
-			}).register("only screen and (min-width: 600px) and (max-width: 767px)", {
-				match : function() { 
-					$(gridObj+" .row .clearfix").remove();
-					$(gridObj+" .row").attr("data-col", "4");
-					$(gridObj+" .row .col:nth-child(4n)").after('<b class="clearfix"></b>');
-				}
-			}).register("only screen and (min-width: 420px) and (max-width: 599px)", {
-				match : function() { 
-					$(gridObj+" .row .clearfix").remove();
-					$(gridObj+" .row").attr("data-col", "3");
-					$(gridObj+" .row .col:nth-child(3n)").after('<b class="clearfix"></b>');
-				}
-			}).register("only screen and (min-width: 200px) and (max-width: 419px)", {
-				match : function() { 
-					$(gridObj+" .row .clearfix").remove();
-					$(gridObj+" .row").attr("data-col", "2");
-					$(gridObj+" .row .col:nth-child(2n)").after('<b class="clearfix"></b>');
-				}
-			}).listen();
-		});
-	};
-
-	// Selected category grid case
-	if ($(".sel-cat-grid").length > 0 && $(".sel-cat-grid").parent().hasClass("column") == false){
-		$(".sel-cat-grid").each(function(){
-			if ($(this).hasClass("prd-y") == false) {
-				console.log($(".sel-cat-grid").length);
-				var gridObj = "#"+$(this).attr("id");
-				enquire.register("only screen and (min-width: 1200px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "7");
-						$(gridObj+" .row .col:nth-child(7n)").after('<b class="clearfix"></b>');
-					}
-				}).register("only screen and (min-width: 980px) and (max-width: 1199px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "6");
-						$(gridObj+" .row .col:nth-child(6n)").after('<b class="clearfix"></b>');
-					}
-				}).register("only screen and (min-width: 768px) and (max-width: 979px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "5");
-						$(gridObj+" .row .col:nth-child(5n)").after('<b class="clearfix"></b>');
-					}
-				}).register("only screen and (min-width: 600px) and (max-width: 767px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "4");
-						$(gridObj+" .row .col:nth-child(4n)").after('<b class="clearfix"></b>');
-					}
-				}).register("only screen and (min-width: 420px) and (max-width: 599px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "3");
-						$(gridObj+" .row .col:nth-child(3n)").after('<b class="clearfix"></b>');
-					}
-				}).register("only screen and (min-width: 200px) and (max-width: 419px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "2");
-						$(gridObj+" .row .col:nth-child(2n)").after('<b class="clearfix"></b>');
-					}
-				}).listen();
-			};
-		});
-	};
-
-	// Selected category with product style 1
-	if ($(".selcat-prdsec-style1").length > 0 && $(".selcat-prdsec-style1").parent().hasClass("column") == false){
-		$(".selcat-prdsec-style1").each(function(){
-			if ($(this).hasClass("sel-cat-grid")) {
-				var gridObj = "#"+$(this).attr("id");
-				enquire.register("only screen and (min-width: 1200px)", {
-					match : function() {
-						$(gridObj+" .row .clearfix").remove();
-						if ($("body").hasClass("col-y")) {
-							$(gridObj+" .row").attr("data-col", "2");
-							$(gridObj+" .row .col:nth-child(2n)").after('<b class="clearfix hr"></b>');
-						}else{
-							$(gridObj+" .row").attr("data-col", "3");
-							$(gridObj+" .row .col:nth-child(3n)").after('<b class="clearfix hr"></b>');
-						};
-					}
-				}).register("only screen and (min-width: 980px) and (max-width: 1199px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "2");
-						$(gridObj+" .row .col:nth-child(2n)").after('<b class="clearfix hr"></b>');
-					}
-				}).register("only screen and (min-width: 768px) and (max-width: 979px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "2");
-						$(gridObj+" .row .col:nth-child(2n)").after('<b class="clearfix hr"></b>');
-					}
-				}).register("only screen and (min-width: 200px) and (max-width: 767px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "1");
-						$(gridObj+" .row .col:nth-child(1n)").after('<b class="clearfix hr"></b>');
-					}
-				}).listen();
-			};
-		});
-	}
-
-	// Selected category with product style 2
-	if ($(".selcat-prdsec-style2").length > 0 && $(".selcat-prdsec-style2").parent().hasClass("column") == false){
-		$(".selcat-prdsec-style2").each(function(){
-			if ($(this).hasClass("sel-cat-grid")) {
-				var gridObj = "#"+$(this).attr("id");
-				enquire.register("only screen and (min-width: 1200px)", {
-					match : function() {
-						$(gridObj+" .row .clearfix").remove();
-						if ($("body").hasClass("col-y")) {
-							$(gridObj+" .row").attr("data-col", "3");
-							$(gridObj+" .row .col:nth-child(3n)").after('<b class="clearfix hr"></b>');
-						}else{
-							$(gridObj+" .row").attr("data-col", "4");
-							$(gridObj+" .row .col:nth-child(4n)").after('<b class="clearfix hr"></b>');
-						};
-					}
-				}).register("only screen and (min-width: 980px) and (max-width: 1199px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						if ($("body").hasClass("col-y")) {
-							$(gridObj+" .row").attr("data-col", "2");
-							$(gridObj+" .row .col:nth-child(2n)").after('<b class="clearfix hr"></b>');
-						}else{
-							$(gridObj+" .row").attr("data-col", "3");
-							$(gridObj+" .row .col:nth-child(3n)").after('<b class="clearfix hr"></b>');
-						};
-					}
-				}).register("only screen and (min-width: 768px) and (max-width: 979px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "2");
-						$(gridObj+" .row .col:nth-child(2n)").after('<b class="clearfix hr"></b>');
-					}
-				}).register("only screen and (min-width: 200px) and (max-width: 767px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "1");
-						$(gridObj+" .row .col:nth-child(1n)").after('<b class="clearfix hr"></b>');
-					}
-				}).listen();
-			};
-		});
-	}
 
 
-	// Selected brands grid 
-	if ($(".brand-grid").length > 0 && $(".brand-grid").parent().hasClass("column") == false){
-		$(".brand-grid").each(function(){
-			if ($(this).hasClass("prd-y") == false) {
-				var gridObj = "#"+$(this).attr("id");
-				enquire.register("only screen and (min-width: 1200px)", {
-					match : function() {
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "8");
-						$(gridObj+" .row .col:nth-child(8n)").after('<b class="clearfix"></b>');
-					}
-				}).register("only screen and (min-width: 980px) and (max-width: 1199px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "7");
-						$(gridObj+" .row .col:nth-child(7n)").after('<b class="clearfix"></b>');
-					}
-				}).register("only screen and (min-width: 768px) and (max-width: 979px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "6");
-						$(gridObj+" .row .col:nth-child(6n)").after('<b class="clearfix"></b>');
-					}
-				}).register("only screen and (min-width: 600px) and (max-width: 767px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "4");
-						$(gridObj+" .row .col:nth-child(4n)").after('<b class="clearfix"></b>');
-					}
-				}).register("only screen and (min-width: 420px) and (max-width: 599px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "3");
-						$(gridObj+" .row .col:nth-child(3n)").after('<b class="clearfix"></b>');
-					}
-				}).register("only screen and (min-width: 200px) and (max-width: 419px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "3");
-						$(gridObj+" .row .col:nth-child(3n)").after('<b class="clearfix"></b>');
-					}
-				}).listen();
-			};
-		});
-	}
 
-	// Selected brand with product style 1 
-	if ($(".brand-prdsec-style1").length > 0 && $(".brand-prdsec-style1").parent().hasClass("column") == false){
-		$(".brand-prdsec-style1").each(function(){
-			if ($(this).hasClass("brand-grid")) {
-				var gridObj = "#"+$(this).attr("id");
-				enquire.register("only screen and (min-width: 1200px)", {
-					match : function() {
-						$(gridObj+" .row .clearfix").remove();
-						if ($("body").hasClass("col-y")) {
-							$(gridObj+" .row").attr("data-col", "3");
-							$(gridObj+" .row .col:nth-child(3n)").after('<b class="clearfix hr"></b>');
-						}else{
-							$(gridObj+" .row").attr("data-col", "4");
-							$(gridObj+" .row .col:nth-child(4n)").after('<b class="clearfix hr"></b>');
-						};
-					}
-				}).register("only screen and (min-width: 980px) and (max-width: 1199px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						if ($("body").hasClass("col-y")) {
-							$(gridObj+" .row").attr("data-col", "2");
-							$(gridObj+" .row .col:nth-child(2n)").after('<b class="clearfix hr"></b>');
-						}else{
-							$(gridObj+" .row").attr("data-col", "3");
-							$(gridObj+" .row .col:nth-child(3n)").after('<b class="clearfix hr"></b>');
-						};
-					}
-				}).register("only screen and (min-width: 768px) and (max-width: 979px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "2");
-						$(gridObj+" .row .col:nth-child(2n)").after('<b class="clearfix hr"></b>');
-					}
-				}).register("only screen and (min-width: 200px) and (max-width: 767px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "1");
-					}
-				}).listen();
-			};
-		});
-	}
 
-	// Selected brands with product style 2
-	if ($(".brand-prdsec-style2").length > 0 && $(".brand-prdsec-style2").parent().hasClass("column") == false){
-		$(".brand-prdsec-style2").each(function(){
-			if ($(this).hasClass("brand-grid")) {
-				var gridObj = "#"+$(this).attr("id");
-				enquire.register("only screen and (min-width: 1200px)", {
-					match : function() {
-						$(gridObj+" .row .clearfix").remove();
-						if ($("body").hasClass("col-y")) {
-							$(gridObj+" .row").attr("data-col", "3");
-							$(gridObj+" .row .col:nth-child(3n)").after('<b class="clearfix hr"></b>');
-						}else{
-							$(gridObj+" .row").attr("data-col", "4");
-							$(gridObj+" .row .col:nth-child(4n)").after('<b class="clearfix hr"></b>');
-						};
-					}
-				}).register("only screen and (min-width: 980px) and (max-width: 1199px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						if ($("body").hasClass("col-y")) {
-							$(gridObj+" .row").attr("data-col", "2");
-							$(gridObj+" .row .col:nth-child(2n)").after('<b class="clearfix hr"></b>');
-						}else{
-							$(gridObj+" .row").attr("data-col", "3");
-							$(gridObj+" .row .col:nth-child(3n)").after('<b class="clearfix hr"></b>');
-						};
-					}
-				}).register("only screen and (min-width: 768px) and (max-width: 979px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "2");
-						$(gridObj+" .row .col:nth-child(2n)").after('<b class="clearfix hr"></b>');
-					}
-				}).register("only screen and (min-width: 200px) and (max-width: 767px)", {
-					match : function() { 
-						$(gridObj+" .row .clearfix").remove();
-						$(gridObj+" .row").attr("data-col", "1");
-						$(gridObj+" .row .col:nth-child(1n)").after('<b class="clearfix hr"></b>');
-					}
-				}).listen();
-			};
-		});
-	}
 
 
 });

@@ -117,7 +117,7 @@
 		<div class="control-group">
 			<label class="control-label">Border width</label>
 			<div class="controls">
-				<?php 
+				<!-- <?php 
 					$ar 	= array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,20);
 					$id		= 'bdr';
 				?>
@@ -128,11 +128,31 @@
 						<?php echo $value; ?>
 					</label>
 				<?php } ?>
-				</div>
+				</div> -->
+				<table class="subfields withbdr">
+					<tr>
+						<td>
+							<span class="lbl">Top</span>
+							<input type="text" class="bdr-t input-mini" value="0" />
+						</td>
+						<td>
+							<span class="lbl">Right</span>
+							<input type="text" class="bdr-r input-mini" value="0" />
+						</td>
+						<td>
+							<span class="lbl">Bottom</span>
+							<input type="text" class="bdr-b input-mini" value="0" />
+						</td>
+						<td>
+							<span class="lbl">Left</span>
+							<input type="text" class="bdr-l input-mini" value="0" />
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 
-		<div class="control-group">
+		<div class="control-group apply-bar">
 			<label class="control-label"></label>
 			<div class="controls">
 				<a class="btn apply btn-success">Apply</a>
@@ -142,7 +162,7 @@
 </div>
 <script>
 var obj = '#pop_mod_setting';
-var dataSource = ".apply, .model-box .ui-icon-closethick";
+var dataSource = ".apply, .model-box .ui-icon-closethick, .apply-bar";
 
 var oldData = $('.pop-active').next("input[type='hidden']").val();
 if(oldData){
@@ -154,12 +174,16 @@ if(oldData){
 	$(obj).find(".pd-r").attr('value',oldData_ar[3]);
 	$(obj).find(".pd-b").attr('value',oldData_ar[4]);
 	$(obj).find(".pd-l").attr('value',oldData_ar[5]);
-	$(obj).find(".bdr input[value='"+oldData_ar[6]+"']").prop('checked', true).parent().addClass('active');
+	//$(obj).find(".bdr input[value='"+oldData_ar[6]+"']").prop('checked', true).parent().addClass('active');
+	$(obj).find(".bdr-t").attr('value',oldData_ar[6]);
 	$(obj).find(".radius-t").attr('value',oldData_ar[7]);
 	$(obj).find(".radius-r").attr('value',oldData_ar[8]);
 	$(obj).find(".radius-b").attr('value',oldData_ar[9]);
 	$(obj).find(".radius-l").attr('value',oldData_ar[10]);
 	$(obj).find(".title-size input[value='"+oldData_ar[11]+"']").prop('checked', true).parent().addClass('active');
+	$(obj).find(".bdr-r").attr('value',oldData_ar[12]);
+	$(obj).find(".bdr-b").attr('value',oldData_ar[13]);
+	$(obj).find(".bdr-l").attr('value',oldData_ar[14]);
 }
 
 $(obj).find(dataSource).off('change click focus input blur');
@@ -170,12 +194,16 @@ $(obj).find(dataSource).on('change click focus input blur', function(){
 				  $(obj).find(".pd-r").val()+"|"+
 				  $(obj).find(".pd-b").val()+"|"+
 				  $(obj).find(".pd-l").val()+"|"+
-				  $(obj).find(".bdr .active input[type='radio']").val()+"|"+
+				  $(obj).find(".bdr-t").val()+"|"+
+				  //$(obj).find(".bdr .active input[type='radio']").val()+"|"+
 				  $(obj).find(".radius-t").val()+"|"+
 				  $(obj).find(".radius-r").val()+"|"+
 				  $(obj).find(".radius-b").val()+"|"+
 				  $(obj).find(".radius-l").val()+"|"+
-				  $(obj).find(".title-size .active input[type='radio']").val();
+				  $(obj).find(".title-size .active input[type='radio']").val()+"|"+
+				  $(obj).find(".bdr-r").val()+"|"+
+				  $(obj).find(".bdr-b").val()+"|"+
+				  $(obj).find(".bdr-l").val();
 				  //console.log(dataStr);
 	$('.pop-active').next("input[type='hidden']").attr('data-style', $(obj).find(".style .active input[type='radio']").val());
 	$('.pop-active').next("input[type='hidden']").attr('value', dataStr);

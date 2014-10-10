@@ -659,7 +659,6 @@ class ControllerModuleRGenRevoSlider extends Controller {
 		foreach ($this->data['revoslider'] as $key => $value) {
 			$this->data['revoslider'] = $value;
 		}
-		//echo "<pre style='color:;'>Slier name ==> " . print_r($this->data['revoslider'], TRUE) . "</pre>";
 	}
 
 	public function save() {
@@ -714,7 +713,7 @@ class ControllerModuleRGenRevoSlider extends Controller {
 	public function clearCache() {
 		$this->load->library('rgen/rgen_lib');
 		if (isset($this->request->get['name'])) {
-			echo "<pre>".print_r($this->request->get['name'],true)."</pre>";
+			//echo "<pre>".print_r($this->request->get['name'],true)."</pre>";
 			$this->rgen->removeAll($this->config->get('config_template'), $this->request->get['name']);	
 		}
 	}

@@ -2,7 +2,11 @@
 
 $module_key = $modSettings['modKey'].'_module'; 
 include 'view/rgen/tools/positions/positions.php';
+// Extra positions
+$this->data['positions']['Header - Bottom'] = 'header_bottom';
 
+$bannerSettings = 'Grid|4|10|40|40|y|y|y|rgb(0, 0, 0, 0.3)|rgb(255, 255, 255)|rgb(255, 255, 255)|n|y|n|4000|y';
+$fullBsettings = 'n||rgb(0, 0, 0)|data/cart.png|inherit|no-repeat|left top|||0|0||n';
 ?>
 <div class="section-title" style="margin: 0px; border-radius: 5px 5px 0 0;">
 	Assign modules
@@ -53,7 +57,7 @@ include 'view/rgen/tools/positions/positions.php';
 								<div class="controls">
 									<a data-url="view/template/module/rgen_banners/settings.php" data-title="Banners display settings" class="popup btn mb10">Edit</a>
 									<?php 
-										$dbKey 	= isset($module['bannerSettings']) ? $module['bannerSettings'] : 'Grid|4|10|40|40|y|y|y|rgb(0, 0, 0, 0.3)|rgb(255, 255, 255)|rgb(255, 255, 255)';
+										$dbKey 	= isset($module['bannerSettings']) ? $module['bannerSettings'] : $bannerSettings;
 										$name	= $module_key.'['.$module_row.'][bannerSettings]';
 									?>
 									<input type="hidden" class="bannerSettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
@@ -71,10 +75,13 @@ include 'view/rgen/tools/positions/positions.php';
 								<div class="controls">
 									<a data-url="view/rgen/tools/full_block/full_block_settings.php" data-type="fullb" data-title="Display in full block" data-token="<?php echo $token; ?>" data-image="<?php echo $no_img; ?>" data-h="800" class="popup btn">Edit</a>
 									<?php 
-										$dbKey 	= isset($module['fullB']) && $module['fullB'] != '' ? $module['fullB'] : 'n||rgb(0, 0, 0)|data/cart.png|inherit|no-repeat|left top|||0|0||n';
+										$dbKey 	= isset($module['fullB']) && $module['fullB'] != '' ? $module['fullB'] : $fullBsettings;
 										$name	= $module_key.'['.$module_row.'][fullB]';
 									?>
 									<input type="hidden" class="fullB" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
+									<div class="help-block">
+										Display in full block settings will not apply with grid manager access.
+									</div>
 								</div>
 							</div>
 
@@ -109,7 +116,12 @@ include 'view/rgen/tools/positions/positions.php';
 									</label>
 								</div>
 							</div>
-
+							
+							<?php 
+							// Generate extension access
+							include 'view/rgen/tools/ext_access/ext_access_assign.tpl'; ?>
+							
+							<div class="mod-setting-wrp"<?php echo $extStatus == 'y' ? ' style="display:none;"' : null; ?>>
 							<div class="control-group">
 								<label class="control-label">Select position</label>
 								<div class="controls">
@@ -156,7 +168,7 @@ include 'view/rgen/tools/positions/positions.php';
 									</span>
 								</div>
 							</div>
-							
+
 							<div id="auto-complete-wrp<?php echo $module_row ?>">
 								<?php 
 									$selectedRoute = isset($module['routeInfo']) && $module['routeInfo'] != '' ? $module['routeInfo'] : null;
@@ -238,6 +250,7 @@ include 'view/rgen/tools/positions/positions.php';
 									</div>
 								</div>
 							</div>
+							</div>
 
 						</div>
 					</td>
@@ -296,7 +309,11 @@ $(window).on('click', '.popup', function(event) {
 					$(popup).find('.apply').click(function(event) {
 						var bnrLayout = 'view/image/rgen_theme/rgen_bnr_mod_typ'+$('.pop-active + input[type="hidden"].bannerSettings').attr('data-style')+'.png';
 						$('.pop-active + .bannerSettings + br + img').attr('src', bnrLayout);
-						$(popup).dialog("close");
+						blockSection(".ui-dialog", '#d8d1c7');
+						setTimeout(function(){
+							$(popup).dialog("close");
+							$('.ui-dialog').unblock();
+						}, 500);
 					});
 				},
 				close: function (event, ui) {
@@ -360,11 +377,11 @@ function addModule() {
 	html += '			</div>';
 
 	html += '			<div class="control-group">';
-	html += '				<label class="control-label">Banners display in row</label>';
+	html += '				<label class="control-label">Banners settings</label>';
 	html += '				<div class="controls">';
 	html += '					<a data-url="view/template/module/rgen_banners/settings.php" data-title="Banners display settings" class="popup btn mb10">Edit</a>';
 								name = '<?php echo $module_key ?>['+module_row+'][bannerSettings]';
-	html += '					<input type="hidden" class="bannerSettings" name="'+name+'" value="Grid|4|10|40|40|y|y|y|rgb(0, 0, 0, 0.3)|rgb(255, 255, 255)|rgb(255, 255, 255)" />';
+	html += '					<input type="hidden" class="bannerSettings" name="'+name+'" value="<?php echo $bannerSettings; ?>" />';
 	html += '					<br><img src="view/image/rgen_theme/rgen_bnr_mod_typGrid.png" alt="Grid type" width="300" class="mb10" />'
 	html += '				</div>';
 	html += '			</div>';
@@ -374,8 +391,8 @@ function addModule() {
 	html += '				<div class="controls">';
 	html += '					<a data-url="view/rgen/tools/full_block/full_block_settings.php" data-type="fullb" data-title="Display in full block" data-token="<?php echo $token; ?>" data-image="<?php echo $no_img; ?>" data-h="800" class="popup btn">Edit</a>';
 								name = '<?php echo $module_key ?>['+module_row+'][fullB]';
-	html += '					<input type="hidden" class="fullB" name="'+name+'" value="n||rgb(0, 0, 0)|<?php echo $no_img; ?>|inherit|no-repeat|left top|||0|0||n" />';
-	html += '				</div>';
+	html += '					<input type="hidden" class="fullB" name="'+name+'" value="<?php echo $fullBsettings; ?>" />';
+	html += '					<div class="help-block">Display in full block settings will not apply with grid manager access.</div></div>';
 	html += '			</div>';
 
 	html += '		</div>';
@@ -400,7 +417,11 @@ function addModule() {
 	html += '				</div>';
 	html += '			</div>';
 
-	html += '			<div class="control-group">';
+	<?php 
+	// Generate extension access
+	include 'view/rgen/tools/ext_access/ext_access_assign_js.tpl'; ?>
+
+	html += '			<div class="mod-setting-wrp"><div class="control-group">';
 	html += '				<label class="control-label">Select position</label>';
 	html += '				<div class="controls">';
 								<?php $ar 	= $positions; ?>
@@ -488,7 +509,7 @@ function addModule() {
 								<?php include 'view/rgen/tools/layout_selector/layout_selector_js.tpl'; ?>
 	html += '					</div>';
 	html += '				</div>';
-	html += '			</div>';
+	html += '			</div></div>';
 	html += '		</div>';
 	html += '	</td>';
 	html += '	<td class="tc">';
@@ -544,6 +565,8 @@ function layoutSelector() {
 		$($(this).find("option:selected").attr('data-container')).find('[data-auto="'+$(this).find("option:selected").attr('data-route')+'"]').show();
 
 		$($(this).find("option:selected").attr('data-container')).find('.scrollbox').html(null);
+		$($(this).find("option:selected").attr('data-container')).find(".btn").removeClass('active');
+		$($(this).find("option:selected").attr('data-container')).find("input[value='all']").prop('checked', true).parent().addClass('active');
 		
 	});	
 } layoutSelector();
@@ -551,5 +574,8 @@ $('.layout-select').each(function() {
 	$(this).next('.layoutRoute').val($(this).find("option:selected").attr('data-route'));	
 });
 
+<?php
+// Generate extension access
+include 'view/rgen/tools/ext_access/ext_access_assign_fn.tpl'; ?>
 
 //--></script>

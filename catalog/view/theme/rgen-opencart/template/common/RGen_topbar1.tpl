@@ -5,7 +5,7 @@
 <?php } ?>
 <header id="header"<?php if ($this->config->get('RGen_logoPosition_status') == 1 || $this->config->get('RGen_menulayout') == 'fw') { ?> class="logo-in-header"<?php } ?>>
 	
-	<?php if($this->rgen->device == 'd' || $this->rgen->device == 't'){ ?>
+	<?php if($this->rgen->device == 'd' || $this->rgen->device == 't' || $this->config->get('RGen_reaponsive_status') == 0){ ?>
 	<?php if ($this->config->get('RGen_logoPosition_status') == 1 || $this->config->get('RGen_menulayout') == 'fw') { ?>
 	<div class="store-logo1"><?php if ($logo) { ?><a href="<?php echo $home; ?>" id="logo"><?php echo "<img src=\"$logo\" title=\"$name\" alt=\"$name\" />"; ?></a><?php } ?></div>
 	<?php } } ?>

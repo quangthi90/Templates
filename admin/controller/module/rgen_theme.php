@@ -836,20 +836,20 @@ class ControllerModuleRgenTheme extends Controller {
 			'config_image_category_width' 	=> 100,
 			'config_image_category_height' 	=> 134,
 
-			'config_image_thumb_width'		=> 351,
-			'config_image_thumb_height' 	=> 470,
+			'config_image_thumb_width'		=> 400,
+			'config_image_thumb_height' 	=> 537,
 
 			'config_image_popup_width'		=> 746,
 			'config_image_popup_height' 	=> 1000,
 
-			'config_image_product_width' 	=> 194,
-			'config_image_product_height' 	=> 260,
+			'config_image_product_width' 	=> 300,
+			'config_image_product_height' 	=> 402,
 
 			'config_image_additional_width' => 101,
 			'config_image_additional_height'=> 136,
 
-			'config_image_related_width' 	=> 194,
-			'config_image_related_height' 	=> 260,
+			'config_image_related_width' 	=> 300,
+			'config_image_related_height' 	=> 402,
 
 			'config_image_compare_width' 	=> 84,
 			'config_image_compare_height' 	=> 113,
@@ -864,20 +864,20 @@ class ControllerModuleRgenTheme extends Controller {
 			'config_image_category_width' 	=> 100,
 			'config_image_category_height' 	=> 77,
 
-			'config_image_thumb_width'		=> 351,
-			'config_image_thumb_height' 	=> 271,
+			'config_image_thumb_width'		=> 400,
+			'config_image_thumb_height' 	=> 309,
 
 			'config_image_popup_width'		=> 746,
 			'config_image_popup_height' 	=> 577,
 
-			'config_image_product_width' 	=> 194,
-			'config_image_product_height' 	=> 150,
+			'config_image_product_width' 	=> 300,
+			'config_image_product_height' 	=> 232,
 
 			'config_image_additional_width' => 101,
 			'config_image_additional_height'=> 78,
 
-			'config_image_related_width' 	=> 194,
-			'config_image_related_height' 	=> 150,
+			'config_image_related_width' 	=> 300,
+			'config_image_related_height' 	=> 232,
 
 			'config_image_compare_width' 	=> 84,
 			'config_image_compare_height' 	=> 65,
@@ -892,20 +892,20 @@ class ControllerModuleRgenTheme extends Controller {
 			'config_image_category_width' 	=> 100,
 			'config_image_category_height' 	=> 100,
 
-			'config_image_thumb_width'		=> 351,
-			'config_image_thumb_height' 	=> 351,
+			'config_image_thumb_width'		=> 400,
+			'config_image_thumb_height' 	=> 400,
 
 			'config_image_popup_width'		=> 746,
 			'config_image_popup_height' 	=> 746,
 
-			'config_image_product_width' 	=> 194,
-			'config_image_product_height' 	=> 194,
+			'config_image_product_width' 	=> 300,
+			'config_image_product_height' 	=> 300,
 
 			'config_image_additional_width' => 101,
 			'config_image_additional_height'=> 101,
 
-			'config_image_related_width' 	=> 194,
-			'config_image_related_height' 	=> 194,
+			'config_image_related_width' 	=> 300,
+			'config_image_related_height' 	=> 300,
 
 			'config_image_compare_width' 	=> 84,
 			'config_image_compare_height' 	=> 84,
@@ -935,121 +935,8 @@ class ControllerModuleRgenTheme extends Controller {
 	public function installsample(){
 
 		$datasource = $this->request->get['datasource'];
-
-		if(is_dir(DIR_APPLICATION."model/rgen/sampledata/") == 1){
-		
-			$this->load->model('rgen/rgentheme');
-			$this->load->model('rgen/rgencustom');
-			$this->load->model('rgen/rgencustomprd');
-			$this->load->model('rgen/rgenmegamenu');
-			$this->load->model('rgen/rgenrevoslider');
-			$this->model_rgen_rgentheme->install();
-			$this->model_rgen_rgencustom->install();
-			$this->model_rgen_rgencustom->installDataTable();
-			$this->model_rgen_rgencustomprd->install();
-			$this->model_rgen_rgenmegamenu->install();
-			$this->model_rgen_rgenmegamenu->installDataTable();
-			$this->model_rgen_rgenrevoslider->install();
-
-			// Resetings rgen theme data
-			$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "rgen_custom`;");
-			$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "rgen_custom_description`;");
-			$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "rgen_customprd`;");
-			$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "rgen_megamenu`;");
-			$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "rgen_megamenu_description`;");
-			$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "rgen_revoslider`;");
-			$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "rgen_theme`;");
-			$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'rgen_theme';");
-	  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'rgen_custom';");
-	  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'rgen_revoslider';");
-	  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'rgen_customproducts';");
-	  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'rgen_megamenu';");
-
-	  		// Reseting opencart data
-			if (is_file(DIR_APPLICATION."model/rgen/sampledata/reset_opencart.sql")) {
-				$sql_data = file_get_contents(DIR_APPLICATION."model/rgen/sampledata/reset_opencart.sql");
-				foreach (explode(";\n", $sql_data) as $sql) {
-		    		$sql = trim($sql);
-		    		$sql = str_ireplace("`oc_", "`".DB_PREFIX, $sql);
-		    		if ($sql) {
-		      			$this->db->query($sql);
-		    		}
-		  		}
-			}
-
-	  		
-			$extension = array(
-				array('type' => 'module','code' => 'rgen_theme'),
-				array('type' => 'module','code' => 'rgen_revoslider'),
-				array('type' => 'module','code' => 'rgen_megamenu'),
-				array('type' => 'module','code' => 'rgen_customproducts'),
-				array('type' => 'module','code' => 'rgen_custom')
-			);
-
-			// Installing extensions
-			foreach ($extension as $ext_k => $ext_v) {
-				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "extension WHERE `code` = '" . $ext_v['code'] . "'");
-				if (!isset($query->rows[0])) {
-					$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('". $ext_v['type'] ."', '". $ext_v['code'] ."');");
-				}
-			}
-			
-			// Installing all modules
-			if (is_file(DIR_APPLICATION."model/rgen/sampledata/" . $datasource . "/" . $datasource . "_allrgenmodules.sql")) {
-				$sql_data = file_get_contents(DIR_APPLICATION."model/rgen/sampledata/" . $datasource . "/" . $datasource . "_allrgenmodules.sql");
-				foreach (explode(";\n", $sql_data) as $sql) {
-		    		$sql = trim($sql);
-		    		$sql = str_ireplace("`oc_", "`".DB_PREFIX, $sql);
-		    		if ($sql) {
-		      			$this->db->query($sql);
-		    		}
-		  		}
-			}
-
-			// Installing categories and other data
-			if (is_file(DIR_APPLICATION."model/rgen/sampledata/" . $datasource . "/" . $datasource . "_otherdata.sql")) {
-				$sql_data = file_get_contents(DIR_APPLICATION."model/rgen/sampledata/" . $datasource . "/" . $datasource . "_otherdata.sql");
-				foreach (explode(";\n", $sql_data) as $sql) {
-		    		$sql = trim($sql);
-		    		$sql = str_ireplace("`oc_", "`".DB_PREFIX, $sql);
-					if ($sql) {
-		      			$this->db->query($sql);
-		    		}
-		  		}
-			}
-
-			// Installing RGen theme settings
-		  	if(is_file(DIR_APPLICATION."model/rgen/sampledata/" . $datasource . "/" . $datasource . "_settings.sql") ){
-		  		$sql_data = file_get_contents(DIR_APPLICATION."model/rgen/sampledata/" . $datasource . "/" . $datasource . "_settings.sql");
-		  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'rgen_theme'");
-		  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'rgen_custom'");
-		  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'rgen_revoslider'");
-		  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'rgen_customproducts'");
-		  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'rgen_megamenu'");
-		  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'featured' AND `key` = 'featured_module'");
-		  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'banner'");
-		  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'slideshow'");
-		  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'carousel'");
-		  		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `group` = 'category'");
-		  		foreach (explode(",\n", $sql_data) as $sql) {
-		  			$sql = trim($sql).';';
-		  			if ($sql) {
-		  				//echo "<pre style='color:;'>" . print_r($sql, TRUE) . "</pre>";
-	  					$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` (`group`, `key`, `value`, `serialized`) VALUES " . $sql . "");
-		    		}
-		  		}
-		  	}
-
-		  	// Installing image sizes
-		  	if(is_file(DIR_APPLICATION."model/rgen/sampledata/" . $datasource . "/" . $datasource . "_imagesizes.php") ){
-		  		include "model/rgen/sampledata/" . $datasource . "/" . $datasource . "_imagesizes.php";
-		  		foreach ($imgSizes as $sqlKey => $sqlValue) {
-		    		if ($sqlValue) {
-		      			$this->db->query("UPDATE  `" . DB_PREFIX . "setting` SET  `value` = '".$sqlValue."' WHERE  `key` =  '".$sqlKey."'");
-		    		}
-		  		}
-		  	}
-
+		if(is_dir(DIR_APPLICATION."model/rgen/sampledata/") == 1 && is_file('view/rgen/sampledata/rgen_sampledata_controller.php') == 1){
+			include 'view/rgen/sampledata/rgen_sampledata_controller.php';
 	  	}else{
 	  		echo "<div class='error'>Sample data not available to install.</div>";
 	  	}

@@ -38,7 +38,7 @@ function addModule() {
 	html += '		<div class="controls">';
 	html += '			<a data-url="view/template/module/rgen_contentblocks/blocksettings.php" data-title="Block settings" data-token="<?php echo $token; ?>" data-image="<?php echo $no_img; ?>" data-h="800" class="popup btn mb10">Edit</a>';
 						name = '<?php echo $module_key; ?>[mod_data]['+module_row+'][blocksettings]';
-	html += '			<input type="hidden" class="blocksettings" name="'+name+'" value="rgba(0,0,0,0)|rgba(0,0,0,0)||||||" data-labels="Block background|Block border color|Block title color|Block text color|Block inline css|Image inline css|Title inline css|Content inline css" data-labels="Block background|Block border color|Block title color|Block text color|Block inline css|Image inline css|Title inline css|Content inline css" />';
+	html += '			<input type="hidden" class="blocksettings" name="'+name+'" value="rgba(0,0,0,0)|rgba(0,0,0,0)|||||||" data-labels="Block background|Block border color|Block title color|Block text color|Block inline css|Image inline css|Title inline css|Content inline css|Link on full block" />';
 	html += '		</div>';
 	html += '	</div>';
 	html += '	<script>';
@@ -56,7 +56,7 @@ function addModule() {
 	html += '		<div class="controls">';
 	html += '			<a data-url="view/template/module/rgen_contentblocks/imagesettings.php" data-title="Image settings" data-token="<?php echo $token; ?>" data-image="<?php echo $no_img; ?>" data-h="800" class="popup btn mb10">Edit</a>';
 						name = '<?php echo $module_key; ?>[mod_data]['+module_row+'][imgsettings]';
-	html += '			<input type="hidden" class="imgsettings" name="'+name+'" value="rgba(0,0,0,0)|rgba(0,0,0,0)|img|||20|rgba(255,255,255,1)" data-labels="Image background|Image border color|Image type|Image src|Icon class|Icon size|Icon color" />';
+	html += '			<input type="hidden" class="imgsettings" name="'+name+'" value="rgba(0,0,0,0)|rgba(0,0,0,0)|img|||20|rgba(255,255,255,1)|" data-labels="Image background|Image border color|Image type|Image src|Icon class|Icon size|Icon color|Link on image" />';
 	html += '		</div>';
 	html += '	</div>';
 	html += '	<script>';

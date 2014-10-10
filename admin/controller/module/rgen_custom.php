@@ -131,6 +131,7 @@ class ControllerModuleRgenCustom extends Controller {
 
 	public function add_entry() {
 		$this->data['add_entry'] = $this->model_rgen_rgencustom->getRGen("rgen_custom");
+		//echo "<pre>".print_r($this->data['add_entry'],true)."</pre>";
 		$this->data['rgen_setting'] = array();
 		foreach ($this->data['add_entry'] as $key => $value) {
 			$this->data['rgen_setting']['rgen_custom_module'][] = array(
@@ -157,10 +158,20 @@ class ControllerModuleRgenCustom extends Controller {
 				'fullB_bgps1' 	=> isset($value['fullB_bgps1']) ? $value['fullB_bgps1'] : null,
 				'fullB_bgps2' 	=> isset($value['fullB_bgps2']) ? $value['fullB_bgps2'] : null,
 
+				'fullB_pd_t' 	=> isset($value['fullB_pd_t']) ? $value['fullB_pd_t'] : '40',
+				'fullB_pd_b' 	=> isset($value['fullB_pd_b']) ? $value['fullB_pd_b'] : '40',
+				'fullB_mr_t' 	=> isset($value['fullB_mr_t']) ? $value['fullB_mr_t'] : '0',
+				'fullB_mr_b' 	=> isset($value['fullB_mr_b']) ? $value['fullB_mr_b'] : '0',
+				'fullB_inline' 	=> isset($value['fullB_inline']) ? $value['fullB_inline'] : null,
+
 				'position' 		=> $value['position'], 
 				'status' 		=> $value['status'], 
 				'sort_order'	=> $value['sort_order'],
-				'data'			=> 'new'
+				'data'			=> 'new',
+
+				'ext_access' 	=> isset($value['ext_access']) ? $value['ext_access'] : 'n',
+				'ext_id' 		=> isset($value['ext_id']) ? $value['ext_id'] : '', 
+				'ext_name'		=> isset($value['ext_name']) ? $value['ext_name'] : ''
 			);
 		}
 		$this->model_rgen_rgencustom->addRGenSetting("rgen_custom", $this->data['rgen_setting']);
@@ -185,6 +196,8 @@ class ControllerModuleRgenCustom extends Controller {
 			$this->productsAuto();
 			$this->manufacturerAuto();
 			$this->informationAuto();
+
+			//echo "<pre>".print_r($this->data['modules'],true)."</pre>";
 
 			$this->template = 'module/rgen_custom_data.tpl';
 			$this->response->setOutput($this->render());

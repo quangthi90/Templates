@@ -1,6 +1,7 @@
 <?php
 // Heading Goes here:
 $_['heading_title']       = '<strong style="color:#e45e39;">R.Gen Product, Category and Brand Sections</strong>';
+$_['module_name']    = 'R.Gen Product, Category and Brand Sections';
 
 // Text
 $_['text_module']         = 'Modules';

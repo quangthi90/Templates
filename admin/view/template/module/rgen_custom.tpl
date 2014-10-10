@@ -20,6 +20,12 @@ font-weight: normal;
 font-style: normal;
 }
 .blockMsg { top: 15% !important; background: url(view/image/rgen_theme/ajax-loader.gif) no-repeat center 25px;  }
+.mod-search {
+	position: absolute;
+	left: 10px;
+	top: 64px;
+	width: 225px;
+}
 </style>
 <script type="text/javascript" src="../catalog/view/theme/rgen-opencart/js/plugins.js"></script>
 <?php if(!$checkPermission){ ?>
@@ -57,7 +63,8 @@ font-style: normal;
 				<div id="customHtm" class="tab-pane active">
 					<div class="tabs-left tabbable" data-theme="tab1">
 						<a class='btn btn-success btn-large create-btn' id="module-add"><i class="icon-plus icon-white"></i> <?php echo $button_add_module; ?></a>
-						<ul id="custom-mods" class="nav nav-tabs">
+						<input type="text" class="search mod-search" id="modsearch" placeholder="Search module">
+						<ul id="custom-mods" class="nav nav-tabs" style="padding-top: 105px;">
 							<?php $i = 0; foreach ($modules as $module) { ?>
 							<li class="tab-module-<?php echo $i; ?>">
 								<a data-tab="#tab-module-<?php echo $i; ?>" data-id="<?php echo $module['mod_id']; ?>" data-url="index.php?route=module/rgen_custom/getmodule&token=<?php echo $token; ?>&mod_name=<?php echo $module['mod_id']; ?>" id="module-<?php echo $i; ?>">
@@ -128,6 +135,7 @@ font-style: normal;
 <script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script>
 <script src="view/javascript/rgen/jquery.blockUI.js"></script>
 <script src="view/javascript/rgen/messi.min.js"></script>
+<script src="view/rgen/lib/jquery.searcher/jquery.searcher.min.js"></script>
 
 <script type="text/javascript"><!--
 
@@ -136,6 +144,13 @@ $('body').prepend('<div class="loading">Loading...</div>');
 $(document).ready(function(){
 	$('#content').css({display:'block'});
 	$('#content').animate({opacity: 1}, 500, function(){ $('.loading').css({display:"none"}); });
+
+	// Search module
+	$("#custom-mods").searcher({
+		itemSelector: "li",
+		textSelector:  "", // the text is within the item element (li) itself
+		inputSelector: "#modsearch"
+	});
 });
 
 // Custom sticky content option display

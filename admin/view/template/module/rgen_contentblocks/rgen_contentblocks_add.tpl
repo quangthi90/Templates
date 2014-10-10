@@ -97,10 +97,10 @@
 						11 Border size
 						12 Content wrap to image
 						*/
-						$dbKey 	= isset($module['gb_imgsettings']) ? $module['gb_imgsettings'] : 't|100|100|||||0|||||n';
+						$dbKey 	= isset($module['gb_imgsettings']) ? $module['gb_imgsettings'] : 't|100|100|||||0|||||n|y';
 						$name	= $module_key.'[gb_imgsettings]';
 					?>
-					<input type="hidden" class="gb_imgsettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" data-labels="Image position|Image container - Width|Image container - Height|Margin Top|Margin Right|Margin Bottom|Margin Left|Radius - Top Left|Radius - Top Right|Radius - Bottom Left|Radius - Bottom Right|Border size|Content wrap to image" />
+					<input type="hidden" class="gb_imgsettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" data-labels="Image position|Image container - Width|Image container - Height|Margin Top|Margin Right|Margin Bottom|Margin Left|Radius - Top Left|Radius - Top Right|Radius - Bottom Left|Radius - Bottom Right|Border size|Content wrap to image|Display image" />
 					<script>
 					var obj = '.gb_imgsettings';
 					$(obj).summary({
@@ -138,10 +138,10 @@
 						11 Title size
 						*/
 						//Title position|Content alignment|Padding(t,r,b,l)|Border width|Radius(t,r,b,l)|Title size
-						$dbKey 	= isset($module['gb_blocksettings']) ? $module['gb_blocksettings'] : 'b|c|0|0|0|0|1|0|0|0|0|4';
+						$dbKey 	= isset($module['gb_blocksettings']) ? $module['gb_blocksettings'] : 'b|c|0|0|0|0|1|0|0|0|0|4|0|0|0';
 						$name	= $module_key.'[gb_blocksettings]';
 					?>
-					<input type="hidden" class="gb_blocksettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" data-labels="Title position|Content alignment|Padding Top|Padding Right|Padding Bottom|Padding Left|Border size|Radius - Top Left|Radius - Top Right|Radius - Bottom Left|Radius - Bottom Right|Title size" />
+					<input type="hidden" class="gb_blocksettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" data-labels="Title position|Content alignment|Padding Top|Padding Right|Padding Bottom|Padding Left|Border size - Top|Radius - Top Left|Radius - Top Right|Radius - Bottom Left|Radius - Bottom Right|Title size|Border size - Right|Border size - Bottom|Border size - Left" />
 					<script>
 					var obj = '.gb_blocksettings';
 					$(obj).summary({

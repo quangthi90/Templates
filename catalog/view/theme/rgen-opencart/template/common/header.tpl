@@ -38,7 +38,7 @@ if ($this->config->get('RGen_reaponsive_status') == 1) {
 	<?php /* ALL CSS FILES 
 	******************************/	?>
 	<link href='//fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<?php if($rgen_optimize['css'] == 1) {
 		$this->rgen->cssGroup('catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css');
 		$this->rgen->cssGroup($cssPath.'stylesheet.css');
@@ -547,4 +547,24 @@ if ($this->config->get('RGen_reaponsive_status') == 1) {
 	<?php } ?>
 	<div id="notification"></div>
 	<div class="content-body-wrapper">
+	<div class="wrapper header-bottom">
+		<?php 
+		/* HEADER BOTTOM
+		******************************/
+		echo isset($rgen_header_bottom) ? $rgen_header_bottom : null;
+		?>
+	</div>
+	<?php 
+	/* FULL SLIDER
+	******************************/
+	echo isset($rgen_slideshow_full) ? $rgen_slideshow_full : null; ?>
+	<div class="fw-slider-holder"></div>
+
+	<?php 
+	/* RGEN CONTENT TOP UPPER POSITION
+	******************************/ ?>
+	<div class="rg-content-top wrapper">
+	<?php echo isset($rgen_content_top_upper) ? $rgen_content_top_upper : null; ?>
+	</div>
+	
 <?php } ?>

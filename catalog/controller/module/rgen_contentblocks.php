@@ -17,47 +17,50 @@ class ControllerModuleRGenContentblocks extends Controller {
 	protected function index($setting) {
 		$this->commonData();
 
-		static $module_count = 0;
-		$this->data['module_count'] = $module_count++;
-		
 		$this->data['setting'] = $setting;
 		$this->data['position'] = $setting["position"];
 
 		//echo "<pre>".print_r($setting,true)."</pre>";
 
 		if($this->data['setting']) {
+			isset($this->data['setting']['ext_access']) ? $this->data['extCheck'] = $this->data['setting']['ext_access'] : $this->data['extCheck'] = 'n';
+			if($this->data['extCheck'] == 'n') {
+				include('catalog/rgen/tools/full_block/full_block.php');
 
-			include('catalog/rgen/tools/full_block/full_block.php');
+				/* TPL loader Settings
+				*******************************/
+				$rgen_optimize 		= $this->config->get('RGen_optimize');
+				$cache 				= isset($rgen_optimize['cache_contentblocks']) ? $rgen_optimize['cache_contentblocks'] : 0;
+				$dir 				= 'rgen_contentblocks';
+				$cache_suffix		= '';
+			    $priceStatus		= null;
+			    $taxStatus			= null;
+			    $reviewStatus		= null;
+			    $loggedIn			= null;
+			    $tpl 				= $this->modSettings['main_tpl'];
+				if(	isset($setting['cat_status']) && $setting['cat_status'] == "sel" ||
+					isset($setting['prd_status']) && $setting['prd_status'] == "sel" ||
+					isset($setting['brand_status']) && $setting['brand_status'] == "sel" ||
+					isset($setting['info_status']) && $setting['info_status'] == "sel" )
+				{ 
+					if(	isset($setting['category']) && in_array($this->data['category_id'], $setting['category']) ||
+						isset($setting['products']) && in_array($this->data['product_id'], $setting['products']) ||
+						isset($setting['brands']) && in_array($this->data['brand_id'], $setting['manufacturer']) ||
+						isset($setting['information']) && in_array($this->data['information_id'], $setting['information']))
+						{
+						include('catalog/rgen/tools/tpl_loader/tpl_loader.php');
+						}
 
-			/* TPL loader Settings
-			*******************************/
-			$rgen_optimize 		= $this->config->get('RGen_optimize');
-			$cache 				= isset($rgen_optimize['cache_contentblocks']) ? $rgen_optimize['cache_contentblocks'] : 0;
-			$dir 				= 'rgen_contentblocks';
-			$cache_suffix		= '';
-		    $priceStatus		= null;
-		    $taxStatus			= null;
-		    $reviewStatus		= null;
-		    $loggedIn			= null;
-		    $tpl 				= $this->modSettings['main_tpl'];
-			
-			if(	isset($setting['cat_status']) && $setting['cat_status'] == "sel" ||
-				isset($setting['prd_status']) && $setting['prd_status'] == "sel" ||
-				isset($setting['brand_status']) && $setting['brand_status'] == "sel" ||
-				isset($setting['info_status']) && $setting['info_status'] == "sel" )
-			{ 
-				if(	isset($setting['category']) && in_array($this->data['category_id'], $setting['category']) ||
-					isset($setting['products']) && in_array($this->data['product_id'], $setting['products']) ||
-					isset($setting['brands']) && in_array($this->data['brand_id'], $setting['brands']) ||
-					isset($setting['info']) && in_array($this->data['information_id'], $setting['info']))
-					{
+				}else{
 					include('catalog/rgen/tools/tpl_loader/tpl_loader.php');
-					}
-
-			}else{
-				include('catalog/rgen/tools/tpl_loader/tpl_loader.php');
+				}
 			}
 		}
+	}
+
+	public function ext_access($extKey){
+		include('catalog/rgen/tools/ext_access/ext_access_assign.php');
+		return $extData;
 	}
 
 	public function getMod($setting){
@@ -85,7 +88,9 @@ class ControllerModuleRGenContentblocks extends Controller {
 			"gutter" 			=> $tmpSetting[2],
 			"top" 				=> $tmpSetting[3],
 			"bottom" 			=> $tmpSetting[4],
-			"hr" 				=> $tmpSetting[5]
+			"hr" 				=> $tmpSetting[5],
+			"pg_status"			=> isset($tmpSetting[6]) ? $tmpSetting[6] : 'y',
+			"effect"			=> isset($tmpSetting[7]) ? $tmpSetting[7] : 'slide'
 		);
 		
 		/* Section full block style
@@ -107,8 +112,9 @@ class ControllerModuleRGenContentblocks extends Controller {
 			"parallax"				=> isset($tmpFullb[12]) && $tmpFullb[12] != '' ? $tmpFullb[12] : 'n'
 		);
 		
+		isset($setting['ext_access']) ? $this->data['extCheck'] = $setting['ext_access'] : $this->data['extCheck'] = 'n';
 		// Generate full background array
-		if ($this->data['fullB_settings']['fullB'] == 'y') {
+		if ($this->data['fullB_settings']['fullB'] == 'y' && $this->data['extCheck'] == 'n') {
 			$this->data['fullB_class'] = $this->data['fullB_settings']['fullB_class'];
 			$setting['fullB_bgps'] = $this->data['fullB_settings']['fullB_bgps1'] . ' ' . $this->data['fullB_settings']['fullB_bgps2'];
 
@@ -158,7 +164,7 @@ class ControllerModuleRGenContentblocks extends Controller {
 		$this->data['block_settings'] = array(
 			'img_position'    => $gb_imgsettings[0],
 			'img_w'           => isset($gb_imgsettings[1]) && $gb_imgsettings[1]!=''? $gb_imgsettings[1] : 100,
-			'img_h'           => isset($gb_imgsettings[2]) && $gb_imgsettings[2]!=''? $gb_imgsettings[1] : 100,
+			'img_h'           => isset($gb_imgsettings[2]) && $gb_imgsettings[2]!=''? $gb_imgsettings[2] : 100,
 			'img_offset_t'    => $gb_imgsettings[3],
 			'img_offset_r'    => $gb_imgsettings[4],
 			'img_offset_b'    => $gb_imgsettings[5],
@@ -169,6 +175,7 @@ class ControllerModuleRGenContentblocks extends Controller {
 			'img_radius_b'    => $gb_imgsettings[10],
 			'img_radius_l'    => $gb_imgsettings[11],
 			'block_contentwrp'     => $gb_imgsettings[12],
+			'img_status'     		=> isset($gb_imgsettings[13]) ? $gb_imgsettings[13] : 'y',
 			
 			'block_title_position' => $gb_blocksettings[0],
 			'block_content_align'  => $gb_blocksettings[1],
@@ -176,14 +183,18 @@ class ControllerModuleRGenContentblocks extends Controller {
 			'block_pd_r'           => $gb_blocksettings[3],
 			'block_pd_b'           => $gb_blocksettings[4],
 			'block_pd_l'           => $gb_blocksettings[5],
-			'block_border_size'    => $gb_blocksettings[6],
+			//'block_border_size'    => $gb_blocksettings[6],
+			'block_bdr_t'			=> $gb_blocksettings[6],
 			'block_radius_t'       => $gb_blocksettings[7],
 			'block_radius_r'       => $gb_blocksettings[8],
 			'block_radius_b'       => $gb_blocksettings[9],
 			'block_radius_l'       => $gb_blocksettings[10],
-			'block_titlesize'      => $gb_blocksettings[11]
+			'block_titlesize'      => $gb_blocksettings[11],
+			'block_bdr_r'			=> isset($gb_blocksettings[12]) && $gb_blocksettings[12] != '' ? $gb_blocksettings[12] : '0',
+			'block_bdr_b'			=> isset($gb_blocksettings[13]) && $gb_blocksettings[13] != '' ? $gb_blocksettings[13] : '0',
+			'block_bdr_l'			=> isset($gb_blocksettings[14]) && $gb_blocksettings[14] != '' ? $gb_blocksettings[14] : '0'
 			);
-	
+		//echo "<pre>".print_r($this->data['block_settings'],true)."</pre>";
 		// Image CSS
 		$this->data['imageCSS']  = $this->data['block_settings']['img_offset_t'] != '' ? 'margin-top:'.$this->data['block_settings']['img_offset_t'].'px;' : null;
 		$this->data['imageCSS'] .= $this->data['block_settings']['img_offset_r'] != '' ? 'margin-right:'.$this->data['block_settings']['img_offset_r'].'px;' : null;
@@ -194,13 +205,27 @@ class ControllerModuleRGenContentblocks extends Controller {
 		$this->data['imageCSS'] .= $this->data['block_settings']['img_radius_r'] != '' ? 'border-top-right-radius:'.$this->data['block_settings']['img_radius_r'].'px;' : null;
 		$this->data['imageCSS'] .= $this->data['block_settings']['img_radius_b'] != '' ? 'border-bottom-left-radius:'.$this->data['block_settings']['img_radius_b'].'px;' : null;
 		$this->data['imageCSS'] .= $this->data['block_settings']['img_radius_l'] != '' ? 'border-bottom-right-radius:'.$this->data['block_settings']['img_radius_l'].'px;' : null;
+		//$this->data['imageCSS'] .= $this->data['block_settings']['img_w'] != '' ? 'max-width:'.$this->data['block_settings']['img_w'].'px;' : null;
+		if($this->data['block_settings']["block_content_align"] == "l"){
+			$this->data['imageCSS'] .= "text-align: left;";
+		}elseif($this->data['block_settings']["block_content_align"] == "r") {
+			$this->data['imageCSS'] .= "text-align: right;";
+		}else{
+			$this->data['imageCSS'] .= "text-align: center;";
+		}
 
 		// Block CSS
 		$this->data['blockCSS']  = $this->data['block_settings']['block_pd_t'] != '' ? 'padding-top:'.$this->data['block_settings']['block_pd_t'].'px;' : null;
 		$this->data['blockCSS'] .= $this->data['block_settings']['block_pd_r'] != '' ? 'padding-right:'.$this->data['block_settings']['block_pd_r'].'px;' : null;
 		$this->data['blockCSS'] .= $this->data['block_settings']['block_pd_b'] != '' ? 'padding-bottom:'.$this->data['block_settings']['block_pd_b'].'px;' : null;
 		$this->data['blockCSS'] .= $this->data['block_settings']['block_pd_l'] != '' ? 'padding-left:'.$this->data['block_settings']['block_pd_l'].'px;' : null;
-		$this->data['blockCSS'] .= $this->data['block_settings']['block_border_size'] != '' ? 'border-width:'.$this->data['block_settings']['block_border_size'].'px; border-style: solid; border-color: transparent;' : null;
+		
+		$this->data['blockCSS'] .= 'border-style: solid; border-color: transparent;';
+		$this->data['blockCSS'] .= $this->data['block_settings']['block_bdr_t'] != '' ? 'border-top-width:'.$this->data['block_settings']['block_bdr_t'].'px;' : null;
+		$this->data['blockCSS'] .= $this->data['block_settings']['block_bdr_r'] != '' ? 'border-right-width:'.$this->data['block_settings']['block_bdr_r'].'px;' : null;
+		$this->data['blockCSS'] .= $this->data['block_settings']['block_bdr_b'] != '' ? 'border-bottom-width:'.$this->data['block_settings']['block_bdr_b'].'px;' : null;
+		$this->data['blockCSS'] .= $this->data['block_settings']['block_bdr_l'] != '' ? 'border-left-width:'.$this->data['block_settings']['block_bdr_l'].'px;' : null;
+		
 		$this->data['blockCSS'] .= $this->data['block_settings']['block_radius_t'] != '' ? 'border-top-left-radius:'.$this->data['block_settings']['block_radius_t'].'px;' : null;
 		$this->data['blockCSS'] .= $this->data['block_settings']['block_radius_r'] != '' ? 'border-top-right-radius:'.$this->data['block_settings']['block_radius_r'].'px;' : null;
 		$this->data['blockCSS'] .= $this->data['block_settings']['block_radius_b'] != '' ? 'border-bottom-left-radius:'.$this->data['block_settings']['block_radius_b'].'px;' : null;
@@ -281,6 +306,7 @@ class ControllerModuleRGenContentblocks extends Controller {
 					'inline_image'   => $blocksettings[5],
 					'inline_title'   => $blocksettings[6],
 					'inline_content' => $blocksettings[7],
+					'block_url'      => isset($blocksettings[8]) ? $blocksettings[8] : null,
 
 					'img_bg'            => $imgsettings[0],
 					'img_bordercolor'   => $imgsettings[1],
@@ -289,6 +315,7 @@ class ControllerModuleRGenContentblocks extends Controller {
 					'ico'               => $imgsettings[4],
 					'ico_size'          => $imgsettings[5],
 					'ico_color'         => $imgsettings[6],
+					'img_url'         	=> isset($imgsettings[7]) ? $imgsettings[7] : null,
 
 					'imgStyle'          => $this->data['imgStyle'],
 					'blockStyle'		=> $this->data['blockStyle'],
@@ -335,6 +362,9 @@ class ControllerModuleRGenContentblocks extends Controller {
 		$this->language->load($this->modSettings['modLng']);
 		$this->data['heading_title'] = $this->language->get('heading_title');
 		$this->data['l_id'] = $this->config->get('config_language_id');
+
+		//static $module_count = 0;
+		$this->data['module_count'] = $this->rgen->uid(); //$module_count++;
 
 		// Identify page layout
 		include('catalog/rgen/tools/layout_info/layout_info.php');

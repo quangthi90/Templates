@@ -148,10 +148,9 @@
 							<script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js"></script> 
 						<?php } ?>
 						
+						<?php $this->document->RGen_social = $this->config->get('RGenData_mod');
+						$this->document->RGen_social = isset($this->document->RGen_social['RGen_social']) ? $this->document->RGen_social['RGen_social'] : null; ?>
 						<?php if(isset($this->document->RGen_social)) { ?>
-							<?php 
-							$this->document->RGen_social = $this->config->get('RGenData_mod');
-							$this->document->RGen_social = $this->document->RGen_social['RGen_social']; ?>
 							<?php foreach ($this->document->RGen_social as $result) { ?>
 							<?php if($result && $result['status'] == 1) { ?>
 							<a <?php if($result['url']){ ?>href="<?php echo $result['url']; ?>"<?php } ?> <?php if($result['normal']){ ?>target="_blank" style="background-image:url(catalog/view/theme/rgen-opencart/image/rgen/social-icons/<?php echo $result['normal']; ?>);" data-icon="<?php echo $result['normal']; ?>"<?php } ?> <?php if($result['hover']){ ?>data-hover="<?php echo $result['hover']; ?>"<?php } ?> class="custom-icon"></a>

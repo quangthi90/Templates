@@ -1,7 +1,7 @@
 <?php
 if ($this->registry->get('config')->get('config_template') === 'rgen-opencart') {
 	
-	$rgen_ver = "v3.08";
+	$rgen_ver = "v3.11";
 	$ver = $this->config->get('rgen_theme_version');
 	if(!isset($ver) && $ver == "") {
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "setting`(`group`, `key`, `value`) VALUES ('rgen_theme','rgen_theme_version','" . $rgen_ver . "')");

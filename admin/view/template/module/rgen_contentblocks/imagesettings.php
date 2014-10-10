@@ -71,7 +71,7 @@
 						</optgroup>
 					</select>
 					<div class="help-block">
-						Enter class name of Font Awesome icons (http://fortawesome.github.io/)<br>
+						Enter class name of Font Awesome icons (http://fortawesome.github.io/Font-Awesome/icons/)<br>
 						Example : <strong style="color: #000;">fa fa-bank</strong><br><br>
 						
 						Or use own custom class name to insert icon.
@@ -82,6 +82,13 @@
 		</div>
 
 		<div class="control-group">
+			<label class="control-label">Image URL</label>
+			<div class="controls">
+				<input placeholder="Link on image" type="text" class="url" value="">
+			</div>
+		</div>
+
+		<div class="control-group apply-bar">
 			<label class="control-label"></label>
 			<div class="controls">
 				<a class="btn apply btn-success">Apply</a>
@@ -92,7 +99,7 @@
 <br><br><br><br><br><br><br>
 <script>
 var obj = '#pop_mod_setting';
-var dataSource = ".apply, .model-box .ui-icon-closethick";
+var dataSource = ".apply, .model-box .ui-icon-closethick, .apply-bar";
 var noImg = $('.pop-active').attr("data-image");
 
 $(".img-type").on('click', '.img-type label', function(event) {
@@ -105,7 +112,7 @@ $(".img-type").on('click', '.img-type label', function(event) {
 var oldData = $('.pop-active').next("input[type='hidden']").val();
 if(oldData){
 	var oldData_ar = oldData.split('|');
-	console.log(oldData_ar);
+	//console.log(oldData_ar);
 	$(obj).find(".img-bg input").attr('value',oldData_ar[0]);
 	$(obj).find(".img-border input").attr('value',oldData_ar[1]);
 	$(obj).find(".img-type input[value='"+oldData_ar[2]+"']").prop('checked', true).parent().addClass('active');
@@ -123,6 +130,9 @@ if(oldData){
 	$(obj).find(".ico .cls").attr('value',oldData_ar[4]);
 	$(obj).find(".ico option[value='"+oldData_ar[5]+"']").prop('selected', true);
 	$(obj).find(".ico .rgb").attr('value',oldData_ar[6]);
+
+	var url = oldData_ar[7] ? oldData_ar[7] : null;
+	$(obj).find(".url").attr('value',url);
 
 	if (oldData_ar[2] == 'ico') {
 		$(obj).find(".ico").show();
@@ -143,7 +153,8 @@ $(obj).find(dataSource).on('change click focus input blur', function(){
 				  img+"|"+
 				  $(obj).find(".ico .cls").val()+"|"+
 				  $(obj).find(".ico select").val()+"|"+
-				  $(obj).find(".ico .rgb").val();
+				  $(obj).find(".ico .rgb").val()+"|"+
+				  $(obj).find(".url").val();
 				
 				  //console.log(dataStr);
 	$('.pop-active').next("input[type='hidden']").attr('data-style', $(obj).find(".style .active input[type='radio']").val());

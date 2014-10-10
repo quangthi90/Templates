@@ -17,47 +17,51 @@ class ControllerModuleRGenGallery extends Controller {
 	protected function index($setting) {
 		$this->commonData();
 
-		static $module_count = 0;
-		$this->data['module_count'] = $module_count++;
-		
 		$this->data['setting'] = $setting;
 		$this->data['position'] = $setting["position"];
 
 		//echo "<pre>".print_r($setting,true)."</pre>";
 
 		if($this->data['setting']) {
+			isset($this->data['setting']['ext_access']) ? $this->data['extCheck'] = $this->data['setting']['ext_access'] : $this->data['extCheck'] = 'n';
+			if($this->data['extCheck'] == 'n') {
+				include('catalog/rgen/tools/full_block/full_block.php');
 
-			include('catalog/rgen/tools/full_block/full_block.php');
+				/* TPL loader Settings
+				*******************************/
+				$rgen_optimize 		= $this->config->get('RGen_optimize');
+				$cache 				= isset($rgen_optimize['cache_gallery']) ? $rgen_optimize['cache_gallery'] : 0;
+				$dir 				= 'rgen_gallery';
+				$cache_suffix		= '';
+			    $priceStatus		= null;
+			    $taxStatus			= null;
+			    $reviewStatus		= null;
+			    $loggedIn			= null;
+			    $tpl 				= $this->modSettings['main_tpl'];
+				
+				if(	isset($setting['cat_status']) && $setting['cat_status'] == "sel" ||
+					isset($setting['prd_status']) && $setting['prd_status'] == "sel" ||
+					isset($setting['brand_status']) && $setting['brand_status'] == "sel" ||
+					isset($setting['info_status']) && $setting['info_status'] == "sel" )
+				{ 
+					if(	isset($setting['category']) && in_array($this->data['category_id'], $setting['category']) ||
+						isset($setting['products']) && in_array($this->data['product_id'], $setting['products']) ||
+						isset($setting['brands']) && in_array($this->data['brand_id'], $setting['manufacturer']) ||
+						isset($setting['information']) && in_array($this->data['information_id'], $setting['information']))
+						{
+						include('catalog/rgen/tools/tpl_loader/tpl_loader.php');
+						}
 
-			/* TPL loader Settings
-			*******************************/
-			$rgen_optimize 		= $this->config->get('RGen_optimize');
-			$cache 				= isset($rgen_optimize['cache_gallery']) ? $rgen_optimize['cache_gallery'] : 0;
-			$dir 				= 'rgen_gallery';
-			$cache_suffix		= '';
-		    $priceStatus		= null;
-		    $taxStatus			= null;
-		    $reviewStatus		= null;
-		    $loggedIn			= null;
-		    $tpl 				= $this->modSettings['main_tpl'];
-			
-			if(	isset($setting['cat_status']) && $setting['cat_status'] == "sel" ||
-				isset($setting['prd_status']) && $setting['prd_status'] == "sel" ||
-				isset($setting['brand_status']) && $setting['brand_status'] == "sel" ||
-				isset($setting['info_status']) && $setting['info_status'] == "sel" )
-			{ 
-				if(	isset($setting['category']) && in_array($this->data['category_id'], $setting['category']) ||
-					isset($setting['products']) && in_array($this->data['product_id'], $setting['products']) ||
-					isset($setting['brands']) && in_array($this->data['brand_id'], $setting['brands']) ||
-					isset($setting['info']) && in_array($this->data['information_id'], $setting['info']))
-					{
+				}else{
 					include('catalog/rgen/tools/tpl_loader/tpl_loader.php');
-					}
-
-			}else{
-				include('catalog/rgen/tools/tpl_loader/tpl_loader.php');
+				}
 			}
 		}
+	}
+
+	public function ext_access($extKey){
+		include('catalog/rgen/tools/ext_access/ext_access_assign.php');
+		return $extData;
 	}
 
 	public function getMod($setting){
@@ -88,7 +92,9 @@ class ControllerModuleRGenGallery extends Controller {
 			"bottom" 			=> $tmpSetting[4],
 			"hr" 				=> $tmpSetting[5],
 			"cp-bg"				=> $tmpSetting[6],
-			"cp-text"			=> $tmpSetting[7]
+			"cp-text"			=> $tmpSetting[7],
+			"pg-status"			=> isset($tmpSetting[8]) ? $tmpSetting[8] : 'n',
+			"arrow-status"		=> isset($tmpSetting[9]) ? $tmpSetting[9] : 'y'
 		);
 
 		//echo "<pre>".print_r($this->data['mod_settings'],true)."</pre>";
@@ -113,8 +119,9 @@ class ControllerModuleRGenGallery extends Controller {
 		);
 		/*echo "<pre>".print_r($tmpFullb,true)."</pre>";*/
 		
+		isset($setting['ext_access']) ? $this->data['extCheck'] = $setting['ext_access'] : $this->data['extCheck'] = 'n';
 		// Generate full background array
-		if ($this->data['fullB_settings']['fullB'] == 'y') {
+		if ($this->data['fullB_settings']['fullB'] == 'y' && $this->data['extCheck'] == 'n') {
 			$this->data['fullB_class'] = $this->data['fullB_settings']['fullB_class'];
 			$setting['fullB_bgps'] = $this->data['fullB_settings']['fullB_bgps1'] . ' ' . $this->data['fullB_settings']['fullB_bgps2'];
 
@@ -230,6 +237,9 @@ class ControllerModuleRGenGallery extends Controller {
 
 		// Identify page layout
 		include('catalog/rgen/tools/layout_info/layout_info.php');
+
+		//static $module_count = 0;
+		$this->data['module_count'] = $this->rgen->uid(); //$module_count++;
 
 		/* Files load in front end
 		******************************/

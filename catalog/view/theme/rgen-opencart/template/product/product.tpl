@@ -114,7 +114,7 @@
 			<div class="right prdoptions-wrapper">
 				
 				<?php if (!$oc) { ?>
-				<h1 class="header-1"><?php echo $heading_title; ?></h1>
+				<h1 class="header-1"><strong><?php echo $heading_title; ?></strong></h1>
 				<?php } ?>
 
 				<?php 

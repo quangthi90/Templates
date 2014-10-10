@@ -1,6 +1,7 @@
 <?php
 // Heading
 $_['heading_title']       = '<strong style="color:#e45e39;">R.Gen Custom HTML</strong>';
+$_['module_name']    = 'R.Gen Custom HTML';
 
 // Text
 $_['text_module']         = 'Modules';

@@ -247,6 +247,54 @@
 			</table>
 		</div>
 	</div>
+	<div class="control-group">
+		<label class="control-label">R.Gen Grid Manager</label>
+		<div class="controls">
+			<table class="subfields withbdr">
+				<tr>
+					<td>
+						<?php 
+							$dbKey 	= isset($RGen_optimize['cache_gridmanager']) ? $RGen_optimize['cache_gridmanager'] : 0;
+							$name	= 'RGen_optimize[cache_gridmanager]';
+							$id		= 'RGen_optimize[cache_gridmanager]';
+						?>
+						<span class="switch">
+							<input type="checkbox" id="<?php echo $id; ?>" name="<?php echo $name; ?>" <?php if ($dbKey) { ?>checked="checked"<?php }?> value="1">
+							<label for="<?php echo $id; ?>" class="switch-img"></label>
+							<?php if (!$dbKey) { ?><input type="hidden" name="<?php echo $name; ?>" value="0"><?php }?>
+						</span>
+					</td>
+					<td>
+						<a class="btn cacheRemove" data-type="removeAll" data-name="/rgen_gridmanager">Clear cached data</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label">R.Gen Simple Slideshow</label>
+		<div class="controls">
+			<table class="subfields withbdr">
+				<tr>
+					<td>
+						<?php 
+							$dbKey 	= isset($RGen_optimize['cache_simpleslideshow']) ? $RGen_optimize['cache_simpleslideshow'] : 0;
+							$name	= 'RGen_optimize[cache_simpleslideshow]';
+							$id		= 'RGen_optimize[cache_simpleslideshow]';
+						?>
+						<span class="switch">
+							<input type="checkbox" id="<?php echo $id; ?>" name="<?php echo $name; ?>" <?php if ($dbKey) { ?>checked="checked"<?php }?> value="1">
+							<label for="<?php echo $id; ?>" class="switch-img"></label>
+							<?php if (!$dbKey) { ?><input type="hidden" name="<?php echo $name; ?>" value="0"><?php }?>
+						</span>
+					</td>
+					<td>
+						<a class="btn cacheRemove" data-type="removeAll" data-name="/rgen_simpleslideshow">Clear cached data</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </div>
 <script>
 	jQuery(document).ready(function($) {

@@ -8,6 +8,7 @@
 //echo "<pre style='color:;'>" . print_r($module_row, TRUE) . "</pre>";
 $positions = array(
 			$text_content_top				=> 'content_top',
+			'Content Top Upper' 	=> 'rgen_content_top_upper',
 			$text_content_bottom			=> 'content_bottom',
 			$text_column_left				=> 'column_left',
 			$text_column_right				=> 'column_right',
@@ -17,6 +18,7 @@ $positions = array(
 			'Footer - Above social icons'	=> 'ft_social',
 			'Footer - Below copyright'		=> 'ft_below',
 			'Header - Top'					=> 'tp_above',
+			'Header - Bottom'				=> 'header_bottom',
 			'Product page - Above images'	=> 'pd_above_img',
 			'Product page - Below images'	=> 'pd_below_img',
 			'Product page - Above options'	=> 'pd_above_options',
@@ -79,6 +81,57 @@ $yn = array(
 			<input placeholder='Sort order' type="text" class='input-small' name="rgen_custom_module<?php echo $module_row; ?>[sort_order]" value="" size="3" />
 		</div>
 	</div>
+	
+	<div class="control-group">
+		<label class="control-label">Access in grid manager</label>
+		<div class="controls">
+			<?php 
+				$ar 	= array('Yes' => 'y', 'No' => 'n');
+				$dbKey 	= 'n';
+				$name	= 'rgen_custom_module' . $module_row . '[ext_access]';
+				$id		= 'ext_access'.$module_row;
+				$extStatus = $dbKey;
+			?>
+			<div class="btn-group ext-access" data-toggle="buttons-radio">
+				<?php foreach ($ar as $key => $value) { ?>
+					<?php ($value ==  $dbKey) ? $selected = ' active' : $selected=''; ?>
+					<label for="<?php echo $id . '-' . $value; ?>"  type="button" class="btn btn-small<?php echo $selected; ?>">
+						<input type="radio" id="<?php echo $id . '-' . $value; ?>" name="<?php echo $name; ?>" value="<?php echo $value; ?>" <?php if ($dbKey == $value) { ?>checked="checked"<?php }?>>
+						<?php echo $key; ?>
+					</label>
+				<?php } ?>
+			</div>
+			<div style="margin-top:5px;margin-bottom:8px;<?php echo $dbKey == 'n' ? 'display:none;' : null; ?>">
+				<?php 
+					$dbKey 	= 'ext_'.md5($module_row.time());
+					$name	= 'rgen_custom_module' . $module_row . '[ext_id]';
+				?>
+				<input type="hidden" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
+				<?php 
+					$dbKey 	= 'Module-'.($module_row+1);
+					$name	= 'rgen_custom_module' . $module_row . '[ext_name]';
+				?>
+				<input type="text" class="ext-name" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
+				<div class="help-block">
+					This name will display in Grid Manager module list.
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	$(window).off( "click", ".ext-access input[type='radio']");
+	$(window).on('click', ".ext-access input[type='radio']", function() {
+		console.log($(this).val());
+		if ($(this).val() == 'y') {
+			$(this).parent().parent().next('div').show();
+			$(this).parent().parent().parent().parent().next('.mod-setting-wrp').hide();
+		}else {
+			$(this).parent().parent().parent().parent().next('.mod-setting-wrp').show();
+			$(this).parent().parent().next('div').hide();
+		};
+	});
+	</script>
+	<div class="mod-setting-wrp">
 	<div class="control-group">
 		<label class="control-label"><?php echo $entry_layout; ?></label>
 		<div class="controls">
@@ -245,6 +298,8 @@ $yn = array(
 			<a onclick="image_upload('<?php echo 'rgen_custom_module-' . $module_row . '-custImg'; ?>', '<?php echo 'rgen_custom_module-' . $module_row . '-custImg-preview'; ?>');" class="btn btn-small">Set image</a>
 		</div>
 	</div>
+	</div>
+
 	<div class="control-group">
 		<label class="control-label">Content styles</label>
 		<div class="controls">
@@ -395,6 +450,55 @@ $yn = array(
 						</td>
 					</tr>
 				</table>
+			</div>
+		</div>
+
+		<div class="control-group">
+				<label class="control-label">Apply inline style</label>
+				<div class="controls">
+					<?php 
+						$dbKey 	= '';
+						$name	= 'rgen_custom_module' . $module_row . '[fullB_inline]';
+					?>
+					<input type="text" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
+				</div>
+			</div>
+
+		<div class="control-group">
+			<label class="control-label">
+				Inner padding
+				<div class="help-block" style="margin-top:0px;">Top - Bottom</div>
+			</label>
+			<div class="controls">
+				<?php 
+					$dbKey 	= '40';
+					$name	= 'rgen_custom_module' . $module_row . '[fullB_pd_t]';
+				?>
+				<input class="input-mini" type="text" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" /> x 
+				<?php 
+					$dbKey 	= '40';
+					$name	= 'rgen_custom_module' . $module_row . '[fullB_pd_b]';
+				?>
+				<input class="input-mini" type="text" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label">
+				Outer margin
+				<div class="help-block" style="margin-top:0px;">Top - Bottom</div>
+			</label>
+			<div class="controls">
+				<?php 
+					$dbKey 	= '0';
+					$name	= 'rgen_custom_module' . $module_row . '[fullB_mr_t]';
+				?>
+				<input class="input-mini" type="text" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" /> x 
+				<?php 
+					$dbKey 	= '0';
+					$name	= 'rgen_custom_module' . $module_row . '[fullB_mr_b]';
+				?>
+				<input class="input-mini" type="text" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
 			</div>
 		</div>
 	</div>

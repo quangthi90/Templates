@@ -168,38 +168,87 @@ $.fn.fullblock = function(options) {
 		child: 'div'
 	}, options );
 	fblock = this;
-	function applyBlock(){
-		if ($(window).width() > 980) {
-			var sideMargin = Math.floor(($('#container').width() - $(fblock).children(settings.child).width())/2);
-			$(fblock).css({
-				marginLeft: -sideMargin,
-				marginRight: -sideMargin
-			});
+	function applyBlock(fblock){
+		$(fblock).each(function() {
+			if ($(window).width() > 980) {
+				var sideMargin = Math.floor(($('#container').width() - $(this).children(settings.child).width())/2);
+				
+				//console.log($(this).attr('id'));
 
-			$(fblock).find(settings.child).css({
-				maxWidth: Math.floor($("#content").width()),
-				marginLeft: 'auto',
-				marginRight: 'auto'
-			});
-			if ($(fblock).find(settings.child+' > div').length == 1) {
-				$(fblock).find(settings.child).addClass('mb0');
+				$(this).css({
+					marginLeft: -sideMargin,
+					marginRight: -sideMargin
+				});
+
+				$(this).find(settings.child).css({
+					maxWidth: Math.floor($("#content").width()),
+					marginLeft: 'auto',
+					marginRight: 'auto'
+				});
+				if ($(this).find(settings.child+' > div').length == 1) {
+					$(this).find(settings.child).addClass('mb0');
+				};
+			}else{
+				$(this).find(settings.child).css({
+					maxWidth: 'inherit'
+				});
 			};
-		}else{
-			$(fblock).find(settings.child).css({
-				maxWidth: 'inherit'
-			});
-		};
+		});
+		
 	}
 	if ($("#column-left").length == 0 && $("#column-right").length == 0) {
-		applyBlock();
-		$(window).resize(function(){applyBlock();});
+		applyBlock(fblock);
+		$(window).resize(function(){applyBlock(fblock);});
 	}else{
 		$(fblock).removeAttr('style');
 		$(fblock).removeAttr('class');
 	};
-	return this; 
+	//return this; 
 };
 
+var fullB = function(fblock, child) {
+	//console.log("function called");
+	var speed = 200;
+	if ($("#column-left").length == 0 && $("#column-right").length == 0 || $(".rg-content-top > div").length > 0) {
+		if ($(window).width() > 980 && $(fblock).hasClass('force-full') == false) {
+			setTimeout(function(){
+				var sideMargin = Math.floor(($('#container').width() - $("#content").width())/2);
+				//console.log(sideMargin);
+				$(fblock).css({
+					marginLeft: -sideMargin,
+					marginRight: -sideMargin
+				});
+
+				$(fblock).find(child).css({
+					maxWidth: Math.floor($("#content").width()),
+					marginLeft: 'auto',
+					marginRight: 'auto'
+				});
+				if ($(fblock).find(child+' > div').length == 1) {
+					$(fblock).find(child).addClass('mb0');
+				};
+			}, speed);
+		}else if($(window).width() > 980 && $(fblock).hasClass('force-full') == true){
+			setTimeout(function(){
+				var sideMargin = Math.floor(($('#container').width() - $("#content").width())/2);
+				$(fblock).css({
+					marginLeft: -sideMargin,
+					marginRight: -sideMargin
+				});
+				if ($(fblock).find(child+' > div').length == 1) {
+					$(fblock).find(child).addClass('mb0');
+				};
+			}, speed);
+		}else{
+			$(fblock).find(child).css({
+				maxWidth: 'inherit'
+			});
+		};
+	}else{
+		$(fblock).removeAttr('style');
+		$(fblock).removeAttr('class');
+	};
+}
 function alertBox(){
 	$('#notification').css({marginLeft: -$('#notification').outerWidth()/2});
 }
@@ -286,8 +335,51 @@ function inOwl_grid_column(obj){
 	});
 }
 
-$(document).ready(function() {
+function rowChange(obj, w, cls) {
+	//console.log(w);
+	if (w <= 1300 && w >= 1000) {
+		$(obj+cls).attr('data-n','col-5');
+		$(obj+cls).addClass('col-5');
+		$.fn.matchHeight._update();
+	}else if(w <= 999 && w >= 900){
+		$(obj+cls).removeClass($(obj+cls).attr('data-n'));
+		$(obj+cls).attr('data-n','col-4');
+		$(obj+cls).addClass('col-4');
+		$.fn.matchHeight._update();
+	}else if(w <= 899 && w >= 800){
+		$(obj+cls).removeClass($(obj+cls).attr('data-n'));
+		$(obj+cls).attr('data-n','col-4');
+		$(obj+cls).addClass('col-4');
+		$.fn.matchHeight._update();
+	}else if(w <= 799 && w >= 700){
+		$(obj+cls).removeClass($(obj+cls).attr('data-n'));
+		$(obj+cls).attr('data-n','col-3');
+		$(obj+cls).addClass('col-3');
+		$.fn.matchHeight._update();
+	}else if(w <= 699 && w >= 600){
+		$(obj+cls).removeClass($(obj+cls).attr('data-n'));
+		$(obj+cls).attr('data-n','col-3');
+		$(obj+cls).addClass('col-3');
+		$.fn.matchHeight._update();
+	}else if(w <= 599 && w >= 500){
+		$(obj+cls).removeClass($(obj+cls).attr('data-n'));
+		$(obj+cls).attr('data-n','col-2');
+		$(obj+cls).addClass('col-2');
+		$.fn.matchHeight._update();
+	}else if(w <= 499 && w >= 400){
+		$(obj+cls).removeClass($(obj+cls).attr('data-n'));
+		$(obj+cls).attr('data-n','col-2');
+		$(obj+cls).addClass('col-2');
+		$.fn.matchHeight._update();
+	}else if(w <= 399 && w >= 300){
+		$(obj+cls).removeClass($(obj+cls).attr('data-n'));
+		$(obj+cls).attr('data-n','col-1');
+		$(obj+cls).addClass('col-1');
+		$.fn.matchHeight._update();
+	};
+}
 
+$(document).ready(function() {
 	/* CSS CLASS ADDED FOR HOME PAGE */
 	$('.store-home').parent().addClass('home-wrapper');
 	if($('.store-home').hasClass('full-slideshow') == true){
@@ -308,6 +400,11 @@ $(document).ready(function() {
 	
 	if($('#content').hasClass('full-slideshow') || $('#content').hasClass('medium-slideshow')){
 		$('#container').addClass('slideshow-overflow')
+	}
+
+	if($('.content-body .page-heading').length > 0){
+		$('.content-body .page-heading').after("<div class='rg-content-top-holder'></div>");
+		$('.rg-content-top').prependTo('.rg-content-top-holder');
 	}
 	
 	$(window).on("mouseover", ".sec-box-wrp .prd", function(){
@@ -409,7 +506,12 @@ $(document).ready(function() {
 		function logo(){
 			//$(".navigation-bar").css({opacity:0});
 			$(".store-logo").css({width: $("#logo").outerWidth()/*+40*/});
-			$("#menu").css({width: $(".navigation-bar").outerWidth() - $(".store-logo").outerWidth()});	
+			w = $(".navigation-bar").outerWidth() - $(".store-logo").outerWidth();
+			if (w > $("#content").outerWidth()){
+				$("#menu").css({width: $("#content").outerWidth()});
+			}else{
+				$("#menu").css({width: w});
+			};
 			$(".navigation-bar").animate({opacity:1}, 300, function(){});
 			
 		} logo();
@@ -730,7 +832,7 @@ $(document).ready(function() {
 			var imageHeight = theImage.height;
 
 			if ($(this).height() == 0){
-				console.log(imageHeight);
+				//console.log(imageHeight);
 				$(this).css({height:imageHeight, width:'100%'});
 				$(this).find('.slidesjs-control').css({height:$(this).height(), width:'100%'});
 			};

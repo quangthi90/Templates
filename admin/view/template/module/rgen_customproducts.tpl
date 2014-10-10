@@ -328,6 +328,54 @@ $bodyBgAttachment = array( 'inherit', 'fixed');
 						</td>
 						<td class="layout-option">
 							<div class="mb10">
+								<span class="lbl-1">Module settings</span>
+								<div>
+									<a data-url="view/template/module/rgen_customproducts/settings.php" data-title="Module display settings" class="popup btn mb10">Edit</a>
+									<?php 
+										$dbKey 	= isset($module['moduleSettings']) ? $module['moduleSettings'] : '20|50|50|0|0|y|7';
+										$name	= 'rgen_customproducts_module[' . $module_row . '][moduleSettings]';
+									?>
+									<input type="hidden" data-clone="moduleSettings" class="moduleSettings" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
+								</div>
+							</div><br>
+
+							<div class="mb10">
+								<span class="lbl-1">Access in grid manager</span>
+								<?php 
+									$ar 	= array('Yes' => 'y', 'No' => 'n');
+									$dbKey 	= isset($module['ext_access']) ? $module['ext_access'] : 'n';
+									$name	= 'rgen_customproducts_module[' . $module_row . '][ext_access]';
+									$id		= 'ext_access'.$module_row;
+									$extStatus = $dbKey;
+								?>
+								<div class="btn-group ext-access" data-clone="ext_access" data-toggle="buttons-radio">
+									<?php foreach ($ar as $key => $value) { ?>
+										<?php ($value ==  $dbKey) ? $selected = ' active' : $selected=''; ?>
+										<label for="<?php echo $id . '-' . $value; ?>"  type="button" class="btn btn-small<?php echo $selected; ?>">
+											<input type="radio" id="<?php echo $id . '-' . $value; ?>" name="<?php echo $name; ?>" value="<?php echo $value; ?>" <?php if ($dbKey == $value) { ?>checked<?php }?>>
+											<?php echo $key; ?>
+										</label>
+									<?php } ?>
+								</div>
+								<div style="margin-top:5px;margin-bottom:8px;<?php echo $extStatus == 'n' ? 'display:none;' : null; ?>">
+									<?php 
+										$dbKey 	= isset($module['ext_id']) ? $module['ext_id'] : 'ext_'.$module_row;
+										$name	= 'rgen_customproducts_module[' . $module_row . '][ext_id]';
+									?>
+									<input type="hidden" data-clone="ext_id" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
+									<?php 
+										$dbKey 	= isset($module['ext_name']) ? $module['ext_name'] : 'Module-'.($module_row+1);
+										$name	= 'rgen_customproducts_module[' . $module_row . '][ext_name]';
+									?>
+									<input type="text" data-clone="ext_name" class="ext-name" name="<?php echo $name; ?>" value="<?php echo $dbKey; ?>" />
+									<div class="help-block">
+										This name will display in Grid Manager module list.
+									</div>
+								</div>
+							</div>
+							
+							<div class="mod-setting-wrp"<?php echo $extStatus == 'y' ? ' style="display:none;"' : null; ?>>
+							<div class="mb10">
 								<span class="lbl-1">Layout</span>
 								<?php 
 								$ar 	= $layouts;
@@ -362,6 +410,7 @@ $bodyBgAttachment = array( 'inherit', 'fixed');
 									</select>
 								</span>
 							</div>
+
 							<!-- Category selection -->
 							<div class="control-group cat-select-wrp" style="display:<?php if(isset($module['cat_status'])){ echo "block;"; }else{echo "none;";} ?>;">
 								<label class="lbl-1">Display content</label>
@@ -508,6 +557,7 @@ $bodyBgAttachment = array( 'inherit', 'fixed');
 										</div>
 									</div>
 								</div>
+							</div>
 							</div>
 						</td>
 						<td class="status">
@@ -688,6 +738,40 @@ $bodyBgAttachment = array( 'inherit', 'fixed');
 	</td>
 	<td class="layout-option">
 		<div class="mb10">
+			<span class="lbl-1">Module settings</span>
+			<div>
+				<a data-url="view/template/module/rgen_customproducts/settings.php" data-title="Module display settings" class="popup btn mb10">Edit</a>
+				<input type="hidden" data-clone="moduleSettings" class="moduleSettings" name="" value="20|50|50|0|0|y|7" />
+			</div>
+		</div><br>
+		<div class="mb10">
+			<span class="lbl-1">Access in grid manager</span>
+			<?php 
+				$ar 	= array('Yes' => 'y', 'No' => 'n');
+				$dbKey 	= 'n';
+				$name	= '';
+				$id		= '';
+			?>
+			<div class="btn-group ext-access" data-clone="ext_access" data-toggle="buttons-radio">
+				<?php foreach ($ar as $key => $value) { ?>
+					<?php ($value ==  $dbKey) ? $selected = ' active' : $selected=''; ?>
+					<label for="<?php echo $id . '-' . $value; ?>"  type="button" class="btn btn-small<?php echo $selected; ?>">
+						<input type="radio" id="<?php echo $id . '-' . $value; ?>" name="<?php echo $name; ?>" value="<?php echo $value; ?>" <?php if ($dbKey == $value) { ?>checked="checked"<?php }?>>
+						<?php echo $key; ?>
+					</label>
+				<?php } ?>
+			</div>
+			<div style="margin-top:5px;margin-bottom:8px;<?php echo $dbKey == 'n' ? 'display:none;' : null; ?>">
+				<input type="hidden" name="" data-clone="ext_id" value="" />
+				<input type="text" class="ext-name" data-clone="ext_name" name="" value="" />
+				<div class="help-block">
+					This name will display in Grid Manager module list.
+				</div>
+			</div>
+		</div>
+		
+		<div class="mod-setting-wrp">
+		<div class="mb10">
 			<span class="lbl-1">Layout</span>
 			<?php $ar 	= $layouts; ?>
 			<span class='select'>
@@ -801,6 +885,8 @@ $bodyBgAttachment = array( 'inherit', 'fixed');
 				</div>
 			</div>
 		</div>
+
+		</div>
 	</td>
 	<td class="status">
 		<?php $dbKey 	= '0'; $id		= 'status'; ?>
@@ -817,10 +903,11 @@ $bodyBgAttachment = array( 'inherit', 'fixed');
 </tr>
 </table>
 </div>
-
+<div id="dialog-data"></div>
 <script src="view/javascript/rgen/bootstrap.min.js"></script>
 <script src="view/javascript/rgen/rgenadmin.js"></script>
 <script src="view/javascript/rgen/messi.min.js"></script>
+<script src="view/javascript/rgen/jquery.blockUI.js"></script>
 <script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script> 
 
 <script type="text/javascript">
@@ -854,6 +941,8 @@ function clone(cloneData, cloneAdd){
 	$('#section-'+i+' .block-settings').hide();
 	$('#section-'+i+' .layout-option .control-group .btn-group label:first').addClass("active");
 	$('#section-'+i+' .img-holder').css({backgroundImage: "<?php echo $no_img; ?>"});
+
+	console.log($('#section-'+i).html());
 	
 	$('#section-'+i+' [data-clone="setting_id"]').attr("name",'rgen_customproducts_module['+i+'][setting_id]');
 	$('#section-'+i+' [data-clone="setting_id"]').attr("value",'rgen_customprd_setting'+i);
@@ -885,6 +974,30 @@ function clone(cloneData, cloneAdd){
 	$('#section-'+i+' [data-clone="img_h"]').attr("name",'rgen_customproducts_module['+i+'][img_h]');
 	$('#section-'+i+' [data-clone="layout_id"]').attr("name",'rgen_customproducts_module['+i+'][layout_id]');
 	$('#section-'+i+' [data-clone="position"]').attr("name",'rgen_customproducts_module['+i+'][position]');
+
+	$('#section-'+i+' [data-clone="moduleSettings"]').attr("name",'rgen_customproducts_module['+i+'][moduleSettings]');
+	$('#section-'+i+' [data-clone="moduleSettings"]').attr("value",'20|50|50|0|0|y|7');
+
+	$('#section-'+i+' [data-clone="ext_access"] input[value="y"]').attr("name",'rgen_customproducts_module['+i+'][ext_access]');
+	$('#section-'+i+' [data-clone="ext_access"] input[value="y"]').attr("id",'ext_access'+i+'-y');
+	$('#section-'+i+' [data-clone="ext_access"] input[value="y"]').attr("checked", false);
+	$('#section-'+i+' [data-clone="ext_access"] input[value="y"]').parent().attr("for",'ext_access'+i+'-y');
+	$('#section-'+i+' [data-clone="ext_access"] input[value="y"]').parent().removeClass('active');
+
+	$('#section-'+i+' [data-clone="ext_access"] input[value="n"]').attr("name",'rgen_customproducts_module['+i+'][ext_access]');
+	$('#section-'+i+' [data-clone="ext_access"] input[value="n"]').attr("id",'ext_access'+i+'-n');
+	$('#section-'+i+' [data-clone="ext_access"] input[value="n"]').attr("checked", true);
+	$('#section-'+i+' [data-clone="ext_access"] input[value="n"]').parent().attr("for",'ext_access'+i+'-n');
+	$('#section-'+i+' [data-clone="ext_access"] input[value="n"]').parent().addClass('active');
+
+	$('#section-'+i+' [data-clone="ext_id"]').attr("name",'rgen_customproducts_module['+i+'][ext_id]');
+	$('#section-'+i+' [data-clone="ext_id"]').attr("value",'ext_'+getRandomInt());
+	$('#section-'+i+' [data-clone="ext_id"]').parent().hide();
+	$('#section-'+i+' .mod-setting-wrp').show();
+
+	$('#section-'+i+' [data-clone="ext_name"]').attr("name",'rgen_customproducts_module['+i+'][ext_name]');
+	$('#section-'+i+' [data-clone="ext_name"]').attr("value",'Module - '+i);
+	
 	
 	$('#section-'+i+' [data-clone="status"]').attr("name",'rgen_customproducts_module['+i+'][status]');
 	$('#section-'+i+' input[type="checkbox"][data-clone="status"]').attr("id",'status'+i);
@@ -1025,7 +1138,6 @@ function save(saveURL){
 		url: saveURL,
 		data: $('#form input[type=\'text\'], #form input[type=\'checkbox\']:checked, #form input[type=\'radio\']:checked, #form input[type=\'hidden\'], #form select, #form textarea').serializeArray(),
 		success: function(data) {
-			console.log(data);
 			var msg = "<?php echo $this->language->get('text_success'); ?>";
 			successMsg(msg);
 		}
@@ -1382,6 +1494,61 @@ function colorPic(parent) {
 
 $(document).ready(function(){
 	colorPicker('.rgb', 'rgb');
+});
+
+$(window).off( "click", ".ext-access input[type='radio']");
+$(window).on('click', ".ext-access input[type='radio']", function() {
+	console.log($(this).val());
+	if ($(this).val() == 'y') {
+		$(this).parent().parent().next('div').show();
+		$(this).parent().parent().parent().next('.mod-setting-wrp').hide();
+	}else {
+		$(this).parent().parent().parent().next('.mod-setting-wrp').show();
+		$(this).parent().parent().next('div').hide();
+	};
+});
+
+$(window).off('click', '.popup');
+$(window).on('click', '.popup', function(event) {
+	event.preventDefault();
+	blockSection(".mod-content", '#d8d1c7');
+	var source = this;
+	var getTitle = $(this).attr('data-title');
+
+	$(source).addClass('pop-active');
+	$.ajax({
+		type: "POST",
+		url: $(this).attr('data-url'),
+		dataType: "html",
+		success: function(data, source) {
+			$('#dialog-data').html('');
+			$('#dialog-data').html(data);
+
+			$('#dialog-data').dialog({
+				title: getTitle,
+				dialogClass: "model-box",
+				open: function(event, ui) {
+					var popup = this;
+					$(popup).find('.apply').click(function(event) {
+						var bnrLayout = 'view/image/rgen_theme/rgen_bnr_mod_typ'+$('.pop-active + input[type="hidden"].moduleSettings').attr('data-style')+'.png';
+						$('.pop-active + .moduleSettings + br + img').attr('src', bnrLayout);
+						$(popup).dialog("close");
+					});
+				},
+				close: function (event, ui) {
+					setTimeout(function(){
+						$('#dialog-data').html('');
+						$('.pop-active').removeClass('pop-active');
+					}, 100);
+				},
+				width: 800,
+				resizable: false,
+				modal: true
+			});
+
+			$('.mod-content').unblock();
+		}
+	});
 });
 
 </script>

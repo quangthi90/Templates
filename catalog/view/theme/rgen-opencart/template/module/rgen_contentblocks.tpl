@@ -14,7 +14,7 @@
 
 <?php 
 /* Full block settings ============== */
-if ($position != 'column_left' && $position != 'column_right'){ ?>
+if ($position != 'column_left' && $position != 'column_right' && $extCheck == 'n'){ ?>
 <div class="<?php 
 	echo isset($fullB_settings['fullB']) && $fullB_settings['fullB'] == 'y' ? 'fullb' : null; 
 	echo isset($fullB_class) ? $fullB_class : null;
@@ -28,6 +28,15 @@ if ($position != 'column_left' && $position != 'column_right'){ ?>
 <div class="<?php echo $modkey.' '; ?>box" style="<?php echo $mrgTB; ?>" id="<?php echo $modkey.$module_count ?>">
 
 <style scoped>
+<?php
+if($block_settings["block_content_align"] == "l"){
+echo '#'. $modkey.$module_count. "{ text-align: left; }";
+}elseif($block_settings["block_content_align"] == "r") {
+echo '#'.$modkey.$module_count. "{ text-align: right; }";
+}else{
+echo '#'.$modkey.$module_count. "{ text-align: center; }";
+}
+?>
 #<?php echo $modkey.$module_count ?> .ctn-block { <?php echo $blockCSS; ?> }
 #<?php echo $modkey.$module_count ?> .ctn-block .img { <?php echo $imageCSS; ?> }
 </style>
@@ -37,7 +46,7 @@ if ($position != 'column_left' && $position != 'column_right'){ ?>
 	if (isset($main_title[$l_id]) && $main_title[$l_id] != '') { ?>
 	<div class="box-heading header-1"><?php echo htmlspecialchars_decode($main_title[$l_id], ENT_QUOTES); ?></div>
 	<?php } ?>
-	<div class="box-content" style="text-align: center;">
+	<div class="box-content">
 		<?php 
 		// Module description
 		if (isset($description[$l_id]) && $description[$l_id] != '') { echo htmlspecialchars_decode($description[$l_id], ENT_QUOTES ); } ?>
@@ -68,7 +77,7 @@ if ($position != 'column_left' && $position != 'column_right'){ ?>
 			<?php if ($mod_settings['display_style'] == 'Carousel') { ?>
 			<div class="grid-wrp<?php echo ' gt-'.$mod_settings['gutter']; ?>">
 				<div class="row<?php echo ' col-'.$col.$t.$m; ?>">
-					<div class="owl-carousel box-product">
+					<div class="box-product<?php echo $mod_settings['effect'] == 'slide' || $mod_settings['effect'] == 'fade' && $col != 1 ? " owl-carousel" : null; ?>">
 						<?php include VQMod::modCheck("catalog/view/theme/rgen-opencart/template/module/rgen_contentblocks_data.php"); ?>
 					</div>
 				</div>
@@ -77,17 +86,23 @@ if ($position != 'column_left' && $position != 'column_right'){ ?>
 			<script type="text/javascript">
 			$(document).ready(function() {
 				var mod = "#<?php echo $modkey.$module_count ?>";
+				<?php if ($mod_settings['effect'] == 'slide' || $mod_settings['effect'] == 'fade' && $col != 1) { ?>
 				$(mod + " .owl-carousel").owlCarousel({
 					itemsCustom : [ [0, 1], [420, 2], [600, 3], [768, 4], [980, <?php echo $col; ?>] ],
 					navigation : false,
 					navigationText : ["",""],
-					pagination: true,
+					pagination: <?php echo $mod_settings['pg_status'] == 'y' ? 'true' : 'false'; ?>,
 					responsiveBaseWidth: mod
 				});
 				$(mod + " .owl-prev").addClass('prev');
 				$(mod + " .owl-next").addClass('next');
 				$(mod + " .owl-controls").addClass('carousel-controls');
 				$(mod + " .owl-buttons").css({paddingRight: "<?php $gt = $mod_settings['gutter']/2+5; echo $gt.'px'; ?>"});
+				<?php }else { ?>
+				$(mod + " .box-product").quovolver({ equalHeight : false });
+				$(mod+' .quovolve .ctn-block').matchHeight('remove');
+				<?php } ?>
+				/**/
 			});
 			</script>
 			<?php }
@@ -108,7 +123,6 @@ if ($position != 'column_left' && $position != 'column_right'){ ?>
 			</div>
 			<?php }
 			/*******************************/ ?>
-
 
 			<?php 
 			/* Data in scroll
@@ -148,35 +162,37 @@ if ($position != 'column_left' && $position != 'column_right'){ ?>
 <script type="text/javascript">
 $(document).ready(function() {
 	var mod = "#<?php echo $modkey.$module_count ?>";
+	
 	<?php if ($block_settings["img_position"] == 'l') { ?>
-	$(document).ready(function() {
-		
-		if ($(mod + " .img-l").hasClass('wrp-n')) {
-			$(mod + " .img-l").css({opacity:0});
-			setTimeout(function(){
-				var r = <?php echo isset($block_settings["img_offset_r"]) && $block_settings["img_offset_r"] != '' ? $block_settings["img_offset_r"] : 20; ?>;
-				$(mod + " .info-wrp").css('marginLeft', ($(mod + " .img").outerWidth()+r));
-				$(mod + " .img-l").animate({opacity: 1}, 200, function() {
-					$(mod + " .grid-wrp .col").matchHeight();
-					//eqh();
-				});
-			}, 200);
-		};
-	});
-	<?php } else { ?>
-	$(mod + " .grid-wrp .col").matchHeight();
+	if ($(mod + " .img-l").hasClass('wrp-n')) {
+		$(mod + " .img-l").css({opacity:0});
+		setTimeout(function(){
+			var r = <?php echo isset($block_settings["img_offset_r"]) && $block_settings["img_offset_r"] != '' ? $block_settings["img_offset_r"] : 20; ?>;
+			$(mod + " .info-wrp").css('marginLeft', ($(mod + " .img").outerWidth()+r));
+			$(mod + " .img-l").animate({opacity: 1}, 200, function() {});
+		}, 200);
+	};
+	<?php } ?>
+
+	<?php if ($block_settings["img_position"] == 'r') { ?>
+	if ($(mod + " .img-r").hasClass('wrp-n')) {
+		$(mod + " .img-r").css({opacity:0});
+		setTimeout(function(){
+			var r = <?php echo isset($block_settings["img_offset_l"]) && $block_settings["img_offset_l"] != '' ? $block_settings["img_offset_l"] : 20; ?>;
+			$(mod + " .info-wrp").css('marginRight', ($(mod + " .img").outerWidth()+r));
+			$(mod + " .img-r").animate({opacity: 1}, 200, function() {});
+		}, 200);
+	};
 	<?php } ?>
 });
 </script>
 
 <?php 
 /* Full block settings ============== */
-if ($position != 'column_left' && $position != 'column_right'){ ?>
+if ($position != 'column_left' && $position != 'column_right' && $extCheck == 'n'){ ?>
 	<?php if (isset($fullB_settings['fullB']) && $fullB_settings['fullB'] == 'y') { ?>
 	<script>
 	jQuery(document).ready(function($) {
-		$("#fullB<?php echo $module_count.'-'.$modkey; ?>").fullblock({ child: ".fullB-inner" });
-
 		<?php if($parallaxStatus == 'y'){ ?>
 		// Parallax image function
 		$("#fullB<?php echo $module_count.'-'.$modkey; ?>").each(function(){
@@ -190,7 +206,10 @@ if ($position != 'column_left' && $position != 'column_right'){ ?>
 			}); 
 		});
 		<?php } ?>
-
+		$(window).resize(function(){
+			fullB("#fullB<?php echo $module_count.'-'.$modkey; ?>", ".fullB-inner");
+		});
+		fullB("#fullB<?php echo $module_count.'-'.$modkey; ?>", ".fullB-inner");
 	});
 	</script>
 	<?php } ?>

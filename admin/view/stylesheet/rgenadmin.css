@@ -2197,11 +2197,13 @@ div[data-cptype] {
 
 /* RGEN GALLERY MODULE
 **************************************** */
+.block-container,
 .gallery-image-container {
 	background-color: #F6F4F3 !important;
 	margin: 0 -20px 0 -20px;
 	padding: 20px;
 }
+.module-box,
 .gallery-box {
 	padding:20px; 
 	position:relative; 
@@ -2215,10 +2217,54 @@ div[data-cptype] {
 .gallery-box .img-preview {
 	vertical-align: top; width: auto; margin:0px;
 }
+.module-box .mod-del,
 .gallery-box .mod-del {
 	position: absolute; right: 3px; top: 3px; padding: 3px;
 }
 
+/* RGEN GRID MANAGER MODULE
+**************************************** */
+.grid-preview,
+.module-box {
+	float: none;
+	margin-right: 0px;
+	margin-bottom: 5px;
+}
+.grid-preview {
+	background-color: rgba(0,0,0,0.05);
+	padding: 20px;
+	border: 1px solid rgba(0,0,0,0.03);
+	border-radius: 5px;
+	margin-bottom: 20px;
+	box-shadow: inset 0 -1px 4px 0 rgba(0,0,0,0.05);
+}
+.grid-preview .rw > div > .g-in {
+	background-color: #fff;
+	border-radius: 5px;
+	text-align: center;
+	padding: 10px;
+}
+
+.rw * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.rw:after, .rw:before { content: ''; display: table; clear: both; }
+.rw { margin-right: -15px; margin-left: -15px; }
+.rw [class^=gr] { padding-right: 15px; padding-left: 15px; float: left; margin-bottom: 10px; }
+.rw .gr12 { width: 100%; }
+.rw .gr11 { width: 91.66666666666666%; }
+.rw .gr10 { width: 83.33333333333334%; }
+.rw .gr9 { width: 75%; }
+.rw .gr8 { width: 66.66666666666666%; }
+.rw .gr7 { width: 58.333333333333336%; }
+.rw .gr6 { width: 50%; }
+.rw .gr5 { width: 41.66666666666667%; }
+.rw .gr4 { width: 33.33333333333333%; }
+.rw .gr3 { width: 25%; }
+.rw .gr2 { width: 16.666666666666664%; }
+.rw .gr1 { width: 8.333333333333332%; }
 
 /* HELPER CLASS
 **************************************** */

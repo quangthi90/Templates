@@ -23,8 +23,10 @@ website:   	http://www.themepunch.com
 	margin-bottom: 50px;
 }*/
 .revo-slideshow-wrapper { margin-bottom: 40px; }
+/* .rv-pfs,
+.rv-pfws { margin: -40px -70px 70px -70px; } */
 .rv-pfs,
-.rv-pfws { margin: -40px -70px 70px -70px; }
+.rv-pfws { margin: 0 0 70px 0; }
 .rv-pfs { margin-top: 0; }
 .revo-pfs .home-wrapper #content { padding-top: 0px; }
 

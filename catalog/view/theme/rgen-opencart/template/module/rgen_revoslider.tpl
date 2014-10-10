@@ -155,12 +155,12 @@ if ($captions_style) {
 				<?php if ($this->config->get('RGen_reaponsive_status') == 1) { ?>
 				var fullWidth = Math.floor(($(window).width() - $('.content-body-wrapper').width())/2);
 				$('#rgen-revo<?php echo $module; ?>').css({marginLeft: -fullWidth, marginRight: -fullWidth});
-				$('#rgen-revo<?php echo $module; ?>').css({opacity:0}).prependTo('.content-body-wrapper').end().animate({opacity:1}, 500);
+				$('#rgen-revo<?php echo $module; ?>').css({opacity:0}).prependTo('.fw-slider-holder').end().animate({opacity:1}, 500);
 				<?php }else{ ?>
 				if ($(window).width() > 980) {
 					var fullWidth = Math.floor(($(window).width() - $('.content-body-wrapper').width())/2);
 					$('#rgen-revo<?php echo $module; ?>').css({marginLeft: -fullWidth, marginRight: -fullWidth});
-					$('#rgen-revo<?php echo $module; ?>').css({opacity:0}).prependTo('.content-body-wrapper').end().animate({opacity:1}, 500);		
+					$('#rgen-revo<?php echo $module; ?>').css({opacity:0}).prependTo('.fw-slider-holder').end().animate({opacity:1}, 500);		
 				};
 				<?php } ?>
 			}
@@ -182,7 +182,7 @@ if ($captions_style) {
 		if ($setting['slider_size'] == 'rv-pfs'){ ?>
 			function topMargin() {
 				$('body').addClass('revo-pfs');
-				$('#rgen-revo<?php echo $module; ?>').css({opacity:0}).prependTo('#content').end().animate({opacity:1}, 500);
+				$('#rgen-revo<?php echo $module; ?>').css({opacity:0}).prependTo('.fw-slider-holder').end().animate({opacity:1}, 500);
 				$('#rgen-revo<?php echo $module; ?> .bannercontainer').css({marginTop: -$('#header-wrapper').outerHeight()});
 				/*var sldOffset = $('#rgen-revo<?php echo $module; ?>').offset();
 				var top = sldOffset.top - $('#header-wrapper').outerHeight() - $('.tp-wrp').outerHeight();

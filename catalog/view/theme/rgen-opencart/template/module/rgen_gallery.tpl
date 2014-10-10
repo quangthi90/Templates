@@ -13,7 +13,7 @@
 
 <?php 
 /* Full block settings ============== */
-if ($position != 'column_left' && $position != 'column_right'){ ?>
+if ($position != 'column_left' && $position != 'column_right' && $extCheck == 'n'){ ?>
 <div class="<?php 
 	echo isset($fullB_settings['fullB']) && $fullB_settings['fullB'] == 'y' ? 'fullb' : null; 
 	echo isset($fullB_class) ? $fullB_class : null;
@@ -87,7 +87,10 @@ if ($position != 'column_left' && $position != 'column_right'){ ?>
 			/* Banners in scroll
 			******************************/	?>
 			<?php if ($mod_settings['display_style'] == 'Carousel') { ?>
-			<div class="controls-top banner-grid<?php echo ' gt-'.$mod_settings['gutter']; ?>">
+			<div class="banner-grid<?php echo ' gt-'.$mod_settings['gutter']; ?>">
+				<?php if ($mod_settings['arrow-status'] == 'y') { ?>
+				<div class="carousel-arrows"><a class="prev"></a><a class="next"></a></div>
+				<?php } ?>
 				<div class="row<?php echo ' col-'.$col.$t.$m; ?>">
 					<div class="owl-carousel box-product">
 						<?php foreach ($modules as $module) { 
@@ -114,17 +117,21 @@ if ($position != 'column_left' && $position != 'column_right'){ ?>
 					gallery: { enabled:true }
 				});	
 
-				$(mod + " .owl-carousel").owlCarousel({
-					itemsCustom : [ [0, 2], [420, 2], [600, 3], [768, 4], [980, <?php echo $col; ?>] ],
-					navigation : true,
+				var owl = $(mod + " .owl-carousel");
+				owl.owlCarousel({
+					itemsCustom : [ [0, 1], [420, 2], [600, 3], [768, 4], [940, <?php echo $col; ?>] ],
+					navigation : false,
 					navigationText : ["",""],
-					pagination: true,
-					responsiveBaseWidth: mod
+					pagination: <?php echo $mod_settings['pg-status'] == "y" ? 'true' : 'false'; ?>,
+					responsiveBaseWidth: "#content"
 				});
-				$(mod + " .owl-prev").addClass('prev');
-				$(mod + " .owl-next").addClass('next');
+
+				<?php if ($mod_settings['arrow-status'] == 'y') { ?>
+				// Custom Navigation Events
+				$(mod + " .carousel-arrows .next").click(function(){ owl.trigger('owl.next'); });
+				$(mod + " .carousel-arrows .prev").click(function(){ owl.trigger('owl.prev'); });
+				<?php } ?>
 				$(mod + " .owl-controls").addClass('carousel-controls');
-				$(mod + " .owl-buttons").css({paddingRight: "<?php $gt = $mod_settings['gutter']/2+5; echo $gt.'px'; ?>"});
 			});
 			</script>
 			<?php }
@@ -226,12 +233,10 @@ $(document).ready(function() {
 
 <?php 
 /* Full block settings ============== */
-if ($position != 'column_left' && $position != 'column_right'){ ?>
+if ($position != 'column_left' && $position != 'column_right' && $extCheck == 'n'){ ?>
 	<?php if (isset($fullB_settings['fullB']) && $fullB_settings['fullB'] == 'y') { ?>
 	<script>
 	jQuery(document).ready(function($) {
-		$("#fullB<?php echo $module_count ?>-gallery-module").fullblock({ child: ".fullB-inner" });
-		
 		<?php if($parallaxStatus == 'y'){ ?>
 		// Parallax image function
 		$("#fullB<?php echo $module_count ?>-gallery-module").each(function(){
@@ -246,6 +251,10 @@ if ($position != 'column_left' && $position != 'column_right'){ ?>
 		});
 		<?php } ?>
 
+		$(window).resize(function(){
+			fullB("#fullB<?php echo $module_count ?>-gallery-module", ".fullB-inner");
+		});
+		fullB("#fullB<?php echo $module_count ?>-gallery-module", ".fullB-inner");
 	});
 	</script>
 	<?php } ?>

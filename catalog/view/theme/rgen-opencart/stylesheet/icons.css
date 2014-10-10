@@ -48,6 +48,7 @@
 .jcarousel-next:before,
 .list-carousel .carousel-controls a:before,
 .owl-buttons div:before,
+.carousel-arrows a:before,
 #slidshow-box .carousel-controls a:before,
 #header .button-search:before,
 #header #cart .heading a:before,
@@ -137,6 +138,8 @@
 	}
 
 /* Carousel arrows */
+.carousel-arrows .prev:before,
+.carousel-arrows .next:before,
 .jcarousel-prev:before,
 .jcarousel-next:before,
 .carousel-controls .prev:before,
@@ -148,7 +151,8 @@
 	left:5px;
 	}
 .jcarousel-prev:before,
-.carousel-controls .prev:before {
+.carousel-controls .prev:before,
+.carousel-arrows .prev:before {
 	content: 'f';
 	top: 4px;
 	left: 4px;

@@ -1,6 +1,7 @@
 <?php
 // Heading Goes here:
 $_['heading_title']    = '<strong style="color:#e45e39;">R.Gen Image Gallery</strong>';
+$_['module_name']    = 'R.Gen Image Gallery';
 
 // Text
 $_['text_module']      = 'Modules';

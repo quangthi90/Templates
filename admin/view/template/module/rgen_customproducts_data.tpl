@@ -17,7 +17,8 @@
 		"Product block 1"		=> 'prd1',
 		"Product block 2"		=> 'prd2',
 		"Product block 3"		=> 'prd3',
-		"Product block 4"		=> 'prd4'
+		"Product block 4"		=> 'prd4',
+		"Product block - Small"		=> 'prd_small'
 	);
 
 	$prdStyle = array(
