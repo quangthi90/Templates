@@ -490,7 +490,6 @@ class ControllerProductProduct extends Controller {
 			} else {
 				$this->template = 'default/template/product/product.tpl';
 			}
-
 			$this->children = array(
 
 				'common/rgen-positions/rgen_pd_above_img',
