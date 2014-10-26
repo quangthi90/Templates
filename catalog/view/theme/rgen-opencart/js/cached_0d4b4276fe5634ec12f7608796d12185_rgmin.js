@@ -1,7 +1,7 @@
 /*
   This is a combined version of R.Gen theme JS 
 
-  Last Updated:: October 17 2014 19:21:19.
+  Last Updated:: October 23 2014 18:47:09.
 
   Files include::
   catalog/view/theme/rgen-opencart/js/jquery.min.js
