@@ -65,7 +65,7 @@ $(document).ready(function(){
       <li id="dashboard"><a href="<?php echo $home; ?>" class="top"><?php echo $text_dashboard; ?></a></li>
       <li id="catalog"><a class="top"><?php echo $text_staff; ?></a>
         <ul>
-          <li><a href="<?php echo $category; ?>"><?php echo $text_staff_manage; ?></a></li>
+          <li><a href="<?php echo $staff; ?>"><?php echo $text_staff_manage; ?></a></li>
         </ul>
       </li>
       <li id="extension"><a class="top"><?php echo $text_extension; ?></a>
