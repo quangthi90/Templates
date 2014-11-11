@@ -96,4 +96,8 @@ $_['text_openbay_order_import']        = 'Order import';
 $_['text_paypal_manage']               = 'PayPal';
 $_['text_paypal_search']               = 'Search';
 $_['text_recurring_profile']           = 'Recurring Profiles';
+
+// staff
+$_['text_staff']          			   = 'Staff';
+$_['text_staff_manage']         	   = 'Manage Staff';
 ?>

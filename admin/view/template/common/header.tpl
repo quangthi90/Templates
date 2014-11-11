@@ -63,23 +63,9 @@ $(document).ready(function(){
   <div id="menu">
     <ul class="left" style="display: none;">
       <li id="dashboard"><a href="<?php echo $home; ?>" class="top"><?php echo $text_dashboard; ?></a></li>
-      <li id="catalog"><a class="top"><?php echo $text_catalog; ?></a>
+      <li id="catalog"><a class="top"><?php echo $text_staff; ?></a>
         <ul>
-          <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
-          <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
-          <li><a href="<?php echo $filter; ?>"><?php echo $text_filter; ?></a></li>
-          <li><a href="<?php echo $profile; ?>"><?php echo $text_profile; ?></a></li>
-          <li><a class="parent"><?php echo $text_attribute; ?></a>
-            <ul>
-              <li><a href="<?php echo $attribute; ?>"><?php echo $text_attribute; ?></a></li>
-              <li><a href="<?php echo $attribute_group; ?>"><?php echo $text_attribute_group; ?></a></li>
-            </ul>
-          </li>
-          <li><a href="<?php echo $option; ?>"><?php echo $text_option; ?></a></li>
-          <li><a href="<?php echo $manufacturer; ?>"><?php echo $text_manufacturer; ?></a></li>
-          <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
-          <li><a href="<?php echo $review; ?>"><?php echo $text_review; ?></a></li>
-          <li><a href="<?php echo $information; ?>"><?php echo $text_information; ?></a></li>
+          <li><a href="<?php echo $category; ?>"><?php echo $text_staff_manage; ?></a></li>
         </ul>
       </li>
       <li id="extension"><a class="top"><?php echo $text_extension; ?></a>
