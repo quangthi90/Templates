@@ -230,6 +230,9 @@ class ControllerCommonHeader extends Controller {
 			// staff
 			$this->data['staff'] = $this->url->link('staff/staff', 'token=' . $this->session->data['token'], 'SSL');
 
+			// department
+			$this->data['department'] = $this->url->link('department/department', 'token=' . $this->session->data['token'], 'SSL');
+
 			$this->data['stores'] = array();
 
 			$this->load->model('setting/store');
