@@ -18,19 +18,11 @@
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <table class="form">
-          	<tr>
-              <td><span class="required">*</span> <?php echo $entry_firstname; ?></td>
-              <td><input type="text" name="firstname" value="<?php echo $firstname; ?>" size="100" /></td>
-            </tr>
             <tr>
-              <td><span class="required">*</span> <?php echo $entry_middlename; ?></td>
-              <td><input type="text" name="middlename" value="<?php echo $middlename; ?>" size="100" /></td>
-            </tr>
-            <tr>
-              <td><span class="required">*</span> <?php echo $entry_lastname; ?></td>
-              <td><input type="text" name="lastname" value="<?php echo $lastname; ?>" size="100" />
-              <?php if ($error_lastname) { ?>
-                <span class="error"><?php echo $error_lastname; ?></span>
+              <td><span class="required">*</span> <?php echo $entry_name; ?></td>
+              <td><input type="text" name="name" value="<?php echo $name; ?>" size="100" />
+              <?php if ($error_name) { ?>
+                <span class="error"><?php echo $error_name; ?></span>
                 <?php } ?></td>
             </tr>
             <tr>
@@ -41,19 +33,8 @@
                 <?php } ?></td>
             </tr>
             <tr>
-              <td><?php echo $entry_image; ?></td>
-              <td valign="top"><div class="image"><img src="<?php echo $thumb; ?>" alt="" id="thumb" />
-                  <input type="hidden" name="image" value="<?php echo $image; ?>" id="image" />
-                  <br />
-                  <a onclick="image_upload('image', 'thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#thumb').attr('src', '<?php echo $no_image; ?>'); $('#image').attr('value', '');"><?php echo $text_clear; ?></a></div></td>
-            </tr>
-            <tr>
-              <td><?php echo $entry_birthday; ?></td>
-              <td><input class="input-medium date" style="width: 250px;" type="text" name="birthday" value="<?php echo $birthday; ?>" size="100" /></td>
-            </tr>
-            <tr>
-              <td><?php echo $entry_salary; ?></td>
-              <td><input type="text" name="salary" value="<?php echo $salary; ?>" size="100" /></td>
+              <td><?php echo $entry_order; ?></td>
+              <td><input type="text" name="order" value="<?php echo $order; ?>" size="100" /></td>
             </tr>
           </table>
         </div>

@@ -19,11 +19,11 @@
         <div id="tab-general">
           <table class="form">
           	<tr>
-              <td><span class="required">*</span> <?php echo $entry_firstname; ?></td>
+              <td><?php echo $entry_firstname; ?></td>
               <td><input type="text" name="firstname" value="<?php echo $firstname; ?>" size="100" /></td>
             </tr>
             <tr>
-              <td><span class="required">*</span> <?php echo $entry_middlename; ?></td>
+              <td><?php echo $entry_middlename; ?></td>
               <td><input type="text" name="middlename" value="<?php echo $middlename; ?>" size="100" /></td>
             </tr>
             <tr>

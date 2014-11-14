@@ -20,7 +20,7 @@ class ControllerDepartmentDepartment extends Controller {
 		$this->load->model('department/department');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_department_department->adddepartment($this->request->post);
+			$this->model_department_department->addDepartment($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -69,7 +69,7 @@ class ControllerDepartmentDepartment extends Controller {
 
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $department_id) {
-				$this->model_department_department->deletedepartment($department_id);
+				$this->model_department_department->deleteDepartment($department_id);
 			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -139,7 +139,7 @@ class ControllerDepartmentDepartment extends Controller {
 				'department_id' 	  	=> $result['department_id'],
 				'code'        			=> $result['code'],
 				'name'        			=> $result['name'],
-				'order'	    			=> $result['order'],
+				'order'	    			=> $result['sort_order'],
 				'selected'    			=> isset($this->request->post['selected']) && in_array($result['department_id'], $this->request->post['selected']),
 				'action'      			=> $action
 			);
@@ -203,16 +203,9 @@ class ControllerDepartmentDepartment extends Controller {
 		$this->data['text_percent'] = $this->language->get('text_percent');
 		$this->data['text_amount'] = $this->language->get('text_amount');
 
-		$this->data['entry_firstname'] = $this->language->get('entry_firstname');
-		$this->data['entry_middlename'] = $this->language->get('entry_middlename');
-		$this->data['entry_lastname'] = $this->language->get('entry_lastname');
+		$this->data['entry_name'] = $this->language->get('entry_name');
 		$this->data['entry_code'] = $this->language->get('entry_code');
-		$this->data['entry_image'] = $this->language->get('entry_image');
-		$this->data['entry_birthday'] = $this->language->get('entry_birthday');
-		$this->data['entry_salary'] = $this->language->get('entry_salary');		
-		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_layout'] = $this->language->get('entry_layout');
+		$this->data['entry_order'] = $this->language->get('entry_order');
 
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -227,10 +220,10 @@ class ControllerDepartmentDepartment extends Controller {
 			$this->data['error_warning'] = '';
 		}
 
-		if (isset($this->error['lastname'])) {
-			$this->data['error_lastname'] = $this->error['lastname'];
+		if (isset($this->error['name'])) {
+			$this->data['error_name'] = $this->error['name'];
 		} else {
-			$this->data['error_lastname'] = array();
+			$this->data['error_name'] = array();
 		}
 
 		if (isset($this->error['code'])) {
@@ -267,72 +260,28 @@ class ControllerDepartmentDepartment extends Controller {
 
 		$this->data['token'] = $this->session->data['token'];
 
-		if (isset($this->request->post['firstname'])) {
-			$this->data['firstname'] = $this->request->post['firstname'];
+		if (isset($this->request->post['name'])) {
+			$this->data['name'] = $this->request->post['name'];
 		} elseif (!empty($department_info)) {
-			$this->data['firstname'] = $department_info['firstname'];
+			$this->data['name'] = $department_info['name'];
 		} else {
-			$this->data['firstname'] = '';
-		}
-
-		if (isset($this->request->post['middlename'])) {
-			$this->data['middlename'] = $this->request->post['middlename'];
-		} elseif (!empty($department_info)) {
-			$this->data['middlename'] = $department_info['middlename'];
-		} else {
-			$this->data['middlename'] = '';
-		}
-
-		if (isset($this->request->post['lastname'])) {
-			$this->data['lastname'] = $this->request->post['lastname'];
-		} elseif (!empty($department_info)) {
-			$this->data['lastname'] = $department_info['lastname'];
-		} else {
-			$this->data['lastname'] = '';
+			$this->data['name'] = '';
 		}
 
 		if (isset($this->request->post['code'])) {
 			$this->data['code'] = $this->request->post['code'];
 		} elseif (!empty($department_info)) {
-			$this->data['code'] = $department_info['department_code'];
+			$this->data['code'] = $department_info['code'];
 		} else {
 			$this->data['code'] = '';
 		}
 
-		if (isset($this->request->post['image'])) {
-			$this->data['image'] = $this->request->post['image'];
-		// } elseif (!empty($department_info)) {
-		// 	$this->data['image'] = $department_info['image'];
-		} else {
-			$this->data['image'] = '';
-		}
-
-		$this->load->model('tool/image');
-
-		if (isset($this->request->post['image']) && file_exists(DIR_IMAGE . $this->request->post['image'])) {
-			$this->data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
-		// } elseif (!empty($department_info) && $department_info['image'] && file_exists(DIR_IMAGE . $department_info['image'])) {
-		// 	$this->data['thumb'] = $this->model_tool_image->resize($department_info['image'], 100, 100);
-		} else {
-			$this->data['thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
-		}
-
-		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
-
-		if (isset($this->request->post['birthday'])) {
-			$this->data['birthday'] = $this->request->post['birthday'];
+		if (isset($this->request->post['order'])) {
+			$this->data['order'] = $this->request->post['order'];
 		} elseif (!empty($department_info)) {
-			$this->data['birthday'] = date($this->language->get('date_format_short'), strtotime($department_info['birthday']));
+			$this->data['order'] = $department_info['sort_order'];
 		} else {
-			$this->data['birthday'] = '';
-		}
-
-		if (isset($this->request->post['salary'])) {
-			$this->data['salary'] = $this->request->post['salary'];
-		} elseif (!empty($department_info)) {
-			$this->data['salary'] = $department_info['salary'];
-		} else {
-			$this->data['salary'] = '';
+			$this->data['order'] = 0;
 		}
 
 		$this->template = 'department/department_form.tpl';
@@ -349,10 +298,12 @@ class ControllerDepartmentDepartment extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
-		foreach ($this->request->post['department_description'] as $language_id => $value) {
-			if ((utf8_strlen($value['name']) < 2) || (utf8_strlen($value['name']) > 255)) {
-				$this->error['name'][$language_id] = $this->language->get('error_name');
-			}
+		if ((utf8_strlen($this->request->post['name']) < 2) || (utf8_strlen($this->request->post['name']) > 30)) {
+			$this->error['name'] = $this->language->get('error_name');
+		}
+
+		if ((utf8_strlen($this->request->post['code']) < 1) || (utf8_strlen($this->request->post['code']) > 50)) {
+			$this->error['code'] = $this->language->get('error_code');
 		}
 
 		if ($this->error && !isset($this->error['warning'])) {

@@ -174,13 +174,13 @@ class ModelStaffStaff extends Model {
 	}
 
 	public function getStaff($staff_id) {
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "staff WHERE staff_id = '$staff_id'");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "staff WHERE staff_id = '$staff_id' AND deleted = 0");
 
 		return $query->row;
 	} 
 
 	public function getStaffs($data) {
-		$sql = "SELECT * FROM " . DB_PREFIX . "staff";
+		$sql = "SELECT * FROM " . DB_PREFIX . "staff WHERE deleted = 0";
 
 		$sql .= " ORDER BY 'lastname'";
 
@@ -202,7 +202,7 @@ class ModelStaffStaff extends Model {
 	}
 
 	public function getTotalStaffs() {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "staff");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "staff WHERE deleted = 0");
 
 		return $query->row['total'];
 	}

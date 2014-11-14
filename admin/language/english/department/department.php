@@ -16,18 +16,13 @@ $_['column_order']  		 = 'Order';
 $_['column_action']          = 'Action';
 
 // Entry
-$_['entry_firstname']        = 'Department First Name:';
-$_['entry_middlename']       = 'Department Middle Name:';
-$_['entry_lastname']         = 'Department Last Name:';
-$_['entry_code']		 	 = 'Department Code:';
-$_['entry_image']            = 'Avatar:';
-$_['entry_birthday']         = 'Birthday:';
-$_['entry_salary']           = 'Salary:';
-$_['entry_image']            = 'Avatar:';
-$_['entry_image']            = 'Avatar:';
+$_['entry_name']        	 = 'Name:';
+$_['entry_code']		 	 = 'Code:';
+$_['entry_order']            = 'Order:';
 
 // Error 
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';
 $_['error_permission']       = 'Warning: You do not have permission to modify Departments!';
-$_['error_name']             = 'Department Name must be between 2 and 32 characters!';
+$_['error_name']             = 'Department Name must be between 2 and 30 characters!';
+$_['error_code']             = 'Department Code must be between 1 and 50 characters!';
 ?>
