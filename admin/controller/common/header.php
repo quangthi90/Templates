@@ -123,6 +123,10 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_staff'] = $this->language->get('text_staff');
 		$this->data['text_staff_manage'] = $this->language->get('text_staff_manage');
 
+		// department
+		$this->data['text_department'] = $this->language->get('text_department');
+		$this->data['text_department_manage'] = $this->language->get('text_department_manage');
+
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
 

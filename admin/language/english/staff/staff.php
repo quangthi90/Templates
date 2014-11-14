@@ -11,26 +11,21 @@ $_['text_clear']             = 'Clear';
 
 // Column
 $_['column_code']      		 = 'Staff Code';
-$_['column_name']            = 'Staff Name';
+$_['column_name']            = 'Staff Fullname';
 $_['column_birthday']  		 = 'Staff Birthday';
 $_['column_salary']   		 = 'Staff Salary';
 $_['column_action']          = 'Action';
 
 // Entry
-$_['entry_name']             = 'Staff Name:';
-$_['entry_meta_keyword'] 	 = 'Meta Tag Keywords:';
-$_['entry_meta_description'] = 'Meta Tag Description:';
-$_['entry_description']      = 'Description:';
-$_['entry_parent']           = 'Parent:';
-$_['entry_filter']           = 'Filters:<br /><span class="help">(Autocomplete)</span>';
-$_['entry_store']            = 'Stores:';
-$_['entry_keyword']          = 'SEO Keyword:<br /><span class="help">Do not use spaces instead replace spaces with - and make sure the keyword is globally unique.</span>';
-$_['entry_image']            = 'Image:';
-$_['entry_top']              = 'Top:<br/><span class="help">Display in the top menu bar. Only works for the top parent staffs.</span>';
-$_['entry_column']           = 'Columns:<br/><span class="help">Number of columns to use for the bottom 3 staffs. Only works for the top parent staffs.</span>';
-$_['entry_sort_order']       = 'Sort Order:';
-$_['entry_status']           = 'Status:';
-$_['entry_layout']           = 'Layout Override:';
+$_['entry_firstname']        = 'Staff First Name:';
+$_['entry_middlename']       = 'Staff Middle Name:';
+$_['entry_lastname']         = 'Staff Last Name:';
+$_['entry_code']		 	 = 'Staff Code:';
+$_['entry_image']            = 'Avatar:';
+$_['entry_birthday']         = 'Birthday:';
+$_['entry_salary']           = 'Salary:';
+$_['entry_image']            = 'Avatar:';
+$_['entry_image']            = 'Avatar:';
 
 // Error 
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';

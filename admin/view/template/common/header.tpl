@@ -68,6 +68,11 @@ $(document).ready(function(){
           <li><a href="<?php echo $staff; ?>"><?php echo $text_staff_manage; ?></a></li>
         </ul>
       </li>
+      <li id="catalog"><a class="top"><?php echo $text_department; ?></a>
+        <ul>
+          <li><a href="<?php echo $department; ?>"><?php echo $text_department_manage; ?></a></li>
+        </ul>
+      </li>
       <li id="extension"><a class="top"><?php echo $text_extension; ?></a>
         <ul>
           <li><a href="<?php echo $module; ?>"><?php echo $text_module; ?></a></li>

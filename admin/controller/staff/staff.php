@@ -138,7 +138,7 @@ class ControllerStaffStaff extends Controller {
 			$this->data['staffs'][] = array(
 				'staff_id' 	  => $result['staff_id'],
 				'code'        => $result['staff_code'],
-				'name'        => $result['fullname'],
+				'name'        => $result['firstname'] . ' ' . $result['middlename'] . ' ' . $result['lastname'],
 				'birthday'    => date($this->language->get('date_format_short'), strtotime($result['birthday'])),
 				'salary'      => number_format($result['salary']),
 				'selected'    => isset($this->request->post['selected']) && in_array($result['staff_id'], $this->request->post['selected']),
@@ -205,17 +205,13 @@ class ControllerStaffStaff extends Controller {
 		$this->data['text_percent'] = $this->language->get('text_percent');
 		$this->data['text_amount'] = $this->language->get('text_amount');
 
-		$this->data['entry_name'] = $this->language->get('entry_name');
-		$this->data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
-		$this->data['entry_meta_description'] = $this->language->get('entry_meta_description');
-		$this->data['entry_description'] = $this->language->get('entry_description');
-		$this->data['entry_parent'] = $this->language->get('entry_parent');
-		$this->data['entry_filter'] = $this->language->get('entry_filter');
-		$this->data['entry_store'] = $this->language->get('entry_store');
-		$this->data['entry_keyword'] = $this->language->get('entry_keyword');
+		$this->data['entry_firstname'] = $this->language->get('entry_firstname');
+		$this->data['entry_middlename'] = $this->language->get('entry_middlename');
+		$this->data['entry_lastname'] = $this->language->get('entry_lastname');
+		$this->data['entry_code'] = $this->language->get('entry_code');
 		$this->data['entry_image'] = $this->language->get('entry_image');
-		$this->data['entry_top'] = $this->language->get('entry_top');
-		$this->data['entry_column'] = $this->language->get('entry_column');		
+		$this->data['entry_birthday'] = $this->language->get('entry_birthday');
+		$this->data['entry_salary'] = $this->language->get('entry_salary');		
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$this->data['entry_status'] = $this->language->get('entry_status');
 		$this->data['entry_layout'] = $this->language->get('entry_layout');
@@ -233,10 +229,16 @@ class ControllerStaffStaff extends Controller {
 			$this->data['error_warning'] = '';
 		}
 
-		if (isset($this->error['name'])) {
-			$this->data['error_name'] = $this->error['name'];
+		if (isset($this->error['lastname'])) {
+			$this->data['error_lastname'] = $this->error['lastname'];
 		} else {
-			$this->data['error_name'] = array();
+			$this->data['error_lastname'] = array();
+		}
+
+		if (isset($this->error['code'])) {
+			$this->data['error_code'] = $this->error['code'];
+		} else {
+			$this->data['error_code'] = array();
 		}
 
 		$this->data['breadcrumbs'] = array();
@@ -267,81 +269,42 @@ class ControllerStaffStaff extends Controller {
 
 		$this->data['token'] = $this->session->data['token'];
 
-		$this->load->model('localisation/language');
-
-		$this->data['languages'] = $this->model_localisation_language->getLanguages();
-
-		if (isset($this->request->post['staff_description'])) {
-			$this->data['staff_description'] = $this->request->post['staff_description'];
-		} elseif (isset($this->request->get['staff_id'])) {
-			$this->data['staff_description'] = $this->model_staff_staff->getstaffDescriptions($this->request->get['staff_id']);
-		} else {
-			$this->data['staff_description'] = array();
-		}
-
-		if (isset($this->request->post['path'])) {
-			$this->data['path'] = $this->request->post['path'];
+		if (isset($this->request->post['firstname'])) {
+			$this->data['firstname'] = $this->request->post['firstname'];
 		} elseif (!empty($staff_info)) {
-			$this->data['path'] = $staff_info['path'];
+			$this->data['firstname'] = $staff_info['firstname'];
 		} else {
-			$this->data['path'] = '';
+			$this->data['firstname'] = '';
 		}
 
-		if (isset($this->request->post['parent_id'])) {
-			$this->data['parent_id'] = $this->request->post['parent_id'];
+		if (isset($this->request->post['middlename'])) {
+			$this->data['middlename'] = $this->request->post['middlename'];
 		} elseif (!empty($staff_info)) {
-			$this->data['parent_id'] = $staff_info['parent_id'];
+			$this->data['middlename'] = $staff_info['middlename'];
 		} else {
-			$this->data['parent_id'] = 0;
+			$this->data['middlename'] = '';
 		}
 
-		$this->load->model('staff/filter');
-
-		if (isset($this->request->post['staff_filter'])) {
-			$filters = $this->request->post['staff_filter'];
-		} elseif (isset($this->request->get['staff_id'])) {		
-			$filters = $this->model_staff_staff->getstaffFilters($this->request->get['staff_id']);
-		} else {
-			$filters = array();
-		}
-
-		$this->data['staff_filters'] = array();
-
-		foreach ($filters as $filter_id) {
-			$filter_info = $this->model_staff_filter->getFilter($filter_id);
-
-			if ($filter_info) {
-				$this->data['staff_filters'][] = array(
-					'filter_id' => $filter_info['filter_id'],
-					'name'      => $filter_info['group'] . ' &gt; ' . $filter_info['name']
-				);
-			}
-		}	
-
-		$this->load->model('setting/store');
-
-		$this->data['stores'] = $this->model_setting_store->getStores();
-
-		if (isset($this->request->post['staff_store'])) {
-			$this->data['staff_store'] = $this->request->post['staff_store'];
-		} elseif (isset($this->request->get['staff_id'])) {
-			$this->data['staff_store'] = $this->model_staff_staff->getstaffStores($this->request->get['staff_id']);
-		} else {
-			$this->data['staff_store'] = array(0);
-		}			
-
-		if (isset($this->request->post['keyword'])) {
-			$this->data['keyword'] = $this->request->post['keyword'];
+		if (isset($this->request->post['lastname'])) {
+			$this->data['lastname'] = $this->request->post['lastname'];
 		} elseif (!empty($staff_info)) {
-			$this->data['keyword'] = $staff_info['keyword'];
+			$this->data['lastname'] = $staff_info['lastname'];
 		} else {
-			$this->data['keyword'] = '';
+			$this->data['lastname'] = '';
+		}
+
+		if (isset($this->request->post['code'])) {
+			$this->data['code'] = $this->request->post['code'];
+		} elseif (!empty($staff_info)) {
+			$this->data['code'] = $staff_info['staff_code'];
+		} else {
+			$this->data['code'] = '';
 		}
 
 		if (isset($this->request->post['image'])) {
 			$this->data['image'] = $this->request->post['image'];
-		} elseif (!empty($staff_info)) {
-			$this->data['image'] = $staff_info['image'];
+		// } elseif (!empty($staff_info)) {
+		// 	$this->data['image'] = $staff_info['image'];
 		} else {
 			$this->data['image'] = '';
 		}
@@ -350,57 +313,29 @@ class ControllerStaffStaff extends Controller {
 
 		if (isset($this->request->post['image']) && file_exists(DIR_IMAGE . $this->request->post['image'])) {
 			$this->data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
-		} elseif (!empty($staff_info) && $staff_info['image'] && file_exists(DIR_IMAGE . $staff_info['image'])) {
-			$this->data['thumb'] = $this->model_tool_image->resize($staff_info['image'], 100, 100);
+		// } elseif (!empty($staff_info) && $staff_info['image'] && file_exists(DIR_IMAGE . $staff_info['image'])) {
+		// 	$this->data['thumb'] = $this->model_tool_image->resize($staff_info['image'], 100, 100);
 		} else {
 			$this->data['thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 		}
 
 		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 
-		if (isset($this->request->post['top'])) {
-			$this->data['top'] = $this->request->post['top'];
+		if (isset($this->request->post['birthday'])) {
+			$this->data['birthday'] = $this->request->post['birthday'];
 		} elseif (!empty($staff_info)) {
-			$this->data['top'] = $staff_info['top'];
+			$this->data['birthday'] = date($this->language->get('date_format_short'), strtotime($staff_info['birthday']));
 		} else {
-			$this->data['top'] = 0;
+			$this->data['birthday'] = '';
 		}
 
-		if (isset($this->request->post['column'])) {
-			$this->data['column'] = $this->request->post['column'];
+		if (isset($this->request->post['salary'])) {
+			$this->data['salary'] = $this->request->post['salary'];
 		} elseif (!empty($staff_info)) {
-			$this->data['column'] = $staff_info['column'];
+			$this->data['salary'] = $staff_info['salary'];
 		} else {
-			$this->data['column'] = 1;
+			$this->data['salary'] = '';
 		}
-
-		if (isset($this->request->post['sort_order'])) {
-			$this->data['sort_order'] = $this->request->post['sort_order'];
-		} elseif (!empty($staff_info)) {
-			$this->data['sort_order'] = $staff_info['sort_order'];
-		} else {
-			$this->data['sort_order'] = 0;
-		}
-
-		if (isset($this->request->post['status'])) {
-			$this->data['status'] = $this->request->post['status'];
-		} elseif (!empty($staff_info)) {
-			$this->data['status'] = $staff_info['status'];
-		} else {
-			$this->data['status'] = 1;
-		}
-
-		if (isset($this->request->post['staff_layout'])) {
-			$this->data['staff_layout'] = $this->request->post['staff_layout'];
-		} elseif (isset($this->request->get['staff_id'])) {
-			$this->data['staff_layout'] = $this->model_staff_staff->getstaffLayouts($this->request->get['staff_id']);
-		} else {
-			$this->data['staff_layout'] = array();
-		}
-
-		$this->load->model('design/layout');
-
-		$this->data['layouts'] = $this->model_design_layout->getLayouts();
 
 		$this->template = 'staff/staff_form.tpl';
 		$this->children = array(
