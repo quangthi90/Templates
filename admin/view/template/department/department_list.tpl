@@ -13,7 +13,7 @@
   <?php } ?>
   <div class="box">
     <div class="heading">
-      <h1><img src="view/image/staff.png" alt="" /> <?php echo $heading_title; ?></h1>
+      <h1><img src="view/image/department.png" alt="" /> <?php echo $heading_title; ?></h1>
       <div class="buttons"><a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a><a onclick="$('#form').submit();" class="button"><?php echo $button_delete; ?></a></div>
     </div>
     <div class="content">
@@ -24,25 +24,23 @@
               <td width="1" style="text-align: center;"><input type="checkbox" onclick="$('input[name*=\'selected\']').attr('checked', this.checked);" /></td>
               <td class="left"><?php echo $column_code; ?></td>
               <td class="left"><?php echo $column_name; ?></td>
-              <td class="left"><?php echo $column_birthday; ?></td>
-              <td class="left"><?php echo $column_salary; ?></td>
+              <td class="left"><?php echo $column_order; ?></td>
               <td class="right"><?php echo $column_action; ?></td>
             </tr>
           </thead>
           <tbody>
-            <?php if ($staffs) { ?>
-            <?php foreach ($staffs as $staff) { ?>
+            <?php if ($departments) { ?>
+            <?php foreach ($departments as $department) { ?>
             <tr>
-              <td style="text-align: center;"><?php if ($staff['selected']) { ?>
-                <input type="checkbox" name="selected[]" value="<?php echo $staff['staff_id']; ?>" checked="checked" />
+              <td style="text-align: center;"><?php if ($department['selected']) { ?>
+                <input type="checkbox" name="selected[]" value="<?php echo $department['department_id']; ?>" checked="checked" />
                 <?php } else { ?>
-                <input type="checkbox" name="selected[]" value="<?php echo $staff['staff_id']; ?>" />
+                <input type="checkbox" name="selected[]" value="<?php echo $department['department_id']; ?>" />
                 <?php } ?></td>
-              <td class="left"><?php echo $staff['code']; ?></td>
-              <td class="left"><?php echo $staff['name']; ?></td>
-              <td class="left"><?php echo $staff['birthday']; ?></td>
-              <td class="left"><?php echo $staff['salary']; ?></td>
-              <td class="right"><?php foreach ($staff['action'] as $action) { ?>
+              <td class="left"><?php echo $department['code']; ?></td>
+              <td class="left"><?php echo $department['name']; ?></td>
+              <td class="left"><?php echo $department['order']; ?></td>
+              <td class="right"><?php foreach ($department['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
                 <?php } ?></td>
             </tr>

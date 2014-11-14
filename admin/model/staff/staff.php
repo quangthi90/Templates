@@ -182,7 +182,7 @@ class ModelStaffStaff extends Model {
 	public function getStaffs($data) {
 		$sql = "SELECT * FROM " . DB_PREFIX . "staff";
 
-		$sql .= " GROUP BY staff_id ORDER BY lastname";
+		$sql .= " ORDER BY 'lastname'";
 
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
