@@ -11,9 +11,14 @@ class ModelDepartmentDepartment extends Model {
 	}
 
 	public function deleteDepartment($department_id) {
-		$sql = "DELETE FROM " . DB_PREFIX . "department WHERE department_id = '" . (int)$department_id . "'";
+		$sql = "UPDATE " . DB_PREFIX . "department SET deleted = 1 WHERE department_id = '" . (int)$department_id . "'";
 		$this->db->query($sql);
 	}
+
+	/*public function deleteDepartment($department_id) {
+		$sql = "DELETE FROM " . DB_PREFIX . "department WHERE department_id = '" . (int)$department_id . "'";
+		$this->db->query($sql);
+	}*/
 
 	public function getDepartment($department_id) {
 		$sql = "SELECT * FROM " . DB_PREFIX . "department WHERE department_id = '$department_id' AND deleted = 0";
@@ -23,7 +28,7 @@ class ModelDepartmentDepartment extends Model {
 		return $query->row;
 	} 
 
-	public function getDepartments($data) {
+	public function getDepartments($data = array()) {
 		$sql = "SELECT * FROM " . DB_PREFIX . "department WHERE deleted = 0";
 
 		$sql .= " ORDER BY sort_order";

@@ -137,10 +137,11 @@ class ControllerStaffStaff extends Controller {
 
 			$this->data['staffs'][] = array(
 				'staff_id' 	  => $result['staff_id'],
-				'code'        => $result['staff_code'],
+				'code'        => $result['department_code'] . $result['staff_code'],
 				'name'        => $result['firstname'] . ' ' . $result['middlename'] . ' ' . $result['lastname'],
 				'birthday'    => date($this->language->get('date_format_short'), strtotime($result['birthday'])),
 				'salary'      => number_format($result['salary']),
+				'department'  => $result['name'],
 				'selected'    => isset($this->request->post['selected']) && in_array($result['staff_id'], $this->request->post['selected']),
 				'action'      => $action
 			);
@@ -154,6 +155,7 @@ class ControllerStaffStaff extends Controller {
 		$this->data['column_name'] = $this->language->get('column_name');
 		$this->data['column_birthday'] = $this->language->get('column_birthday');
 		$this->data['column_salary'] = $this->language->get('column_salary');
+		$this->data['column_department'] = $this->language->get('column_department');
 		$this->data['column_action'] = $this->language->get('column_action');
 
 		$this->data['button_insert'] = $this->language->get('button_insert');
@@ -211,10 +213,8 @@ class ControllerStaffStaff extends Controller {
 		$this->data['entry_code'] = $this->language->get('entry_code');
 		$this->data['entry_image'] = $this->language->get('entry_image');
 		$this->data['entry_birthday'] = $this->language->get('entry_birthday');
-		$this->data['entry_salary'] = $this->language->get('entry_salary');		
-		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_layout'] = $this->language->get('entry_layout');
+		$this->data['entry_salary'] = $this->language->get('entry_salary');
+		$this->data['entry_department'] = $this->language->get('entry_department');
 
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -303,8 +303,8 @@ class ControllerStaffStaff extends Controller {
 
 		if (isset($this->request->post['image'])) {
 			$this->data['image'] = $this->request->post['image'];
-		// } elseif (!empty($staff_info)) {
-		// 	$this->data['image'] = $staff_info['image'];
+		} elseif (!empty($staff_info)) {
+			$this->data['image'] = $staff_info['image'];
 		} else {
 			$this->data['image'] = '';
 		}
@@ -313,8 +313,8 @@ class ControllerStaffStaff extends Controller {
 
 		if (isset($this->request->post['image']) && file_exists(DIR_IMAGE . $this->request->post['image'])) {
 			$this->data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
-		// } elseif (!empty($staff_info) && $staff_info['image'] && file_exists(DIR_IMAGE . $staff_info['image'])) {
-		// 	$this->data['thumb'] = $this->model_tool_image->resize($staff_info['image'], 100, 100);
+		} elseif (!empty($staff_info) && $staff_info['image'] && file_exists(DIR_IMAGE . $staff_info['image'])) {
+			$this->data['thumb'] = $this->model_tool_image->resize($staff_info['image'], 100, 100);
 		} else {
 			$this->data['thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 		}
@@ -324,7 +324,7 @@ class ControllerStaffStaff extends Controller {
 		if (isset($this->request->post['birthday'])) {
 			$this->data['birthday'] = $this->request->post['birthday'];
 		} elseif (!empty($staff_info)) {
-			$this->data['birthday'] = date($this->language->get('date_format_short'), strtotime($staff_info['birthday']));
+			$this->data['birthday'] = date('Y-m-d', strtotime($staff_info['birthday']));
 		} else {
 			$this->data['birthday'] = '';
 		}
@@ -335,6 +335,23 @@ class ControllerStaffStaff extends Controller {
 			$this->data['salary'] = $staff_info['salary'];
 		} else {
 			$this->data['salary'] = '';
+		}
+
+		$this->load->model('department/department');
+		$departments = $this->model_department_department->getDepartments();
+		$this->data['departments'] = array();
+		foreach ($departments as $department) {
+			$this->data['departments'][] = array(
+				'id' => $department['department_id'],
+				'name' => $department['name']
+			);
+		}
+		if (isset($this->request->post['department_id'])) {
+			$this->data['department_id'] = $this->request->post['department_id'];
+		} elseif (!empty($staff_info)) {
+			$this->data['department_id'] = $staff_info['department_id'];
+		} else {
+			$this->data['department_id'] = '';
 		}
 
 		$this->template = 'staff/staff_form.tpl';
@@ -351,10 +368,12 @@ class ControllerStaffStaff extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
-		foreach ($this->request->post['staff_description'] as $language_id => $value) {
-			if ((utf8_strlen($value['name']) < 2) || (utf8_strlen($value['name']) > 255)) {
-				$this->error['name'][$language_id] = $this->language->get('error_name');
-			}
+		if ((utf8_strlen($this->request->post['lastname']) < 1) || (utf8_strlen($this->request->post['lastname']) > 15)) {
+			$this->error['lastname'] = $this->language->get('error_lastname');
+		}
+
+		if ((utf8_strlen($this->request->post['code']) < 1) || (utf8_strlen($this->request->post['code']) > 30)) {
+			$this->error['code'] = $this->language->get('error_code');
 		}
 
 		if ($this->error && !isset($this->error['warning'])) {

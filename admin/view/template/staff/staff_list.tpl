@@ -26,6 +26,7 @@
               <td class="left"><?php echo $column_name; ?></td>
               <td class="left"><?php echo $column_birthday; ?></td>
               <td class="left"><?php echo $column_salary; ?></td>
+              <td class="left"><?php echo $column_department; ?></td>
               <td class="right"><?php echo $column_action; ?></td>
             </tr>
           </thead>
@@ -42,6 +43,7 @@
               <td class="left"><?php echo $staff['name']; ?></td>
               <td class="left"><?php echo $staff['birthday']; ?></td>
               <td class="left"><?php echo $staff['salary']; ?></td>
+              <td class="left"><?php echo $staff['department']; ?></td>
               <td class="right"><?php foreach ($staff['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
                 <?php } ?></td>

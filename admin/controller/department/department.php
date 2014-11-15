@@ -137,7 +137,7 @@ class ControllerDepartmentDepartment extends Controller {
 
 			$this->data['departments'][] = array(
 				'department_id' 	  	=> $result['department_id'],
-				'code'        			=> $result['code'],
+				'code'        			=> $result['department_code'],
 				'name'        			=> $result['name'],
 				'order'	    			=> $result['sort_order'],
 				'selected'    			=> isset($this->request->post['selected']) && in_array($result['department_id'], $this->request->post['selected']),
