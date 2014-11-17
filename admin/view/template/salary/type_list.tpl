@@ -22,9 +22,9 @@
           <thead>
             <tr>
               <td width="1" style="text-align: center;"><input type="checkbox" onclick="$('input[name*=\'selected\']').attr('checked', this.checked);" /></td>
-              <td class="left"><?php echo $column_code; ?></td>
               <td class="left"><?php echo $column_name; ?></td>
-              <td class="left"><?php echo $column_order; ?></td>
+              <td class="left"><?php echo $column_percent; ?></td>
+              <td class="left"><?php echo $column_sort_order; ?></td>
               <td class="right"><?php echo $column_action; ?></td>
             </tr>
           </thead>
@@ -37,8 +37,8 @@
                 <?php } else { ?>
                 <input type="checkbox" name="selected[]" value="<?php echo $type['type_id']; ?>" />
                 <?php } ?></td>
-              <td class="left"><?php echo $type['code']; ?></td>
               <td class="left"><?php echo $type['name']; ?></td>
+              <td class="left"><?php echo $type['percent']; ?></td>
               <td class="left"><?php echo $type['order']; ?></td>
               <td class="right"><?php foreach ($type['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]

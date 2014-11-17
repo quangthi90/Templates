@@ -86,24 +86,6 @@ class ControllerSalaryType extends Controller {
 		$this->getList();
 	}
 
-	public function repair() {
-		$this->language->load('salary/type');
-
-		$this->document->setTitle($this->language->get('heading_title'));
-
-		$this->load->model('salary/type');
-
-		if ($this->validateRepair()) {
-			$this->model_salary_type->repairCategories();
-
-			$this->session->data['success'] = $this->language->get('text_success');
-
-			$this->redirect($this->url->link('salary/type', 'token=' . $this->session->data['token'], 'SSL'));
-		}
-
-		$this->getList();	
-	}
-
 	protected function getList() {
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -133,18 +115,17 @@ class ControllerSalaryType extends Controller {
 
 		$this->data['insert'] = $this->url->link('salary/type/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('salary/type/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['repair'] = $this->url->link('salary/type/repair', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
-		$this->data['categories'] = array();
+		$this->data['types'] = array();
 
 		$data = array(
 			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
 			'limit' => $this->config->get('config_admin_limit')
 		);
 
-		$type_total = $this->model_salary_type->getTotalCategories();
+		$type_total = $this->model_salary_type->getTotalTypes();
 
-		$results = $this->model_salary_type->getCategories($data);
+		$results = $this->model_salary_type->getTypes($data);
 
 		foreach ($results as $result) {
 			$action = array();
@@ -154,9 +135,10 @@ class ControllerSalaryType extends Controller {
 				'href' => $this->url->link('salary/type/update', 'token=' . $this->session->data['token'] . '&type_id=' . $result['type_id'] . $url, 'SSL')
 			);
 
-			$this->data['categories'][] = array(
-				'type_id' => $result['type_id'],
+			$this->data['types'][] = array(
+				'id' 		  => $result['salary_type_id'],
 				'name'        => $result['name'],
+				'percent'     => $result['percent_of_salary'],
 				'sort_order'  => $result['sort_order'],
 				'selected'    => isset($this->request->post['selected']) && in_array($result['type_id'], $this->request->post['selected']),
 				'action'      => $action
@@ -168,6 +150,7 @@ class ControllerSalaryType extends Controller {
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
 
 		$this->data['column_name'] = $this->language->get('column_name');
+		$this->data['column_percent'] = $this->language->get('column_percent');
 		$this->data['column_sort_order'] = $this->language->get('column_sort_order');
 		$this->data['column_action'] = $this->language->get('column_action');
 
@@ -460,18 +443,6 @@ class ControllerSalaryType extends Controller {
 		}
 	}
 
-	protected function validateRepair() {
-		if (!$this->user->hasPermission('modify', 'salary/type')) {
-			$this->error['warning'] = $this->language->get('error_permission');
-		}
-
-		if (!$this->error) {
-			return true; 
-		} else {
-			return false;
-		}
-	}
-
 	public function autocomplete() {
 		$json = array();
 
@@ -484,7 +455,7 @@ class ControllerSalaryType extends Controller {
 				'limit'       => 20
 			);
 
-			$results = $this->model_salary_type->getCategories($data);
+			$results = $this->model_salary_type->gettypes($data);
 
 			foreach ($results as $result) {
 				$json[] = array(

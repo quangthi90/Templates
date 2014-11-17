@@ -10,7 +10,8 @@ $_['text_browse']            = 'Browse';
 $_['text_clear']             = 'Clear';
 
 // Column
-$_['column_name']            = 'Type Name';
+$_['column_name']            = 'Name';
+$_['column_percent']         = 'Percent';
 $_['column_sort_order']      = 'Sort Order';
 $_['column_action']          = 'Action';
 

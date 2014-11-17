@@ -173,8 +173,8 @@ class ModelSalaryType extends Model {
 		$this->cache->delete('type');
 	} 
 
-	// Function to repair any erroneous categories that are not in the type path table.
-	public function repairCategories($parent_id = 0) {
+	// Function to repair any erroneous types that are not in the type path table.
+	public function repairtypes($parent_id = 0) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "type WHERE parent_id = '" . (int)$parent_id . "'");
 
 		foreach ($query->rows as $type) {
@@ -194,7 +194,7 @@ class ModelSalaryType extends Model {
 
 			$this->db->query("REPLACE INTO `" . DB_PREFIX . "type_path` SET type_id = '" . (int)$type['type_id'] . "', `path_id` = '" . (int)$type['type_id'] . "', level = '" . (int)$level . "'");
 
-			$this->repairCategories($type['type_id']);
+			$this->repairtypes($type['type_id']);
 		}
 	}
 
@@ -204,14 +204,14 @@ class ModelSalaryType extends Model {
 		return $query->row;
 	} 
 
-	public function getCategories($data) {
-		$sql = "SELECT cp.type_id AS type_id, GROUP_CONCAT(cd1.name ORDER BY cp.level SEPARATOR ' &gt; ') AS name, c.parent_id, c.sort_order FROM " . DB_PREFIX . "type_path cp LEFT JOIN " . DB_PREFIX . "type c ON (cp.path_id = c.type_id) LEFT JOIN " . DB_PREFIX . "type_description cd1 ON (c.type_id = cd1.type_id) LEFT JOIN " . DB_PREFIX . "type_description cd2 ON (cp.type_id = cd2.type_id) WHERE cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' AND cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+	public function getTypes($data = array()) {
+		$sql = "SELECT * FROM " . DB_PREFIX . "salary_type";
 
 		if (!empty($data['filter_name'])) {
 			$sql .= " AND cd2.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
 		}
 
-		$sql .= " GROUP BY cp.type_id ORDER BY name";
+		$sql .= " ORDER BY sort_order";
 
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
@@ -230,72 +230,19 @@ class ModelSalaryType extends Model {
 		return $query->rows;
 	}
 
-	public function gettypeDescriptions($type_id) {
-		$type_description_data = array();
-
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "type_description WHERE type_id = '" . (int)$type_id . "'");
-
-		foreach ($query->rows as $result) {
-			$type_description_data[$result['language_id']] = array(
-				'name'             => $result['name'],
-				'meta_keyword'     => $result['meta_keyword'],
-				'meta_description' => $result['meta_description'],
-				'description'      => $result['description']
-			);
-		}
-
-		return $type_description_data;
-	}	
-
-	public function gettypeFilters($type_id) {
-		$type_filter_data = array();
-
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "type_filter WHERE type_id = '" . (int)$type_id . "'");
-
-		foreach ($query->rows as $result) {
-			$type_filter_data[] = $result['filter_id'];
-		}
-
-		return $type_filter_data;
-	}
-
-	public function gettypeStores($type_id) {
-		$type_store_data = array();
-
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "type_to_store WHERE type_id = '" . (int)$type_id . "'");
-
-		foreach ($query->rows as $result) {
-			$type_store_data[] = $result['store_id'];
-		}
-
-		return $type_store_data;
-	}
-
-	public function gettypeLayouts($type_id) {
-		$type_layout_data = array();
-
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "type_to_layout WHERE type_id = '" . (int)$type_id . "'");
-
-		foreach ($query->rows as $result) {
-			$type_layout_data[$result['store_id']] = $result['layout_id'];
-		}
-
-		return $type_layout_data;
-	}
-
-	public function getTotalCategories() {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "type");
+	public function getTotalTypes() {
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "salary_type");
 
 		return $query->row['total'];
 	}	
 
-	public function getTotalCategoriesByImageId($image_id) {
+	public function getTotaltypesByImageId($image_id) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "type WHERE image_id = '" . (int)$image_id . "'");
 
 		return $query->row['total'];
 	}
 
-	public function getTotalCategoriesByLayoutId($layout_id) {
+	public function getTotaltypesByLayoutId($layout_id) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "type_to_layout WHERE layout_id = '" . (int)$layout_id . "'");
 
 		return $query->row['total'];
