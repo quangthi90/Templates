@@ -14,7 +14,7 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a href="<?php echo $cancel; ?>" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a></div>
+      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-salary"><?php echo $tab_salary; ?></a></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <table class="form">
@@ -52,14 +52,6 @@
               <td><input class="input-medium date" style="width: 250px;" type="text" name="birthday" value="<?php echo $birthday; ?>" size="100" /></td>
             </tr>
             <tr>
-              <td><?php echo $entry_salary; ?></td>
-              <td><input type="text" name="salary" value="<?php echo $salary; ?>" size="100" /></td>
-            </tr>
-            <tr>
-              <td><?php echo $entry_salary_trial; ?></td>
-              <td><input type="text" name="salary_trial" value="<?php echo $salary_trial; ?>" size="100" /></td>
-            </tr>
-            <tr>
               <td><?php echo $entry_department; ?></td>
               <td><select name="department_id">
                   <?php foreach ($departments as $department) { ?>
@@ -67,6 +59,24 @@
                   <?php } ?>
                 </select></td>
             </tr>
+          </table>
+        </div>
+        <div id="tab-salary">
+          <table class="form">
+            <tr>
+              <td><?php echo $entry_salary; ?></td>
+              <td><input type="text" name="salary" value="<?php echo $salary; ?>" size="100" /></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_salary_trial; ?></td>
+              <td><input type="text" name="salary_trial" value="<?php echo $salary_trial; ?>" size="100" /></td>
+            </tr>
+            <?php foreach ($salaries as $salary) { ?>
+            <tr>
+              <td><?php echo $salary['name']; ?>:</td>
+              <td><input type="text" name="salaries[<?php echo $salary['id']; ?>]" value="<?php echo $salary['value']; ?>" size="100" /></td>
+            </tr>
+            <?php } ?>
           </table>
         </div>
       </form>

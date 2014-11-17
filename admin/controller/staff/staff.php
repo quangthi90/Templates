@@ -420,8 +420,7 @@ class ControllerStaffStaff extends Controller {
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
 
 		$this->data['tab_general'] = $this->language->get('tab_general');
-		$this->data['tab_data'] = $this->language->get('tab_data');
-		$this->data['tab_design'] = $this->language->get('tab_design');
+		$this->data['tab_salary'] = $this->language->get('tab_salary');
 
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -545,6 +544,23 @@ class ControllerStaffStaff extends Controller {
 			$this->data['salary_trial'] = '0';
 		}
 
+		$this->data['salaries'] = array();
+		$this->load->model('salary/type');
+		$salaries = $this->model_salary_type->getTypes(array('staff_id' => isset($staff_info) ? $staff_info['staff_id'] : -1));
+		foreach ($salaries as $salary) {
+			$value = $salary['value'] == null ? $this->data['salary_trial'] * $salary['percent_of_salary'] / 100 : $salary['value'];
+			$this->data['salaries'][] = array(
+				'id' => $salary['salary_type_id'],
+				'name' => $salary['name'],
+				'value' => $value
+			);
+		}
+		if ( isset($this->request->post['salaries']) ) {
+			foreach ($this->data['salaries'] as $key => $salary) {
+				$this->data['salaries'][$key]['value'] = $this->request->post['salaries'][$salary['id']];
+			}
+		}
+
 		$this->load->model('department/department');
 		$departments = $this->model_department_department->getDepartments();
 		$this->data['departments'] = array();
@@ -590,6 +606,13 @@ class ControllerStaffStaff extends Controller {
 
 		if ( empty($this->request->post['salary_trial']) ) {
 			$this->request->post['salary_trial'] = $this->request->post['salary'] * 0.8;
+		}
+
+		$this->load->model('salary/type');
+		$salaries = $this->model_salary_type->getTypes();
+		foreach ($salaries as $salary) {
+			if ( !empty($this->request->post['salaries'][$salary['salary_type_id']]) ) continue;
+			$this->request->post['salaries'][$salary['salary_type_id']] = $this->request->post['salary'] * $salary['percent_of_salary'] / 100;
 		}
 
 		if (!$this->error) {

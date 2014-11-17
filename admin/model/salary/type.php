@@ -22,11 +22,13 @@ class ModelSalaryType extends Model {
 	} 
 
 	public function getTypes($data = array()) {
-		$sql = "SELECT * FROM " . DB_PREFIX . "salary_type WHERE deleted = 0";
+		$sql = "SELECT st.salary_type_id, st.name, st.percent_of_salary, st.sort_order, st.deleted, sl.value FROM " . DB_PREFIX . "salary_type st LEFT JOIN " . DB_PREFIX . "salary sl ON sl.salary_type_id = st.salary_type_id AND sl.deleted = 0";
 
-		if (!empty($data['filter_name'])) {
-			$sql .= " AND cd2.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
+		if (!empty($data['staff_id'])) {
+			$sql .= " AND sl.staff_id = " . (int)$data['staff_id'];
 		}
+
+		$sql .= " WHERE st.deleted = 0";
 
 		$sql .= " ORDER BY sort_order";
 

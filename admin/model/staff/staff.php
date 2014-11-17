@@ -3,15 +3,46 @@ class ModelStaffStaff extends Model {
 	public function addStaff($data) {
 		$sql = "INSERT INTO " . DB_PREFIX . "staff SET firstname = '" . $this->db->escape(html_entity_decode($data['firstname'], ENT_QUOTES, 'UTF-8')) . "', middlename = '" . $this->db->escape(html_entity_decode($data['middlename'], ENT_QUOTES, 'UTF-8')) . "', lastname = '" . $this->db->escape(html_entity_decode($data['lastname'], ENT_QUOTES, 'UTF-8')) . "', staff_code = '" . $this->db->escape(html_entity_decode($data['code'], ENT_QUOTES, 'UTF-8')) . "', birthday = '" . $this->db->escape($data['birthday']) . "', salary = " . (int)$data['salary'] . ", salary_trial = " . (int)$data['salary_trial'] . ", department_id = '" . (int)$data['department_id'] . "', image = '" . $this->db->escape($data['image']) . "'";
 		$this->db->query($sql);
+
+		$staff_id = $this->db->getLastId();
+
+		if ( isset($data['salaries']) ) {
+			$sql = "SELECT * FROM " . DB_PREFIX . "salary WHERE staff_id = $staff_id AND deleted = 0";
+			$query = $this->db->query($sql);
+			$salaries = $query->rows;
+			foreach ($salaries as $salary) {
+				$sql = "UPDATE " . DB_PREFIX . "salary SET value = " . $data['salaries'][$salary['salary_type_id']] . " WHERE salary_id = " . $salary['salary_id'];
+				$this->db->query($sql);
+				unset($data['salaries'][$salary['salary_type_id']]);
+			}
+			foreach ($data['salaries'] as $salary_type_id => $value) {
+				$sql = "INSERT INTO " . DB_PREFIX . "salary SET salary_type_id = $salary_type_id, staff_id = $staff_id, value = $value";
+				$this->db->query($sql);
+			}
+		}
 	}
 
-	public function editstaff($staff_id, $data) {
-		// var_dump($data); exit;
+	public function editStaff($staff_id, $data) {
 		$sql = "UPDATE " . DB_PREFIX . "staff SET firstname = '" . $this->db->escape(html_entity_decode($data['firstname'], ENT_QUOTES, 'UTF-8')) . "', middlename = '" . $this->db->escape(html_entity_decode($data['middlename'], ENT_QUOTES, 'UTF-8')) . "', lastname = '" . $this->db->escape(html_entity_decode($data['lastname'], ENT_QUOTES, 'UTF-8')) . "', staff_code = '" . $this->db->escape(html_entity_decode($data['code'], ENT_QUOTES, 'UTF-8')) . "', birthday = '" . $this->db->escape($data['birthday']) . "', salary = " . (int)$data['salary'] . ", salary_trial = " . (int)$data['salary_trial'] . ", department_id = '" . (int)$data['department_id'] . "', image = '" . $this->db->escape($data['image']) . "' WHERE staff_id = '" . (int)$staff_id . "'";
 		$this->db->query($sql);
+
+		if ( isset($data['salaries']) ) {
+			$sql = "SELECT * FROM " . DB_PREFIX . "salary WHERE staff_id = $staff_id AND deleted = 0";
+			$query = $this->db->query($sql);
+			$salaries = $query->rows;
+			foreach ($salaries as $salary) {
+				$sql = "UPDATE " . DB_PREFIX . "salary SET value = " . $data['salaries'][$salary['salary_type_id']] . " WHERE salary_id = " . $salary['salary_id'];
+				$this->db->query($sql);
+				unset($data['salaries'][$salary['salary_type_id']]);
+			}
+			foreach ($data['salaries'] as $salary_type_id => $value) {
+				$sql = "INSERT INTO " . DB_PREFIX . "salary SET salary_type_id = $salary_type_id, staff_id = $staff_id, value = $value";
+				$this->db->query($sql);
+			}
+		}
 	}
 
-	public function deletestaff($staff_id) {
+	public function deleteStaff($staff_id) {
 		$sql = "UPDATE " . DB_PREFIX . "staff SET deleted = 1 WHERE staff_id = " . (int)$staff_id;
 		$this->db->query($sql);
 	}
