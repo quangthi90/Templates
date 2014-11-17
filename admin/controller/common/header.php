@@ -127,6 +127,10 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_department'] = $this->language->get('text_department');
 		$this->data['text_department_manage'] = $this->language->get('text_department_manage');
 
+		// salary
+		$this->data['text_salary'] = $this->language->get('text_salary');
+		$this->data['text_salary_type_manage'] = $this->language->get('text_salary_type_manage');
+
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
 
@@ -229,9 +233,10 @@ class ControllerCommonHeader extends Controller {
 
 			// staff
 			$this->data['staff'] = $this->url->link('staff/staff', 'token=' . $this->session->data['token'], 'SSL');
-
 			// department
 			$this->data['department'] = $this->url->link('department/department', 'token=' . $this->session->data['token'], 'SSL');
+			// salary
+			$this->data['salary'] = $this->url->link('salary/type', 'token=' . $this->session->data['token'], 'SSL');
 
 			$this->data['stores'] = array();
 

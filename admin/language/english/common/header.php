@@ -100,6 +100,10 @@ $_['text_recurring_profile']           = 'Recurring Profiles';
 // staff
 $_['text_staff']          			   = 'Staff';
 $_['text_staff_manage']         	   = 'Manage Staff';
+// Department
 $_['text_department']          		   = 'Department';
 $_['text_department_manage']           = 'Manage Department';
+// Salary
+$_['text_salary']            		   = 'Salary';
+$_['text_salary_type_manage']          = 'Manage Salary Type';
 ?>

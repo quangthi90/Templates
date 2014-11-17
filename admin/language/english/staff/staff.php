@@ -8,6 +8,8 @@ $_['text_default']           = 'Default';
 $_['text_image_manager']     = 'Image Manager';
 $_['text_browse']            = 'Browse';
 $_['text_clear']             = 'Clear';
+$_['text_day']               = '--Day--';
+$_['text_month']             = '--Month--';
 
 // Column
 $_['column_code']      		 = 'Code';
@@ -25,6 +27,7 @@ $_['entry_code']		 	 = 'Staff Code:';
 $_['entry_image']            = 'Avatar:';
 $_['entry_birthday']         = 'Birthday:';
 $_['entry_salary']           = 'Salary:';
+$_['entry_salary_trial']     = 'Trial Salary:';
 $_['entry_department']       = 'Department:';
 $_['entry_image']            = 'Avatar:';
 

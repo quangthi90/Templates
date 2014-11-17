@@ -1,12 +1,12 @@
 <?php
 class ModelDepartmentDepartment extends Model {
 	public function addDepartment($data) {
-		$sql = "INSERT INTO " . DB_PREFIX . "department SET name = '" . $this->db->escape($data['name']) . "', code = '" . $this->db->escape($data['code']) . "', sort_order = " . (int)$data['order'];
+		$sql = "INSERT INTO " . DB_PREFIX . "department SET name = '" . $this->db->escape($data['name']) . "', department_code = '" . $this->db->escape($data['code']) . "', sort_order = " . (int)$data['order'];
 		$this->db->query($sql);
 	}
 
 	public function editDepartment($department_id, $data) {
-		$sql = "UPDATE " . DB_PREFIX . "department SET name = '" . $this->db->escape($data['name']) . "', code = '" . $this->db->escape($data['code']) . "', sort_order = " . (int)$data['order'] . " WHERE department_id = '" . (int)$department_id . "'";
+		$sql = "UPDATE " . DB_PREFIX . "department SET name = '" . $this->db->escape($data['name']) . "', department_code = '" . $this->db->escape($data['code']) . "', sort_order = " . (int)$data['order'] . " WHERE department_id = '" . (int)$department_id . "'";
 		$this->db->query($sql);
 	}
 

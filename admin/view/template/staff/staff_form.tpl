@@ -56,6 +56,10 @@
               <td><input type="text" name="salary" value="<?php echo $salary; ?>" size="100" /></td>
             </tr>
             <tr>
+              <td><?php echo $entry_salary_trial; ?></td>
+              <td><input type="text" name="salary_trial" value="<?php echo $salary_trial; ?>" size="100" /></td>
+            </tr>
+            <tr>
               <td><?php echo $entry_department; ?></td>
               <td><select name="department_id">
                   <?php foreach ($departments as $department) { ?>
@@ -74,6 +78,6 @@ $('#tabs a').tabs();
 $('#languages a').tabs();
 //--></script> 
 <script type="text/javascript"><!--//
-    $('.date').datepicker({ appendText: "(yyyy-mm-dd)", dateFormat: "yy-mm-dd" });
+    $('.date').datepicker({ appendText: " (yyyy-mm-dd)", dateFormat: "yy-mm-dd" });
 //--></script>
 <?php echo $footer; ?>

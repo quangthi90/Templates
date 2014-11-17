@@ -73,7 +73,12 @@ $(document).ready(function(){
           <li><a href="<?php echo $department; ?>"><?php echo $text_department_manage; ?></a></li>
         </ul>
       </li>
-      <li id="extension"><a class="top"><?php echo $text_extension; ?></a>
+      <li id="catalog"><a class="top"><?php echo $text_salary; ?></a>
+        <ul>
+          <li><a href="<?php echo $salary; ?>"><?php echo $text_salary_type_manage; ?></a></li>
+        </ul>
+      </li>
+      <!--li id="extension"><a class="top"><?php echo $text_extension; ?></a>
         <ul>
           <li><a href="<?php echo $module; ?>"><?php echo $text_module; ?></a></li>
           <li><a href="<?php echo $shipping; ?>"><?php echo $text_shipping; ?></a></li>
@@ -138,19 +143,19 @@ $(document).ready(function(){
               <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
               <li><a href="<?php echo $voucher_theme; ?>"><?php echo $text_voucher_theme; ?></a></li>
             </ul>
-          </li>
+          </li-->
           <!-- PAYPAL MANAGE NAVIGATION LINK -->
-          <?php if ($pp_express_status) { ?>
-           <li><a class="parent" href="<?php echo $paypal_express; ?>"><?php echo $text_paypal_express; ?></a>
+          <?php // if ($pp_express_status) { ?>
+           <!--li><a class="parent" href="<?php echo $paypal_express; ?>"><?php echo $text_paypal_express; ?></a>
              <ul>
                <li><a href="<?php echo $paypal_express_search; ?>"><?php echo $text_paypal_express_search; ?></a></li>
              </ul>
-           </li>
-          <?php } ?>
+           </li-->
+          <?php // } ?>
           <!-- PAYPAL MANAGE NAVIGATION LINK END -->
-          <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+          <!--li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
         </ul>
-      </li>
+      </li-->
       <li id="system"><a class="top"><?php echo $text_system; ?></a>
         <ul>
           <li><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li>
@@ -196,7 +201,7 @@ $(document).ready(function(){
           <li><a href="<?php echo $backup; ?>"><?php echo $text_backup; ?></a></li>
         </ul>
       </li>
-      <li id="reports"><a class="top"><?php echo $text_reports; ?></a>
+      <!--li id="reports"><a class="top"><?php echo $text_reports; ?></a>
         <ul>
           <li><a class="parent"><?php echo $text_sale; ?></a>
             <ul>
@@ -234,7 +239,7 @@ $(document).ready(function(){
           <li><a href="http://www.opencart.com/index.php?route=documentation/introduction" target="_blank"><?php echo $text_documentation; ?></a></li>
           <li><a href="http://forum.opencart.com" target="_blank"><?php echo $text_support; ?></a></li>
         </ul>
-      </li>
+      </li-->
     </ul>
     <ul class="right" style="display: none;">
       <li id="store"><a href="<?php echo $store; ?>" target="_blank" class="top"><?php echo $text_front; ?></a>

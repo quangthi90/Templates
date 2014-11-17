@@ -1,6 +1,7 @@
 <?php 
 class ControllerStaffStaff extends Controller { 
 	private $error = array();
+	private $num_pad = 4;
 
 	public function index() {
 		$this->language->load('staff/staff');
@@ -87,6 +88,60 @@ class ControllerStaffStaff extends Controller {
 	}
 
 	protected function getList() {
+		if (isset($this->request->get['filter_code'])) {
+			$filter_code = $this->request->get['filter_code'];
+		} else {
+			$filter_code = null;
+		}
+
+		if (isset($this->request->get['filter_fullname'])) {
+			$filter_fullname = $this->request->get['filter_fullname'];
+		} else {
+			$filter_fullname = null;
+		}
+
+		if (isset($this->request->get['filter_day'])) {
+			$filter_day = $this->request->get['filter_day'];
+		} else {
+			$filter_day = null;
+		}
+
+		if (isset($this->request->get['filter_month'])) {
+			$filter_month = $this->request->get['filter_month'];
+		} else {
+			$filter_month = null;
+		}
+
+		if (isset($this->request->get['filter_year'])) {
+			$filter_year = $this->request->get['filter_year'];
+		} else {
+			$filter_year = null;
+		}
+
+		if (isset($this->request->get['filter_salary'])) {
+			$filter_salary = $this->request->get['filter_salary'];
+		} else {
+			$filter_salary = null;
+		}
+
+		if (isset($this->request->get['filter_department_id'])) {
+			$filter_department_id = $this->request->get['filter_department_id'];
+		} else {
+			$filter_department_id = null;
+		}
+
+		if (isset($this->request->get['sort'])) {
+			$sort = $this->request->get['sort'];
+		} else {
+			$sort = 'st.lastname';
+		}
+
+		if (isset($this->request->get['order'])) {
+			$order = $this->request->get['order'];
+		} else {
+			$order = 'ASC';
+		}
+
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
 		} else {
@@ -94,6 +149,34 @@ class ControllerStaffStaff extends Controller {
 		}
 
 		$url = '';
+
+		if (isset($this->request->get['filter_code'])) {
+			$url .= '&filter_code=' . urlencode(html_entity_decode($this->request->get['filter_code'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_fullname'])) {
+			$url .= '&filter_fullname=' . urlencode(html_entity_decode($this->request->get['filter_fullname'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_day'])) {
+			$url .= '&filter_day=' . urlencode(html_entity_decode($this->request->get['filter_day'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_month'])) {
+			$url .= '&filter_month=' . urlencode(html_entity_decode($this->request->get['filter_month'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_year'])) {
+			$url .= '&filter_year=' . urlencode(html_entity_decode($this->request->get['filter_year'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_salary'])) {
+			$url .= '&filter_salary=' . urlencode(html_entity_decode($this->request->get['filter_salary'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_department_id'])) {
+			$url .= '&filter_department_id=' . urlencode(html_entity_decode($this->request->get['filter_department_id'], ENT_QUOTES, 'UTF-8'));
+		}
 
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
@@ -119,8 +202,17 @@ class ControllerStaffStaff extends Controller {
 		$this->data['staffs'] = array();
 
 		$data = array(
-			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
-			'limit' => $this->config->get('config_admin_limit')
+			'filter_code'	  	=> $filter_code, 
+			'filter_fullname'  	=> $filter_fullname,
+			'filter_day'	  	=> $filter_day,
+			'filter_month'	 	=> $filter_month,
+			'filter_year'   	=> $filter_year,
+			'filter_salary'   	=> $filter_salary,
+			'filter_department_id' 	=> $filter_department_id,
+			'sort'            	=> $sort,
+			'order'           	=> $order,
+			'start' 			=> ($page - 1) * $this->config->get('config_admin_limit'),
+			'limit' 			=> $this->config->get('config_admin_limit')
 		);
 
 		$staff_total = $this->model_staff_staff->getTotalstaffs();
@@ -150,6 +242,9 @@ class ControllerStaffStaff extends Controller {
 		$this->data['heading_title'] = $this->language->get('heading_title');
 
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
+		$this->data['text_select'] = $this->language->get('text_select');
+		$this->data['text_day'] = $this->language->get('text_day');
+		$this->data['text_month'] = $this->language->get('text_month');
 
 		$this->data['column_code'] = $this->language->get('column_code');
 		$this->data['column_name'] = $this->language->get('column_name');
@@ -160,7 +255,7 @@ class ControllerStaffStaff extends Controller {
 
 		$this->data['button_insert'] = $this->language->get('button_insert');
 		$this->data['button_delete'] = $this->language->get('button_delete');
-		$this->data['button_repair'] = $this->language->get('button_repair');
+		$this->data['button_filter'] = $this->language->get('button_filter');
 
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -176,6 +271,89 @@ class ControllerStaffStaff extends Controller {
 			$this->data['success'] = '';
 		}
 
+		$url = '';
+
+		if (isset($this->request->get['filter_code'])) {
+			$url .= '&filter_code=' . urlencode(html_entity_decode($this->request->get['filter_code'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_fullname'])) {
+			$url .= '&filter_fullname=' . urlencode(html_entity_decode($this->request->get['filter_fullname'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_day'])) {
+			$url .= '&filter_day=' . $this->request->get['filter_day'];
+		}
+
+		if (isset($this->request->get['filter_month'])) {
+			$url .= '&filter_month=' . $this->request->get['filter_month'];
+		}
+
+		if (isset($this->request->get['filter_year'])) {
+			$url .= '&filter_year=' . $this->request->get['filter_year'];
+		}
+
+		if (isset($this->request->get['filter_salary'])) {
+			$url .= '&filter_salary=' . $this->request->get['filter_salary'];
+		}
+
+		if (isset($this->request->get['filter_department_id'])) {
+			$url .= '&filter_department_id=' . $this->request->get['filter_department_id'];
+		}
+
+		if ($order == 'ASC') {
+			$url .= '&order=DESC';
+		} else {
+			$url .= '&order=ASC';
+		}
+
+		if (isset($this->request->get['page'])) {
+			$url .= '&page=' . $this->request->get['page'];
+		}
+
+		$this->data['sort_code'] = $this->url->link('staff/staff', 'token=' . $this->session->data['token'] . '&sort=st.code' . $url, 'SSL');
+		$this->data['sort_lastname'] = $this->url->link('staff/staff', 'token=' . $this->session->data['token'] . '&sort=st.lastname' . $url, 'SSL');
+		$this->data['sort_birthday'] = $this->url->link('staff/staff', 'token=' . $this->session->data['token'] . '&sort=st.birthday' . $url, 'SSL');
+		$this->data['sort_salary'] = $this->url->link('staff/staff', 'token=' . $this->session->data['token'] . '&sort=st.salary' . $url, 'SSL');
+
+		$url = '';
+
+		if (isset($this->request->get['filter_code'])) {
+			$url .= '&filter_code=' . urlencode(html_entity_decode($this->request->get['filter_code'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_fullname'])) {
+			$url .= '&filter_fullname=' . urlencode(html_entity_decode($this->request->get['filter_fullname'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_day'])) {
+			$url .= '&filter_day=' . $this->request->get['filter_day'];
+		}
+
+		if (isset($this->request->get['filter_month'])) {
+			$url .= '&filter_month=' . $this->request->get['filter_month'];
+		}
+
+		if (isset($this->request->get['filter_year'])) {
+			$url .= '&filter_year=' . $this->request->get['filter_year'];
+		}
+
+		if (isset($this->request->get['filter_salary'])) {
+			$url .= '&filter_salary=' . $this->request->get['filter_salary'];
+		}
+
+		if (isset($this->request->get['filter_department_id'])) {
+			$url .= '&filter_department_id=' . $this->request->get['filter_department_id'];
+		}
+
+		if (isset($this->request->get['sort'])) {
+			$url .= '&sort=' . $this->request->get['sort'];
+		}
+
+		if (isset($this->request->get['order'])) {
+			$url .= '&order=' . $this->request->get['order'];
+		}
+
 		$pagination = new Pagination();
 		$pagination->total = $staff_total;
 		$pagination->page = $page;
@@ -184,6 +362,27 @@ class ControllerStaffStaff extends Controller {
 		$pagination->url = $this->url->link('staff/staff', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
 
 		$this->data['pagination'] = $pagination->render();
+
+		$this->data['filter_code'] = $filter_code;
+		$this->data['filter_fullname'] = $filter_fullname;
+		$this->data['filter_day'] = $filter_day;
+		$this->data['filter_month'] = $filter_month;
+		$this->data['filter_year'] = $filter_year;
+		$this->data['filter_salary'] = $filter_salary;
+		$this->data['filter_department_id'] = $filter_department_id;
+
+		$this->data['token'] = $this->session->data['token'];
+
+		// departments
+		$this->load->model('department/department');
+		$departments = $this->model_department_department->getDepartments();
+		$this->data['departments'] = array();
+		foreach ($departments as $department) {
+			$this->data['departments'][] = array(
+				'id' => $department['department_id'],
+				'name' => $department['name']
+			);
+		}
 
 		$this->template = 'staff/staff_list.tpl';
 		$this->children = array(
@@ -214,6 +413,7 @@ class ControllerStaffStaff extends Controller {
 		$this->data['entry_image'] = $this->language->get('entry_image');
 		$this->data['entry_birthday'] = $this->language->get('entry_birthday');
 		$this->data['entry_salary'] = $this->language->get('entry_salary');
+		$this->data['entry_salary_trial'] = $this->language->get('entry_salary_trial');
 		$this->data['entry_department'] = $this->language->get('entry_department');
 
 		$this->data['button_save'] = $this->language->get('button_save');
@@ -298,7 +498,7 @@ class ControllerStaffStaff extends Controller {
 		} elseif (!empty($staff_info)) {
 			$this->data['code'] = $staff_info['staff_code'];
 		} else {
-			$this->data['code'] = '';
+			$this->data['code'] = str_pad($this->model_staff_staff->getLastCode() + 1, $this->num_pad, '0', STR_PAD_LEFT);
 		}
 
 		if (isset($this->request->post['image'])) {
@@ -334,7 +534,15 @@ class ControllerStaffStaff extends Controller {
 		} elseif (!empty($staff_info)) {
 			$this->data['salary'] = $staff_info['salary'];
 		} else {
-			$this->data['salary'] = '';
+			$this->data['salary'] = '0';
+		}
+
+		if (isset($this->request->post['salary_trial'])) {
+			$this->data['salary_trial'] = $this->request->post['salary_trial'];
+		} elseif (!empty($staff_info)) {
+			$this->data['salary_trial'] = $staff_info['salary_trial'];
+		} else {
+			$this->data['salary_trial'] = '0';
 		}
 
 		$this->load->model('department/department');
@@ -378,6 +586,10 @@ class ControllerStaffStaff extends Controller {
 
 		if ($this->error && !isset($this->error['warning'])) {
 			$this->error['warning'] = $this->language->get('error_warning');
+		}
+
+		if ( empty($this->request->post['salary_trial']) ) {
+			$this->request->post['salary_trial'] = $this->request->post['salary'] * 0.8;
 		}
 
 		if (!$this->error) {
