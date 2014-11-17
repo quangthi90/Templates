@@ -20,7 +20,7 @@ class ControllerSalaryType extends Controller {
 		$this->load->model('salary/type');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_salary_type->addtype($this->request->post);
+			$this->model_salary_type->addType($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -44,7 +44,7 @@ class ControllerSalaryType extends Controller {
 		$this->load->model('salary/type');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_salary_type->edittype($this->request->get['type_id'], $this->request->post);
+			$this->model_salary_type->editType($this->request->get['type_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -69,7 +69,7 @@ class ControllerSalaryType extends Controller {
 
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $type_id) {
-				$this->model_salary_type->deletetype($type_id);
+				$this->model_salary_type->deleteType($type_id);
 			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -132,13 +132,13 @@ class ControllerSalaryType extends Controller {
 
 			$action[] = array(
 				'text' => $this->language->get('text_edit'),
-				'href' => $this->url->link('salary/type/update', 'token=' . $this->session->data['token'] . '&type_id=' . $result['type_id'] . $url, 'SSL')
+				'href' => $this->url->link('salary/type/update', 'token=' . $this->session->data['token'] . '&type_id=' . $result['salary_type_id'] . $url, 'SSL')
 			);
 
 			$this->data['types'][] = array(
 				'id' 		  => $result['salary_type_id'],
 				'name'        => $result['name'],
-				'percent'     => $result['percent_of_salary'],
+				'percent'     => $result['percent_of_salary'] . '%',
 				'sort_order'  => $result['sort_order'],
 				'selected'    => isset($this->request->post['selected']) && in_array($result['type_id'], $this->request->post['selected']),
 				'action'      => $action
@@ -204,19 +204,8 @@ class ControllerSalaryType extends Controller {
 		$this->data['text_amount'] = $this->language->get('text_amount');
 
 		$this->data['entry_name'] = $this->language->get('entry_name');
-		$this->data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
-		$this->data['entry_meta_description'] = $this->language->get('entry_meta_description');
-		$this->data['entry_description'] = $this->language->get('entry_description');
-		$this->data['entry_parent'] = $this->language->get('entry_parent');
-		$this->data['entry_filter'] = $this->language->get('entry_filter');
-		$this->data['entry_store'] = $this->language->get('entry_store');
-		$this->data['entry_keyword'] = $this->language->get('entry_keyword');
-		$this->data['entry_image'] = $this->language->get('entry_image');
-		$this->data['entry_top'] = $this->language->get('entry_top');
-		$this->data['entry_column'] = $this->language->get('entry_column');		
+		$this->data['entry_percent'] = $this->language->get('entry_percent');	
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_layout'] = $this->language->get('entry_layout');
 
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -235,6 +224,12 @@ class ControllerSalaryType extends Controller {
 			$this->data['error_name'] = $this->error['name'];
 		} else {
 			$this->data['error_name'] = array();
+		}
+
+		if (isset($this->error['percent'])) {
+			$this->data['error_percent'] = $this->error['percent'];
+		} else {
+			$this->data['error_percent'] = array();
 		}
 
 		$this->data['breadcrumbs'] = array();
@@ -260,116 +255,25 @@ class ControllerSalaryType extends Controller {
 		$this->data['cancel'] = $this->url->link('salary/type', 'token=' . $this->session->data['token'], 'SSL');
 
 		if (isset($this->request->get['type_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-			$type_info = $this->model_salary_type->gettype($this->request->get['type_id']);
+			$type_info = $this->model_salary_type->getType($this->request->get['type_id']);
 		}
 
-		$this->data['token'] = $this->session->data['token'];
+		$this->data['token'] = $this->session->data['token'];		
 
-		$this->load->model('localisation/language');
-
-		$this->data['languages'] = $this->model_localisation_language->getLanguages();
-
-		if (isset($this->request->post['type_description'])) {
-			$this->data['type_description'] = $this->request->post['type_description'];
-		} elseif (isset($this->request->get['type_id'])) {
-			$this->data['type_description'] = $this->model_salary_type->gettypeDescriptions($this->request->get['type_id']);
-		} else {
-			$this->data['type_description'] = array();
-		}
-
-		if (isset($this->request->post['path'])) {
-			$this->data['path'] = $this->request->post['path'];
+		if (isset($this->request->post['name'])) {
+			$this->data['name'] = $this->request->post['name'];
 		} elseif (!empty($type_info)) {
-			$this->data['path'] = $type_info['path'];
+			$this->data['name'] = $type_info['name'];
 		} else {
-			$this->data['path'] = '';
+			$this->data['name'] = '';
 		}
 
-		if (isset($this->request->post['parent_id'])) {
-			$this->data['parent_id'] = $this->request->post['parent_id'];
+		if (isset($this->request->post['percent'])) {
+			$this->data['percent'] = $this->request->post['percent'];
 		} elseif (!empty($type_info)) {
-			$this->data['parent_id'] = $type_info['parent_id'];
+			$this->data['percent'] = $type_info['percent_of_salary'];
 		} else {
-			$this->data['parent_id'] = 0;
-		}
-
-		$this->load->model('salary/filter');
-
-		if (isset($this->request->post['type_filter'])) {
-			$filters = $this->request->post['type_filter'];
-		} elseif (isset($this->request->get['type_id'])) {		
-			$filters = $this->model_salary_type->gettypeFilters($this->request->get['type_id']);
-		} else {
-			$filters = array();
-		}
-
-		$this->data['type_filters'] = array();
-
-		foreach ($filters as $filter_id) {
-			$filter_info = $this->model_salary_filter->getFilter($filter_id);
-
-			if ($filter_info) {
-				$this->data['type_filters'][] = array(
-					'filter_id' => $filter_info['filter_id'],
-					'name'      => $filter_info['group'] . ' &gt; ' . $filter_info['name']
-				);
-			}
-		}	
-
-		$this->load->model('setting/store');
-
-		$this->data['stores'] = $this->model_setting_store->getStores();
-
-		if (isset($this->request->post['type_store'])) {
-			$this->data['type_store'] = $this->request->post['type_store'];
-		} elseif (isset($this->request->get['type_id'])) {
-			$this->data['type_store'] = $this->model_salary_type->gettypeStores($this->request->get['type_id']);
-		} else {
-			$this->data['type_store'] = array(0);
-		}			
-
-		if (isset($this->request->post['keyword'])) {
-			$this->data['keyword'] = $this->request->post['keyword'];
-		} elseif (!empty($type_info)) {
-			$this->data['keyword'] = $type_info['keyword'];
-		} else {
-			$this->data['keyword'] = '';
-		}
-
-		if (isset($this->request->post['image'])) {
-			$this->data['image'] = $this->request->post['image'];
-		} elseif (!empty($type_info)) {
-			$this->data['image'] = $type_info['image'];
-		} else {
-			$this->data['image'] = '';
-		}
-
-		$this->load->model('tool/image');
-
-		if (isset($this->request->post['image']) && file_exists(DIR_IMAGE . $this->request->post['image'])) {
-			$this->data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
-		} elseif (!empty($type_info) && $type_info['image'] && file_exists(DIR_IMAGE . $type_info['image'])) {
-			$this->data['thumb'] = $this->model_tool_image->resize($type_info['image'], 100, 100);
-		} else {
-			$this->data['thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
-		}
-
-		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
-
-		if (isset($this->request->post['top'])) {
-			$this->data['top'] = $this->request->post['top'];
-		} elseif (!empty($type_info)) {
-			$this->data['top'] = $type_info['top'];
-		} else {
-			$this->data['top'] = 0;
-		}
-
-		if (isset($this->request->post['column'])) {
-			$this->data['column'] = $this->request->post['column'];
-		} elseif (!empty($type_info)) {
-			$this->data['column'] = $type_info['column'];
-		} else {
-			$this->data['column'] = 1;
+			$this->data['percent'] = 0;
 		}
 
 		if (isset($this->request->post['sort_order'])) {
@@ -379,26 +283,6 @@ class ControllerSalaryType extends Controller {
 		} else {
 			$this->data['sort_order'] = 0;
 		}
-
-		if (isset($this->request->post['status'])) {
-			$this->data['status'] = $this->request->post['status'];
-		} elseif (!empty($type_info)) {
-			$this->data['status'] = $type_info['status'];
-		} else {
-			$this->data['status'] = 1;
-		}
-
-		if (isset($this->request->post['type_layout'])) {
-			$this->data['type_layout'] = $this->request->post['type_layout'];
-		} elseif (isset($this->request->get['type_id'])) {
-			$this->data['type_layout'] = $this->model_salary_type->gettypeLayouts($this->request->get['type_id']);
-		} else {
-			$this->data['type_layout'] = array();
-		}
-
-		$this->load->model('design/layout');
-
-		$this->data['layouts'] = $this->model_design_layout->getLayouts();
 
 		$this->template = 'salary/type_form.tpl';
 		$this->children = array(
@@ -414,10 +298,12 @@ class ControllerSalaryType extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
-		foreach ($this->request->post['type_description'] as $language_id => $value) {
-			if ((utf8_strlen($value['name']) < 2) || (utf8_strlen($value['name']) > 255)) {
-				$this->error['name'][$language_id] = $this->language->get('error_name');
-			}
+		if ((utf8_strlen($this->request->post['name']) < 1) || (utf8_strlen($this->request->post['name']) > 50)) {
+			$this->error['name'] = $this->language->get('error_name');
+		}
+
+		if (empty($this->request->post['percent'])) {
+			$this->error['percent'] = $this->language->get('error_percent');
 		}
 
 		if ($this->error && !isset($this->error['warning'])) {

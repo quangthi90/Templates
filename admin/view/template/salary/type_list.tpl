@@ -33,13 +33,13 @@
             <?php foreach ($types as $type) { ?>
             <tr>
               <td style="text-align: center;"><?php if ($type['selected']) { ?>
-                <input type="checkbox" name="selected[]" value="<?php echo $type['type_id']; ?>" checked="checked" />
+                <input type="checkbox" name="selected[]" value="<?php echo $type['id']; ?>" checked="checked" />
                 <?php } else { ?>
-                <input type="checkbox" name="selected[]" value="<?php echo $type['type_id']; ?>" />
+                <input type="checkbox" name="selected[]" value="<?php echo $type['id']; ?>" />
                 <?php } ?></td>
               <td class="left"><?php echo $type['name']; ?></td>
               <td class="left"><?php echo $type['percent']; ?></td>
-              <td class="left"><?php echo $type['order']; ?></td>
+              <td class="left"><?php echo $type['sort_order']; ?></td>
               <td class="right"><?php foreach ($type['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
                 <?php } ?></td>

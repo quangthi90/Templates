@@ -26,15 +26,15 @@
                 <?php } ?></td>
             </tr>
             <tr>
-              <td><span class="required">*</span> <?php echo $entry_code; ?></td>
-              <td><input type="text" name="code" value="<?php echo $code; ?>" size="100" />
-              <?php if ($error_code) { ?>
-                <span class="error"><?php echo $error_code; ?></span>
+              <td><span class="required">*</span> <?php echo $entry_percent; ?></td>
+              <td><input type="text" name="percent" value="<?php echo $percent; ?>" size="100" />
+              <?php if ($error_percent) { ?>
+                <span class="error"><?php echo $error_percent; ?></span>
                 <?php } ?></td>
             </tr>
             <tr>
-              <td><?php echo $entry_order; ?></td>
-              <td><input type="text" name="order" value="<?php echo $order; ?>" size="100" /></td>
+              <td><?php echo $entry_sort_order; ?></td>
+              <td><input type="text" name="sort_order" value="<?php echo $sort_order; ?>" size="100" /></td>
             </tr>
           </table>
         </div>
@@ -60,7 +60,7 @@ $('input[name=\'path\']').autocomplete({
 	delay: 500,
 	source: function(request, response) {		
 		$.ajax({
-			url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  enpercentURIComponent(request.term),
 			dataType: 'json',
 			success: function(json) {
 				json.unshift({
@@ -94,7 +94,7 @@ $('input[name=\'filter\']').autocomplete({
 	delay: 500,
 	source: function(request, response) {
 		$.ajax({
-			url: 'index.php?route=catalog/filter/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			url: 'index.php?route=catalog/filter/autocomplete&token=<?php echo $token; ?>&filter_name=' +  enpercentURIComponent(request.term),
 			dataType: 'json',
 			success: function(json) {		
 				response($.map(json, function(item) {
@@ -132,14 +132,14 @@ $('#category-filter div img').live('click', function() {
 function image_upload(field, thumb) {
 	$('#dialog').remove();
 	
-	$('#content').prepend('<div id="dialog" style="padding: 3px 0px 0px 0px;"><iframe src="index.php?route=common/filemanager&token=<?php echo $token; ?>&field=' + encodeURIComponent(field) + '" style="padding:0; margin: 0; display: block; width: 100%; height: 100%;" frameborder="no" scrolling="auto"></iframe></div>');
+	$('#content').prepend('<div id="dialog" style="padding: 3px 0px 0px 0px;"><iframe src="index.php?route=common/filemanager&token=<?php echo $token; ?>&field=' + enpercentURIComponent(field) + '" style="padding:0; margin: 0; display: block; width: 100%; height: 100%;" frameborder="no" scrolling="auto"></iframe></div>');
 	
 	$('#dialog').dialog({
 		title: '<?php echo $text_image_manager; ?>',
 		close: function (event, ui) {
 			if ($('#' + field).attr('value')) {
 				$.ajax({
-					url: 'index.php?route=common/filemanager/image&token=<?php echo $token; ?>&image=' + encodeURIComponent($('#' + field).val()),
+					url: 'index.php?route=common/filemanager/image&token=<?php echo $token; ?>&image=' + enpercentURIComponent($('#' + field).val()),
 					dataType: 'text',
 					success: function(data) {
 						$('#' + thumb).replaceWith('<img src="' + data + '" alt="" id="' + thumb + '" />');
