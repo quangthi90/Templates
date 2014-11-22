@@ -175,6 +175,7 @@ $(document).ready(function(){
             <ul>
               <li><a href="<?php echo $language; ?>"><?php echo $text_language; ?></a></li>
               <li><a href="<?php echo $birthplace; ?>"><?php echo $text_birthplace; ?></a></li>
+              <li><a href="<?php echo $folk; ?>"><?php echo $text_folk; ?></a></li>
               <!--li><a href="<?php echo $currency; ?>"><?php echo $text_currency; ?></a></li>
               <li><a href="<?php echo $stock_status; ?>"><?php echo $text_stock_status; ?></a></li>
               <li><a href="<?php echo $order_status; ?>"><?php echo $text_order_status; ?></a></li>
@@ -198,8 +199,8 @@ $(document).ready(function(){
               <li><a href="<?php echo $weight_class; ?>"><?php echo $text_weight_class; ?></a></li-->
             </ul>
           </li>
-          <li><a href="<?php echo $error_log; ?>"><?php echo $text_error_log; ?></a></li>
-          <li><a href="<?php echo $backup; ?>"><?php echo $text_backup; ?></a></li>
+          <!--li><a href="<?php echo $error_log; ?>"><?php echo $text_error_log; ?></a></li>
+          <li><a href="<?php echo $backup; ?>"><?php echo $text_backup; ?></a></li-->
         </ul>
       </li>
       <!--li id="reports"><a class="top"><?php echo $text_reports; ?></a>

@@ -133,6 +133,7 @@ class ControllerCommonHeader extends Controller {
 
 		// config
 		$this->data['text_birthplace'] = $this->language->get('text_birthplace');
+		$this->data['text_folk'] = $this->language->get('text_folk');
 
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
@@ -242,6 +243,7 @@ class ControllerCommonHeader extends Controller {
 			$this->data['salary'] = $this->url->link('salary/type', 'token=' . $this->session->data['token'], 'SSL');
 			// config
 			$this->data['birthplace'] = $this->url->link('config/birthplace', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['folk'] = $this->url->link('config/folk', 'token=' . $this->session->data['token'], 'SSL');
 
 			$this->data['stores'] = array();
 

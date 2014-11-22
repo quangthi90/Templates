@@ -108,4 +108,5 @@ $_['text_salary']            		   = 'Salary';
 $_['text_salary_type_manage']          = 'Manage Salary Type';
 // Config
 $_['text_birthplace']          		   = 'Birthplace';
+$_['text_folk']          		   	   = 'Folk';
 ?>
