@@ -106,4 +106,6 @@ $_['text_department_manage']           = 'Manage Department';
 // Salary
 $_['text_salary']            		   = 'Salary';
 $_['text_salary_type_manage']          = 'Manage Salary Type';
+// Config
+$_['text_birthplace']          		   = 'Birthplace';
 ?>
