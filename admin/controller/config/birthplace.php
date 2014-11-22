@@ -137,7 +137,7 @@ class ControllerConfigBirthplace extends Controller {
 
 			$this->data['birthplaces'][] = array(
 				'id' 		  => $result['birthplace_id'],
-				'name'        => $result['name'],
+				'name'        => $result['birthplace_name'],
 				'sort_order'        => $result['sort_order'],
 				'selected'    => isset($this->request->post['selected']) && in_array($result['birthplace_id'], $this->request->post['selected']),
 				'action'      => $action
@@ -258,7 +258,7 @@ class ControllerConfigBirthplace extends Controller {
 		if (isset($this->request->post['name'])) {
 			$this->data['name'] = $this->request->post['name'];
 		} elseif (!empty($birthplace_info)) {
-			$this->data['name'] = $birthplace_info['name'];
+			$this->data['name'] = $birthplace_info['birthplace_name'];
 		} else {
 			$this->data['name'] = '';
 		}

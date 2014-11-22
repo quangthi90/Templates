@@ -53,7 +53,11 @@
             </tr>
             <tr>
               <td><?php echo $entry_birthplace; ?></td>
-              <td><input type="text" name="birthplace" value="<?php echo $birthplace; ?>" size="100" /></td>
+              <td><select name="birthplace_id">
+              <?php foreach ($birthplaces as $birthplace) { ?>
+                <option <?php if ($birthplace['id'] == $birthplace_id) { ?>selected="selected"<?php } ?> value="<?php echo $birthplace['id'] ?>"><?php echo $birthplace['name'] ?></option>
+              <?php } ?>
+              </select></td>
             </tr>
             <tr>
               <td><?php echo $entry_sex; ?></td>

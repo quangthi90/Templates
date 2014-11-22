@@ -549,14 +549,6 @@ class ControllerStaffStaff extends Controller {
 			$this->data['address'] = '';
 		}
 
-		if (isset($this->request->post['birthplace'])) {
-			$this->data['birthplace'] = $this->request->post['birthplace'];
-		} elseif (!empty($staff_info)) {
-			$this->data['birthplace'] = $staff_info['birthplace'];
-		} else {
-			$this->data['birthplace'] = '';
-		}
-
 		if (isset($this->request->post['salary'])) {
 			$this->data['salary'] = $this->request->post['salary'];
 		} elseif (!empty($staff_info)) {
@@ -605,6 +597,24 @@ class ControllerStaffStaff extends Controller {
 			$this->data['department_id'] = $staff_info['department_id'];
 		} else {
 			$this->data['department_id'] = '';
+		}
+
+		$this->load->model('config/birthplace');
+		$this->data['birthplaces'] = array();
+		$birthplaces = $this->model_config_birthplace->getBirthplaces(array('limit' => 1000, 'start' => 0));
+		foreach ($birthplaces as $birthplace) {
+			$this->data['birthplaces'][] = array(
+				'id' => $birthplace['birthplace_id'],
+				'name' => $birthplace['birthplace_name']
+			);
+		}
+
+		if (isset($this->request->post['birthplace_id'])) {
+			$this->data['birthplace_id'] = $this->request->post['birthplace_id'];
+		} elseif (!empty($staff_info)) {
+			$this->data['birthplace_id'] = $staff_info['birthplace_id'];
+		} else {
+			$this->data['birthplace_id'] = '';
 		}
 
 		$this->template = 'staff/staff_form.tpl';

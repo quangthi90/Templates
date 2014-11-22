@@ -1,12 +1,12 @@
 <?php
 class ModelConfigBirthplace extends Model {
 	public function addBirthplace($data) {
-		$sql = "INSERT INTO " . DB_PREFIX . "birthplace SET name = '" . $this->db->escape(html_entity_decode($data['name'])) . "', sort_order = '" . (int)$data['sort_order'] . "'";
+		$sql = "INSERT INTO " . DB_PREFIX . "birthplace SET birthplace_name = '" . $this->db->escape(html_entity_decode($data['name'])) . "', sort_order = '" . (int)$data['sort_order'] . "'";
 		$this->db->query($sql);
 	}
 
 	public function editBirthplace($birthplace_id, $data) {
-		$sql = "UPDATE " . DB_PREFIX . "birthplace SET name = '" . $this->db->escape(html_entity_decode($data['name'])) . "', sort_order = '" . (int)$data['sort_order'] . "' WHERE birthplace_id = $birthplace_id";
+		$sql = "UPDATE " . DB_PREFIX . "birthplace SET birthplace_name = '" . $this->db->escape(html_entity_decode($data['name'])) . "', sort_order = '" . (int)$data['sort_order'] . "' WHERE birthplace_id = $birthplace_id";
 		$this->db->query($sql);
 	}
 
@@ -24,7 +24,7 @@ class ModelConfigBirthplace extends Model {
 	public function getBirthplaces($data = array()) {
 		$sql = "SELECT * FROM " . DB_PREFIX . "birthplace WHERE deleted = 0";
 
-		$sql .= " ORDER BY sort_order, name COLLATE utf8_spanish_ci";
+		$sql .= " ORDER BY sort_order, birthplace_name COLLATE utf8_spanish_ci";
 
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
