@@ -46,18 +46,6 @@ class ModelSalarySalary extends Model {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "salary_salary WHERE deleted = 0");
 
 		return $query->row['total'];
-	}	
-
-	public function getTotalsalarysByImageId($image_id) {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "salary WHERE image_id = '" . (int)$image_id . "'");
-
-		return $query->row['total'];
 	}
-
-	public function getTotalsalarysByLayoutId($layout_id) {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "salary_to_layout WHERE layout_id = '" . (int)$layout_id . "'");
-
-		return $query->row['total'];
-	}		
 }
 ?>

@@ -55,18 +55,6 @@ class ModelSalaryType extends Model {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "salary_type WHERE deleted = 0");
 
 		return $query->row['total'];
-	}	
-
-	public function getTotaltypesByImageId($image_id) {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "type WHERE image_id = '" . (int)$image_id . "'");
-
-		return $query->row['total'];
 	}
-
-	public function getTotaltypesByLayoutId($layout_id) {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "type_to_layout WHERE layout_id = '" . (int)$layout_id . "'");
-
-		return $query->row['total'];
-	}		
 }
 ?>
