@@ -52,6 +52,17 @@
               <td><input class="input-medium date" style="width: 250px;" type="text" name="birthday" value="<?php echo $birthday; ?>" size="100" /></td>
             </tr>
             <tr>
+              <td><?php echo $entry_sex; ?></td>
+              <td><select name="sex">
+                  <option value="0" <?php if ($sex == 0) { ?>selected="selected"<?php } ?>><?php echo $text_female; ?></option>
+                  <option value="1" <?php if ($sex == 1) { ?>selected="selected"<?php } ?>><?php echo $text_male; ?></option>
+                </select></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_address; ?></td>
+              <td><input type="text" name="address" value="<?php echo $address; ?>" size="100" /></td>
+            </tr>
+            <tr>
               <td><?php echo $entry_department; ?></td>
               <td><select name="department_id">
                   <?php foreach ($departments as $department) { ?>

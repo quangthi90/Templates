@@ -10,6 +10,8 @@ $_['text_browse']            = 'Browse';
 $_['text_clear']             = 'Clear';
 $_['text_day']               = '--Day--';
 $_['text_month']             = '--Month--';
+$_['text_male']              = 'Male';
+$_['text_female']            = 'Female';
 
 // Column
 $_['column_code']      		 = 'Code';
@@ -30,6 +32,8 @@ $_['entry_salary']           = 'Salary:';
 $_['entry_salary_trial']     = 'Trial Salary:';
 $_['entry_department']       = 'Department:';
 $_['entry_image']            = 'Avatar:';
+$_['entry_sex']              = 'Sex:';
+$_['entry_address']          = 'Address:';
 
 // Error 
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';

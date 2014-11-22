@@ -405,8 +405,8 @@ class ControllerStaffStaff extends Controller {
 		$this->data['text_clear'] = $this->language->get('text_clear');		
 		$this->data['text_enabled'] = $this->language->get('text_enabled');
 		$this->data['text_disabled'] = $this->language->get('text_disabled');
-		$this->data['text_percent'] = $this->language->get('text_percent');
-		$this->data['text_amount'] = $this->language->get('text_amount');
+		$this->data['text_male'] = $this->language->get('text_male');
+		$this->data['text_female'] = $this->language->get('text_female');
 
 		$this->data['entry_firstname'] = $this->language->get('entry_firstname');
 		$this->data['entry_middlename'] = $this->language->get('entry_middlename');
@@ -417,6 +417,8 @@ class ControllerStaffStaff extends Controller {
 		$this->data['entry_salary'] = $this->language->get('entry_salary');
 		$this->data['entry_salary_trial'] = $this->language->get('entry_salary_trial');
 		$this->data['entry_department'] = $this->language->get('entry_department');
+		$this->data['entry_sex'] = $this->language->get('entry_sex');
+		$this->data['entry_address'] = $this->language->get('entry_address');
 
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -528,6 +530,22 @@ class ControllerStaffStaff extends Controller {
 			$this->data['birthday'] = date('Y-m-d', strtotime($staff_info['birthday']));
 		} else {
 			$this->data['birthday'] = '';
+		}
+
+		if (isset($this->request->post['sex'])) {
+			$this->data['sex'] = $this->request->post['sex'];
+		} elseif (!empty($staff_info)) {
+			$this->data['sex'] = $staff_info['sex'];
+		} else {
+			$this->data['sex'] = '';
+		}
+
+		if (isset($this->request->post['address'])) {
+			$this->data['address'] = $this->request->post['address'];
+		} elseif (!empty($staff_info)) {
+			$this->data['address'] = $staff_info['address'];
+		} else {
+			$this->data['address'] = '';
 		}
 
 		if (isset($this->request->post['salary'])) {
