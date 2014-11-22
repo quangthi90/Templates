@@ -414,6 +414,7 @@ class ControllerStaffStaff extends Controller {
 		$this->data['entry_code'] = $this->language->get('entry_code');
 		$this->data['entry_image'] = $this->language->get('entry_image');
 		$this->data['entry_birthday'] = $this->language->get('entry_birthday');
+		$this->data['entry_birthplace'] = $this->language->get('entry_birthplace');
 		$this->data['entry_salary'] = $this->language->get('entry_salary');
 		$this->data['entry_salary_trial'] = $this->language->get('entry_salary_trial');
 		$this->data['entry_department'] = $this->language->get('entry_department');
@@ -546,6 +547,14 @@ class ControllerStaffStaff extends Controller {
 			$this->data['address'] = $staff_info['address'];
 		} else {
 			$this->data['address'] = '';
+		}
+
+		if (isset($this->request->post['birthplace'])) {
+			$this->data['birthplace'] = $this->request->post['birthplace'];
+		} elseif (!empty($staff_info)) {
+			$this->data['birthplace'] = $staff_info['birthplace'];
+		} else {
+			$this->data['birthplace'] = '';
 		}
 
 		if (isset($this->request->post['salary'])) {

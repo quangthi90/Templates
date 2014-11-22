@@ -52,6 +52,10 @@
               <td><input class="input-medium date" style="width: 250px;" type="text" name="birthday" value="<?php echo $birthday; ?>" size="100" /></td>
             </tr>
             <tr>
+              <td><?php echo $entry_birthplace; ?></td>
+              <td><input type="text" name="birthplace" value="<?php echo $birthplace; ?>" size="100" /></td>
+            </tr>
+            <tr>
               <td><?php echo $entry_sex; ?></td>
               <td><select name="sex">
                   <option value="0" <?php if ($sex == 0) { ?>selected="selected"<?php } ?>><?php echo $text_female; ?></option>

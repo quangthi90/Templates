@@ -28,6 +28,7 @@ $_['entry_lastname']         = 'Staff Last Name:';
 $_['entry_code']		 	 = 'Staff Code:';
 $_['entry_image']            = 'Avatar:';
 $_['entry_birthday']         = 'Birthday:';
+$_['entry_birthplace']       = 'Birthplace:';
 $_['entry_salary']           = 'Salary:';
 $_['entry_salary_trial']     = 'Trial Salary:';
 $_['entry_department']       = 'Department:';
