@@ -14,7 +14,7 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a href="<?php echo $cancel; ?>" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-salary"><?php echo $tab_salary; ?></a></div>
+      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-salary"><?php echo $tab_salary; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <table class="form">
@@ -50,14 +50,6 @@
             <tr>
               <td><?php echo $entry_birthday; ?></td>
               <td><input class="input-medium date" style="width: 250px;" type="text" name="birthday" value="<?php echo $birthday; ?>" size="100" /></td>
-            </tr>
-            <tr>
-              <td><?php echo $entry_birthplace; ?></td>
-              <td><select name="birthplace_id">
-              <?php foreach ($birthplaces as $birthplace) { ?>
-                <option <?php if ($birthplace['id'] == $birthplace_id) { ?>selected="selected"<?php } ?> value="<?php echo $birthplace['id'] ?>"><?php echo $birthplace['name'] ?></option>
-              <?php } ?>
-              </select></td>
             </tr>
             <tr>
               <td><?php echo $entry_sex; ?></td>
@@ -96,6 +88,26 @@
               <td><input type="text" name="salaries[<?php echo $salary['id']; ?>]" value="<?php echo $salary['value']; ?>" size="100" /></td>
             </tr>
             <?php } ?>
+          </table>
+        </div>
+        <div id="tab-data">
+          <table class="form">
+            <tr>
+              <td><?php echo $entry_birthplace; ?></td>
+              <td><select name="birthplace_id">
+              <?php foreach ($birthplaces as $birthplace) { ?>
+                <option <?php if ($birthplace['id'] == $birthplace_id) { ?>selected="selected"<?php } ?> value="<?php echo $birthplace['id'] ?>"><?php echo $birthplace['name'] ?></option>
+              <?php } ?>
+              </select></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_folk; ?></td>
+              <td><select name="folk_id">
+                  <?php foreach ($folks as $folk) { ?>
+                  <option value="<?php echo $folk['id'] ?>" <?php if ($folk['id'] == $folk_id) { ?>selected="selected"<?php } ?>><?php echo $folk['name']; ?></option>
+                  <?php } ?>
+                </select></td>
+            </tr>
           </table>
         </div>
       </form>

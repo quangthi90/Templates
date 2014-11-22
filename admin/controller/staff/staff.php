@@ -420,12 +420,14 @@ class ControllerStaffStaff extends Controller {
 		$this->data['entry_department'] = $this->language->get('entry_department');
 		$this->data['entry_sex'] = $this->language->get('entry_sex');
 		$this->data['entry_address'] = $this->language->get('entry_address');
+		$this->data['entry_folk'] = $this->language->get('entry_folk');
 
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
 
 		$this->data['tab_general'] = $this->language->get('tab_general');
 		$this->data['tab_salary'] = $this->language->get('tab_salary');
+		$this->data['tab_data'] = $this->language->get('tab_data');
 
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -615,6 +617,24 @@ class ControllerStaffStaff extends Controller {
 			$this->data['birthplace_id'] = $staff_info['birthplace_id'];
 		} else {
 			$this->data['birthplace_id'] = '';
+		}
+
+		$this->load->model('config/folk');
+		$this->data['folks'] = array();
+		$folks = $this->model_config_folk->getFolks(array('limit' => 1000, 'start' => 0));
+		foreach ($folks as $folk) {
+			$this->data['folks'][] = array(
+				'id' => $folk['folk_id'],
+				'name' => $folk['folk_name']
+			);
+		}
+
+		if (isset($this->request->post['folk_id'])) {
+			$this->data['folk_id'] = $this->request->post['folk_id'];
+		} elseif (!empty($staff_info)) {
+			$this->data['folk_id'] = $staff_info['folk_id'];
+		} else {
+			$this->data['folk_id'] = '';
 		}
 
 		$this->template = 'staff/staff_form.tpl';
