@@ -26,6 +26,8 @@ class ModelSalaryType extends Model {
 
 		if (!empty($data['staff_id'])) {
 			$sql .= " AND sl.staff_id = " . (int)$data['staff_id'];
+		} else {
+			$sql .= " AND sl.staff_id = 0";
 		}
 
 		$sql .= " WHERE st.deleted = 0";
@@ -43,7 +45,7 @@ class ModelSalaryType extends Model {
 
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
-
+// print($sql);exit;
 		$query = $this->db->query($sql);
 
 		return $query->rows;

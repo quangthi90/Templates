@@ -65,7 +65,7 @@ class ModelStaffStaff extends Model {
 		}
 
 		if (!empty($data['filter_day'])) {
-			$sql .= " AND DAY(st.birthday) = '" . (int)$data['filter_day'];
+			$sql .= " AND DAY(st.birthday) = " . (int)$data['filter_day'];
 		}
 
 		if (!empty($data['filter_month'])) {
@@ -114,7 +114,7 @@ class ModelStaffStaff extends Model {
 
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
-
+// print($sql);exit;
 		$query = $this->db->query($sql);
 
 		return $query->rows;

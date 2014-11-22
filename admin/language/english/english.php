@@ -71,6 +71,7 @@ $_['button_update_total']           = 'Update Totals';
 $_['button_approve']                = 'Approve';
 $_['button_reset']                  = 'Reset';
 $_['button_add_profile']            = 'Add Profile';
+$_['button_export']		            = 'Export';
 
 // Tab
 $_['tab_address']                   = 'Address';

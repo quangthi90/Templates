@@ -198,6 +198,7 @@ class ControllerStaffStaff extends Controller {
 
 		$this->data['insert'] = $this->url->link('staff/staff/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('staff/staff/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['export'] = $this->url->link('staff/staff/export', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$this->data['staffs'] = array();
 
@@ -256,6 +257,7 @@ class ControllerStaffStaff extends Controller {
 		$this->data['button_insert'] = $this->language->get('button_insert');
 		$this->data['button_delete'] = $this->language->get('button_delete');
 		$this->data['button_filter'] = $this->language->get('button_filter');
+		$this->data['button_export'] = $this->language->get('button_export');
 
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -677,6 +679,125 @@ class ControllerStaffStaff extends Controller {
 		array_multisort($sort_order, SORT_ASC, $json);
 
 		$this->response->setOutput(json_encode($json));
-	}		
+	}	
+
+	public function export() {
+		$this->language->load('staff/staff');
+
+		if (isset($this->request->get['filter_code'])) {
+			$filter_code = $this->request->get['filter_code'];
+		} else {
+			$filter_code = null;
+		}
+
+		if (isset($this->request->get['filter_fullname'])) {
+			$filter_fullname = $this->request->get['filter_fullname'];
+		} else {
+			$filter_fullname = null;
+		}
+
+		if (isset($this->request->get['filter_day'])) {
+			$filter_day = $this->request->get['filter_day'];
+		} else {
+			$filter_day = null;
+		}
+
+		if (isset($this->request->get['filter_month'])) {
+			$filter_month = $this->request->get['filter_month'];
+		} else {
+			$filter_month = null;
+		}
+
+		if (isset($this->request->get['filter_year'])) {
+			$filter_year = $this->request->get['filter_year'];
+		} else {
+			$filter_year = null;
+		}
+
+		if (isset($this->request->get['filter_salary'])) {
+			$filter_salary = $this->request->get['filter_salary'];
+		} else {
+			$filter_salary = null;
+		}
+
+		if (isset($this->request->get['filter_department_id'])) {
+			$filter_department_id = $this->request->get['filter_department_id'];
+		} else {
+			$filter_department_id = null;
+		}
+
+		if (isset($this->request->get['sort'])) {
+			$sort = $this->request->get['sort'];
+		} else {
+			$sort = 'st.lastname';
+		}
+
+		$this->load->model('staff/staff');
+		$this->load->model('salary/type');
+		$this->load->model('salary/salary');
+		$this->load->model('tool/excel');
+
+		$data = array(
+			'filter_code'	  	=> $filter_code, 
+			'filter_fullname'  	=> $filter_fullname,
+			'filter_day'	  	=> $filter_day,
+			'filter_month'	 	=> $filter_month,
+			'filter_year'   	=> $filter_year,
+			'filter_salary'   	=> $filter_salary,
+			'filter_department_id' 	=> $filter_department_id,
+			'sort'            	=> $sort,
+			'start'				=> 0,
+			'limit' 			=> 5000
+		);
+
+		$staffs = $this->model_staff_staff->getStaffs($data);
+
+		$matrix = array(
+			'A1' => 'STT', 
+			'B1' => 'Mã NV', 
+			'C1' => 'Họ Tên',
+			'D1' => 'Họ',
+			'E1' => 'Tên Đệm',
+			'F1' => 'Tên',
+			'G1' => 'Ngày Sinh',
+			'H1' => 'Bộ Phận',
+			'I1' => 'Lương CB',
+			'J1' => 'Lương Thử Việc'
+		);
+
+		$types = $this->model_salary_type->getTypes(array('limit' => 100, 'start' => 0));
+		$col = 'K';
+		foreach ($types as $type) {
+			$matrix[$col . '1'] = $type['name'];
+			$col++;
+		}
+
+		$row = 0;
+		foreach ($staffs as $key => $staff) {
+			$row = $key + 2;
+			$matrix['A' . $row] = $key + 1;
+			$matrix['B' . $row] = $staff['department_code'] . $staff['staff_code'];
+			$matrix['C' . $row] = $staff['firstname'] . ' ' . $staff['middlename'] . ' ' . $staff['lastname'];
+			$matrix['D' . $row] = $staff['firstname'];
+			$matrix['E' . $row] = $staff['middlename'];
+			$matrix['F' . $row] = $staff['lastname'];
+			$matrix['G' . $row] = date('d/m/Y', strtotime($staff['birthday']));
+			$matrix['H' . $row] = $staff['name'];
+			$matrix['I' . $row] = $staff['salary'];
+			$matrix['J' . $row] = $staff['salary_trial'];
+
+			$salaries = $this->model_salary_salary->getSalaries(array('staff_id' => $staff['staff_id']));
+
+			$col = 'J';
+			foreach ($types as $type) {
+				$col++;
+				$matrix[$col . $row] = $salaries[$type['salary_type_id']]['value'];
+			}
+		}
+
+		$this->model_tool_excel->createExcelFile($matrix, DIR_DOWNLOAD . 'information.xlsx', 'A1:' . $col . $row, true);
+
+		exit;
+	}	
 }
 ?>
