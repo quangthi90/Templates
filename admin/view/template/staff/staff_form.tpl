@@ -99,8 +99,8 @@
             <tr>
               <td><?php echo $entry_birthplace; ?></td>
               <td><select name="birthplace_id">
-              <?php foreach ($birthplaces as $birthplace) { ?>
-                <option <?php if ($birthplace['id'] == $birthplace_id) { ?>selected="selected"<?php } ?> value="<?php echo $birthplace['id'] ?>"><?php echo $birthplace['name'] ?></option>
+              <?php foreach ($cities as $city) { ?>
+                <option <?php if ($city['id'] == $birthplace_id) { ?>selected="selected"<?php } ?> value="<?php echo $city['id'] ?>"><?php echo $city['name'] ?></option>
               <?php } ?>
               </select></td>
             </tr>

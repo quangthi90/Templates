@@ -132,7 +132,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_salary_type_manage'] = $this->language->get('text_salary_type_manage');
 
 		// config
-		$this->data['text_birthplace'] = $this->language->get('text_birthplace');
+		$this->data['text_city'] = $this->language->get('text_city');
 		$this->data['text_folk'] = $this->language->get('text_folk');
 		$this->data['text_religion'] = $this->language->get('text_religion');
 
@@ -243,7 +243,7 @@ class ControllerCommonHeader extends Controller {
 			// salary
 			$this->data['salary'] = $this->url->link('salary/type', 'token=' . $this->session->data['token'], 'SSL');
 			// config
-			$this->data['birthplace'] = $this->url->link('config/birthplace', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['city'] = $this->url->link('config/city', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['folk'] = $this->url->link('config/folk', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['religion'] = $this->url->link('config/religion', 'token=' . $this->session->data['token'], 'SSL');
 

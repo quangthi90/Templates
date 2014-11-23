@@ -631,13 +631,13 @@ class ControllerStaffStaff extends Controller {
 			$this->data['department_id'] = '';
 		}
 
-		$this->load->model('config/birthplace');
-		$this->data['birthplaces'] = array();
-		$birthplaces = $this->model_config_birthplace->getBirthplaces(array('limit' => 1000, 'start' => 0));
-		foreach ($birthplaces as $birthplace) {
-			$this->data['birthplaces'][] = array(
-				'id' => $birthplace['birthplace_id'],
-				'name' => $birthplace['birthplace_name']
+		$this->load->model('config/city');
+		$this->data['cities'] = array();
+		$cities = $this->model_config_city->getCities(array('limit' => 1000, 'start' => 0));
+		foreach ($cities as $city) {
+			$this->data['cities'][] = array(
+				'id' => $city['city_id'],
+				'name' => $city['city_name']
 			);
 		}
 

@@ -1,26 +1,26 @@
 <?php 
-class ControllerConfigBirthplace extends Controller { 
+class ControllerConfigCity extends Controller { 
 	private $error = array();
 
 	public function index() {
-		$this->language->load('config/birthplace');
+		$this->language->load('config/city');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('config/birthplace');
+		$this->load->model('config/city');
 
 		$this->getList();
 	}
 
 	public function insert() {
-		$this->language->load('config/birthplace');
+		$this->language->load('config/city');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('config/birthplace');
+		$this->load->model('config/city');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_config_birthplace->addbirthplace($this->request->post);
+			$this->model_config_city->addCity($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -30,21 +30,21 @@ class ControllerConfigBirthplace extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->redirect($this->url->link('config/birthplace', 'token=' . $this->session->data['token'] . $url, 'SSL')); 
+			$this->redirect($this->url->link('config/city', 'token=' . $this->session->data['token'] . $url, 'SSL')); 
 		}
 
 		$this->getForm();
 	}
 
 	public function update() {
-		$this->language->load('config/birthplace');
+		$this->language->load('config/city');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('config/birthplace');
+		$this->load->model('config/city');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_config_birthplace->editbirthplace($this->request->get['birthplace_id'], $this->request->post);
+			$this->model_config_city->editCity($this->request->get['city_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -54,22 +54,22 @@ class ControllerConfigBirthplace extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->redirect($this->url->link('config/birthplace', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('config/city', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
 		$this->getForm();
 	}
 
 	public function delete() {
-		$this->language->load('config/birthplace');
+		$this->language->load('config/city');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('config/birthplace');
+		$this->load->model('config/city');
 
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
-			foreach ($this->request->post['selected'] as $birthplace_id) {
-				$this->model_config_birthplace->deletebirthplace($birthplace_id);
+			foreach ($this->request->post['selected'] as $city_id) {
+				$this->model_config_city->deleteCity($city_id);
 			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -80,7 +80,7 @@ class ControllerConfigBirthplace extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->redirect($this->url->link('config/birthplace', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('config/city', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
 		$this->getList();
@@ -109,37 +109,37 @@ class ControllerConfigBirthplace extends Controller {
 
 		$this->data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('heading_title'),
-			'href'      => $this->url->link('config/birthplace', 'token=' . $this->session->data['token'] . $url, 'SSL'),
+			'href'      => $this->url->link('config/city', 'token=' . $this->session->data['token'] . $url, 'SSL'),
 			'separator' => ' :: '
 		);
 
-		$this->data['insert'] = $this->url->link('config/birthplace/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('config/birthplace/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['insert'] = $this->url->link('config/city/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['delete'] = $this->url->link('config/city/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
-		$this->data['birthplaces'] = array();
+		$this->data['cities'] = array();
 
 		$data = array(
 			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
 			'limit' => $this->config->get('config_admin_limit')
 		);
 
-		$birthplace_total = $this->model_config_birthplace->getTotalbirthplaces();
+		$city_total = $this->model_config_city->getTotalcities();
 
-		$results = $this->model_config_birthplace->getbirthplaces($data);
+		$results = $this->model_config_city->getcities($data);
 
 		foreach ($results as $result) {
 			$action = array();
 
 			$action[] = array(
 				'text' => $this->language->get('text_edit'),
-				'href' => $this->url->link('config/birthplace/update', 'token=' . $this->session->data['token'] . '&birthplace_id=' . $result['birthplace_id'] . $url, 'SSL')
+				'href' => $this->url->link('config/city/update', 'token=' . $this->session->data['token'] . '&City_id=' . $result['city_id'] . $url, 'SSL')
 			);
 
-			$this->data['birthplaces'][] = array(
-				'id' 		  => $result['birthplace_id'],
-				'name'        => $result['birthplace_name'],
+			$this->data['cities'][] = array(
+				'id' 		  => $result['city_id'],
+				'name'        => $result['city_name'],
 				'sort_order'        => $result['sort_order'],
-				'selected'    => isset($this->request->post['selected']) && in_array($result['birthplace_id'], $this->request->post['selected']),
+				'selected'    => isset($this->request->post['selected']) && in_array($result['city_id'], $this->request->post['selected']),
 				'action'      => $action
 			);
 		}
@@ -171,15 +171,15 @@ class ControllerConfigBirthplace extends Controller {
 		}
 
 		$pagination = new Pagination();
-		$pagination->total = $birthplace_total;
+		$pagination->total = $city_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_admin_limit');
 		$pagination->text = $this->language->get('text_pagination');
-		$pagination->url = $this->url->link('config/birthplace', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
+		$pagination->url = $this->url->link('config/city', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
 
 		$this->data['pagination'] = $pagination->render();
 
-		$this->template = 'config/birthplace_list.tpl';
+		$this->template = 'config/city_list.tpl';
 		$this->children = array(
 			'common/header',
 			'common/footer'
@@ -237,41 +237,41 @@ class ControllerConfigBirthplace extends Controller {
 
 		$this->data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('heading_title'),
-			'href'      => $this->url->link('config/birthplace', 'token=' . $this->session->data['token'], 'SSL'),
+			'href'      => $this->url->link('config/city', 'token=' . $this->session->data['token'], 'SSL'),
 			'separator' => ' :: '
 		);
 
-		if (!isset($this->request->get['birthplace_id'])) {
-			$this->data['action'] = $this->url->link('config/birthplace/insert', 'token=' . $this->session->data['token'], 'SSL');
+		if (!isset($this->request->get['city_id'])) {
+			$this->data['action'] = $this->url->link('config/city/insert', 'token=' . $this->session->data['token'], 'SSL');
 		} else {
-			$this->data['action'] = $this->url->link('config/birthplace/update', 'token=' . $this->session->data['token'] . '&birthplace_id=' . $this->request->get['birthplace_id'], 'SSL');
+			$this->data['action'] = $this->url->link('config/city/update', 'token=' . $this->session->data['token'] . '&City_id=' . $this->request->get['city_id'], 'SSL');
 		}
 
-		$this->data['cancel'] = $this->url->link('config/birthplace', 'token=' . $this->session->data['token'], 'SSL');
+		$this->data['cancel'] = $this->url->link('config/city', 'token=' . $this->session->data['token'], 'SSL');
 
-		if (isset($this->request->get['birthplace_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-			$birthplace_info = $this->model_config_birthplace->getbirthplace($this->request->get['birthplace_id']);
+		if (isset($this->request->get['city_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+			$city_info = $this->model_config_city->getCity($this->request->get['city_id']);
 		}
 
 		$this->data['token'] = $this->session->data['token'];		
 
 		if (isset($this->request->post['name'])) {
 			$this->data['name'] = $this->request->post['name'];
-		} elseif (!empty($birthplace_info)) {
-			$this->data['name'] = $birthplace_info['birthplace_name'];
+		} elseif (!empty($city_info)) {
+			$this->data['name'] = $city_info['city_name'];
 		} else {
 			$this->data['name'] = '';
 		}
 
 		if (isset($this->request->post['sort_order'])) {
 			$this->data['sort_order'] = $this->request->post['sort_order'];
-		} elseif (!empty($birthplace_info)) {
-			$this->data['sort_order'] = $birthplace_info['sort_order'];
+		} elseif (!empty($city_info)) {
+			$this->data['sort_order'] = $city_info['sort_order'];
 		} else {
 			$this->data['sort_order'] = 1;
 		}
 
-		$this->template = 'config/birthplace_form.tpl';
+		$this->template = 'config/city_form.tpl';
 		$this->children = array(
 			'common/header',
 			'common/footer'
@@ -281,7 +281,7 @@ class ControllerConfigBirthplace extends Controller {
 	}
 
 	protected function validateForm() {
-		if (!$this->user->hasPermission('modify', 'config/birthplace')) {
+		if (!$this->user->hasPermission('modify', 'config/city')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
@@ -301,7 +301,7 @@ class ControllerConfigBirthplace extends Controller {
 	}
 
 	protected function validateDelete() {
-		if (!$this->user->hasPermission('modify', 'config/birthplace')) {
+		if (!$this->user->hasPermission('modify', 'config/city')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 

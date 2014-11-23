@@ -107,7 +107,7 @@ $_['text_department_manage']           = 'Manage Department';
 $_['text_salary']            		   = 'Salary';
 $_['text_salary_type_manage']          = 'Manage Salary Type';
 // Config
-$_['text_birthplace']          		   = 'Birthplace';
+$_['text_city']          		   	   = 'City';
 $_['text_folk']          		   	   = 'Folk';
 $_['text_religion']          		   = 'Religion';
 ?>

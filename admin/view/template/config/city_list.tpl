@@ -13,7 +13,7 @@
   <?php } ?>
   <div class="box">
     <div class="heading">
-      <h1><img src="view/image/birthplace.png" alt="" /> <?php echo $heading_title; ?></h1>
+      <h1><img src="view/image/city.png" alt="" /> <?php echo $heading_title; ?></h1>
       <div class="buttons"><a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a><a onclick="$('#form').submit();" class="button"><?php echo $button_delete; ?></a></div>
     </div>
     <div class="content">
@@ -28,17 +28,17 @@
             </tr>
           </thead>
           <tbody>
-            <?php if ($birthplaces) { ?>
-            <?php foreach ($birthplaces as $birthplace) { ?>
+            <?php if ($cities) { ?>
+            <?php foreach ($cities as $city) { ?>
             <tr>
-              <td style="text-align: center;"><?php if ($birthplace['selected']) { ?>
-                <input type="checkbox" name="selected[]" value="<?php echo $birthplace['id']; ?>" checked="checked" />
+              <td style="text-align: center;"><?php if ($city['selected']) { ?>
+                <input type="checkbox" name="selected[]" value="<?php echo $city['id']; ?>" checked="checked" />
                 <?php } else { ?>
-                <input type="checkbox" name="selected[]" value="<?php echo $birthplace['id']; ?>" />
+                <input type="checkbox" name="selected[]" value="<?php echo $city['id']; ?>" />
                 <?php } ?></td>
-              <td class="left"><?php echo $birthplace['name']; ?></td>
-              <td class="left"><?php echo $birthplace['sort_order']; ?></td>
-              <td class="right"><?php foreach ($birthplace['action'] as $action) { ?>
+              <td class="left"><?php echo $city['name']; ?></td>
+              <td class="left"><?php echo $city['sort_order']; ?></td>
+              <td class="right"><?php foreach ($city['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
                 <?php } ?></td>
             </tr>
