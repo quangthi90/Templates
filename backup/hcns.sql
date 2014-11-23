@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2014 at 07:25 AM
+-- Generation Time: Nov 23, 2014 at 06:54 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -23,22 +23,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `birthplace`
+-- Table structure for table `city`
 --
 
-CREATE TABLE IF NOT EXISTS `birthplace` (
-  `birthplace_id` int(11) NOT NULL AUTO_INCREMENT,
-  `birthplace_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+CREATE TABLE IF NOT EXISTS `city` (
+  `city_id` int(11) NOT NULL AUTO_INCREMENT,
+  `city_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `sort_order` int(1) NOT NULL,
   `deleted` tinyint(1) NOT NULL,
-  PRIMARY KEY (`birthplace_id`)
+  PRIMARY KEY (`city_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `birthplace`
+-- Dumping data for table `city`
 --
 
-INSERT INTO `birthplace` (`birthplace_id`, `birthplace_name`, `sort_order`, `deleted`) VALUES
+INSERT INTO `city` (`city_id`, `city_name`, `sort_order`, `deleted`) VALUES
 (1, 'Hà Nội', 0, 0),
 (2, 'Tp. HCM', 0, 0),
 (3, 'Hải Phòng', 1, 0),
@@ -199,6 +199,10 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `image` varchar(255) NOT NULL,
   `folk_id` int(11) NOT NULL,
   `religion_id` int(11) NOT NULL,
+  `is_single` tinyint(1) NOT NULL,
+  `identity_card` varchar(20) NOT NULL,
+  `valid_from` date NOT NULL,
+  `police_location_id` int(11) NOT NULL,
   `department_id` int(11) NOT NULL,
   `part_id` int(11) NOT NULL,
   `position_id` int(11) NOT NULL,
@@ -211,13 +215,13 @@ CREATE TABLE IF NOT EXISTS `staff` (
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`staff_id`, `staff_code`, `firstname`, `middlename`, `lastname`, `birthday`, `birthplace_id`, `sex`, `address`, `salary`, `salary_trial`, `image`, `folk_id`, `religion_id`, `department_id`, `part_id`, `position_id`, `deleted`) VALUES
-(1, '0002', 'Nguyễn', 'Thị', 'A', '1990-08-13', 0, 0, '', 3000000, 2400000, '', 0, 0, 1, 0, 0, 0),
-(2, '0001', 'Huỳnh', 'Tuấn', 'B', '1990-07-15', 0, 1, 'abc xyz xxx', 5000000, 4000000, '', 0, 0, 2, 0, 0, 0),
-(3, '0003', 'Trần', 'Văn', 'C', '1990-08-15', 0, 0, '', 7000000, 5600000, 'data/07-150x150h.jpg', 0, 0, 3, 0, 0, 0),
-(4, '0004', 'Lưu', 'Quang', 'Thi', '1990-08-13', 2, 0, '129/6/5 Lê Văn Thọ, F11, Gò Vấp, HCM', 9000000, 7200000, '', 1, 1, 6, 0, 0, 0),
-(5, '0005', 'Ngô', 'Văn', 'D', '1990-06-23', 0, 0, '', 8000000, 6400000, '', 0, 0, 6, 0, 0, 0),
-(7, '0006', 'Trần', 'Quốc', 'E', '1977-08-12', 0, 0, '', 10000000, 8000000, '', 0, 0, 3, 0, 0, 0);
+INSERT INTO `staff` (`staff_id`, `staff_code`, `firstname`, `middlename`, `lastname`, `birthday`, `birthplace_id`, `sex`, `address`, `salary`, `salary_trial`, `image`, `folk_id`, `religion_id`, `is_single`, `identity_card`, `valid_from`, `police_location_id`, `department_id`, `part_id`, `position_id`, `deleted`) VALUES
+(1, '0002', 'Nguyễn', 'Thị', 'A', '1990-08-13', 0, 0, '', 3000000, 2400000, '', 0, 0, 0, '', '0000-00-00', 0, 1, 0, 0, 0),
+(2, '0001', 'Huỳnh', 'Tuấn', 'B', '1990-07-15', 0, 1, 'abc xyz xxx', 5000000, 4000000, '', 0, 0, 0, '', '0000-00-00', 0, 2, 0, 0, 0),
+(3, '0003', 'Trần', 'Văn', 'C', '1990-08-15', 0, 0, '', 7000000, 5600000, 'data/07-150x150h.jpg', 0, 0, 0, '', '0000-00-00', 0, 3, 0, 0, 0),
+(4, '0004', 'Lưu', 'Quang', 'Thi', '1990-08-13', 2, 0, '129/6/5 Lê Văn Thọ, F11, Gò Vấp, HCM', 9000000, 7200000, '', 1, 1, 1, '205 567 129', '2014-11-03', 5, 6, 0, 0, 0),
+(5, '0005', 'Ngô', 'Văn', 'D', '1990-06-23', 0, 0, '', 8000000, 6400000, '', 0, 0, 0, '', '0000-00-00', 0, 6, 0, 0, 0),
+(7, '0006', 'Trần', 'Quốc', 'E', '1977-08-12', 0, 0, '', 10000000, 8000000, '', 0, 0, 0, '', '0000-00-00', 0, 3, 0, 0, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
