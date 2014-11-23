@@ -176,6 +176,7 @@ $(document).ready(function(){
               <li><a href="<?php echo $language; ?>"><?php echo $text_language; ?></a></li>
               <li><a href="<?php echo $birthplace; ?>"><?php echo $text_birthplace; ?></a></li>
               <li><a href="<?php echo $folk; ?>"><?php echo $text_folk; ?></a></li>
+              <li><a href="<?php echo $religion; ?>"><?php echo $text_religion; ?></a></li>
               <!--li><a href="<?php echo $currency; ?>"><?php echo $text_currency; ?></a></li>
               <li><a href="<?php echo $stock_status; ?>"><?php echo $text_stock_status; ?></a></li>
               <li><a href="<?php echo $order_status; ?>"><?php echo $text_order_status; ?></a></li>

@@ -13,7 +13,7 @@
   <?php } ?>
   <div class="box">
     <div class="heading">
-      <h1><img src="view/image/folk.png" alt="" /> <?php echo $heading_title; ?></h1>
+      <h1><img src="view/image/religion.png" alt="" /> <?php echo $heading_title; ?></h1>
       <div class="buttons"><a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a><a onclick="$('#form').submit();" class="button"><?php echo $button_delete; ?></a></div>
     </div>
     <div class="content">
@@ -28,17 +28,17 @@
             </tr>
           </thead>
           <tbody>
-            <?php if ($folks) { ?>
-            <?php foreach ($folks as $folk) { ?>
+            <?php if ($religions) { ?>
+            <?php foreach ($religions as $religion) { ?>
             <tr>
-              <td style="text-align: center;"><?php if ($folk['selected']) { ?>
-                <input type="checkbox" name="selected[]" value="<?php echo $folk['id']; ?>" checked="checked" />
+              <td style="text-align: center;"><?php if ($religion['selected']) { ?>
+                <input type="checkbox" name="selected[]" value="<?php echo $religion['id']; ?>" checked="checked" />
                 <?php } else { ?>
-                <input type="checkbox" name="selected[]" value="<?php echo $folk['id']; ?>" />
+                <input type="checkbox" name="selected[]" value="<?php echo $religion['id']; ?>" />
                 <?php } ?></td>
-              <td class="left"><?php echo $folk['name']; ?></td>
-              <td class="left"><?php echo $folk['sort_order']; ?></td>
-              <td class="right"><?php foreach ($folk['action'] as $action) { ?>
+              <td class="left"><?php echo $religion['name']; ?></td>
+              <td class="left"><?php echo $religion['sort_order']; ?></td>
+              <td class="right"><?php foreach ($religion['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
                 <?php } ?></td>
             </tr>
