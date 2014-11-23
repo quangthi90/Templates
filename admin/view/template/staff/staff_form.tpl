@@ -131,6 +131,14 @@
               <td><?php echo $entry_valid_from; ?></td>
               <td><input class="input-medium date" style="width: 250px;" type="text" name="valid_from" value="<?php echo $valid_from; ?>" size="100" /></td>
             </tr>
+            <tr>
+              <td><?php echo $entry_police_location; ?></td>
+              <td><select name="police_location_id">
+              <?php foreach ($cities as $city) { ?>
+                <option <?php if ($city['id'] == $police_location_id) { ?>selected="selected"<?php } ?> value="<?php echo $city['id'] ?>"><?php echo $city['name'] ?></option>
+              <?php } ?>
+              </select></td>
+            </tr>
           </table>
         </div>
       </form>

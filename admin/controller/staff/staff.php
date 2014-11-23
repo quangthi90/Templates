@@ -427,6 +427,7 @@ class ControllerStaffStaff extends Controller {
 		$this->data['entry_marital'] = $this->language->get('entry_marital');
 		$this->data['entry_identity_card'] = $this->language->get('entry_identity_card');
 		$this->data['entry_valid_from'] = $this->language->get('entry_valid_from');
+		$this->data['entry_police_location'] = $this->language->get('entry_police_location');
 
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -647,6 +648,14 @@ class ControllerStaffStaff extends Controller {
 			$this->data['birthplace_id'] = $staff_info['birthplace_id'];
 		} else {
 			$this->data['birthplace_id'] = '';
+		}
+
+		if (isset($this->request->post['police_location_id'])) {
+			$this->data['police_location_id'] = $this->request->post['police_location_id'];
+		} elseif (!empty($staff_info)) {
+			$this->data['police_location_id'] = $staff_info['police_location_id'];
+		} else {
+			$this->data['police_location_id'] = '';
 		}
 
 		$this->load->model('config/folk');

@@ -40,8 +40,9 @@ $_['entry_address']          = 'Address:';
 $_['entry_folk']          	 = 'Folk:';
 $_['entry_religion']         = 'Religion:';
 $_['entry_marital']          = 'Marital Status:';
-$_['entry_identity_card']    = 'Identity Card:';
+$_['entry_identity_card']    = 'Identity Number:';
 $_['entry_valid_from']    	 = 'Valid From:';
+$_['entry_police_location']  = 'Police Location:';
 
 // Error 
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';
