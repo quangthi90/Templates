@@ -12,6 +12,8 @@ $_['text_day']               = '--Day--';
 $_['text_month']             = '--Month--';
 $_['text_male']              = 'Male';
 $_['text_female']            = 'Female';
+$_['text_single']            = 'Single';
+$_['text_married']           = 'Married';
 
 // Column
 $_['column_code']      		 = 'Code';
@@ -37,6 +39,7 @@ $_['entry_sex']              = 'Sex:';
 $_['entry_address']          = 'Address:';
 $_['entry_folk']          	 = 'Folk:';
 $_['entry_religion']         = 'Religion:';
+$_['entry_marital']          = 'Marital Status:';
 
 // Error 
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';

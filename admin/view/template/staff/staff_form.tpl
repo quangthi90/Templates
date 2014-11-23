@@ -116,6 +116,13 @@
                   <?php } ?>
                 </select></td>
             </tr>
+            <tr>
+              <td><?php echo $entry_marital; ?></td>
+              <td><select name="marital">
+                  <option value="1" <?php if ($marital == 1) { ?>selected="selected"<?php } ?>><?php echo $text_single; ?></option>
+                  <option value="0" <?php if ($marital == 0) { ?>selected="selected"<?php } ?>><?php echo $text_married; ?></option>
+                </select></td>
+            </tr>
           </table>
         </div>
       </form>

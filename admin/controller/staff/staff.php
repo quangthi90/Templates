@@ -407,6 +407,8 @@ class ControllerStaffStaff extends Controller {
 		$this->data['text_disabled'] = $this->language->get('text_disabled');
 		$this->data['text_male'] = $this->language->get('text_male');
 		$this->data['text_female'] = $this->language->get('text_female');
+		$this->data['text_single'] = $this->language->get('text_single');
+		$this->data['text_married'] = $this->language->get('text_married');
 
 		$this->data['entry_firstname'] = $this->language->get('entry_firstname');
 		$this->data['entry_middlename'] = $this->language->get('entry_middlename');
@@ -422,6 +424,7 @@ class ControllerStaffStaff extends Controller {
 		$this->data['entry_address'] = $this->language->get('entry_address');
 		$this->data['entry_folk'] = $this->language->get('entry_folk');
 		$this->data['entry_religion'] = $this->language->get('entry_religion');
+		$this->data['entry_marital'] = $this->language->get('entry_marital');
 
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -550,6 +553,14 @@ class ControllerStaffStaff extends Controller {
 			$this->data['address'] = $staff_info['address'];
 		} else {
 			$this->data['address'] = '';
+		}
+
+		if (isset($this->request->post['marital'])) {
+			$this->data['marital'] = $this->request->post['marital'];
+		} elseif (!empty($staff_info)) {
+			$this->data['marital'] = $staff_info['is_single'];
+		} else {
+			$this->data['marital'] = '';
 		}
 
 		if (isset($this->request->post['salary'])) {
