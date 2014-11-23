@@ -36,6 +36,7 @@ $_['entry_image']            = 'Avatar:';
 $_['entry_sex']              = 'Sex:';
 $_['entry_address']          = 'Address:';
 $_['entry_folk']          	 = 'Folk:';
+$_['entry_religion']         = 'Religion:';
 
 // Error 
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';

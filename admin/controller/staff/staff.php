@@ -421,6 +421,7 @@ class ControllerStaffStaff extends Controller {
 		$this->data['entry_sex'] = $this->language->get('entry_sex');
 		$this->data['entry_address'] = $this->language->get('entry_address');
 		$this->data['entry_folk'] = $this->language->get('entry_folk');
+		$this->data['entry_religion'] = $this->language->get('entry_religion');
 
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -635,6 +636,24 @@ class ControllerStaffStaff extends Controller {
 			$this->data['folk_id'] = $staff_info['folk_id'];
 		} else {
 			$this->data['folk_id'] = '';
+		}
+
+		$this->load->model('config/religion');
+		$this->data['religions'] = array();
+		$religions = $this->model_config_religion->getreligions(array('limit' => 1000, 'start' => 0));
+		foreach ($religions as $religion) {
+			$this->data['religions'][] = array(
+				'id' => $religion['religion_id'],
+				'name' => $religion['religion_name']
+			);
+		}
+
+		if (isset($this->request->post['religion_id'])) {
+			$this->data['religion_id'] = $this->request->post['religion_id'];
+		} elseif (!empty($staff_info)) {
+			$this->data['religion_id'] = $staff_info['religion_id'];
+		} else {
+			$this->data['religion_id'] = '';
 		}
 
 		$this->template = 'staff/staff_form.tpl';

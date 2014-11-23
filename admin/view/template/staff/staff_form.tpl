@@ -108,6 +108,14 @@
                   <?php } ?>
                 </select></td>
             </tr>
+            <tr>
+              <td><?php echo $entry_religion; ?></td>
+              <td><select name="religion_id">
+                  <?php foreach ($religions as $religion) { ?>
+                  <option value="<?php echo $religion['id'] ?>" <?php if ($religion['id'] == $religion_id) { ?>selected="selected"<?php } ?>><?php echo $religion['name']; ?></option>
+                  <?php } ?>
+                </select></td>
+            </tr>
           </table>
         </div>
       </form>
