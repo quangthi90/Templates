@@ -93,6 +93,10 @@
         <div id="tab-data">
           <table class="form">
             <tr>
+              <td><?php echo $entry_identity_card; ?></td>
+              <td><input type="text" name="identity_card" value="<?php echo $identity_card; ?>" size="100" /></td>
+            </tr>
+            <tr>
               <td><?php echo $entry_birthplace; ?></td>
               <td><select name="birthplace_id">
               <?php foreach ($birthplaces as $birthplace) { ?>
