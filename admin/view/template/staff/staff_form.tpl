@@ -127,6 +127,10 @@
                   <option value="0" <?php if ($marital == 0) { ?>selected="selected"<?php } ?>><?php echo $text_married; ?></option>
                 </select></td>
             </tr>
+            <tr>
+              <td><?php echo $entry_valid_from; ?></td>
+              <td><input class="input-medium date" style="width: 250px;" type="text" name="valid_from" value="<?php echo $valid_from; ?>" size="100" /></td>
+            </tr>
           </table>
         </div>
       </form>

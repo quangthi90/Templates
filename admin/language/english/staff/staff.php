@@ -41,6 +41,7 @@ $_['entry_folk']          	 = 'Folk:';
 $_['entry_religion']         = 'Religion:';
 $_['entry_marital']          = 'Marital Status:';
 $_['entry_identity_card']    = 'Identity Card:';
+$_['entry_valid_from']    	 = 'Valid From:';
 
 // Error 
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';
