@@ -409,6 +409,7 @@ class ControllerStaffStaff extends Controller {
 		$this->data['text_female'] = $this->language->get('text_female');
 		$this->data['text_single'] = $this->language->get('text_single');
 		$this->data['text_married'] = $this->language->get('text_married');
+		$this->data['text_select'] = $this->language->get('text_select');
 
 		$this->data['entry_firstname'] = $this->language->get('entry_firstname');
 		$this->data['entry_middlename'] = $this->language->get('entry_middlename');
@@ -431,6 +432,7 @@ class ControllerStaffStaff extends Controller {
 		$this->data['entry_permanent_address'] = $this->language->get('entry_permanent_address');
 		$this->data['entry_present_address'] = $this->language->get('entry_present_address');
 		$this->data['entry_phone'] = $this->language->get('entry_phone');
+		$this->data['entry_degree'] = $this->language->get('entry_degree');
 
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -719,6 +721,24 @@ class ControllerStaffStaff extends Controller {
 			$this->data['religion_id'] = $staff_info['religion_id'];
 		} else {
 			$this->data['religion_id'] = '';
+		}
+
+		$this->load->model('config/degree');
+		$this->data['degrees'] = array();
+		$degrees = $this->model_config_degree->getdegrees(array('limit' => 1000, 'start' => 0));
+		foreach ($degrees as $degree) {
+			$this->data['degrees'][] = array(
+				'id' => $degree['degree_id'],
+				'name' => $degree['degree_name']
+			);
+		}
+
+		if (isset($this->request->post['degree_id'])) {
+			$this->data['degree_id'] = $this->request->post['degree_id'];
+		} elseif (!empty($staff_info)) {
+			$this->data['degree_id'] = $staff_info['degree_id'];
+		} else {
+			$this->data['degree_id'] = '';
 		}
 
 		$this->template = 'staff/staff_form.tpl';

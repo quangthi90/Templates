@@ -151,6 +151,15 @@
               <td><?php echo $entry_phone; ?></td>
               <td><input type="text" name="phone" value="<?php echo $phone; ?>" size="100" /></td>
             </tr>
+            <tr>
+              <td><?php echo $entry_degree; ?></td>
+              <td><select name="degree_id">
+                  <option value="0"><?php echo $text_select; ?></option>
+                  <?php foreach ($degrees as $degree) { ?>
+                  <option value="<?php echo $degree['id'] ?>" <?php if ($degree['id'] == $degree_id) { ?>selected="selected"<?php } ?>><?php echo $degree['name']; ?></option>
+                  <?php } ?>
+                </select></td>
+            </tr>
           </table>
         </div>
       </form>
