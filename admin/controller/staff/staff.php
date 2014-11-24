@@ -428,6 +428,9 @@ class ControllerStaffStaff extends Controller {
 		$this->data['entry_identity_card'] = $this->language->get('entry_identity_card');
 		$this->data['entry_valid_from'] = $this->language->get('entry_valid_from');
 		$this->data['entry_police_location'] = $this->language->get('entry_police_location');
+		$this->data['entry_permanent_address'] = $this->language->get('entry_permanent_address');
+		$this->data['entry_present_address'] = $this->language->get('entry_present_address');
+		$this->data['entry_phone'] = $this->language->get('entry_phone');
 
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -580,6 +583,30 @@ class ControllerStaffStaff extends Controller {
 			$this->data['valid_from'] = $staff_info['valid_from'];
 		} else {
 			$this->data['valid_from'] = '';
+		}
+
+		if (isset($this->request->post['permanent_address'])) {
+			$this->data['permanent_address'] = $this->request->post['permanent_address'];
+		} elseif (!empty($staff_info)) {
+			$this->data['permanent_address'] = $staff_info['permanent_address'];
+		} else {
+			$this->data['permanent_address'] = '';
+		}
+
+		if (isset($this->request->post['present_address'])) {
+			$this->data['present_address'] = $this->request->post['present_address'];
+		} elseif (!empty($staff_info)) {
+			$this->data['present_address'] = $staff_info['present_address'];
+		} else {
+			$this->data['present_address'] = '';
+		}
+
+		if (isset($this->request->post['phone'])) {
+			$this->data['phone'] = $this->request->post['phone'];
+		} elseif (!empty($staff_info)) {
+			$this->data['phone'] = $staff_info['phone'];
+		} else {
+			$this->data['phone'] = '';
 		}
 
 		if (isset($this->request->post['salary'])) {

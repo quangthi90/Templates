@@ -139,6 +139,18 @@
               <?php } ?>
               </select></td>
             </tr>
+            <tr>
+              <td><?php echo $entry_permanent_address; ?></td>
+              <td><input type="text" name="permanent_address" value="<?php echo $permanent_address; ?>" size="100" /></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_present_address; ?></td>
+              <td><input type="text" name="present_address" value="<?php echo $present_address; ?>" size="100" /></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_phone; ?></td>
+              <td><input type="text" name="phone" value="<?php echo $phone; ?>" size="100" /></td>
+            </tr>
           </table>
         </div>
       </form>

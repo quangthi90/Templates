@@ -43,6 +43,9 @@ $_['entry_marital']          = 'Marital Status:';
 $_['entry_identity_card']    = 'Identity Number:';
 $_['entry_valid_from']    	 = 'Valid From:';
 $_['entry_police_location']  = 'Police Location:';
+$_['entry_permanent_address']	 = 'Permanent Address:';
+$_['entry_present_address']  = 'Present Address:';
+$_['entry_phone']          	 = 'Phone:';
 
 // Error 
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';
