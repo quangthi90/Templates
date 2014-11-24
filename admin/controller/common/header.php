@@ -136,6 +136,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_folk'] = $this->language->get('text_folk');
 		$this->data['text_religion'] = $this->language->get('text_religion');
 		$this->data['text_degree'] = $this->language->get('text_degree');
+		$this->data['text_major'] = $this->language->get('text_major');
 
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
@@ -248,6 +249,7 @@ class ControllerCommonHeader extends Controller {
 			$this->data['folk'] = $this->url->link('config/folk', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['religion'] = $this->url->link('config/religion', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['degree'] = $this->url->link('config/degree', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['major'] = $this->url->link('config/major', 'token=' . $this->session->data['token'], 'SSL');
 
 			$this->data['stores'] = array();
 

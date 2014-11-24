@@ -111,4 +111,5 @@ $_['text_city']          		   	   = 'City';
 $_['text_folk']          		   	   = 'Folk';
 $_['text_religion']          		   = 'Religion';
 $_['text_degree']          		  	   = 'Degree';
+$_['text_major']          		  	   = 'Major';
 ?>
