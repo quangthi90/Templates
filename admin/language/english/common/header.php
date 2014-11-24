@@ -110,4 +110,5 @@ $_['text_salary_type_manage']          = 'Manage Salary Type';
 $_['text_city']          		   	   = 'City';
 $_['text_folk']          		   	   = 'Folk';
 $_['text_religion']          		   = 'Religion';
+$_['text_degree']          		  	   = 'Degree';
 ?>
