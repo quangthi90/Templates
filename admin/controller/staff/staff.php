@@ -433,6 +433,7 @@ class ControllerStaffStaff extends Controller {
 		$this->data['entry_present_address'] = $this->language->get('entry_present_address');
 		$this->data['entry_phone'] = $this->language->get('entry_phone');
 		$this->data['entry_degree'] = $this->language->get('entry_degree');
+		$this->data['entry_major'] = $this->language->get('entry_major');
 
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -739,6 +740,24 @@ class ControllerStaffStaff extends Controller {
 			$this->data['degree_id'] = $staff_info['degree_id'];
 		} else {
 			$this->data['degree_id'] = '';
+		}
+
+		$this->load->model('config/major');
+		$this->data['majors'] = array();
+		$majors = $this->model_config_major->getmajors(array('limit' => 1000, 'start' => 0));
+		foreach ($majors as $major) {
+			$this->data['majors'][] = array(
+				'id' => $major['major_id'],
+				'name' => $major['major_name']
+			);
+		}
+
+		if (isset($this->request->post['major_id'])) {
+			$this->data['major_id'] = $this->request->post['major_id'];
+		} elseif (!empty($staff_info)) {
+			$this->data['major_id'] = $staff_info['major_id'];
+		} else {
+			$this->data['major_id'] = '';
 		}
 
 		$this->template = 'staff/staff_form.tpl';

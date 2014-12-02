@@ -47,6 +47,7 @@ $_['entry_permanent_address']	 = 'Permanent Address:';
 $_['entry_present_address']  = 'Present Address:';
 $_['entry_phone']          	 = 'Phone:';
 $_['entry_degree']           = 'Degree:';
+$_['entry_major']            = 'Major:';
 
 // Error 
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';

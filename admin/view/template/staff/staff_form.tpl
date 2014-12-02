@@ -160,6 +160,15 @@
                   <?php } ?>
                 </select></td>
             </tr>
+            <tr>
+              <td><?php echo $entry_major; ?></td>
+              <td><select name="major_id">
+                  <option value="0"><?php echo $text_select; ?></option>
+                  <?php foreach ($majors as $major) { ?>
+                  <option value="<?php echo $major['id'] ?>" <?php if ($major['id'] == $major_id) { ?>selected="selected"<?php } ?>><?php echo $major['name']; ?></option>
+                  <?php } ?>
+                </select></td>
+            </tr>
           </table>
         </div>
       </form>
