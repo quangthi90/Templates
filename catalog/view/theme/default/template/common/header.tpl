@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<?php //<meta name="viewport" content="width=device-width, initial-scale=1"> ?>
 <title><?php echo $title; ?></title>
 <base href="<?php echo $base; ?>" />
 <?php if ($description) { ?>
@@ -27,11 +27,12 @@
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
+<?php //<link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" /> ?>
 <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
+<link href="catalog/view/theme/default/stylesheet/custom.css" rel="stylesheet">
 <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
 <?php foreach ($scripts as $script) { ?>
 <script src="<?php echo $script; ?>" type="text/javascript"></script>
@@ -39,81 +40,102 @@
 <?php echo $google_analytics; ?>
 </head>
 <body class="<?php echo $class; ?>">
-<nav id="top">
-  <div class="container">
-    <?php echo $currency; ?>
-    <?php echo $language; ?>
-    <div id="top-links" class="nav pull-right">
-      <ul class="list-inline">
-        <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span></li>
-        <li class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_account; ?></span> <span class="caret"></span></a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <?php if ($logged) { ?>
-            <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-            <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-            <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
-            <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
-            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
-            <?php } else { ?>
-            <li><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
-            <li><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li>
-            <?php } ?>
-          </ul>
-        </li>
-        <li><a href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_wishlist; ?></span></a></li>
-        <li><a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_shopping_cart; ?></span></a></li>
-        <li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span></a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
 <header>
   <div class="container">
-    <div class="row">
-      <div class="col-sm-4">
-        <div id="logo">
-          <?php if ($logo) { ?>
-          <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
-          <?php } else { ?>
-          <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
-          <?php } ?>
-        </div>
-      </div>
-      <div class="col-sm-5"><?php echo $search; ?>
-      </div>
-      <div class="col-sm-3"><?php echo $cart; ?></div>
+    <div class="header-logo">
+        <a id="logo" href="<?php echo $home; ?>">
+          <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" />
+        </a>
     </div>
-  </div>
-</header>
-<?php if ($categories) { ?>
-<div class="container">
-  <nav id="menu" class="navbar">
-    <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
-      <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <nav id="menu" class="navbar">
       <ul class="nav navbar-nav">
-        <?php foreach ($categories as $category) { ?>
-        <?php if ($category['children']) { ?>
-        <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
+        <li><a href="#"><i class="fa fa-home fa-4x" style="font-size: 25px;"></i></a></li>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm</a>
           <div class="dropdown-menu">
-            <div class="dropdown-inner">
-              <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
+            <div class="dropdown-inner">            
               <ul class="list-unstyled">
-                <?php foreach ($children as $child) { ?>
-                <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                <?php } ?>
+                  <li class=""><a href="http://linhchinonglam.com/danh-muc/9/nam-linh-chi-nong-lam.html">Nấm Linh Chi Nông Lâm</a></li>
+                  <li class=""><a href="http://linhchinonglam.com/danh-muc/131/dong-trung-ha-thao-nong-lam.html">Đông Trùng Hạ Thảo Nông Lâm</a></li>
+                  <li><a href="http://linhchinonglam.com/danh-muc/113/linh-chi-nhat-thuong-hang.html">Linh Chi Nhật Thượng Hạng</a></li>
+                  <li><a href="http://linhchinonglam.com/danh-muc/99/nam-lim-xanh-nong-lam.html">Nấm Lim Xanh Nông Lâm</a></li>
+                  <li class=""><a href="http://linhchinonglam.com/danh-muc/112/nam-thuong-hoang-nong-lam.html">Nấm Thượng Hoàng Nông Lâm</a></li>
+                  <li><a href="http://linhchinonglam.com/danh-muc/156/nam-van-chi-nong-lam.html">Nấm Vân Chi Nông Lâm</a></li>
+                  <li class=""><a href="http://linhchinonglam.com/danh-muc/157/nam-hau-thu-nong-lam.html">Nấm Hầu Thủ Nông Lâm</a></li>
+                  <li class=""><a href="http://linhchinonglam.com/danh-muc/122/nam-linh-chi-han-quoc.html">Nấm Linh Chi Hàn Quốc</a></li>
+                  <li class=""><a href="http://linhchinonglam.com/danh-muc/10/bao-tu-nam-linh-chi-nong-lam.html">Bào Tử Linh Chi Nông Lâm</a></li>
+                  <li><a href="http://linhchinonglam.com/danh-muc/104/tra-bot-linh-chi-nong-lam.html">Trà - Bột Linh Chi Nông Lâm</a></li>
+                  <li><a href="http://linhchinonglam.com/danh-muc/12/ruou-linh-chi-nhan-sam-hai-ma.html">Rượu Linh Chi-Sâm-Hải Mã</a></li>
+                  <li><a href="http://linhchinonglam.com/danh-muc/196/gao-thao-duoc-nong-lam.html">Gạo Thảo Dược Nông Lâm</a></li>
+                  <li><a href="http://linhchinonglam.com/danh-muc/168/chum-ngay-nong-lam.html">Chùm Ngây Nông Lâm</a></li>
+                  <li><a href="http://linhchinonglam.com/danh-muc/11/mat-ong-nong-lam.html">Mật Ong Nông Lâm</a></li>
+                  <li><a href="http://linhchinonglam.com/danh-muc/13/to-yen.html">Tổ Yến Sào Cao Cấp</a></li><li><a href="http://linhchinonglam.com/danh-muc/141/phu-lieu-la-han-qua-co-ngot.html">Phụ Liệu La Hán Quả - Cỏ Ngọt</a></li>
               </ul>
-              <?php } ?>
             </div>
-            <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
         </li>
-        <?php } else { ?>
-        <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-        <?php } ?>
-        <?php } ?>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Giới thiệu</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner">            
+              <ul class="list-unstyled">
+                  <li class=""><a href="http://linhchinonglam.com/tin-tuc/5/hinh-anh-hoat-dong.html">Hình Ảnh &amp; Hoạt Động</a></li>
+                  <li><a href="http://linhchinonglam.com/danh-muc/233/phong-su.html">Phóng Sự</a></li><li class=""><a href="http://linhchinonglam.com/tin-tuc/2/gioi-thieu.html">Chúng Tôi Là Ai ?</a></li><li><a href="http://linhchinonglam.com/tin-tuc/6/giay-kiem-dinh-phan-tich.html">Giấy Kiểm Định Phân Tích</a></li>
+                  <li class="menu-item-selected"><a href="http://linhchinonglam.com/tin-tuc/113/giay-chung-nhan-cong-bo-san-pham.html">Giấy Chứng Nhận, Công Bố SP</a></li>
+                  <li class="right-menu"><a href="http://linhchinonglam.com/danh-muc/116/tin-tuc-su-kien.html">Tin Tức &amp; Sự Kiện</a></li>
+              </ul>
+            </div>
+        </li>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Giới thiệu</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner">            
+              <ul class="list-unstyled">
+                  <li class=""><a href="http://linhchinonglam.com/tin-tuc/5/hinh-anh-hoat-dong.html">Hình Ảnh &amp; Hoạt Động</a></li>
+                  <li><a href="http://linhchinonglam.com/danh-muc/233/phong-su.html">Phóng Sự</a></li><li class=""><a href="http://linhchinonglam.com/tin-tuc/2/gioi-thieu.html">Chúng Tôi Là Ai ?</a></li><li><a href="http://linhchinonglam.com/tin-tuc/6/giay-kiem-dinh-phan-tich.html">Giấy Kiểm Định Phân Tích</a></li>
+                  <li class="menu-item-selected"><a href="http://linhchinonglam.com/tin-tuc/113/giay-chung-nhan-cong-bo-san-pham.html">Giấy Chứng Nhận, Công Bố SP</a></li>
+                  <li class="right-menu"><a href="http://linhchinonglam.com/danh-muc/116/tin-tuc-su-kien.html">Tin Tức &amp; Sự Kiện</a></li>
+              </ul>
+            </div>
+        </li>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dịch vụ</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner">            
+              <ul class="list-unstyled">
+                  <li class=""><a href="http://linhchinonglam.com/tin-tuc/7/cung-cap-meo-giong-nam.html">Cung Cấp Meo Giống Nấm</a></li><li><a href="http://linhchinonglam.com/tin-tuc/9/trang-thiet-bi-trong-nam.html">Trang Thiết Bị Trồng Nấm</a></li><li><a href="http://linhchinonglam.com/tin-tuc/8/dao-tao-chuyen-giao-cong-nghe.html">Đào Tạo &amp; Chuyển Giao CN</a></li><li><a href="http://linhchinonglam.com/tin-tuc/10/huong-dan-xay-dung-trang-trai-trong-nam.html">Xây Dựng Trang Trại</a></li>
+              </ul>
+            </div>
+        </li>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Đại lý</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner">            
+              <ul class="list-unstyled">
+                  <li class=""><a href="http://linhchinonglam.com/tin-tuc/99/he-thong-showroom.html">Hệ Thống Showroom Linh Chi Nông Lâm</a></li><li><a href="http://linhchinonglam.com/tin-tuc/11/dai-ly-mien-nam.html">Danh Sách Đại Lý Miền Nam</a></li><li><a href="http://linhchinonglam.com/tin-tuc/51/dai-ly-mien-bac.html">Danh Sách Đại Lý Miền Bắc</a></li><li><a href="http://linhchinonglam.com/tin-tuc/49/dai-ly-nam-linh-chi-o-tay-nguyen.html">Danh Sách Đại Lý Tây Nguyên</a></li><li><a href="http://linhchinonglam.com/tin-tuc/62/khu-vuc-mien-trung.html">Danh Sách Đại Lý Miền Trung</a></li><li><a href="http://linhchinonglam.com/tin-tuc/111/danh-sach-dai-ly-ban-hang-on-line.html">Danh Sách Đại Lý Bán Hàng Online</a></li><li><a href="http://linhchinonglam.com/tin-tuc/107/danh-sach-chuoi-cua-hang-medicare.html">Danh Sách Chuỗi Cửa Hàng Medicare</a></li><li><a href="http://linhchinonglam.com/tin-tuc/53/tuyen-dai-ly-nha-phan-phoi-nam-linh-chi.html">Tuyển Đại Lý - Nhà Phân Phối Nấm Linh Chi</a></li><li><a href="http://linhchinonglam.com/tin-tuc/95/tuyen-dung-nhan-su-cap-cao.html">Tuyển Dụng Nhân Sự Cấp Cao</a></li><li><a href="http://linhchinonglam.com/tin-tuc/61/tuyen-nhan-vien-kinh-doanh-phat-trien-thi-truong.html">Tuyển Nhân Viên Kinh Doanh Phát Triển Thị Trường</a></li>
+              </ul>
+            </div>
+        </li>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sức khỏe</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner">            
+              <ul class="list-unstyled">
+                  <li class=""><a href="http://linhchinonglam.com/danh-muc/71/duoc-tinh-nam-linh-chi-do.html">Dược Tính Nấm Linh Chi Đỏ</a></li><li><a href="http://linhchinonglam.com/danh-muc/29/tin-tuc-suc-khoe.html">Tin Tức Sức Khỏe</a></li><li><a href="http://linhchinonglam.com/tin-tuc/122/ban-tin-24h.html">Bản Tin 24H</a></li>
+              </ul>
+            </div>
+        </li>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tư vấn</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner">            
+              <ul class="list-unstyled">
+                  <li><a href="http://linhchinonglam.com/danh-muc/80/cach-lua-chon-va-su-dung-san-pham.html">Cách Lựa Chọn Và Sử Dụng Sản Phẩm</a></li><li><a href="http://linhchinonglam.com/danh-muc/236/cau-hoi-thuong-gap.html">Câu Hỏi Thường Gặp</a></li><li><a href="http://linhchinonglam.com/danh-muc/79/cau-hoi-thuong-gap-ve-nam-linh-chi.html">Kiến thức chuyên ngành Nấm Linh Chi</a></li><li><a href="http://linhchinonglam.com/danh-muc/74/tu-van-su-dung.html">Sử Dụng Nấm Linh Chi</a></li>
+              </ul>
+            </div>
+        </li>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Từ thiện</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner">            
+              <ul class="list-unstyled">
+                  <li><a href="http://linhchinonglam.com/tin-tuc/79/thong-diep-nhan-ai.html">Thông Điệp Nhân Ái</a></li><li><a href="http://linhchinonglam.com/tin-tuc/80/chuong-trinh-nhan-dao.html">Chương Trình Nhân Đạo</a></li><li><a href="http://linhchinonglam.com/danh-muc/187/nhung-manh-doi-bat-hanh.html">Những Mảnh Đời Bất Hạnh</a></li>
+              </ul>
+            </div>
+        </li>
+        <li><a href="#">Liên hệ</a></li>
       </ul>
-    </div>
-  </nav>
-</div>
-<?php } ?>
+    </nav>
+  </div>  
+</header>
