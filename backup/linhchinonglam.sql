@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Sam 06 Décembre 2014 à 19:03
--- Version du serveur: 5.5.25a
--- Version de PHP: 5.4.4
+-- Host: 127.0.0.1
+-- Generation Time: Dec 06, 2014 at 07:12 PM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `linhchinonglam`
+-- Database: `templates`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `address`
+-- Table structure for table `address`
 --
 
 CREATE TABLE IF NOT EXISTS `address` (
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `address` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `address`
+-- Dumping data for table `address`
 --
 
 INSERT INTO `address` (`address_id`, `customer_id`, `firstname`, `lastname`, `company`, `address_1`, `address_2`, `city`, `postcode`, `country_id`, `zone_id`, `custom_field`) VALUES
@@ -53,7 +53,7 @@ INSERT INTO `address` (`address_id`, `customer_id`, `firstname`, `lastname`, `co
 -- --------------------------------------------------------
 
 --
--- Structure de la table `affiliate`
+-- Table structure for table `affiliate`
 --
 
 CREATE TABLE IF NOT EXISTS `affiliate` (
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `affiliate` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `affiliate_activity`
+-- Table structure for table `affiliate_activity`
 --
 
 CREATE TABLE IF NOT EXISTS `affiliate_activity` (
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `affiliate_activity` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `affiliate_login`
+-- Table structure for table `affiliate_login`
 --
 
 CREATE TABLE IF NOT EXISTS `affiliate_login` (
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `affiliate_login` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `affiliate_transaction`
+-- Table structure for table `affiliate_transaction`
 --
 
 CREATE TABLE IF NOT EXISTS `affiliate_transaction` (
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `affiliate_transaction` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `api`
+-- Table structure for table `api`
 --
 
 CREATE TABLE IF NOT EXISTS `api` (
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `api` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `api`
+-- Dumping data for table `api`
 --
 
 INSERT INTO `api` (`api_id`, `username`, `firstname`, `lastname`, `password`, `status`, `date_added`, `date_modified`) VALUES
@@ -169,7 +169,7 @@ INSERT INTO `api` (`api_id`, `username`, `firstname`, `lastname`, `password`, `s
 -- --------------------------------------------------------
 
 --
--- Structure de la table `attribute`
+-- Table structure for table `attribute`
 --
 
 CREATE TABLE IF NOT EXISTS `attribute` (
@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `attribute` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
--- Contenu de la table `attribute`
+-- Dumping data for table `attribute`
 --
 
 INSERT INTO `attribute` (`attribute_id`, `attribute_group_id`, `sort_order`) VALUES
@@ -199,7 +199,7 @@ INSERT INTO `attribute` (`attribute_id`, `attribute_group_id`, `sort_order`) VAL
 -- --------------------------------------------------------
 
 --
--- Structure de la table `attribute_description`
+-- Table structure for table `attribute_description`
 --
 
 CREATE TABLE IF NOT EXISTS `attribute_description` (
@@ -210,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `attribute_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `attribute_description`
+-- Dumping data for table `attribute_description`
 --
 
 INSERT INTO `attribute_description` (`attribute_id`, `language_id`, `name`) VALUES
@@ -229,7 +229,7 @@ INSERT INTO `attribute_description` (`attribute_id`, `language_id`, `name`) VALU
 -- --------------------------------------------------------
 
 --
--- Structure de la table `attribute_group`
+-- Table structure for table `attribute_group`
 --
 
 CREATE TABLE IF NOT EXISTS `attribute_group` (
@@ -239,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `attribute_group` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Contenu de la table `attribute_group`
+-- Dumping data for table `attribute_group`
 --
 
 INSERT INTO `attribute_group` (`attribute_group_id`, `sort_order`) VALUES
@@ -251,7 +251,7 @@ INSERT INTO `attribute_group` (`attribute_group_id`, `sort_order`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `attribute_group_description`
+-- Table structure for table `attribute_group_description`
 --
 
 CREATE TABLE IF NOT EXISTS `attribute_group_description` (
@@ -262,7 +262,7 @@ CREATE TABLE IF NOT EXISTS `attribute_group_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `attribute_group_description`
+-- Dumping data for table `attribute_group_description`
 --
 
 INSERT INTO `attribute_group_description` (`attribute_group_id`, `language_id`, `name`) VALUES
@@ -274,7 +274,7 @@ INSERT INTO `attribute_group_description` (`attribute_group_id`, `language_id`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `banner`
+-- Table structure for table `banner`
 --
 
 CREATE TABLE IF NOT EXISTS `banner` (
@@ -285,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `banner` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Contenu de la table `banner`
+-- Dumping data for table `banner`
 --
 
 INSERT INTO `banner` (`banner_id`, `name`, `status`) VALUES
@@ -296,7 +296,7 @@ INSERT INTO `banner` (`banner_id`, `name`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `banner_image`
+-- Table structure for table `banner_image`
 --
 
 CREATE TABLE IF NOT EXISTS `banner_image` (
@@ -309,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `banner_image` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=124 ;
 
 --
--- Contenu de la table `banner_image`
+-- Dumping data for table `banner_image`
 --
 
 INSERT INTO `banner_image` (`banner_image_id`, `banner_id`, `link`, `image`, `sort_order`) VALUES
@@ -343,7 +343,7 @@ INSERT INTO `banner_image` (`banner_image_id`, `banner_id`, `link`, `image`, `so
 -- --------------------------------------------------------
 
 --
--- Structure de la table `banner_image_description`
+-- Table structure for table `banner_image_description`
 --
 
 CREATE TABLE IF NOT EXISTS `banner_image_description` (
@@ -355,7 +355,7 @@ CREATE TABLE IF NOT EXISTS `banner_image_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `banner_image_description`
+-- Dumping data for table `banner_image_description`
 --
 
 INSERT INTO `banner_image_description` (`banner_image_id`, `language_id`, `banner_id`, `title`) VALUES
@@ -389,7 +389,7 @@ INSERT INTO `banner_image_description` (`banner_image_id`, `language_id`, `banne
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE IF NOT EXISTS `category` (
@@ -407,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `category` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=59 ;
 
 --
--- Contenu de la table `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`category_id`, `image`, `parent_id`, `top`, `column`, `sort_order`, `status`, `date_added`, `date_modified`) VALUES
@@ -453,7 +453,7 @@ INSERT INTO `category` (`category_id`, `image`, `parent_id`, `top`, `column`, `s
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category_description`
+-- Table structure for table `category_description`
 --
 
 CREATE TABLE IF NOT EXISTS `category_description` (
@@ -469,7 +469,7 @@ CREATE TABLE IF NOT EXISTS `category_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `category_description`
+-- Dumping data for table `category_description`
 --
 
 INSERT INTO `category_description` (`category_id`, `language_id`, `name`, `description`, `meta_title`, `meta_description`, `meta_keyword`) VALUES
@@ -515,7 +515,7 @@ INSERT INTO `category_description` (`category_id`, `language_id`, `name`, `descr
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category_filter`
+-- Table structure for table `category_filter`
 --
 
 CREATE TABLE IF NOT EXISTS `category_filter` (
@@ -527,7 +527,7 @@ CREATE TABLE IF NOT EXISTS `category_filter` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category_path`
+-- Table structure for table `category_path`
 --
 
 CREATE TABLE IF NOT EXISTS `category_path` (
@@ -538,7 +538,7 @@ CREATE TABLE IF NOT EXISTS `category_path` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `category_path`
+-- Dumping data for table `category_path`
 --
 
 INSERT INTO `category_path` (`category_id`, `path_id`, `level`) VALUES
@@ -617,7 +617,7 @@ INSERT INTO `category_path` (`category_id`, `path_id`, `level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category_to_layout`
+-- Table structure for table `category_to_layout`
 --
 
 CREATE TABLE IF NOT EXISTS `category_to_layout` (
@@ -630,7 +630,7 @@ CREATE TABLE IF NOT EXISTS `category_to_layout` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category_to_store`
+-- Table structure for table `category_to_store`
 --
 
 CREATE TABLE IF NOT EXISTS `category_to_store` (
@@ -640,7 +640,7 @@ CREATE TABLE IF NOT EXISTS `category_to_store` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `category_to_store`
+-- Dumping data for table `category_to_store`
 --
 
 INSERT INTO `category_to_store` (`category_id`, `store_id`) VALUES
@@ -686,7 +686,7 @@ INSERT INTO `category_to_store` (`category_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `country`
+-- Table structure for table `country`
 --
 
 CREATE TABLE IF NOT EXISTS `country` (
@@ -701,7 +701,7 @@ CREATE TABLE IF NOT EXISTS `country` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=258 ;
 
 --
--- Contenu de la table `country`
+-- Dumping data for table `country`
 --
 
 INSERT INTO `country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `address_format`, `postcode_required`, `status`) VALUES
@@ -962,7 +962,7 @@ INSERT INTO `country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `addres
 -- --------------------------------------------------------
 
 --
--- Structure de la table `coupon`
+-- Table structure for table `coupon`
 --
 
 CREATE TABLE IF NOT EXISTS `coupon` (
@@ -984,7 +984,7 @@ CREATE TABLE IF NOT EXISTS `coupon` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Contenu de la table `coupon`
+-- Dumping data for table `coupon`
 --
 
 INSERT INTO `coupon` (`coupon_id`, `name`, `code`, `type`, `discount`, `logged`, `shipping`, `total`, `date_start`, `date_end`, `uses_total`, `uses_customer`, `status`, `date_added`) VALUES
@@ -995,7 +995,7 @@ INSERT INTO `coupon` (`coupon_id`, `name`, `code`, `type`, `discount`, `logged`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `coupon_category`
+-- Table structure for table `coupon_category`
 --
 
 CREATE TABLE IF NOT EXISTS `coupon_category` (
@@ -1007,7 +1007,7 @@ CREATE TABLE IF NOT EXISTS `coupon_category` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `coupon_history`
+-- Table structure for table `coupon_history`
 --
 
 CREATE TABLE IF NOT EXISTS `coupon_history` (
@@ -1023,7 +1023,7 @@ CREATE TABLE IF NOT EXISTS `coupon_history` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `coupon_product`
+-- Table structure for table `coupon_product`
 --
 
 CREATE TABLE IF NOT EXISTS `coupon_product` (
@@ -1036,7 +1036,7 @@ CREATE TABLE IF NOT EXISTS `coupon_product` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `currency`
+-- Table structure for table `currency`
 --
 
 CREATE TABLE IF NOT EXISTS `currency` (
@@ -1053,18 +1053,18 @@ CREATE TABLE IF NOT EXISTS `currency` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `currency`
+-- Dumping data for table `currency`
 --
 
 INSERT INTO `currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
 (1, 'Pound Sterling', 'GBP', '£', '', '2', 0.64179999, 1, '2014-12-06 03:29:18'),
-(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2014-12-06 06:30:34'),
+(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2014-12-06 19:12:29'),
 (3, 'Euro', 'EUR', '', '€', '2', 0.81389999, 1, '2014-12-06 03:29:18');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customer`
+-- Table structure for table `customer`
 --
 
 CREATE TABLE IF NOT EXISTS `customer` (
@@ -1093,7 +1093,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `customer`
+-- Dumping data for table `customer`
 --
 
 INSERT INTO `customer` (`customer_id`, `customer_group_id`, `store_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `password`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `status`, `approved`, `safe`, `token`, `date_added`) VALUES
@@ -1102,7 +1102,7 @@ INSERT INTO `customer` (`customer_id`, `customer_group_id`, `store_id`, `firstna
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customer_activity`
+-- Table structure for table `customer_activity`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_activity` (
@@ -1116,7 +1116,7 @@ CREATE TABLE IF NOT EXISTS `customer_activity` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Contenu de la table `customer_activity`
+-- Dumping data for table `customer_activity`
 --
 
 INSERT INTO `customer_activity` (`activity_id`, `customer_id`, `key`, `data`, `ip`, `date_added`) VALUES
@@ -1126,7 +1126,7 @@ INSERT INTO `customer_activity` (`activity_id`, `customer_id`, `key`, `data`, `i
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customer_ban_ip`
+-- Table structure for table `customer_ban_ip`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_ban_ip` (
@@ -1139,7 +1139,7 @@ CREATE TABLE IF NOT EXISTS `customer_ban_ip` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customer_group`
+-- Table structure for table `customer_group`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_group` (
@@ -1150,7 +1150,7 @@ CREATE TABLE IF NOT EXISTS `customer_group` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `customer_group`
+-- Dumping data for table `customer_group`
 --
 
 INSERT INTO `customer_group` (`customer_group_id`, `approval`, `sort_order`) VALUES
@@ -1159,7 +1159,7 @@ INSERT INTO `customer_group` (`customer_group_id`, `approval`, `sort_order`) VAL
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customer_group_description`
+-- Table structure for table `customer_group_description`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_group_description` (
@@ -1171,7 +1171,7 @@ CREATE TABLE IF NOT EXISTS `customer_group_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `customer_group_description`
+-- Dumping data for table `customer_group_description`
 --
 
 INSERT INTO `customer_group_description` (`customer_group_id`, `language_id`, `name`, `description`) VALUES
@@ -1180,7 +1180,7 @@ INSERT INTO `customer_group_description` (`customer_group_id`, `language_id`, `n
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customer_history`
+-- Table structure for table `customer_history`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_history` (
@@ -1194,7 +1194,7 @@ CREATE TABLE IF NOT EXISTS `customer_history` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customer_ip`
+-- Table structure for table `customer_ip`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_ip` (
@@ -1207,7 +1207,7 @@ CREATE TABLE IF NOT EXISTS `customer_ip` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `customer_ip`
+-- Dumping data for table `customer_ip`
 --
 
 INSERT INTO `customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added`) VALUES
@@ -1216,7 +1216,7 @@ INSERT INTO `customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added`) 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customer_login`
+-- Table structure for table `customer_login`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_login` (
@@ -1234,7 +1234,7 @@ CREATE TABLE IF NOT EXISTS `customer_login` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customer_online`
+-- Table structure for table `customer_online`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_online` (
@@ -1249,7 +1249,7 @@ CREATE TABLE IF NOT EXISTS `customer_online` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customer_reward`
+-- Table structure for table `customer_reward`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_reward` (
@@ -1265,7 +1265,7 @@ CREATE TABLE IF NOT EXISTS `customer_reward` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customer_transaction`
+-- Table structure for table `customer_transaction`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_transaction` (
@@ -1281,7 +1281,7 @@ CREATE TABLE IF NOT EXISTS `customer_transaction` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `custom_field`
+-- Table structure for table `custom_field`
 --
 
 CREATE TABLE IF NOT EXISTS `custom_field` (
@@ -1297,7 +1297,7 @@ CREATE TABLE IF NOT EXISTS `custom_field` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `custom_field_customer_group`
+-- Table structure for table `custom_field_customer_group`
 --
 
 CREATE TABLE IF NOT EXISTS `custom_field_customer_group` (
@@ -1310,7 +1310,7 @@ CREATE TABLE IF NOT EXISTS `custom_field_customer_group` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `custom_field_description`
+-- Table structure for table `custom_field_description`
 --
 
 CREATE TABLE IF NOT EXISTS `custom_field_description` (
@@ -1323,7 +1323,7 @@ CREATE TABLE IF NOT EXISTS `custom_field_description` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `custom_field_value`
+-- Table structure for table `custom_field_value`
 --
 
 CREATE TABLE IF NOT EXISTS `custom_field_value` (
@@ -1336,7 +1336,7 @@ CREATE TABLE IF NOT EXISTS `custom_field_value` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `custom_field_value_description`
+-- Table structure for table `custom_field_value_description`
 --
 
 CREATE TABLE IF NOT EXISTS `custom_field_value_description` (
@@ -1350,7 +1350,7 @@ CREATE TABLE IF NOT EXISTS `custom_field_value_description` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `download`
+-- Table structure for table `download`
 --
 
 CREATE TABLE IF NOT EXISTS `download` (
@@ -1364,7 +1364,7 @@ CREATE TABLE IF NOT EXISTS `download` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `download_description`
+-- Table structure for table `download_description`
 --
 
 CREATE TABLE IF NOT EXISTS `download_description` (
@@ -1377,7 +1377,7 @@ CREATE TABLE IF NOT EXISTS `download_description` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE IF NOT EXISTS `event` (
@@ -1391,7 +1391,7 @@ CREATE TABLE IF NOT EXISTS `event` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `extension`
+-- Table structure for table `extension`
 --
 
 CREATE TABLE IF NOT EXISTS `extension` (
@@ -1402,7 +1402,7 @@ CREATE TABLE IF NOT EXISTS `extension` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=428 ;
 
 --
--- Contenu de la table `extension`
+-- Dumping data for table `extension`
 --
 
 INSERT INTO `extension` (`extension_id`, `type`, `code`) VALUES
@@ -1429,7 +1429,7 @@ INSERT INTO `extension` (`extension_id`, `type`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `filter`
+-- Table structure for table `filter`
 --
 
 CREATE TABLE IF NOT EXISTS `filter` (
@@ -1442,7 +1442,7 @@ CREATE TABLE IF NOT EXISTS `filter` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `filter_description`
+-- Table structure for table `filter_description`
 --
 
 CREATE TABLE IF NOT EXISTS `filter_description` (
@@ -1456,7 +1456,7 @@ CREATE TABLE IF NOT EXISTS `filter_description` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `filter_group`
+-- Table structure for table `filter_group`
 --
 
 CREATE TABLE IF NOT EXISTS `filter_group` (
@@ -1468,7 +1468,7 @@ CREATE TABLE IF NOT EXISTS `filter_group` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `filter_group_description`
+-- Table structure for table `filter_group_description`
 --
 
 CREATE TABLE IF NOT EXISTS `filter_group_description` (
@@ -1481,7 +1481,7 @@ CREATE TABLE IF NOT EXISTS `filter_group_description` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `geo_zone`
+-- Table structure for table `geo_zone`
 --
 
 CREATE TABLE IF NOT EXISTS `geo_zone` (
@@ -1494,7 +1494,7 @@ CREATE TABLE IF NOT EXISTS `geo_zone` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Contenu de la table `geo_zone`
+-- Dumping data for table `geo_zone`
 --
 
 INSERT INTO `geo_zone` (`geo_zone_id`, `name`, `description`, `date_modified`, `date_added`) VALUES
@@ -1504,7 +1504,7 @@ INSERT INTO `geo_zone` (`geo_zone_id`, `name`, `description`, `date_modified`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `information`
+-- Table structure for table `information`
 --
 
 CREATE TABLE IF NOT EXISTS `information` (
@@ -1516,7 +1516,7 @@ CREATE TABLE IF NOT EXISTS `information` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Contenu de la table `information`
+-- Dumping data for table `information`
 --
 
 INSERT INTO `information` (`information_id`, `bottom`, `sort_order`, `status`) VALUES
@@ -1528,7 +1528,7 @@ INSERT INTO `information` (`information_id`, `bottom`, `sort_order`, `status`) V
 -- --------------------------------------------------------
 
 --
--- Structure de la table `information_description`
+-- Table structure for table `information_description`
 --
 
 CREATE TABLE IF NOT EXISTS `information_description` (
@@ -1543,7 +1543,7 @@ CREATE TABLE IF NOT EXISTS `information_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `information_description`
+-- Dumping data for table `information_description`
 --
 
 INSERT INTO `information_description` (`information_id`, `language_id`, `title`, `description`, `meta_title`, `meta_description`, `meta_keyword`) VALUES
@@ -1555,7 +1555,7 @@ INSERT INTO `information_description` (`information_id`, `language_id`, `title`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `information_to_layout`
+-- Table structure for table `information_to_layout`
 --
 
 CREATE TABLE IF NOT EXISTS `information_to_layout` (
@@ -1568,7 +1568,7 @@ CREATE TABLE IF NOT EXISTS `information_to_layout` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `information_to_store`
+-- Table structure for table `information_to_store`
 --
 
 CREATE TABLE IF NOT EXISTS `information_to_store` (
@@ -1578,7 +1578,7 @@ CREATE TABLE IF NOT EXISTS `information_to_store` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `information_to_store`
+-- Dumping data for table `information_to_store`
 --
 
 INSERT INTO `information_to_store` (`information_id`, `store_id`) VALUES
@@ -1590,7 +1590,7 @@ INSERT INTO `information_to_store` (`information_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `language`
+-- Table structure for table `language`
 --
 
 CREATE TABLE IF NOT EXISTS `language` (
@@ -1607,7 +1607,7 @@ CREATE TABLE IF NOT EXISTS `language` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `language`
+-- Dumping data for table `language`
 --
 
 INSERT INTO `language` (`language_id`, `name`, `code`, `locale`, `image`, `directory`, `sort_order`, `status`) VALUES
@@ -1616,7 +1616,7 @@ INSERT INTO `language` (`language_id`, `name`, `code`, `locale`, `image`, `direc
 -- --------------------------------------------------------
 
 --
--- Structure de la table `layout`
+-- Table structure for table `layout`
 --
 
 CREATE TABLE IF NOT EXISTS `layout` (
@@ -1626,7 +1626,7 @@ CREATE TABLE IF NOT EXISTS `layout` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
--- Contenu de la table `layout`
+-- Dumping data for table `layout`
 --
 
 INSERT INTO `layout` (`layout_id`, `name`) VALUES
@@ -1647,7 +1647,7 @@ INSERT INTO `layout` (`layout_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `layout_module`
+-- Table structure for table `layout_module`
 --
 
 CREATE TABLE IF NOT EXISTS `layout_module` (
@@ -1660,7 +1660,7 @@ CREATE TABLE IF NOT EXISTS `layout_module` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=79 ;
 
 --
--- Contenu de la table `layout_module`
+-- Dumping data for table `layout_module`
 --
 
 INSERT INTO `layout_module` (`layout_module_id`, `layout_id`, `code`, `position`, `sort_order`) VALUES
@@ -1678,7 +1678,7 @@ INSERT INTO `layout_module` (`layout_module_id`, `layout_id`, `code`, `position`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `layout_route`
+-- Table structure for table `layout_route`
 --
 
 CREATE TABLE IF NOT EXISTS `layout_route` (
@@ -1690,7 +1690,7 @@ CREATE TABLE IF NOT EXISTS `layout_route` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=56 ;
 
 --
--- Contenu de la table `layout_route`
+-- Dumping data for table `layout_route`
 --
 
 INSERT INTO `layout_route` (`layout_route_id`, `layout_id`, `store_id`, `route`) VALUES
@@ -1711,7 +1711,7 @@ INSERT INTO `layout_route` (`layout_route_id`, `layout_id`, `store_id`, `route`)
 -- --------------------------------------------------------
 
 --
--- Structure de la table `length_class`
+-- Table structure for table `length_class`
 --
 
 CREATE TABLE IF NOT EXISTS `length_class` (
@@ -1721,7 +1721,7 @@ CREATE TABLE IF NOT EXISTS `length_class` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `length_class`
+-- Dumping data for table `length_class`
 --
 
 INSERT INTO `length_class` (`length_class_id`, `value`) VALUES
@@ -1732,7 +1732,7 @@ INSERT INTO `length_class` (`length_class_id`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `length_class_description`
+-- Table structure for table `length_class_description`
 --
 
 CREATE TABLE IF NOT EXISTS `length_class_description` (
@@ -1744,7 +1744,7 @@ CREATE TABLE IF NOT EXISTS `length_class_description` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `length_class_description`
+-- Dumping data for table `length_class_description`
 --
 
 INSERT INTO `length_class_description` (`length_class_id`, `language_id`, `title`, `unit`) VALUES
@@ -1755,7 +1755,7 @@ INSERT INTO `length_class_description` (`length_class_id`, `language_id`, `title
 -- --------------------------------------------------------
 
 --
--- Structure de la table `location`
+-- Table structure for table `location`
 --
 
 CREATE TABLE IF NOT EXISTS `location` (
@@ -1775,7 +1775,7 @@ CREATE TABLE IF NOT EXISTS `location` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `manufacturer`
+-- Table structure for table `manufacturer`
 --
 
 CREATE TABLE IF NOT EXISTS `manufacturer` (
@@ -1787,7 +1787,7 @@ CREATE TABLE IF NOT EXISTS `manufacturer` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
--- Contenu de la table `manufacturer`
+-- Dumping data for table `manufacturer`
 --
 
 INSERT INTO `manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`) VALUES
@@ -1801,7 +1801,7 @@ INSERT INTO `manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`) VA
 -- --------------------------------------------------------
 
 --
--- Structure de la table `manufacturer_to_store`
+-- Table structure for table `manufacturer_to_store`
 --
 
 CREATE TABLE IF NOT EXISTS `manufacturer_to_store` (
@@ -1811,7 +1811,7 @@ CREATE TABLE IF NOT EXISTS `manufacturer_to_store` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `manufacturer_to_store`
+-- Dumping data for table `manufacturer_to_store`
 --
 
 INSERT INTO `manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
@@ -1825,7 +1825,7 @@ INSERT INTO `manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `marketing`
+-- Table structure for table `marketing`
 --
 
 CREATE TABLE IF NOT EXISTS `marketing` (
@@ -1841,7 +1841,7 @@ CREATE TABLE IF NOT EXISTS `marketing` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `modification`
+-- Table structure for table `modification`
 --
 
 CREATE TABLE IF NOT EXISTS `modification` (
@@ -1860,7 +1860,7 @@ CREATE TABLE IF NOT EXISTS `modification` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `module`
+-- Table structure for table `module`
 --
 
 CREATE TABLE IF NOT EXISTS `module` (
@@ -1872,7 +1872,7 @@ CREATE TABLE IF NOT EXISTS `module` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
 
 --
--- Contenu de la table `module`
+-- Dumping data for table `module`
 --
 
 INSERT INTO `module` (`module_id`, `name`, `code`, `setting`) VALUES
@@ -1885,7 +1885,7 @@ INSERT INTO `module` (`module_id`, `name`, `code`, `setting`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `option`
+-- Table structure for table `option`
 --
 
 CREATE TABLE IF NOT EXISTS `option` (
@@ -1896,7 +1896,7 @@ CREATE TABLE IF NOT EXISTS `option` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
--- Contenu de la table `option`
+-- Dumping data for table `option`
 --
 
 INSERT INTO `option` (`option_id`, `type`, `sort_order`) VALUES
@@ -1915,7 +1915,7 @@ INSERT INTO `option` (`option_id`, `type`, `sort_order`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `option_description`
+-- Table structure for table `option_description`
 --
 
 CREATE TABLE IF NOT EXISTS `option_description` (
@@ -1926,7 +1926,7 @@ CREATE TABLE IF NOT EXISTS `option_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `option_description`
+-- Dumping data for table `option_description`
 --
 
 INSERT INTO `option_description` (`option_id`, `language_id`, `name`) VALUES
@@ -1945,7 +1945,7 @@ INSERT INTO `option_description` (`option_id`, `language_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `option_value`
+-- Table structure for table `option_value`
 --
 
 CREATE TABLE IF NOT EXISTS `option_value` (
@@ -1957,7 +1957,7 @@ CREATE TABLE IF NOT EXISTS `option_value` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
 
 --
--- Contenu de la table `option_value`
+-- Dumping data for table `option_value`
 --
 
 INSERT INTO `option_value` (`option_value_id`, `option_id`, `image`, `sort_order`) VALUES
@@ -1979,7 +1979,7 @@ INSERT INTO `option_value` (`option_value_id`, `option_id`, `image`, `sort_order
 -- --------------------------------------------------------
 
 --
--- Structure de la table `option_value_description`
+-- Table structure for table `option_value_description`
 --
 
 CREATE TABLE IF NOT EXISTS `option_value_description` (
@@ -1991,7 +1991,7 @@ CREATE TABLE IF NOT EXISTS `option_value_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `option_value_description`
+-- Dumping data for table `option_value_description`
 --
 
 INSERT INTO `option_value_description` (`option_value_id`, `language_id`, `option_id`, `name`) VALUES
@@ -2013,7 +2013,7 @@ INSERT INTO `option_value_description` (`option_value_id`, `language_id`, `optio
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order`
+-- Table structure for table `order`
 --
 
 CREATE TABLE IF NOT EXISTS `order` (
@@ -2082,7 +2082,7 @@ CREATE TABLE IF NOT EXISTS `order` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `order`
+-- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`order_id`, `invoice_no`, `invoice_prefix`, `store_id`, `store_name`, `store_url`, `customer_id`, `customer_group_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `custom_field`, `payment_firstname`, `payment_lastname`, `payment_company`, `payment_address_1`, `payment_address_2`, `payment_city`, `payment_postcode`, `payment_country`, `payment_country_id`, `payment_zone`, `payment_zone_id`, `payment_address_format`, `payment_custom_field`, `payment_method`, `payment_code`, `shipping_firstname`, `shipping_lastname`, `shipping_company`, `shipping_address_1`, `shipping_address_2`, `shipping_city`, `shipping_postcode`, `shipping_country`, `shipping_country_id`, `shipping_zone`, `shipping_zone_id`, `shipping_address_format`, `shipping_custom_field`, `shipping_method`, `shipping_code`, `comment`, `total`, `order_status_id`, `affiliate_id`, `commission`, `marketing_id`, `tracking`, `language_id`, `currency_id`, `currency_code`, `currency_value`, `ip`, `forwarded_ip`, `user_agent`, `accept_language`, `date_added`, `date_modified`) VALUES
@@ -2091,7 +2091,7 @@ INSERT INTO `order` (`order_id`, `invoice_no`, `invoice_prefix`, `store_id`, `st
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_custom_field`
+-- Table structure for table `order_custom_field`
 --
 
 CREATE TABLE IF NOT EXISTS `order_custom_field` (
@@ -2109,7 +2109,7 @@ CREATE TABLE IF NOT EXISTS `order_custom_field` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_fraud`
+-- Table structure for table `order_fraud`
 --
 
 CREATE TABLE IF NOT EXISTS `order_fraud` (
@@ -2172,7 +2172,7 @@ CREATE TABLE IF NOT EXISTS `order_fraud` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_history`
+-- Table structure for table `order_history`
 --
 
 CREATE TABLE IF NOT EXISTS `order_history` (
@@ -2186,7 +2186,7 @@ CREATE TABLE IF NOT EXISTS `order_history` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `order_history`
+-- Dumping data for table `order_history`
 --
 
 INSERT INTO `order_history` (`order_history_id`, `order_id`, `order_status_id`, `notify`, `comment`, `date_added`) VALUES
@@ -2195,7 +2195,7 @@ INSERT INTO `order_history` (`order_history_id`, `order_id`, `order_status_id`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_option`
+-- Table structure for table `order_option`
 --
 
 CREATE TABLE IF NOT EXISTS `order_option` (
@@ -2213,7 +2213,7 @@ CREATE TABLE IF NOT EXISTS `order_option` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_product`
+-- Table structure for table `order_product`
 --
 
 CREATE TABLE IF NOT EXISTS `order_product` (
@@ -2231,7 +2231,7 @@ CREATE TABLE IF NOT EXISTS `order_product` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `order_product`
+-- Dumping data for table `order_product`
 --
 
 INSERT INTO `order_product` (`order_product_id`, `order_id`, `product_id`, `name`, `model`, `quantity`, `price`, `total`, `tax`, `reward`) VALUES
@@ -2240,7 +2240,7 @@ INSERT INTO `order_product` (`order_product_id`, `order_id`, `product_id`, `name
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_recurring`
+-- Table structure for table `order_recurring`
 --
 
 CREATE TABLE IF NOT EXISTS `order_recurring` (
@@ -2270,7 +2270,7 @@ CREATE TABLE IF NOT EXISTS `order_recurring` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_recurring_transaction`
+-- Table structure for table `order_recurring_transaction`
 --
 
 CREATE TABLE IF NOT EXISTS `order_recurring_transaction` (
@@ -2286,7 +2286,7 @@ CREATE TABLE IF NOT EXISTS `order_recurring_transaction` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_status`
+-- Table structure for table `order_status`
 --
 
 CREATE TABLE IF NOT EXISTS `order_status` (
@@ -2297,7 +2297,7 @@ CREATE TABLE IF NOT EXISTS `order_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
--- Contenu de la table `order_status`
+-- Dumping data for table `order_status`
 --
 
 INSERT INTO `order_status` (`order_status_id`, `language_id`, `name`) VALUES
@@ -2319,7 +2319,7 @@ INSERT INTO `order_status` (`order_status_id`, `language_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_total`
+-- Table structure for table `order_total`
 --
 
 CREATE TABLE IF NOT EXISTS `order_total` (
@@ -2334,7 +2334,7 @@ CREATE TABLE IF NOT EXISTS `order_total` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `order_total`
+-- Dumping data for table `order_total`
 --
 
 INSERT INTO `order_total` (`order_total_id`, `order_id`, `code`, `title`, `value`, `sort_order`) VALUES
@@ -2345,7 +2345,7 @@ INSERT INTO `order_total` (`order_total_id`, `order_id`, `code`, `title`, `value
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_voucher`
+-- Table structure for table `order_voucher`
 --
 
 CREATE TABLE IF NOT EXISTS `order_voucher` (
@@ -2367,7 +2367,7 @@ CREATE TABLE IF NOT EXISTS `order_voucher` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE IF NOT EXISTS `product` (
@@ -2406,7 +2406,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
 
 --
--- Contenu de la table `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`) VALUES
@@ -2433,7 +2433,7 @@ INSERT INTO `product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_attribute`
+-- Table structure for table `product_attribute`
 --
 
 CREATE TABLE IF NOT EXISTS `product_attribute` (
@@ -2445,7 +2445,7 @@ CREATE TABLE IF NOT EXISTS `product_attribute` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `product_attribute`
+-- Dumping data for table `product_attribute`
 --
 
 INSERT INTO `product_attribute` (`product_id`, `attribute_id`, `language_id`, `text`) VALUES
@@ -2458,7 +2458,7 @@ INSERT INTO `product_attribute` (`product_id`, `attribute_id`, `language_id`, `t
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_description`
+-- Table structure for table `product_description`
 --
 
 CREATE TABLE IF NOT EXISTS `product_description` (
@@ -2475,7 +2475,7 @@ CREATE TABLE IF NOT EXISTS `product_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `product_description`
+-- Dumping data for table `product_description`
 --
 
 INSERT INTO `product_description` (`product_id`, `language_id`, `name`, `description`, `tag`, `meta_title`, `meta_description`, `meta_keyword`) VALUES
@@ -2502,7 +2502,7 @@ INSERT INTO `product_description` (`product_id`, `language_id`, `name`, `descrip
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_discount`
+-- Table structure for table `product_discount`
 --
 
 CREATE TABLE IF NOT EXISTS `product_discount` (
@@ -2519,7 +2519,7 @@ CREATE TABLE IF NOT EXISTS `product_discount` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=441 ;
 
 --
--- Contenu de la table `product_discount`
+-- Dumping data for table `product_discount`
 --
 
 INSERT INTO `product_discount` (`product_discount_id`, `product_id`, `customer_group_id`, `quantity`, `priority`, `price`, `date_start`, `date_end`) VALUES
@@ -2530,7 +2530,7 @@ INSERT INTO `product_discount` (`product_discount_id`, `product_id`, `customer_g
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_filter`
+-- Table structure for table `product_filter`
 --
 
 CREATE TABLE IF NOT EXISTS `product_filter` (
@@ -2542,7 +2542,7 @@ CREATE TABLE IF NOT EXISTS `product_filter` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_image`
+-- Table structure for table `product_image`
 --
 
 CREATE TABLE IF NOT EXISTS `product_image` (
@@ -2555,7 +2555,7 @@ CREATE TABLE IF NOT EXISTS `product_image` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2352 ;
 
 --
--- Contenu de la table `product_image`
+-- Dumping data for table `product_image`
 --
 
 INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_order`) VALUES
@@ -2624,7 +2624,7 @@ INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_or
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_option`
+-- Table structure for table `product_option`
 --
 
 CREATE TABLE IF NOT EXISTS `product_option` (
@@ -2637,7 +2637,7 @@ CREATE TABLE IF NOT EXISTS `product_option` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=227 ;
 
 --
--- Contenu de la table `product_option`
+-- Dumping data for table `product_option`
 --
 
 INSERT INTO `product_option` (`product_option_id`, `product_id`, `option_id`, `value`, `required`) VALUES
@@ -2657,7 +2657,7 @@ INSERT INTO `product_option` (`product_option_id`, `product_id`, `option_id`, `v
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_option_value`
+-- Table structure for table `product_option_value`
 --
 
 CREATE TABLE IF NOT EXISTS `product_option_value` (
@@ -2678,7 +2678,7 @@ CREATE TABLE IF NOT EXISTS `product_option_value` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
--- Contenu de la table `product_option_value`
+-- Dumping data for table `product_option_value`
 --
 
 INSERT INTO `product_option_value` (`product_option_value_id`, `product_option_id`, `product_id`, `option_id`, `option_value_id`, `quantity`, `subtract`, `price`, `price_prefix`, `points`, `points_prefix`, `weight`, `weight_prefix`) VALUES
@@ -2702,7 +2702,7 @@ INSERT INTO `product_option_value` (`product_option_value_id`, `product_option_i
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_recurring`
+-- Table structure for table `product_recurring`
 --
 
 CREATE TABLE IF NOT EXISTS `product_recurring` (
@@ -2715,7 +2715,7 @@ CREATE TABLE IF NOT EXISTS `product_recurring` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_related`
+-- Table structure for table `product_related`
 --
 
 CREATE TABLE IF NOT EXISTS `product_related` (
@@ -2725,7 +2725,7 @@ CREATE TABLE IF NOT EXISTS `product_related` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `product_related`
+-- Dumping data for table `product_related`
 --
 
 INSERT INTO `product_related` (`product_id`, `related_id`) VALUES
@@ -2737,7 +2737,7 @@ INSERT INTO `product_related` (`product_id`, `related_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_reward`
+-- Table structure for table `product_reward`
 --
 
 CREATE TABLE IF NOT EXISTS `product_reward` (
@@ -2749,7 +2749,7 @@ CREATE TABLE IF NOT EXISTS `product_reward` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=546 ;
 
 --
--- Contenu de la table `product_reward`
+-- Dumping data for table `product_reward`
 --
 
 INSERT INTO `product_reward` (`product_reward_id`, `product_id`, `customer_group_id`, `points`) VALUES
@@ -2776,7 +2776,7 @@ INSERT INTO `product_reward` (`product_reward_id`, `product_id`, `customer_group
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_special`
+-- Table structure for table `product_special`
 --
 
 CREATE TABLE IF NOT EXISTS `product_special` (
@@ -2792,7 +2792,7 @@ CREATE TABLE IF NOT EXISTS `product_special` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=440 ;
 
 --
--- Contenu de la table `product_special`
+-- Dumping data for table `product_special`
 --
 
 INSERT INTO `product_special` (`product_special_id`, `product_id`, `customer_group_id`, `priority`, `price`, `date_start`, `date_end`) VALUES
@@ -2803,7 +2803,7 @@ INSERT INTO `product_special` (`product_special_id`, `product_id`, `customer_gro
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_to_category`
+-- Table structure for table `product_to_category`
 --
 
 CREATE TABLE IF NOT EXISTS `product_to_category` (
@@ -2814,7 +2814,7 @@ CREATE TABLE IF NOT EXISTS `product_to_category` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `product_to_category`
+-- Dumping data for table `product_to_category`
 --
 
 INSERT INTO `product_to_category` (`product_id`, `category_id`) VALUES
@@ -2852,7 +2852,7 @@ INSERT INTO `product_to_category` (`product_id`, `category_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_to_download`
+-- Table structure for table `product_to_download`
 --
 
 CREATE TABLE IF NOT EXISTS `product_to_download` (
@@ -2864,7 +2864,7 @@ CREATE TABLE IF NOT EXISTS `product_to_download` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_to_layout`
+-- Table structure for table `product_to_layout`
 --
 
 CREATE TABLE IF NOT EXISTS `product_to_layout` (
@@ -2877,7 +2877,7 @@ CREATE TABLE IF NOT EXISTS `product_to_layout` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_to_store`
+-- Table structure for table `product_to_store`
 --
 
 CREATE TABLE IF NOT EXISTS `product_to_store` (
@@ -2887,7 +2887,7 @@ CREATE TABLE IF NOT EXISTS `product_to_store` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `product_to_store`
+-- Dumping data for table `product_to_store`
 --
 
 INSERT INTO `product_to_store` (`product_id`, `store_id`) VALUES
@@ -2914,7 +2914,7 @@ INSERT INTO `product_to_store` (`product_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `recurring`
+-- Table structure for table `recurring`
 --
 
 CREATE TABLE IF NOT EXISTS `recurring` (
@@ -2936,7 +2936,7 @@ CREATE TABLE IF NOT EXISTS `recurring` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `recurring_description`
+-- Table structure for table `recurring_description`
 --
 
 CREATE TABLE IF NOT EXISTS `recurring_description` (
@@ -2949,7 +2949,7 @@ CREATE TABLE IF NOT EXISTS `recurring_description` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `return`
+-- Table structure for table `return`
 --
 
 CREATE TABLE IF NOT EXISTS `return` (
@@ -2978,7 +2978,7 @@ CREATE TABLE IF NOT EXISTS `return` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `return_action`
+-- Table structure for table `return_action`
 --
 
 CREATE TABLE IF NOT EXISTS `return_action` (
@@ -2989,7 +2989,7 @@ CREATE TABLE IF NOT EXISTS `return_action` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `return_action`
+-- Dumping data for table `return_action`
 --
 
 INSERT INTO `return_action` (`return_action_id`, `language_id`, `name`) VALUES
@@ -3000,7 +3000,7 @@ INSERT INTO `return_action` (`return_action_id`, `language_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `return_history`
+-- Table structure for table `return_history`
 --
 
 CREATE TABLE IF NOT EXISTS `return_history` (
@@ -3016,7 +3016,7 @@ CREATE TABLE IF NOT EXISTS `return_history` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `return_reason`
+-- Table structure for table `return_reason`
 --
 
 CREATE TABLE IF NOT EXISTS `return_reason` (
@@ -3027,7 +3027,7 @@ CREATE TABLE IF NOT EXISTS `return_reason` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Contenu de la table `return_reason`
+-- Dumping data for table `return_reason`
 --
 
 INSERT INTO `return_reason` (`return_reason_id`, `language_id`, `name`) VALUES
@@ -3040,7 +3040,7 @@ INSERT INTO `return_reason` (`return_reason_id`, `language_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `return_status`
+-- Table structure for table `return_status`
 --
 
 CREATE TABLE IF NOT EXISTS `return_status` (
@@ -3051,7 +3051,7 @@ CREATE TABLE IF NOT EXISTS `return_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `return_status`
+-- Dumping data for table `return_status`
 --
 
 INSERT INTO `return_status` (`return_status_id`, `language_id`, `name`) VALUES
@@ -3062,7 +3062,7 @@ INSERT INTO `return_status` (`return_status_id`, `language_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `review`
+-- Table structure for table `review`
 --
 
 CREATE TABLE IF NOT EXISTS `review` (
@@ -3082,7 +3082,7 @@ CREATE TABLE IF NOT EXISTS `review` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `setting`
+-- Table structure for table `setting`
 --
 
 CREATE TABLE IF NOT EXISTS `setting` (
@@ -3096,7 +3096,7 @@ CREATE TABLE IF NOT EXISTS `setting` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=394 ;
 
 --
--- Contenu de la table `setting`
+-- Dumping data for table `setting`
 --
 
 INSERT INTO `setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `serialized`) VALUES
@@ -3247,7 +3247,7 @@ INSERT INTO `setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `serial
 -- --------------------------------------------------------
 
 --
--- Structure de la table `stock_status`
+-- Table structure for table `stock_status`
 --
 
 CREATE TABLE IF NOT EXISTS `stock_status` (
@@ -3258,7 +3258,7 @@ CREATE TABLE IF NOT EXISTS `stock_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Contenu de la table `stock_status`
+-- Dumping data for table `stock_status`
 --
 
 INSERT INTO `stock_status` (`stock_status_id`, `language_id`, `name`) VALUES
@@ -3270,7 +3270,7 @@ INSERT INTO `stock_status` (`stock_status_id`, `language_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `store`
+-- Table structure for table `store`
 --
 
 CREATE TABLE IF NOT EXISTS `store` (
@@ -3284,7 +3284,7 @@ CREATE TABLE IF NOT EXISTS `store` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tax_class`
+-- Table structure for table `tax_class`
 --
 
 CREATE TABLE IF NOT EXISTS `tax_class` (
@@ -3297,7 +3297,7 @@ CREATE TABLE IF NOT EXISTS `tax_class` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
--- Contenu de la table `tax_class`
+-- Dumping data for table `tax_class`
 --
 
 INSERT INTO `tax_class` (`tax_class_id`, `title`, `description`, `date_added`, `date_modified`) VALUES
@@ -3307,7 +3307,7 @@ INSERT INTO `tax_class` (`tax_class_id`, `title`, `description`, `date_added`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tax_rate`
+-- Table structure for table `tax_rate`
 --
 
 CREATE TABLE IF NOT EXISTS `tax_rate` (
@@ -3322,7 +3322,7 @@ CREATE TABLE IF NOT EXISTS `tax_rate` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=88 ;
 
 --
--- Contenu de la table `tax_rate`
+-- Dumping data for table `tax_rate`
 --
 
 INSERT INTO `tax_rate` (`tax_rate_id`, `geo_zone_id`, `name`, `rate`, `type`, `date_added`, `date_modified`) VALUES
@@ -3332,7 +3332,7 @@ INSERT INTO `tax_rate` (`tax_rate_id`, `geo_zone_id`, `name`, `rate`, `type`, `d
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tax_rate_to_customer_group`
+-- Table structure for table `tax_rate_to_customer_group`
 --
 
 CREATE TABLE IF NOT EXISTS `tax_rate_to_customer_group` (
@@ -3342,7 +3342,7 @@ CREATE TABLE IF NOT EXISTS `tax_rate_to_customer_group` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `tax_rate_to_customer_group`
+-- Dumping data for table `tax_rate_to_customer_group`
 --
 
 INSERT INTO `tax_rate_to_customer_group` (`tax_rate_id`, `customer_group_id`) VALUES
@@ -3352,7 +3352,7 @@ INSERT INTO `tax_rate_to_customer_group` (`tax_rate_id`, `customer_group_id`) VA
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tax_rule`
+-- Table structure for table `tax_rule`
 --
 
 CREATE TABLE IF NOT EXISTS `tax_rule` (
@@ -3365,7 +3365,7 @@ CREATE TABLE IF NOT EXISTS `tax_rule` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=129 ;
 
 --
--- Contenu de la table `tax_rule`
+-- Dumping data for table `tax_rule`
 --
 
 INSERT INTO `tax_rule` (`tax_rule_id`, `tax_class_id`, `tax_rate_id`, `based`, `priority`) VALUES
@@ -3377,7 +3377,7 @@ INSERT INTO `tax_rule` (`tax_rule_id`, `tax_class_id`, `tax_rate_id`, `based`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `upload`
+-- Table structure for table `upload`
 --
 
 CREATE TABLE IF NOT EXISTS `upload` (
@@ -3392,7 +3392,7 @@ CREATE TABLE IF NOT EXISTS `upload` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `url_alias`
+-- Table structure for table `url_alias`
 --
 
 CREATE TABLE IF NOT EXISTS `url_alias` (
@@ -3405,7 +3405,7 @@ CREATE TABLE IF NOT EXISTS `url_alias` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=874 ;
 
 --
--- Contenu de la table `url_alias`
+-- Dumping data for table `url_alias`
 --
 
 INSERT INTO `url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
@@ -3509,7 +3509,7 @@ INSERT INTO `url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -3530,16 +3530,16 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`user_id`, `user_group_id`, `username`, `password`, `salt`, `firstname`, `lastname`, `email`, `image`, `code`, `ip`, `status`, `date_added`) VALUES
-(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '72150e11f', 'John', 'Doe', 'quangthi_90@yahoo.com.vn', '', '', '::1', 1, '2014-12-02 18:41:20');
+(1, 1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '72150e11f', 'John', 'Doe', 'quangthi_90@yahoo.com.vn', '', '', '::1', 1, '2014-12-02 18:41:20');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user_group`
+-- Table structure for table `user_group`
 --
 
 CREATE TABLE IF NOT EXISTS `user_group` (
@@ -3550,7 +3550,7 @@ CREATE TABLE IF NOT EXISTS `user_group` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
--- Contenu de la table `user_group`
+-- Dumping data for table `user_group`
 --
 
 INSERT INTO `user_group` (`user_group_id`, `name`, `permission`) VALUES
@@ -3560,7 +3560,7 @@ INSERT INTO `user_group` (`user_group_id`, `name`, `permission`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `voucher`
+-- Table structure for table `voucher`
 --
 
 CREATE TABLE IF NOT EXISTS `voucher` (
@@ -3582,7 +3582,7 @@ CREATE TABLE IF NOT EXISTS `voucher` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `voucher_history`
+-- Table structure for table `voucher_history`
 --
 
 CREATE TABLE IF NOT EXISTS `voucher_history` (
@@ -3597,7 +3597,7 @@ CREATE TABLE IF NOT EXISTS `voucher_history` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `voucher_theme`
+-- Table structure for table `voucher_theme`
 --
 
 CREATE TABLE IF NOT EXISTS `voucher_theme` (
@@ -3607,7 +3607,7 @@ CREATE TABLE IF NOT EXISTS `voucher_theme` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Contenu de la table `voucher_theme`
+-- Dumping data for table `voucher_theme`
 --
 
 INSERT INTO `voucher_theme` (`voucher_theme_id`, `image`) VALUES
@@ -3618,7 +3618,7 @@ INSERT INTO `voucher_theme` (`voucher_theme_id`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `voucher_theme_description`
+-- Table structure for table `voucher_theme_description`
 --
 
 CREATE TABLE IF NOT EXISTS `voucher_theme_description` (
@@ -3629,7 +3629,7 @@ CREATE TABLE IF NOT EXISTS `voucher_theme_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `voucher_theme_description`
+-- Dumping data for table `voucher_theme_description`
 --
 
 INSERT INTO `voucher_theme_description` (`voucher_theme_id`, `language_id`, `name`) VALUES
@@ -3640,7 +3640,7 @@ INSERT INTO `voucher_theme_description` (`voucher_theme_id`, `language_id`, `nam
 -- --------------------------------------------------------
 
 --
--- Structure de la table `weight_class`
+-- Table structure for table `weight_class`
 --
 
 CREATE TABLE IF NOT EXISTS `weight_class` (
@@ -3650,7 +3650,7 @@ CREATE TABLE IF NOT EXISTS `weight_class` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Contenu de la table `weight_class`
+-- Dumping data for table `weight_class`
 --
 
 INSERT INTO `weight_class` (`weight_class_id`, `value`) VALUES
@@ -3662,7 +3662,7 @@ INSERT INTO `weight_class` (`weight_class_id`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `weight_class_description`
+-- Table structure for table `weight_class_description`
 --
 
 CREATE TABLE IF NOT EXISTS `weight_class_description` (
@@ -3674,7 +3674,7 @@ CREATE TABLE IF NOT EXISTS `weight_class_description` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Contenu de la table `weight_class_description`
+-- Dumping data for table `weight_class_description`
 --
 
 INSERT INTO `weight_class_description` (`weight_class_id`, `language_id`, `title`, `unit`) VALUES
@@ -3686,7 +3686,7 @@ INSERT INTO `weight_class_description` (`weight_class_id`, `language_id`, `title
 -- --------------------------------------------------------
 
 --
--- Structure de la table `zone`
+-- Table structure for table `zone`
 --
 
 CREATE TABLE IF NOT EXISTS `zone` (
@@ -3699,7 +3699,7 @@ CREATE TABLE IF NOT EXISTS `zone` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4225 ;
 
 --
--- Contenu de la table `zone`
+-- Dumping data for table `zone`
 --
 
 INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
@@ -7808,7 +7808,7 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `zone_to_geo_zone`
+-- Table structure for table `zone_to_geo_zone`
 --
 
 CREATE TABLE IF NOT EXISTS `zone_to_geo_zone` (
@@ -7822,7 +7822,7 @@ CREATE TABLE IF NOT EXISTS `zone_to_geo_zone` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=110 ;
 
 --
--- Contenu de la table `zone_to_geo_zone`
+-- Dumping data for table `zone_to_geo_zone`
 --
 
 INSERT INTO `zone_to_geo_zone` (`zone_to_geo_zone_id`, `country_id`, `zone_id`, `geo_zone_id`, `date_added`, `date_modified`) VALUES
