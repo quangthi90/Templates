@@ -289,3 +289,26 @@ footer p {
 .home-topic .topic-content ul > li > a{
 	font-size: 13px;
 }
+
+#carousel-product-list {	
+}
+#carousel-product-list .product-item .product-image img {	
+	border: 1px solid #DDD;
+	padding: 5px;
+	width: 100px;
+	height: 100px;
+}
+#carousel-product-list .product-item .separator {
+	background: transparent url("../image/p-separator.png") no-repeat top center;
+	height: 20px;
+	width: 100px;
+	margin-top: 5px;
+}
+#carousel-product-list .product-item .product-price {
+	text-align: center;
+	font-size: 13px;
+	font-weight: bold;
+	width: 100px;
+	padding: 5px;
+	background-color: rgb(247, 204, 125);
+}

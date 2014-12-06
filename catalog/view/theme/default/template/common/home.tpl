@@ -84,6 +84,29 @@
                     </div>
                 </div>                
             </div>
+            <!-- Product list -->
+            <div class="break"></div>
+            <div id="carousel-product-list" class="owl-carousel">
+                <?php for ($i=1; $i <= 25; $i++) { ?>
+                    <div class="item product-item text-center">
+                        <a href="#" class="product-image">
+                            <img src="<?php echo HTTP_SERVER; ?>image/catalog/products/p (<?php echo $i; ?>).jpg" alt="Product 8" class="img-responsive" />
+                        </a>
+                        <div class="separator"></div>
+                        <div class="product-price">200.000</div>
+                    </div>
+                <?php } ?>
+              </div>
+                <script type="text/javascript">
+                    $('#carousel-product-list').owlCarousel({
+                        items: 7,
+                        autoPlay: 3000,
+                        navigation: true,
+                        navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
+                        pagination: false
+                    });
+                </script>
+                <!-- End Product list -->
             <?php echo $content_bottom; ?>
         </div>        
         <div class="content-down" id="content-down">            
