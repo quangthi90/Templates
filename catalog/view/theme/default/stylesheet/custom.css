@@ -139,17 +139,10 @@ header #menu {
 	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: bold;
+	white-space: nowrap;
 }
 
-#menu .dropdown-inner a {
-    clear: both;    
-    display: block;
-    min-width: 160px;
-    padding: 4px 20px;
-    white-space: nowrap;
-    font-weight: bold;
-}
-#menu .dropdown-inner li a:hover {
+#menu ul.dropdown-menu li a:hover {
 	color: #FFF;
 	background-color: #edb84f;
 	background-image: linear-gradient(to bottom, #edb84f, #edb84f);
