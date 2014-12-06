@@ -128,8 +128,8 @@ header #logo {
 
 header #menu {
 	border-radius: 0px;	
-	background-color: #edb84f;
-    background-image: linear-gradient(to bottom, #edb84f, #edb84f);
+	background-color: #BE3D0B;
+    background-image: linear-gradient(to bottom, #BE3D0B, #BE3D0B);
     background-repeat: repeat-x;
     border-color:  transparent;    
     margin-bottom: 0px;
@@ -154,8 +154,50 @@ header #menu {
 	background-color: #edb84f;
 	background-image: linear-gradient(to bottom, #edb84f, #edb84f);
 }
-
 /*END HEADER*/
+
+/* START FOOTER */
+footer {
+	background: #000 url("../image/footer_bg.jpg") repeat-x top center;
+	color: #DDB780;
+}
+footer .footer-info, footer .vistor-statistics {
+	text-align: center;	
+}
+footer .footer-info {
+	margin-bottom: 15px;
+}
+footer p {
+	margin: 0;	
+}
+.footer-menu {	
+	text-align: center;
+	margin-bottom: 23px;
+}
+.footer-menu ul.menu {	
+}
+.footer-menu ul.menu li {
+	display: inline-block;
+}
+.footer-menu ul.menu li a {
+	display: block;
+	padding: 3px 5px;
+	color: #A9A580;
+	font-weight: bold;
+	white-space: normal;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px 5px;
+}
+.footer-menu ul.menu li a:hover {
+	color: #FFF;
+}
+.footer-ship {
+	margin-bottom: 10px;
+	line-height: 16px;
+	text-align: justify;
+}
+/* END FOOTER */
 
 /* START CONTENT */
 #content{	
