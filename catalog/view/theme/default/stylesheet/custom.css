@@ -1,14 +1,118 @@
+body{
+	background: #FFF url("../image/bg.png");
+	font-size: 13px;
+}
+
 div.container {
 	max-width: none !important;
 	width: 990px !important;
 }
 a {
+	color: #714842;
+	outline: none !important;
+}
+a:hover{
 	color: #edb84f;
 }
 
+.mark-new {
+	display: inline-block;
+	width: 24px;
+	height: 12px;
+	background: transparent url("../image/new.gif") no-repeat top center;
+}
+.text-upper {
+	text-transform: uppercase;
+}
+.text-bold {
+	font-weight: bold;
+}
+
+.btn {
+	border-radius: 0px !important;
+}
+
+.innerL {
+	padding-left: 10px;
+}
+.innerR {
+	padding-right: 10px;
+}
+.innerT {
+	padding-top: 10px;
+}
+.innerB {
+	padding-bottom: 10px;
+}
+.innerAll {
+	padding: 10px;
+}
+.innerL.inner-2x {
+	padding-left: 20px;
+}
+.innerR.inner-2x  {
+	padding-right: 20px;
+}
+.innerT.inner-2x  {
+	padding-top: 20px;
+}
+.innerB.inner-2x  {
+	padding-bottom: 20px;
+}
+.innerAll.inner-2x  {
+	padding: 20px;
+}
+
+.btn-main {
+    background-color: #822601;
+    background-image: linear-gradient(to bottom, #d03b07, #822601);
+    background-repeat: repeat-x;
+    border-color: #822601 #822601 #802420;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+.btn-main.btn-sm {
+	padding: 3px 8px;
+	font-size: 12px;
+}
+.btn-main:hover{
+	color: #FFF;
+	background-color: #360700;
+    background-image: linear-gradient(to bottom, #d03b07, #360700);
+    background-repeat: repeat-x;
+    border-color: #360700 #360700 #802420;
+}
+
+.break {
+	background-image: url(../image/break.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 22px;
+	margin-left: 16px;
+}
+
+
+.panel.panel-flat {
+	border: none;
+	box-shadow: none;
+}
+.panel.panel-flat .panel-heading {
+	color: #333;
+	background-color: transparent;
+	border: none;
+	padding: 0px;
+	border-radius: 0px;
+}
+.panel.panel-flat .panel-body {
+	padding: 0px;
+}
+
+
 /* START HEADER */
 header {
-
 }
 header .header-logo {
 	height: 135px;
@@ -28,6 +132,8 @@ header #menu {
     background-image: linear-gradient(to bottom, #edb84f, #edb84f);
     background-repeat: repeat-x;
     border-color:  transparent;    
+    margin-bottom: 0px;
+    border-bottom: 2px solid #FFF;
 }
 #menu .nav > li > a {
 	font-size: 14px;
@@ -50,6 +156,27 @@ header #menu {
 }
 
 /*END HEADER*/
+
+/* START CONTENT */
+#content{	
+}
+#content-up {
+	background: transparent url("../image/main-up.jpg") no-repeat top center;
+    height: 60px;
+    width: 100%;
+}
+#content-down {
+	background: transparent url("../image/main-down.jpg") no-repeat top center;
+    height: 60px;
+    width: 100%;
+}
+#content-mid {
+	background: transparent url("../image/main-mid.jpg") repeat-y top center;
+    width: 100%;
+    padding: 10px 70px;
+}
+/* END CONTENT */
+
 /* COMMON HOME */
 .common-home {
 }
@@ -57,7 +184,73 @@ header #menu {
 	border-radius: 0px;
 	border: none;
 	box-shadow: none;
+	background-color: transparent;
+	margin-bottom: 10px;
 }
 .common-home .owl-carousel .owl-pagination {
-	top: 15px;
+	top: 10px;
+}
+
+#order-ad {
+	height: 40px;
+	background: transparent url("../image/line.jpg") repeat-x 0 center;
+	position: relative;
+}
+#order-ad .text-ad {
+	font-size: 15px;
+	font-weight: bold;
+    left: 100px;
+    padding-top: 10px;
+    position: absolute;
+    right: 200px;
+    text-align: center;
+    color: #3d1305;
+}
+#order-ad .btn-main {
+	position: absolute;
+}
+#order-ad #link-qa {
+	left: 15px;
+	top: 5px;
+}
+#order-ad #link-ordernow {
+	right: 15px;
+	top: 5px;
+}
+
+#welcome {	
+}
+#welcome .welcome-slogan {	
+	background: transparent url("../image/welcome.jpg") no-repeat top center;
+	height: 35px;
+	margin-bottom: 20px;
+}
+#welcome .welcom-text {
+	font-size: 15px;
+	text-align: justify;
+}
+
+.home-topic .topic-title {
+	display: inline-block;
+	padding: 3px 0px;
+	font-size: 14px;
+	height: 40px;
+	overflow: hidden;
+}
+.home-topic .topic-img {
+	width: 100%;
+}
+.home-topic .topic-content {
+	height: 130px;
+	overflow: hidden;
+	margin-bottom: 5px;
+	font-size: 14px;
+}
+.home-topic .topic-content ul > li {
+	background: transparent url("../image/icon-category.gif") no-repeat 0 50%;
+	padding: 2px 0px 2px 15px;
+	line-height: 18px;
+}
+.home-topic .topic-content ul > li > a{
+	font-size: 13px;
 }

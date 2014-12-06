@@ -49,8 +49,8 @@
     </div>
     <nav id="menu" class="navbar">
       <ul class="nav navbar-nav">
-        <li><a href="#"><i class="fa fa-home fa-4x" style="font-size: 25px;"></i></a></li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm</a>
+        <li><a href="<?php echo $home; ?>"><i class="fa fa-home fa-4x" style="font-size: 20px;"></i></a></li>
+        <li class="dropdown" style="width: 110px;"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm</a>
           <div class="dropdown-menu">
             <div class="dropdown-inner">            
               <ul class="list-unstyled">
@@ -72,7 +72,7 @@
               </ul>
             </div>
         </li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Giới thiệu</a>
+        <li class="dropdown"  style="width: 110px;"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Giới thiệu</a>
           <div class="dropdown-menu">
             <div class="dropdown-inner">            
               <ul class="list-unstyled">
@@ -83,18 +83,7 @@
               </ul>
             </div>
         </li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Giới thiệu</a>
-          <div class="dropdown-menu">
-            <div class="dropdown-inner">            
-              <ul class="list-unstyled">
-                  <li class=""><a href="http://linhchinonglam.com/tin-tuc/5/hinh-anh-hoat-dong.html">Hình Ảnh &amp; Hoạt Động</a></li>
-                  <li><a href="http://linhchinonglam.com/danh-muc/233/phong-su.html">Phóng Sự</a></li><li class=""><a href="http://linhchinonglam.com/tin-tuc/2/gioi-thieu.html">Chúng Tôi Là Ai ?</a></li><li><a href="http://linhchinonglam.com/tin-tuc/6/giay-kiem-dinh-phan-tich.html">Giấy Kiểm Định Phân Tích</a></li>
-                  <li class="menu-item-selected"><a href="http://linhchinonglam.com/tin-tuc/113/giay-chung-nhan-cong-bo-san-pham.html">Giấy Chứng Nhận, Công Bố SP</a></li>
-                  <li class="right-menu"><a href="http://linhchinonglam.com/danh-muc/116/tin-tuc-su-kien.html">Tin Tức &amp; Sự Kiện</a></li>
-              </ul>
-            </div>
-        </li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dịch vụ</a>
+        <li class="dropdown" style="width: 110px;"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dịch vụ</a>
           <div class="dropdown-menu">
             <div class="dropdown-inner">            
               <ul class="list-unstyled">
@@ -102,7 +91,7 @@
               </ul>
             </div>
         </li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Đại lý</a>
+        <li class="dropdown" style="width: 90px;"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Đại lý</a>
           <div class="dropdown-menu">
             <div class="dropdown-inner">            
               <ul class="list-unstyled">
@@ -110,7 +99,7 @@
               </ul>
             </div>
         </li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sức khỏe</a>
+        <li class="dropdown" style="width: 110px;"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sức khỏe</a>
           <div class="dropdown-menu">
             <div class="dropdown-inner">            
               <ul class="list-unstyled">
@@ -118,7 +107,7 @@
               </ul>
             </div>
         </li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tư vấn</a>
+        <li class="dropdown" style="width: 90px;"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tư vấn</a>
           <div class="dropdown-menu">
             <div class="dropdown-inner">            
               <ul class="list-unstyled">
@@ -126,7 +115,7 @@
               </ul>
             </div>
         </li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Từ thiện</a>
+        <li class="dropdown" style="width: 110px;"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Từ thiện</a>
           <div class="dropdown-menu">
             <div class="dropdown-inner">            
               <ul class="list-unstyled">
@@ -134,7 +123,7 @@
               </ul>
             </div>
         </li>
-        <li><a href="#">Liên hệ</a></li>
+        <li style="width: 100px;"><a href="#">Liên hệ</a></li>
       </ul>
     </nav>
   </div>  

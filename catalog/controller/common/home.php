@@ -9,6 +9,10 @@ class ControllerCommonHome extends Controller {
 			$this->document->addLink(HTTP_SERVER, 'canonical');
 		}
 
+		$data['home_url'] = HTTP_SERVER;
+		$data['product_img_url'] = HTTP_SERVER.'image/catalog/home/product.jpg';
+		$data['service_img_url'] = HTTP_SERVER.'image/catalog/home/service.jpg';;
+
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');
