@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 3.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 02, 2014 at 12:42 PM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Client: localhost
+-- Généré le: Sam 06 Décembre 2014 à 19:03
+-- Version du serveur: 5.5.25a
+-- Version de PHP: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `templates`
+-- Base de données: `linhchinonglam`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `address`
+-- Structure de la table `address`
 --
 
 CREATE TABLE IF NOT EXISTS `address` (
@@ -41,12 +41,19 @@ CREATE TABLE IF NOT EXISTS `address` (
   `custom_field` text NOT NULL,
   PRIMARY KEY (`address_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `address`
+--
+
+INSERT INTO `address` (`address_id`, `customer_id`, `firstname`, `lastname`, `company`, `address_1`, `address_2`, `city`, `postcode`, `country_id`, `zone_id`, `custom_field`) VALUES
+(1, 1, 'Thiet', 'Ngo Van', 'BOSCH', 'Ho Chi Minh City', 'Ho Chi Minh City', 'Ho Chi Minh City', '70000', 230, 3780, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `affiliate`
+-- Structure de la table `affiliate`
 --
 
 CREATE TABLE IF NOT EXISTS `affiliate` (
@@ -87,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `affiliate` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `affiliate_activity`
+-- Structure de la table `affiliate_activity`
 --
 
 CREATE TABLE IF NOT EXISTS `affiliate_activity` (
@@ -103,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `affiliate_activity` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `affiliate_login`
+-- Structure de la table `affiliate_login`
 --
 
 CREATE TABLE IF NOT EXISTS `affiliate_login` (
@@ -121,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `affiliate_login` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `affiliate_transaction`
+-- Structure de la table `affiliate_transaction`
 --
 
 CREATE TABLE IF NOT EXISTS `affiliate_transaction` (
@@ -137,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `affiliate_transaction` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `api`
+-- Structure de la table `api`
 --
 
 CREATE TABLE IF NOT EXISTS `api` (
@@ -153,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `api` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `api`
+-- Contenu de la table `api`
 --
 
 INSERT INTO `api` (`api_id`, `username`, `firstname`, `lastname`, `password`, `status`, `date_added`, `date_modified`) VALUES
@@ -162,7 +169,7 @@ INSERT INTO `api` (`api_id`, `username`, `firstname`, `lastname`, `password`, `s
 -- --------------------------------------------------------
 
 --
--- Table structure for table `attribute`
+-- Structure de la table `attribute`
 --
 
 CREATE TABLE IF NOT EXISTS `attribute` (
@@ -173,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `attribute` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
--- Dumping data for table `attribute`
+-- Contenu de la table `attribute`
 --
 
 INSERT INTO `attribute` (`attribute_id`, `attribute_group_id`, `sort_order`) VALUES
@@ -192,7 +199,7 @@ INSERT INTO `attribute` (`attribute_id`, `attribute_group_id`, `sort_order`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `attribute_description`
+-- Structure de la table `attribute_description`
 --
 
 CREATE TABLE IF NOT EXISTS `attribute_description` (
@@ -203,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `attribute_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `attribute_description`
+-- Contenu de la table `attribute_description`
 --
 
 INSERT INTO `attribute_description` (`attribute_id`, `language_id`, `name`) VALUES
@@ -222,7 +229,7 @@ INSERT INTO `attribute_description` (`attribute_id`, `language_id`, `name`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `attribute_group`
+-- Structure de la table `attribute_group`
 --
 
 CREATE TABLE IF NOT EXISTS `attribute_group` (
@@ -232,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `attribute_group` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `attribute_group`
+-- Contenu de la table `attribute_group`
 --
 
 INSERT INTO `attribute_group` (`attribute_group_id`, `sort_order`) VALUES
@@ -244,7 +251,7 @@ INSERT INTO `attribute_group` (`attribute_group_id`, `sort_order`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `attribute_group_description`
+-- Structure de la table `attribute_group_description`
 --
 
 CREATE TABLE IF NOT EXISTS `attribute_group_description` (
@@ -255,7 +262,7 @@ CREATE TABLE IF NOT EXISTS `attribute_group_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `attribute_group_description`
+-- Contenu de la table `attribute_group_description`
 --
 
 INSERT INTO `attribute_group_description` (`attribute_group_id`, `language_id`, `name`) VALUES
@@ -267,7 +274,7 @@ INSERT INTO `attribute_group_description` (`attribute_group_id`, `language_id`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banner`
+-- Structure de la table `banner`
 --
 
 CREATE TABLE IF NOT EXISTS `banner` (
@@ -278,18 +285,18 @@ CREATE TABLE IF NOT EXISTS `banner` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `banner`
+-- Contenu de la table `banner`
 --
 
 INSERT INTO `banner` (`banner_id`, `name`, `status`) VALUES
-(6, 'HP Products', 1),
+(6, 'Home Products', 1),
 (7, 'Home Page Slideshow', 1),
 (8, 'Manufacturers', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banner_image`
+-- Structure de la table `banner_image`
 --
 
 CREATE TABLE IF NOT EXISTS `banner_image` (
@@ -299,15 +306,16 @@ CREATE TABLE IF NOT EXISTS `banner_image` (
   `image` varchar(255) NOT NULL,
   `sort_order` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`banner_image_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=99 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=124 ;
 
 --
--- Dumping data for table `banner_image`
+-- Contenu de la table `banner_image`
 --
 
 INSERT INTO `banner_image` (`banner_image_id`, `banner_id`, `link`, `image`, `sort_order`) VALUES
-(79, 7, 'index.php?route=product/product&amp;path=57&amp;product_id=49', 'catalog/demo/banners/iPhone6.jpg', 0),
-(87, 6, 'index.php?route=product/manufacturer/info&amp;manufacturer_id=7', 'catalog/demo/compaq_presario.jpg', 0),
+(100, 7, '', 'catalog/home-slides/linhchinonglam-3.jpg', 0),
+(101, 7, '', 'catalog/home-slides/slide1.jpg', 0),
+(115, 6, '', 'catalog/demo/canon_eos_5d_1.jpg', 0),
 (94, 8, '', 'catalog/demo/manufacturer/nfl.png', 0),
 (95, 8, '', 'catalog/demo/manufacturer/redbull.png', 0),
 (96, 8, '', 'catalog/demo/manufacturer/sony.png', 0),
@@ -317,14 +325,25 @@ INSERT INTO `banner_image` (`banner_image_id`, `banner_id`, `link`, `image`, `so
 (88, 8, '', 'catalog/demo/manufacturer/harley.png', 0),
 (89, 8, '', 'catalog/demo/manufacturer/dell.png', 0),
 (90, 8, '', 'catalog/demo/manufacturer/disney.png', 0),
-(80, 7, '', 'catalog/demo/banners/MacBookAir.jpg', 0),
+(99, 7, '#', 'catalog/home-slides/slide-5.PNG', 0),
 (97, 8, '', 'catalog/demo/manufacturer/starbucks.png', 0),
-(98, 8, '', 'catalog/demo/manufacturer/nintendo.png', 0);
+(98, 8, '', 'catalog/demo/manufacturer/nintendo.png', 0),
+(102, 7, '', 'catalog/home-slides/slide2.jpg', 0),
+(103, 7, '#', 'catalog/home-slides/slide-3.jpg', 0),
+(114, 6, 'index.php?route=product/manufacturer/info&amp;manufacturer_id=7', 'catalog/demo/compaq_presario.jpg', 0),
+(116, 6, '', 'catalog/demo/product/macbook.jpg', 0),
+(117, 6, '', 'catalog/demo/canon_eos_5d_3.jpg', 0),
+(118, 6, '', 'catalog/demo/hp_3.jpg', 0),
+(119, 6, '', 'catalog/demo/product/thunderboltdisplay.jpg', 0),
+(120, 6, '', 'catalog/demo/canon_eos_5d_2.jpg', 0),
+(121, 6, '', 'catalog/demo/hp_2.jpg', 0),
+(122, 6, '', 'catalog/demo/htc_touch_hd_1.jpg', 0),
+(123, 6, '', 'catalog/demo/ipod_touch_6.jpg', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banner_image_description`
+-- Structure de la table `banner_image_description`
 --
 
 CREATE TABLE IF NOT EXISTS `banner_image_description` (
@@ -336,29 +355,41 @@ CREATE TABLE IF NOT EXISTS `banner_image_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `banner_image_description`
+-- Contenu de la table `banner_image_description`
 --
 
 INSERT INTO `banner_image_description` (`banner_image_id`, `language_id`, `banner_id`, `title`) VALUES
-(79, 1, 7, 'iPhone 6'),
-(87, 1, 6, 'HP Banner'),
+(100, 1, 7, 'Slide2'),
+(123, 1, 6, 'Product 10'),
 (93, 1, 8, 'Canon'),
 (92, 1, 8, 'Burger King'),
 (91, 1, 8, 'Coca Cola'),
 (90, 1, 8, 'Disney'),
 (89, 1, 8, 'Dell'),
-(80, 1, 7, 'MacBookAir'),
+(99, 1, 7, 'Slide 1'),
 (88, 1, 8, 'Harley Davidson'),
 (94, 1, 8, 'NFL'),
 (95, 1, 8, 'RedBull'),
 (96, 1, 8, 'Sony'),
 (97, 1, 8, 'Starbucks'),
-(98, 1, 8, 'Nintendo');
+(98, 1, 8, 'Nintendo'),
+(101, 1, 7, 'Slide3'),
+(102, 1, 7, 'Slide4'),
+(103, 1, 7, 'Slide5'),
+(122, 1, 6, 'Product 9'),
+(121, 1, 6, 'Product 8'),
+(120, 1, 6, 'Product 7'),
+(119, 1, 6, 'Product 6'),
+(118, 1, 6, 'Product 5'),
+(117, 1, 6, 'Product 4'),
+(116, 1, 6, 'Product 3'),
+(115, 1, 6, 'Product 2'),
+(114, 1, 6, 'Product 1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Structure de la table `category`
 --
 
 CREATE TABLE IF NOT EXISTS `category` (
@@ -376,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `category` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=59 ;
 
 --
--- Dumping data for table `category`
+-- Contenu de la table `category`
 --
 
 INSERT INTO `category` (`category_id`, `image`, `parent_id`, `top`, `column`, `sort_order`, `status`, `date_added`, `date_modified`) VALUES
@@ -422,7 +453,7 @@ INSERT INTO `category` (`category_id`, `image`, `parent_id`, `top`, `column`, `s
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_description`
+-- Structure de la table `category_description`
 --
 
 CREATE TABLE IF NOT EXISTS `category_description` (
@@ -438,7 +469,7 @@ CREATE TABLE IF NOT EXISTS `category_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category_description`
+-- Contenu de la table `category_description`
 --
 
 INSERT INTO `category_description` (`category_id`, `language_id`, `name`, `description`, `meta_title`, `meta_description`, `meta_keyword`) VALUES
@@ -484,7 +515,7 @@ INSERT INTO `category_description` (`category_id`, `language_id`, `name`, `descr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_filter`
+-- Structure de la table `category_filter`
 --
 
 CREATE TABLE IF NOT EXISTS `category_filter` (
@@ -496,7 +527,7 @@ CREATE TABLE IF NOT EXISTS `category_filter` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_path`
+-- Structure de la table `category_path`
 --
 
 CREATE TABLE IF NOT EXISTS `category_path` (
@@ -507,7 +538,7 @@ CREATE TABLE IF NOT EXISTS `category_path` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category_path`
+-- Contenu de la table `category_path`
 --
 
 INSERT INTO `category_path` (`category_id`, `path_id`, `level`) VALUES
@@ -586,7 +617,7 @@ INSERT INTO `category_path` (`category_id`, `path_id`, `level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_to_layout`
+-- Structure de la table `category_to_layout`
 --
 
 CREATE TABLE IF NOT EXISTS `category_to_layout` (
@@ -599,7 +630,7 @@ CREATE TABLE IF NOT EXISTS `category_to_layout` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_to_store`
+-- Structure de la table `category_to_store`
 --
 
 CREATE TABLE IF NOT EXISTS `category_to_store` (
@@ -609,7 +640,7 @@ CREATE TABLE IF NOT EXISTS `category_to_store` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category_to_store`
+-- Contenu de la table `category_to_store`
 --
 
 INSERT INTO `category_to_store` (`category_id`, `store_id`) VALUES
@@ -655,7 +686,7 @@ INSERT INTO `category_to_store` (`category_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `country`
+-- Structure de la table `country`
 --
 
 CREATE TABLE IF NOT EXISTS `country` (
@@ -670,7 +701,7 @@ CREATE TABLE IF NOT EXISTS `country` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=258 ;
 
 --
--- Dumping data for table `country`
+-- Contenu de la table `country`
 --
 
 INSERT INTO `country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `address_format`, `postcode_required`, `status`) VALUES
@@ -931,7 +962,7 @@ INSERT INTO `country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `addres
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coupon`
+-- Structure de la table `coupon`
 --
 
 CREATE TABLE IF NOT EXISTS `coupon` (
@@ -953,7 +984,7 @@ CREATE TABLE IF NOT EXISTS `coupon` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `coupon`
+-- Contenu de la table `coupon`
 --
 
 INSERT INTO `coupon` (`coupon_id`, `name`, `code`, `type`, `discount`, `logged`, `shipping`, `total`, `date_start`, `date_end`, `uses_total`, `uses_customer`, `status`, `date_added`) VALUES
@@ -964,7 +995,7 @@ INSERT INTO `coupon` (`coupon_id`, `name`, `code`, `type`, `discount`, `logged`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coupon_category`
+-- Structure de la table `coupon_category`
 --
 
 CREATE TABLE IF NOT EXISTS `coupon_category` (
@@ -976,7 +1007,7 @@ CREATE TABLE IF NOT EXISTS `coupon_category` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coupon_history`
+-- Structure de la table `coupon_history`
 --
 
 CREATE TABLE IF NOT EXISTS `coupon_history` (
@@ -992,7 +1023,7 @@ CREATE TABLE IF NOT EXISTS `coupon_history` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coupon_product`
+-- Structure de la table `coupon_product`
 --
 
 CREATE TABLE IF NOT EXISTS `coupon_product` (
@@ -1005,7 +1036,7 @@ CREATE TABLE IF NOT EXISTS `coupon_product` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `currency`
+-- Structure de la table `currency`
 --
 
 CREATE TABLE IF NOT EXISTS `currency` (
@@ -1022,18 +1053,18 @@ CREATE TABLE IF NOT EXISTS `currency` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `currency`
+-- Contenu de la table `currency`
 --
 
 INSERT INTO `currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Pound Sterling', 'GBP', '£', '', '2', 0.63730001, 1, '2014-12-02 12:41:46'),
-(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2014-12-02 12:42:03'),
-(3, 'Euro', 'EUR', '', '€', '2', 0.80350000, 1, '2014-12-02 12:41:46');
+(1, 'Pound Sterling', 'GBP', '£', '', '2', 0.64179999, 1, '2014-12-06 03:29:18'),
+(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2014-12-06 06:30:34'),
+(3, 'Euro', 'EUR', '', '€', '2', 0.81389999, 1, '2014-12-06 03:29:18');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Structure de la table `customer`
 --
 
 CREATE TABLE IF NOT EXISTS `customer` (
@@ -1059,12 +1090,19 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `token` varchar(255) NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `customer`
+--
+
+INSERT INTO `customer` (`customer_id`, `customer_group_id`, `store_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `password`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `status`, `approved`, `safe`, `token`, `date_added`) VALUES
+(1, 1, 0, 'Thiet', 'Ngo Van', 'abc@gmail.com', '12121212121', '12121212121', '9e48d1b29dc718bb785c428d3b48ef70e349f942', 'd5785b545', 'a:1:{s:84:"YToyOntzOjEwOiJwcm9kdWN0X2lkIjtpOjMwO3M6Njoib3B0aW9uIjthOjE6e2k6MjI2O3M6MjoiMTUiO319";i:2;}', 'a:3:{i:0;i:46;i:1;i:42;i:2;i:30;}', 0, 1, '', '::1', 1, 1, 0, '', '2014-12-04 22:28:30');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_activity`
+-- Structure de la table `customer_activity`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_activity` (
@@ -1075,12 +1113,20 @@ CREATE TABLE IF NOT EXISTS `customer_activity` (
   `ip` varchar(40) NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`activity_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `customer_activity`
+--
+
+INSERT INTO `customer_activity` (`activity_id`, `customer_id`, `key`, `data`, `ip`, `date_added`) VALUES
+(1, 1, 'register', 'a:2:{s:11:"customer_id";s:1:"1";s:4:"name";s:13:"Thiet Ngo Van";}', '::1', '2014-12-04 22:28:32'),
+(2, 1, 'order_account', 'a:3:{s:11:"customer_id";s:1:"1";s:4:"name";s:13:"Thiet Ngo Van";s:8:"order_id";i:1;}', '::1', '2014-12-04 22:29:48');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_ban_ip`
+-- Structure de la table `customer_ban_ip`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_ban_ip` (
@@ -1093,7 +1139,7 @@ CREATE TABLE IF NOT EXISTS `customer_ban_ip` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_group`
+-- Structure de la table `customer_group`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_group` (
@@ -1104,7 +1150,7 @@ CREATE TABLE IF NOT EXISTS `customer_group` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `customer_group`
+-- Contenu de la table `customer_group`
 --
 
 INSERT INTO `customer_group` (`customer_group_id`, `approval`, `sort_order`) VALUES
@@ -1113,7 +1159,7 @@ INSERT INTO `customer_group` (`customer_group_id`, `approval`, `sort_order`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_group_description`
+-- Structure de la table `customer_group_description`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_group_description` (
@@ -1125,7 +1171,7 @@ CREATE TABLE IF NOT EXISTS `customer_group_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `customer_group_description`
+-- Contenu de la table `customer_group_description`
 --
 
 INSERT INTO `customer_group_description` (`customer_group_id`, `language_id`, `name`, `description`) VALUES
@@ -1134,7 +1180,7 @@ INSERT INTO `customer_group_description` (`customer_group_id`, `language_id`, `n
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_history`
+-- Structure de la table `customer_history`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_history` (
@@ -1148,7 +1194,7 @@ CREATE TABLE IF NOT EXISTS `customer_history` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_ip`
+-- Structure de la table `customer_ip`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_ip` (
@@ -1158,12 +1204,19 @@ CREATE TABLE IF NOT EXISTS `customer_ip` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`customer_ip_id`),
   KEY `ip` (`ip`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `customer_ip`
+--
+
+INSERT INTO `customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added`) VALUES
+(1, 1, '::1', '2014-12-04 22:28:33');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_login`
+-- Structure de la table `customer_login`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_login` (
@@ -1176,12 +1229,12 @@ CREATE TABLE IF NOT EXISTS `customer_login` (
   PRIMARY KEY (`customer_login_id`),
   KEY `email` (`email`),
   KEY `ip` (`ip`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_online`
+-- Structure de la table `customer_online`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_online` (
@@ -1196,7 +1249,7 @@ CREATE TABLE IF NOT EXISTS `customer_online` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_reward`
+-- Structure de la table `customer_reward`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_reward` (
@@ -1212,7 +1265,7 @@ CREATE TABLE IF NOT EXISTS `customer_reward` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_transaction`
+-- Structure de la table `customer_transaction`
 --
 
 CREATE TABLE IF NOT EXISTS `customer_transaction` (
@@ -1228,7 +1281,7 @@ CREATE TABLE IF NOT EXISTS `customer_transaction` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `custom_field`
+-- Structure de la table `custom_field`
 --
 
 CREATE TABLE IF NOT EXISTS `custom_field` (
@@ -1244,7 +1297,7 @@ CREATE TABLE IF NOT EXISTS `custom_field` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `custom_field_customer_group`
+-- Structure de la table `custom_field_customer_group`
 --
 
 CREATE TABLE IF NOT EXISTS `custom_field_customer_group` (
@@ -1257,7 +1310,7 @@ CREATE TABLE IF NOT EXISTS `custom_field_customer_group` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `custom_field_description`
+-- Structure de la table `custom_field_description`
 --
 
 CREATE TABLE IF NOT EXISTS `custom_field_description` (
@@ -1270,7 +1323,7 @@ CREATE TABLE IF NOT EXISTS `custom_field_description` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `custom_field_value`
+-- Structure de la table `custom_field_value`
 --
 
 CREATE TABLE IF NOT EXISTS `custom_field_value` (
@@ -1283,7 +1336,7 @@ CREATE TABLE IF NOT EXISTS `custom_field_value` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `custom_field_value_description`
+-- Structure de la table `custom_field_value_description`
 --
 
 CREATE TABLE IF NOT EXISTS `custom_field_value_description` (
@@ -1297,7 +1350,7 @@ CREATE TABLE IF NOT EXISTS `custom_field_value_description` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `download`
+-- Structure de la table `download`
 --
 
 CREATE TABLE IF NOT EXISTS `download` (
@@ -1311,7 +1364,7 @@ CREATE TABLE IF NOT EXISTS `download` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `download_description`
+-- Structure de la table `download_description`
 --
 
 CREATE TABLE IF NOT EXISTS `download_description` (
@@ -1324,7 +1377,7 @@ CREATE TABLE IF NOT EXISTS `download_description` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event`
+-- Structure de la table `event`
 --
 
 CREATE TABLE IF NOT EXISTS `event` (
@@ -1338,7 +1391,7 @@ CREATE TABLE IF NOT EXISTS `event` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `extension`
+-- Structure de la table `extension`
 --
 
 CREATE TABLE IF NOT EXISTS `extension` (
@@ -1349,7 +1402,7 @@ CREATE TABLE IF NOT EXISTS `extension` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=428 ;
 
 --
--- Dumping data for table `extension`
+-- Contenu de la table `extension`
 --
 
 INSERT INTO `extension` (`extension_id`, `type`, `code`) VALUES
@@ -1376,7 +1429,7 @@ INSERT INTO `extension` (`extension_id`, `type`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `filter`
+-- Structure de la table `filter`
 --
 
 CREATE TABLE IF NOT EXISTS `filter` (
@@ -1389,7 +1442,7 @@ CREATE TABLE IF NOT EXISTS `filter` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `filter_description`
+-- Structure de la table `filter_description`
 --
 
 CREATE TABLE IF NOT EXISTS `filter_description` (
@@ -1403,7 +1456,7 @@ CREATE TABLE IF NOT EXISTS `filter_description` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `filter_group`
+-- Structure de la table `filter_group`
 --
 
 CREATE TABLE IF NOT EXISTS `filter_group` (
@@ -1415,7 +1468,7 @@ CREATE TABLE IF NOT EXISTS `filter_group` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `filter_group_description`
+-- Structure de la table `filter_group_description`
 --
 
 CREATE TABLE IF NOT EXISTS `filter_group_description` (
@@ -1428,7 +1481,7 @@ CREATE TABLE IF NOT EXISTS `filter_group_description` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `geo_zone`
+-- Structure de la table `geo_zone`
 --
 
 CREATE TABLE IF NOT EXISTS `geo_zone` (
@@ -1441,7 +1494,7 @@ CREATE TABLE IF NOT EXISTS `geo_zone` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `geo_zone`
+-- Contenu de la table `geo_zone`
 --
 
 INSERT INTO `geo_zone` (`geo_zone_id`, `name`, `description`, `date_modified`, `date_added`) VALUES
@@ -1451,7 +1504,7 @@ INSERT INTO `geo_zone` (`geo_zone_id`, `name`, `description`, `date_modified`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `information`
+-- Structure de la table `information`
 --
 
 CREATE TABLE IF NOT EXISTS `information` (
@@ -1463,7 +1516,7 @@ CREATE TABLE IF NOT EXISTS `information` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `information`
+-- Contenu de la table `information`
 --
 
 INSERT INTO `information` (`information_id`, `bottom`, `sort_order`, `status`) VALUES
@@ -1475,7 +1528,7 @@ INSERT INTO `information` (`information_id`, `bottom`, `sort_order`, `status`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `information_description`
+-- Structure de la table `information_description`
 --
 
 CREATE TABLE IF NOT EXISTS `information_description` (
@@ -1490,7 +1543,7 @@ CREATE TABLE IF NOT EXISTS `information_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `information_description`
+-- Contenu de la table `information_description`
 --
 
 INSERT INTO `information_description` (`information_id`, `language_id`, `title`, `description`, `meta_title`, `meta_description`, `meta_keyword`) VALUES
@@ -1502,7 +1555,7 @@ INSERT INTO `information_description` (`information_id`, `language_id`, `title`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `information_to_layout`
+-- Structure de la table `information_to_layout`
 --
 
 CREATE TABLE IF NOT EXISTS `information_to_layout` (
@@ -1515,7 +1568,7 @@ CREATE TABLE IF NOT EXISTS `information_to_layout` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `information_to_store`
+-- Structure de la table `information_to_store`
 --
 
 CREATE TABLE IF NOT EXISTS `information_to_store` (
@@ -1525,7 +1578,7 @@ CREATE TABLE IF NOT EXISTS `information_to_store` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `information_to_store`
+-- Contenu de la table `information_to_store`
 --
 
 INSERT INTO `information_to_store` (`information_id`, `store_id`) VALUES
@@ -1537,7 +1590,7 @@ INSERT INTO `information_to_store` (`information_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `language`
+-- Structure de la table `language`
 --
 
 CREATE TABLE IF NOT EXISTS `language` (
@@ -1554,7 +1607,7 @@ CREATE TABLE IF NOT EXISTS `language` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `language`
+-- Contenu de la table `language`
 --
 
 INSERT INTO `language` (`language_id`, `name`, `code`, `locale`, `image`, `directory`, `sort_order`, `status`) VALUES
@@ -1563,7 +1616,7 @@ INSERT INTO `language` (`language_id`, `name`, `code`, `locale`, `image`, `direc
 -- --------------------------------------------------------
 
 --
--- Table structure for table `layout`
+-- Structure de la table `layout`
 --
 
 CREATE TABLE IF NOT EXISTS `layout` (
@@ -1573,7 +1626,7 @@ CREATE TABLE IF NOT EXISTS `layout` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
--- Dumping data for table `layout`
+-- Contenu de la table `layout`
 --
 
 INSERT INTO `layout` (`layout_id`, `name`) VALUES
@@ -1594,7 +1647,7 @@ INSERT INTO `layout` (`layout_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `layout_module`
+-- Structure de la table `layout_module`
 --
 
 CREATE TABLE IF NOT EXISTS `layout_module` (
@@ -1604,10 +1657,10 @@ CREATE TABLE IF NOT EXISTS `layout_module` (
   `position` varchar(14) NOT NULL,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`layout_module_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=74 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=79 ;
 
 --
--- Dumping data for table `layout_module`
+-- Contenu de la table `layout_module`
 --
 
 INSERT INTO `layout_module` (`layout_module_id`, `layout_id`, `code`, `position`, `sort_order`) VALUES
@@ -1616,16 +1669,16 @@ INSERT INTO `layout_module` (`layout_module_id`, `layout_id`, `code`, `position`
 (20, 5, '0', 'column_left', 2),
 (69, 10, 'affiliate', 'column_right', 1),
 (68, 6, 'account', 'column_right', 1),
-(67, 1, 'carousel.29', 'content_top', 3),
-(66, 1, 'slideshow.27', 'content_top', 1),
-(65, 1, 'featured.28', 'content_top', 2),
+(76, 1, 'slideshow.27', 'content_top', 1),
 (72, 3, 'account', 'column_left', 1),
-(73, 3, 'banner.30', 'column_left', 2);
+(73, 3, 'banner.30', 'column_left', 2),
+(77, 1, 'carousel.29', 'content_bottom', 2),
+(78, 1, 'carousel.31', 'content_bottom', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `layout_route`
+-- Structure de la table `layout_route`
 --
 
 CREATE TABLE IF NOT EXISTS `layout_route` (
@@ -1634,17 +1687,17 @@ CREATE TABLE IF NOT EXISTS `layout_route` (
   `store_id` int(11) NOT NULL,
   `route` varchar(255) NOT NULL,
   PRIMARY KEY (`layout_route_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=54 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=56 ;
 
 --
--- Dumping data for table `layout_route`
+-- Contenu de la table `layout_route`
 --
 
 INSERT INTO `layout_route` (`layout_route_id`, `layout_id`, `store_id`, `route`) VALUES
 (38, 6, 0, 'account/%'),
 (17, 10, 0, 'affiliate/%'),
 (44, 3, 0, 'product/category'),
-(42, 1, 0, 'common/home'),
+(55, 1, 0, 'common/home'),
 (20, 2, 0, 'product/product'),
 (24, 11, 0, 'information/information'),
 (23, 7, 0, 'checkout/%'),
@@ -1658,7 +1711,7 @@ INSERT INTO `layout_route` (`layout_route_id`, `layout_id`, `store_id`, `route`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `length_class`
+-- Structure de la table `length_class`
 --
 
 CREATE TABLE IF NOT EXISTS `length_class` (
@@ -1668,7 +1721,7 @@ CREATE TABLE IF NOT EXISTS `length_class` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `length_class`
+-- Contenu de la table `length_class`
 --
 
 INSERT INTO `length_class` (`length_class_id`, `value`) VALUES
@@ -1679,7 +1732,7 @@ INSERT INTO `length_class` (`length_class_id`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `length_class_description`
+-- Structure de la table `length_class_description`
 --
 
 CREATE TABLE IF NOT EXISTS `length_class_description` (
@@ -1691,7 +1744,7 @@ CREATE TABLE IF NOT EXISTS `length_class_description` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `length_class_description`
+-- Contenu de la table `length_class_description`
 --
 
 INSERT INTO `length_class_description` (`length_class_id`, `language_id`, `title`, `unit`) VALUES
@@ -1702,7 +1755,7 @@ INSERT INTO `length_class_description` (`length_class_id`, `language_id`, `title
 -- --------------------------------------------------------
 
 --
--- Table structure for table `location`
+-- Structure de la table `location`
 --
 
 CREATE TABLE IF NOT EXISTS `location` (
@@ -1722,7 +1775,7 @@ CREATE TABLE IF NOT EXISTS `location` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manufacturer`
+-- Structure de la table `manufacturer`
 --
 
 CREATE TABLE IF NOT EXISTS `manufacturer` (
@@ -1734,7 +1787,7 @@ CREATE TABLE IF NOT EXISTS `manufacturer` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
--- Dumping data for table `manufacturer`
+-- Contenu de la table `manufacturer`
 --
 
 INSERT INTO `manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`) VALUES
@@ -1748,7 +1801,7 @@ INSERT INTO `manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manufacturer_to_store`
+-- Structure de la table `manufacturer_to_store`
 --
 
 CREATE TABLE IF NOT EXISTS `manufacturer_to_store` (
@@ -1758,7 +1811,7 @@ CREATE TABLE IF NOT EXISTS `manufacturer_to_store` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `manufacturer_to_store`
+-- Contenu de la table `manufacturer_to_store`
 --
 
 INSERT INTO `manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
@@ -1772,7 +1825,7 @@ INSERT INTO `manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `marketing`
+-- Structure de la table `marketing`
 --
 
 CREATE TABLE IF NOT EXISTS `marketing` (
@@ -1788,7 +1841,7 @@ CREATE TABLE IF NOT EXISTS `marketing` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `modification`
+-- Structure de la table `modification`
 --
 
 CREATE TABLE IF NOT EXISTS `modification` (
@@ -1807,7 +1860,7 @@ CREATE TABLE IF NOT EXISTS `modification` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `module`
+-- Structure de la table `module`
 --
 
 CREATE TABLE IF NOT EXISTS `module` (
@@ -1816,22 +1869,23 @@ CREATE TABLE IF NOT EXISTS `module` (
   `code` varchar(32) NOT NULL,
   `setting` text NOT NULL,
   PRIMARY KEY (`module_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
 
 --
--- Dumping data for table `module`
+-- Contenu de la table `module`
 --
 
 INSERT INTO `module` (`module_id`, `name`, `code`, `setting`) VALUES
 (30, 'Category', 'banner', 'a:5:{s:4:"name";s:17:"Banner - Category";s:9:"banner_id";s:1:"6";s:5:"width";s:3:"300";s:6:"height";s:3:"300";s:6:"status";s:1:"1";}'),
 (29, 'Home Page', 'carousel', 'a:5:{s:4:"name";s:20:"Carousel - Home Page";s:9:"banner_id";s:1:"8";s:5:"width";s:3:"130";s:6:"height";s:3:"100";s:6:"status";s:1:"1";}'),
-(28, 'Home Page', 'featured', 'a:6:{s:4:"name";s:20:"Featured - Home Page";s:7:"product";a:4:{i:0;s:2:"43";i:1;s:2:"40";i:2;s:2:"42";i:3;s:2:"30";}s:5:"limit";s:1:"4";s:5:"width";s:3:"200";s:6:"height";s:3:"200";s:6:"status";s:1:"1";}'),
-(27, 'Home Page', 'slideshow', 'a:5:{s:4:"name";s:21:"Slideshow - Home Page";s:9:"banner_id";s:1:"7";s:5:"width";s:4:"1140";s:6:"height";s:3:"380";s:6:"status";s:1:"1";}');
+(28, 'Featured - Home Page', 'featured', 'a:6:{s:4:"name";s:20:"Featured - Home Page";s:7:"product";a:4:{i:0;s:2:"43";i:1;s:2:"40";i:2;s:2:"42";i:3;s:2:"30";}s:5:"limit";s:1:"4";s:5:"width";s:3:"200";s:6:"height";s:3:"200";s:6:"status";s:1:"0";}'),
+(27, 'Slideshow - Home Page', 'slideshow', 'a:5:{s:4:"name";s:21:"Slideshow - Home Page";s:9:"banner_id";s:1:"7";s:5:"width";s:3:"960";s:6:"height";s:3:"380";s:6:"status";s:1:"1";}'),
+(31, 'Carousel Home Products', 'carousel', 'a:5:{s:4:"name";s:22:"Carousel Home Products";s:9:"banner_id";s:1:"6";s:5:"width";s:3:"130";s:6:"height";s:3:"100";s:6:"status";s:1:"1";}');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `option`
+-- Structure de la table `option`
 --
 
 CREATE TABLE IF NOT EXISTS `option` (
@@ -1842,7 +1896,7 @@ CREATE TABLE IF NOT EXISTS `option` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `option`
+-- Contenu de la table `option`
 --
 
 INSERT INTO `option` (`option_id`, `type`, `sort_order`) VALUES
@@ -1861,7 +1915,7 @@ INSERT INTO `option` (`option_id`, `type`, `sort_order`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `option_description`
+-- Structure de la table `option_description`
 --
 
 CREATE TABLE IF NOT EXISTS `option_description` (
@@ -1872,7 +1926,7 @@ CREATE TABLE IF NOT EXISTS `option_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `option_description`
+-- Contenu de la table `option_description`
 --
 
 INSERT INTO `option_description` (`option_id`, `language_id`, `name`) VALUES
@@ -1891,7 +1945,7 @@ INSERT INTO `option_description` (`option_id`, `language_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `option_value`
+-- Structure de la table `option_value`
 --
 
 CREATE TABLE IF NOT EXISTS `option_value` (
@@ -1903,7 +1957,7 @@ CREATE TABLE IF NOT EXISTS `option_value` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
 
 --
--- Dumping data for table `option_value`
+-- Contenu de la table `option_value`
 --
 
 INSERT INTO `option_value` (`option_value_id`, `option_id`, `image`, `sort_order`) VALUES
@@ -1925,7 +1979,7 @@ INSERT INTO `option_value` (`option_value_id`, `option_id`, `image`, `sort_order
 -- --------------------------------------------------------
 
 --
--- Table structure for table `option_value_description`
+-- Structure de la table `option_value_description`
 --
 
 CREATE TABLE IF NOT EXISTS `option_value_description` (
@@ -1937,7 +1991,7 @@ CREATE TABLE IF NOT EXISTS `option_value_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `option_value_description`
+-- Contenu de la table `option_value_description`
 --
 
 INSERT INTO `option_value_description` (`option_value_id`, `language_id`, `option_id`, `name`) VALUES
@@ -1959,7 +2013,7 @@ INSERT INTO `option_value_description` (`option_value_id`, `language_id`, `optio
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Structure de la table `order`
 --
 
 CREATE TABLE IF NOT EXISTS `order` (
@@ -2025,12 +2079,19 @@ CREATE TABLE IF NOT EXISTS `order` (
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`order_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `order`
+--
+
+INSERT INTO `order` (`order_id`, `invoice_no`, `invoice_prefix`, `store_id`, `store_name`, `store_url`, `customer_id`, `customer_group_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `custom_field`, `payment_firstname`, `payment_lastname`, `payment_company`, `payment_address_1`, `payment_address_2`, `payment_city`, `payment_postcode`, `payment_country`, `payment_country_id`, `payment_zone`, `payment_zone_id`, `payment_address_format`, `payment_custom_field`, `payment_method`, `payment_code`, `shipping_firstname`, `shipping_lastname`, `shipping_company`, `shipping_address_1`, `shipping_address_2`, `shipping_city`, `shipping_postcode`, `shipping_country`, `shipping_country_id`, `shipping_zone`, `shipping_zone_id`, `shipping_address_format`, `shipping_custom_field`, `shipping_method`, `shipping_code`, `comment`, `total`, `order_status_id`, `affiliate_id`, `commission`, `marketing_id`, `tracking`, `language_id`, `currency_id`, `currency_code`, `currency_value`, `ip`, `forwarded_ip`, `user_agent`, `accept_language`, `date_added`, `date_modified`) VALUES
+(1, 0, 'INV-2013-00', 0, 'Your Store', 'http://localhost/bmdesign/', 1, 1, 'Thiet', 'Ngo Van', 'abc@gmail.com', '12121212121', '12121212121', 'b:0;', 'Thiet', 'Ngo Van', 'BOSCH', 'Ho Chi Minh City', 'Ho Chi Minh City', 'Ho Chi Minh City', '70000', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Cash On Delivery', 'cod', 'Thiet', 'Ngo Van', 'BOSCH', 'Ho Chi Minh City', 'Ho Chi Minh City', 'Ho Chi Minh City', '70000', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Flat Shipping Rate', 'flat.flat', '', 1015.0000, 1, 0, 0.0000, 0, '', 1, 2, 'USD', 1.00000000, '::1', '', 'Mozilla/5.0 (Windows NT 6.1; rv:33.0) Gecko/20100101 Firefox/33.0', 'en-US,en;q=0.5', '2014-12-04 22:29:36', '2014-12-04 22:29:45');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_custom_field`
+-- Structure de la table `order_custom_field`
 --
 
 CREATE TABLE IF NOT EXISTS `order_custom_field` (
@@ -2048,7 +2109,7 @@ CREATE TABLE IF NOT EXISTS `order_custom_field` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_fraud`
+-- Structure de la table `order_fraud`
 --
 
 CREATE TABLE IF NOT EXISTS `order_fraud` (
@@ -2111,7 +2172,7 @@ CREATE TABLE IF NOT EXISTS `order_fraud` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_history`
+-- Structure de la table `order_history`
 --
 
 CREATE TABLE IF NOT EXISTS `order_history` (
@@ -2122,12 +2183,19 @@ CREATE TABLE IF NOT EXISTS `order_history` (
   `comment` text NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`order_history_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `order_history`
+--
+
+INSERT INTO `order_history` (`order_history_id`, `order_id`, `order_status_id`, `notify`, `comment`, `date_added`) VALUES
+(1, 1, 1, 0, '', '2014-12-04 22:29:45');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_option`
+-- Structure de la table `order_option`
 --
 
 CREATE TABLE IF NOT EXISTS `order_option` (
@@ -2145,7 +2213,7 @@ CREATE TABLE IF NOT EXISTS `order_option` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_product`
+-- Structure de la table `order_product`
 --
 
 CREATE TABLE IF NOT EXISTS `order_product` (
@@ -2160,12 +2228,19 @@ CREATE TABLE IF NOT EXISTS `order_product` (
   `tax` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `reward` int(8) NOT NULL,
   PRIMARY KEY (`order_product_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `order_product`
+--
+
+INSERT INTO `order_product` (`order_product_id`, `order_id`, `product_id`, `name`, `model`, `quantity`, `price`, `total`, `tax`, `reward`) VALUES
+(1, 1, 40, 'iPhone', 'product 11', 10, 101.0000, 1010.0000, 0.0000, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_recurring`
+-- Structure de la table `order_recurring`
 --
 
 CREATE TABLE IF NOT EXISTS `order_recurring` (
@@ -2195,7 +2270,7 @@ CREATE TABLE IF NOT EXISTS `order_recurring` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_recurring_transaction`
+-- Structure de la table `order_recurring_transaction`
 --
 
 CREATE TABLE IF NOT EXISTS `order_recurring_transaction` (
@@ -2211,7 +2286,7 @@ CREATE TABLE IF NOT EXISTS `order_recurring_transaction` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_status`
+-- Structure de la table `order_status`
 --
 
 CREATE TABLE IF NOT EXISTS `order_status` (
@@ -2222,7 +2297,7 @@ CREATE TABLE IF NOT EXISTS `order_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data for table `order_status`
+-- Contenu de la table `order_status`
 --
 
 INSERT INTO `order_status` (`order_status_id`, `language_id`, `name`) VALUES
@@ -2244,7 +2319,7 @@ INSERT INTO `order_status` (`order_status_id`, `language_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_total`
+-- Structure de la table `order_total`
 --
 
 CREATE TABLE IF NOT EXISTS `order_total` (
@@ -2256,12 +2331,21 @@ CREATE TABLE IF NOT EXISTS `order_total` (
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`order_total_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `order_total`
+--
+
+INSERT INTO `order_total` (`order_total_id`, `order_id`, `code`, `title`, `value`, `sort_order`) VALUES
+(1, 1, 'sub_total', 'Sub-Total', 1010.0000, 1),
+(2, 1, 'shipping', 'Flat Shipping Rate', 5.0000, 3),
+(3, 1, 'total', 'Total', 1015.0000, 9);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_voucher`
+-- Structure de la table `order_voucher`
 --
 
 CREATE TABLE IF NOT EXISTS `order_voucher` (
@@ -2283,7 +2367,7 @@ CREATE TABLE IF NOT EXISTS `order_voucher` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Structure de la table `product`
 --
 
 CREATE TABLE IF NOT EXISTS `product` (
@@ -2322,20 +2406,20 @@ CREATE TABLE IF NOT EXISTS `product` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
 
 --
--- Dumping data for table `product`
+-- Contenu de la table `product`
 --
 
 INSERT INTO `product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`) VALUES
 (28, 'Product 1', '', '', '', '', '', '', '', 939, 7, 'catalog/demo/htc_touch_hd_1.jpg', 5, 1, 100.0000, 200, 9, '2009-02-03', 146.40000000, 2, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 0, 1, 0, '2009-02-03 16:06:50', '2011-09-30 01:05:39'),
 (29, 'Product 2', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/palm_treo_pro_1.jpg', 6, 1, 279.9900, 0, 9, '2009-02-03', 133.00000000, 2, 0.00000000, 0.00000000, 0.00000000, 3, 1, 1, 0, 1, 0, '2009-02-03 16:42:17', '2011-09-30 01:06:08'),
-(30, 'Product 3', '', '', '', '', '', '', '', 7, 6, 'catalog/demo/canon_eos_5d_1.jpg', 9, 1, 100.0000, 0, 9, '2009-02-03', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 0, 1, 0, '2009-02-03 16:59:00', '2011-09-30 01:05:23'),
+(30, 'Product 3', '', '', '', '', '', '', '', 7, 6, 'catalog/demo/canon_eos_5d_1.jpg', 9, 1, 100.0000, 0, 9, '2009-02-03', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 0, 1, 1, '2009-02-03 16:59:00', '2011-09-30 01:05:23'),
 (31, 'Product 4', '', '', '', '', '', '', '', 1000, 6, 'catalog/demo/nikon_d300_1.jpg', 0, 1, 80.0000, 0, 9, '2009-02-03', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 3, 1, 1, 0, 1, 0, '2009-02-03 17:00:10', '2011-09-30 01:06:00'),
 (32, 'Product 5', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/ipod_touch_1.jpg', 8, 1, 100.0000, 0, 9, '2009-02-03', 5.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 0, 1, 0, '2009-02-03 17:07:26', '2011-09-30 01:07:22'),
 (33, 'Product 6', '', '', '', '', '', '', '', 1000, 6, 'catalog/demo/samsung_syncmaster_941bw.jpg', 0, 1, 200.0000, 0, 9, '2009-02-03', 5.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 2, 1, 1, 0, 1, 0, '2009-02-03 17:08:31', '2011-09-30 01:06:29'),
 (34, 'Product 7', '', '', '', '', '', '', '', 1000, 6, 'catalog/demo/ipod_shuffle_1.jpg', 8, 1, 100.0000, 0, 9, '2009-02-03', 5.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 2, 1, 1, 0, 1, 0, '2009-02-03 18:07:54', '2011-09-30 01:07:17'),
 (35, 'Product 8', '', '', '', '', '', '', '', 1000, 5, '', 0, 0, 100.0000, 0, 9, '2009-02-03', 5.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 0, 1, 0, '2009-02-03 18:08:31', '2011-09-30 01:06:17'),
 (36, 'Product 9', '', '', '', '', '', '', '', 994, 6, 'catalog/demo/ipod_nano_1.jpg', 8, 0, 100.0000, 100, 9, '2009-02-03', 5.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 2, 1, 1, 0, 1, 0, '2009-02-03 18:09:19', '2011-09-30 01:07:12'),
-(40, 'product 11', '', '', '', '', '', '', '', 970, 5, 'catalog/demo/iphone_1.jpg', 8, 1, 101.0000, 0, 9, '2009-02-03', 10.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 0, 1, 0, '2009-02-03 21:07:12', '2011-09-30 01:06:53'),
+(40, 'product 11', '', '', '', '', '', '', '', 970, 5, 'catalog/demo/iphone_1.jpg', 8, 1, 101.0000, 0, 9, '2009-02-03', 10.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 0, 1, 1, '2009-02-03 21:07:12', '2011-09-30 01:06:53'),
 (41, 'Product 14', '', '', '', '', '', '', '', 977, 5, 'catalog/demo/imac_1.jpg', 8, 1, 100.0000, 0, 9, '2009-02-03', 5.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 0, 1, 0, '2009-02-03 21:07:26', '2011-09-30 01:06:44'),
 (42, 'Product 15', '', '', '', '', '', '', '', 990, 5, 'catalog/demo/apple_cinema_30.jpg', 8, 1, 100.0000, 400, 9, '2009-02-04', 12.50000000, 1, 1.00000000, 2.00000000, 3.00000000, 1, 1, 2, 0, 1, 0, '2009-02-03 21:07:37', '2011-09-30 00:46:19'),
 (43, 'Product 16', '', '', '', '', '', '', '', 929, 5, 'catalog/demo/macbook_1.jpg', 8, 0, 500.0000, 0, 9, '2009-02-03', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 2, 1, 1, 0, 1, 0, '2009-02-03 21:07:49', '2011-09-30 01:05:46'),
@@ -2349,7 +2433,7 @@ INSERT INTO `product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_attribute`
+-- Structure de la table `product_attribute`
 --
 
 CREATE TABLE IF NOT EXISTS `product_attribute` (
@@ -2361,7 +2445,7 @@ CREATE TABLE IF NOT EXISTS `product_attribute` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `product_attribute`
+-- Contenu de la table `product_attribute`
 --
 
 INSERT INTO `product_attribute` (`product_id`, `attribute_id`, `language_id`, `text`) VALUES
@@ -2374,7 +2458,7 @@ INSERT INTO `product_attribute` (`product_id`, `attribute_id`, `language_id`, `t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_description`
+-- Structure de la table `product_description`
 --
 
 CREATE TABLE IF NOT EXISTS `product_description` (
@@ -2391,7 +2475,7 @@ CREATE TABLE IF NOT EXISTS `product_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `product_description`
+-- Contenu de la table `product_description`
 --
 
 INSERT INTO `product_description` (`product_id`, `language_id`, `name`, `description`, `tag`, `meta_title`, `meta_description`, `meta_keyword`) VALUES
@@ -2418,7 +2502,7 @@ INSERT INTO `product_description` (`product_id`, `language_id`, `name`, `descrip
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_discount`
+-- Structure de la table `product_discount`
 --
 
 CREATE TABLE IF NOT EXISTS `product_discount` (
@@ -2435,7 +2519,7 @@ CREATE TABLE IF NOT EXISTS `product_discount` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=441 ;
 
 --
--- Dumping data for table `product_discount`
+-- Contenu de la table `product_discount`
 --
 
 INSERT INTO `product_discount` (`product_discount_id`, `product_id`, `customer_group_id`, `quantity`, `priority`, `price`, `date_start`, `date_end`) VALUES
@@ -2446,7 +2530,7 @@ INSERT INTO `product_discount` (`product_discount_id`, `product_id`, `customer_g
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_filter`
+-- Structure de la table `product_filter`
 --
 
 CREATE TABLE IF NOT EXISTS `product_filter` (
@@ -2458,7 +2542,7 @@ CREATE TABLE IF NOT EXISTS `product_filter` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_image`
+-- Structure de la table `product_image`
 --
 
 CREATE TABLE IF NOT EXISTS `product_image` (
@@ -2471,7 +2555,7 @@ CREATE TABLE IF NOT EXISTS `product_image` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2352 ;
 
 --
--- Dumping data for table `product_image`
+-- Contenu de la table `product_image`
 --
 
 INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_order`) VALUES
@@ -2540,7 +2624,7 @@ INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_or
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_option`
+-- Structure de la table `product_option`
 --
 
 CREATE TABLE IF NOT EXISTS `product_option` (
@@ -2553,7 +2637,7 @@ CREATE TABLE IF NOT EXISTS `product_option` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=227 ;
 
 --
--- Dumping data for table `product_option`
+-- Contenu de la table `product_option`
 --
 
 INSERT INTO `product_option` (`product_option_id`, `product_id`, `option_id`, `value`, `required`) VALUES
@@ -2573,7 +2657,7 @@ INSERT INTO `product_option` (`product_option_id`, `product_id`, `option_id`, `v
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_option_value`
+-- Structure de la table `product_option_value`
 --
 
 CREATE TABLE IF NOT EXISTS `product_option_value` (
@@ -2594,7 +2678,7 @@ CREATE TABLE IF NOT EXISTS `product_option_value` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data for table `product_option_value`
+-- Contenu de la table `product_option_value`
 --
 
 INSERT INTO `product_option_value` (`product_option_value_id`, `product_option_id`, `product_id`, `option_id`, `option_value_id`, `quantity`, `subtract`, `price`, `price_prefix`, `points`, `points_prefix`, `weight`, `weight_prefix`) VALUES
@@ -2618,7 +2702,7 @@ INSERT INTO `product_option_value` (`product_option_value_id`, `product_option_i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_recurring`
+-- Structure de la table `product_recurring`
 --
 
 CREATE TABLE IF NOT EXISTS `product_recurring` (
@@ -2631,7 +2715,7 @@ CREATE TABLE IF NOT EXISTS `product_recurring` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_related`
+-- Structure de la table `product_related`
 --
 
 CREATE TABLE IF NOT EXISTS `product_related` (
@@ -2641,7 +2725,7 @@ CREATE TABLE IF NOT EXISTS `product_related` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `product_related`
+-- Contenu de la table `product_related`
 --
 
 INSERT INTO `product_related` (`product_id`, `related_id`) VALUES
@@ -2653,7 +2737,7 @@ INSERT INTO `product_related` (`product_id`, `related_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_reward`
+-- Structure de la table `product_reward`
 --
 
 CREATE TABLE IF NOT EXISTS `product_reward` (
@@ -2665,7 +2749,7 @@ CREATE TABLE IF NOT EXISTS `product_reward` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=546 ;
 
 --
--- Dumping data for table `product_reward`
+-- Contenu de la table `product_reward`
 --
 
 INSERT INTO `product_reward` (`product_reward_id`, `product_id`, `customer_group_id`, `points`) VALUES
@@ -2692,7 +2776,7 @@ INSERT INTO `product_reward` (`product_reward_id`, `product_id`, `customer_group
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_special`
+-- Structure de la table `product_special`
 --
 
 CREATE TABLE IF NOT EXISTS `product_special` (
@@ -2708,7 +2792,7 @@ CREATE TABLE IF NOT EXISTS `product_special` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=440 ;
 
 --
--- Dumping data for table `product_special`
+-- Contenu de la table `product_special`
 --
 
 INSERT INTO `product_special` (`product_special_id`, `product_id`, `customer_group_id`, `priority`, `price`, `date_start`, `date_end`) VALUES
@@ -2719,7 +2803,7 @@ INSERT INTO `product_special` (`product_special_id`, `product_id`, `customer_gro
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_to_category`
+-- Structure de la table `product_to_category`
 --
 
 CREATE TABLE IF NOT EXISTS `product_to_category` (
@@ -2730,7 +2814,7 @@ CREATE TABLE IF NOT EXISTS `product_to_category` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `product_to_category`
+-- Contenu de la table `product_to_category`
 --
 
 INSERT INTO `product_to_category` (`product_id`, `category_id`) VALUES
@@ -2768,7 +2852,7 @@ INSERT INTO `product_to_category` (`product_id`, `category_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_to_download`
+-- Structure de la table `product_to_download`
 --
 
 CREATE TABLE IF NOT EXISTS `product_to_download` (
@@ -2780,7 +2864,7 @@ CREATE TABLE IF NOT EXISTS `product_to_download` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_to_layout`
+-- Structure de la table `product_to_layout`
 --
 
 CREATE TABLE IF NOT EXISTS `product_to_layout` (
@@ -2793,7 +2877,7 @@ CREATE TABLE IF NOT EXISTS `product_to_layout` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_to_store`
+-- Structure de la table `product_to_store`
 --
 
 CREATE TABLE IF NOT EXISTS `product_to_store` (
@@ -2803,7 +2887,7 @@ CREATE TABLE IF NOT EXISTS `product_to_store` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `product_to_store`
+-- Contenu de la table `product_to_store`
 --
 
 INSERT INTO `product_to_store` (`product_id`, `store_id`) VALUES
@@ -2830,7 +2914,7 @@ INSERT INTO `product_to_store` (`product_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `recurring`
+-- Structure de la table `recurring`
 --
 
 CREATE TABLE IF NOT EXISTS `recurring` (
@@ -2852,7 +2936,7 @@ CREATE TABLE IF NOT EXISTS `recurring` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `recurring_description`
+-- Structure de la table `recurring_description`
 --
 
 CREATE TABLE IF NOT EXISTS `recurring_description` (
@@ -2865,7 +2949,7 @@ CREATE TABLE IF NOT EXISTS `recurring_description` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `return`
+-- Structure de la table `return`
 --
 
 CREATE TABLE IF NOT EXISTS `return` (
@@ -2894,7 +2978,7 @@ CREATE TABLE IF NOT EXISTS `return` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `return_action`
+-- Structure de la table `return_action`
 --
 
 CREATE TABLE IF NOT EXISTS `return_action` (
@@ -2905,7 +2989,7 @@ CREATE TABLE IF NOT EXISTS `return_action` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `return_action`
+-- Contenu de la table `return_action`
 --
 
 INSERT INTO `return_action` (`return_action_id`, `language_id`, `name`) VALUES
@@ -2916,7 +3000,7 @@ INSERT INTO `return_action` (`return_action_id`, `language_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `return_history`
+-- Structure de la table `return_history`
 --
 
 CREATE TABLE IF NOT EXISTS `return_history` (
@@ -2932,7 +3016,7 @@ CREATE TABLE IF NOT EXISTS `return_history` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `return_reason`
+-- Structure de la table `return_reason`
 --
 
 CREATE TABLE IF NOT EXISTS `return_reason` (
@@ -2943,7 +3027,7 @@ CREATE TABLE IF NOT EXISTS `return_reason` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `return_reason`
+-- Contenu de la table `return_reason`
 --
 
 INSERT INTO `return_reason` (`return_reason_id`, `language_id`, `name`) VALUES
@@ -2956,7 +3040,7 @@ INSERT INTO `return_reason` (`return_reason_id`, `language_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `return_status`
+-- Structure de la table `return_status`
 --
 
 CREATE TABLE IF NOT EXISTS `return_status` (
@@ -2967,7 +3051,7 @@ CREATE TABLE IF NOT EXISTS `return_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `return_status`
+-- Contenu de la table `return_status`
 --
 
 INSERT INTO `return_status` (`return_status_id`, `language_id`, `name`) VALUES
@@ -2978,7 +3062,7 @@ INSERT INTO `return_status` (`return_status_id`, `language_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `review`
+-- Structure de la table `review`
 --
 
 CREATE TABLE IF NOT EXISTS `review` (
@@ -2998,7 +3082,7 @@ CREATE TABLE IF NOT EXISTS `review` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `setting`
+-- Structure de la table `setting`
 --
 
 CREATE TABLE IF NOT EXISTS `setting` (
@@ -3009,10 +3093,10 @@ CREATE TABLE IF NOT EXISTS `setting` (
   `value` text NOT NULL,
   `serialized` tinyint(1) NOT NULL,
   PRIMARY KEY (`setting_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=284 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=394 ;
 
 --
--- Dumping data for table `setting`
+-- Contenu de la table `setting`
 --
 
 INSERT INTO `setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `serialized`) VALUES
@@ -3045,125 +3129,125 @@ INSERT INTO `setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `serial
 (146, 0, 'category', 'category_status', '1', 0),
 (158, 0, 'account', 'account_status', '1', 0),
 (159, 0, 'affiliate', 'affiliate_status', '1', 0),
-(267, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(266, 0, 'config', 'config_shared', '0', 0),
-(265, 0, 'config', 'config_secure', '0', 0),
-(264, 0, 'config', 'config_fraud_status_id', '7', 0),
-(263, 0, 'config', 'config_fraud_score', '', 0),
-(262, 0, 'config', 'config_fraud_key', '', 0),
+(374, 0, 'config', 'config_mail_alert', '', 0),
+(375, 0, 'config', 'config_fraud_detection', '0', 0),
+(376, 0, 'config', 'config_fraud_key', '', 0),
+(377, 0, 'config', 'config_fraud_score', '', 0),
+(378, 0, 'config', 'config_fraud_status_id', '7', 0),
+(379, 0, 'config', 'config_secure', '0', 0),
+(380, 0, 'config', 'config_shared', '0', 0),
+(381, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
+(373, 0, 'config', 'config_mail', 'a:7:{s:8:"protocol";s:4:"mail";s:9:"parameter";s:0:"";s:13:"smtp_hostname";s:0:"";s:13:"smtp_username";s:0:"";s:13:"smtp_password";s:0:"";s:9:"smtp_port";s:0:"";s:12:"smtp_timeout";s:0:"";}', 1),
+(372, 0, 'config', 'config_ftp_status', '0', 0),
 (94, 0, 'voucher', 'voucher_sort_order', '8', 0),
 (95, 0, 'voucher', 'voucher_status', '1', 0),
-(261, 0, 'config', 'config_fraud_detection', '0', 0),
-(260, 0, 'config', 'config_mail_alert', '', 0),
+(371, 0, 'config', 'config_ftp_root', '', 0),
+(370, 0, 'config', 'config_ftp_password', '', 0),
 (103, 0, 'free_checkout', 'free_checkout_status', '1', 0),
 (104, 0, 'free_checkout', 'free_checkout_order_status_id', '1', 0),
-(259, 0, 'config', 'config_mail', 'a:7:{s:8:"protocol";s:4:"mail";s:9:"parameter";s:0:"";s:13:"smtp_hostname";s:0:"";s:13:"smtp_username";s:0:"";s:13:"smtp_password";s:0:"";s:9:"smtp_port";s:0:"";s:12:"smtp_timeout";s:0:"";}', 1),
-(258, 0, 'config', 'config_ftp_status', '0', 0),
-(257, 0, 'config', 'config_ftp_root', '', 0),
-(256, 0, 'config', 'config_ftp_password', '', 0),
-(255, 0, 'config', 'config_ftp_username', '', 0),
-(254, 0, 'config', 'config_ftp_port', '21', 0),
-(253, 0, 'config', 'config_ftp_hostname', '', 0),
-(252, 0, 'config', 'config_image_location_height', '50', 0),
-(251, 0, 'config', 'config_image_location_width', '268', 0),
-(250, 0, 'config', 'config_image_cart_height', '47', 0),
-(249, 0, 'config', 'config_image_cart_width', '47', 0),
-(248, 0, 'config', 'config_image_wishlist_height', '47', 0),
-(181, 0, 'config', 'config_meta_title', 'Your Store', 0),
-(182, 0, 'config', 'config_meta_description', 'My Store', 0),
-(183, 0, 'config', 'config_meta_keyword', '', 0),
-(184, 0, 'config', 'config_template', 'default', 0),
-(185, 0, 'config', 'config_layout_id', '4', 0),
-(186, 0, 'config', 'config_country_id', '222', 0),
-(187, 0, 'config', 'config_zone_id', '3563', 0),
-(188, 0, 'config', 'config_language', 'en', 0),
-(189, 0, 'config', 'config_admin_language', 'en', 0),
-(190, 0, 'config', 'config_currency', 'USD', 0),
-(191, 0, 'config', 'config_currency_auto', '1', 0),
-(192, 0, 'config', 'config_length_class_id', '1', 0),
-(193, 0, 'config', 'config_weight_class_id', '1', 0),
-(194, 0, 'config', 'config_product_count', '1', 0),
-(195, 0, 'config', 'config_product_limit', '15', 0),
-(196, 0, 'config', 'config_product_description_length', '100', 0),
-(197, 0, 'config', 'config_limit_admin', '20', 0),
-(198, 0, 'config', 'config_review_status', '1', 0),
-(199, 0, 'config', 'config_review_guest', '1', 0),
-(200, 0, 'config', 'config_review_mail', '0', 0),
-(201, 0, 'config', 'config_voucher_min', '1', 0),
-(202, 0, 'config', 'config_voucher_max', '1000', 0),
-(203, 0, 'config', 'config_tax', '1', 0),
-(204, 0, 'config', 'config_tax_default', 'shipping', 0),
-(205, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(206, 0, 'config', 'config_customer_online', '0', 0),
-(207, 0, 'config', 'config_customer_group_id', '1', 0),
-(208, 0, 'config', 'config_customer_group_display', 'a:1:{i:0;s:1:"1";}', 1),
-(209, 0, 'config', 'config_customer_price', '0', 0),
-(210, 0, 'config', 'config_account_id', '3', 0),
-(211, 0, 'config', 'config_account_mail', '0', 0),
-(212, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
-(283, 0, 'config', 'config_api_id', '1', 0),
-(214, 0, 'config', 'config_cart_weight', '1', 0),
-(215, 0, 'config', 'config_checkout_guest', '1', 0),
-(216, 0, 'config', 'config_checkout_id', '5', 0),
-(217, 0, 'config', 'config_order_status_id', '1', 0),
-(218, 0, 'config', 'config_processing_status', 'a:1:{i:0;s:1:"2";}', 1),
-(219, 0, 'config', 'config_complete_status', 'a:1:{i:0;s:1:"5";}', 1),
-(220, 0, 'config', 'config_order_mail', '0', 0),
-(221, 0, 'config', 'config_stock_display', '0', 0),
-(222, 0, 'config', 'config_stock_warning', '0', 0),
-(223, 0, 'config', 'config_stock_checkout', '0', 0),
-(224, 0, 'config', 'config_affiliate_approval', '0', 0),
-(225, 0, 'config', 'config_affiliate_auto', '0', 0),
-(226, 0, 'config', 'config_affiliate_commission', '5', 0),
-(227, 0, 'config', 'config_affiliate_id', '4', 0),
-(228, 0, 'config', 'config_affiliate_mail', '0', 0),
-(229, 0, 'config', 'config_return_id', '0', 0),
-(230, 0, 'config', 'config_return_status_id', '2', 0),
-(231, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
-(232, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
-(233, 0, 'config', 'config_image_category_width', '80', 0),
-(234, 0, 'config', 'config_image_category_height', '80', 0),
-(235, 0, 'config', 'config_image_thumb_width', '228', 0),
-(236, 0, 'config', 'config_image_thumb_height', '228', 0),
-(237, 0, 'config', 'config_image_popup_width', '500', 0),
-(238, 0, 'config', 'config_image_popup_height', '500', 0),
-(239, 0, 'config', 'config_image_product_width', '228', 0),
-(240, 0, 'config', 'config_image_product_height', '228', 0),
-(241, 0, 'config', 'config_image_additional_width', '74', 0),
-(242, 0, 'config', 'config_image_additional_height', '74', 0),
-(243, 0, 'config', 'config_image_related_width', '80', 0),
-(244, 0, 'config', 'config_image_related_height', '80', 0),
-(245, 0, 'config', 'config_image_compare_width', '90', 0),
-(246, 0, 'config', 'config_image_compare_height', '90', 0),
-(247, 0, 'config', 'config_image_wishlist_width', '47', 0),
-(180, 0, 'config', 'config_comment', '', 0),
-(179, 0, 'config', 'config_open', '', 0),
-(178, 0, 'config', 'config_image', '', 0),
-(177, 0, 'config', 'config_fax', '', 0),
-(176, 0, 'config', 'config_telephone', '123456789', 0),
-(280, 0, 'config', 'config_email', 'quangthi_90@yahoo.com.vn', 0),
-(174, 0, 'config', 'config_geocode', '', 0),
-(172, 0, 'config', 'config_owner', 'Your Name', 0),
-(173, 0, 'config', 'config_address', 'Address 1', 0),
-(171, 0, 'config', 'config_name', 'Your Store', 0),
-(268, 0, 'config', 'config_seo_url', '0', 0),
-(269, 0, 'config', 'config_file_max_size', '300000', 0),
-(270, 0, 'config', 'config_file_ext_allowed', 'txt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc\r\nrtf\r\nxls\r\nppt\r\nodt\r\nods', 0),
-(271, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/vnd.microsoft.icon\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\napplication/x-rar-compressed\r\napplication/x-msdownload\r\napplication/vnd.ms-cab-compressed\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf\r\nimage/vnd.adobe.photoshop\r\napplication/postscript\r\napplication/msword\r\napplication/rtf\r\napplication/vnd.ms-excel\r\napplication/vnd.ms-powerpoint\r\napplication/vnd.oasis.opendocument.text\r\napplication/vnd.oasis.opendocument.spreadsheet', 0),
-(272, 0, 'config', 'config_maintenance', '0', 0),
-(273, 0, 'config', 'config_password', '1', 0),
-(282, 0, 'config', 'config_encryption', '607e8718e2fa64f322b08bd0ea9d0d36', 0),
-(275, 0, 'config', 'config_compression', '0', 0),
-(276, 0, 'config', 'config_error_display', '1', 0),
-(277, 0, 'config', 'config_error_log', '1', 0),
-(278, 0, 'config', 'config_error_filename', 'error.log', 0),
-(279, 0, 'config', 'config_google_analytics', '', 0),
-(281, 0, 'config', 'config_url', 'http://localhost/Templates/', 0);
+(366, 0, 'config', 'config_image_location_height', '50', 0),
+(367, 0, 'config', 'config_ftp_hostname', 'localhost', 0),
+(368, 0, 'config', 'config_ftp_port', '21', 0),
+(369, 0, 'config', 'config_ftp_username', '', 0),
+(365, 0, 'config', 'config_image_location_width', '268', 0),
+(364, 0, 'config', 'config_image_cart_height', '47', 0),
+(363, 0, 'config', 'config_image_cart_width', '47', 0),
+(362, 0, 'config', 'config_image_wishlist_height', '47', 0),
+(361, 0, 'config', 'config_image_wishlist_width', '47', 0),
+(360, 0, 'config', 'config_image_compare_height', '90', 0),
+(359, 0, 'config', 'config_image_compare_width', '90', 0),
+(358, 0, 'config', 'config_image_related_height', '80', 0),
+(357, 0, 'config', 'config_image_related_width', '80', 0),
+(356, 0, 'config', 'config_image_additional_height', '74', 0),
+(355, 0, 'config', 'config_image_additional_width', '74', 0),
+(354, 0, 'config', 'config_image_product_height', '228', 0),
+(353, 0, 'config', 'config_image_product_width', '228', 0),
+(352, 0, 'config', 'config_image_popup_height', '500', 0),
+(351, 0, 'config', 'config_image_popup_width', '500', 0),
+(350, 0, 'config', 'config_image_thumb_height', '228', 0),
+(349, 0, 'config', 'config_image_thumb_width', '228', 0),
+(348, 0, 'config', 'config_image_category_height', '80', 0),
+(347, 0, 'config', 'config_image_category_width', '80', 0),
+(346, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
+(345, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
+(344, 0, 'config', 'config_return_status_id', '2', 0),
+(343, 0, 'config', 'config_return_id', '0', 0),
+(342, 0, 'config', 'config_affiliate_mail', '0', 0),
+(341, 0, 'config', 'config_affiliate_id', '4', 0),
+(340, 0, 'config', 'config_affiliate_commission', '5', 0),
+(339, 0, 'config', 'config_affiliate_auto', '0', 0),
+(338, 0, 'config', 'config_affiliate_approval', '0', 0),
+(337, 0, 'config', 'config_stock_checkout', '0', 0),
+(336, 0, 'config', 'config_stock_warning', '0', 0),
+(335, 0, 'config', 'config_stock_display', '0', 0),
+(334, 0, 'config', 'config_order_mail', '0', 0),
+(333, 0, 'config', 'config_complete_status', 'a:1:{i:0;s:1:"5";}', 1),
+(332, 0, 'config', 'config_processing_status', 'a:1:{i:0;s:1:"2";}', 1),
+(331, 0, 'config', 'config_order_status_id', '1', 0),
+(330, 0, 'config', 'config_checkout_id', '5', 0),
+(329, 0, 'config', 'config_checkout_guest', '1', 0),
+(328, 0, 'config', 'config_cart_weight', '1', 0),
+(327, 0, 'config', 'config_api_id', '1', 0),
+(326, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
+(325, 0, 'config', 'config_account_mail', '0', 0),
+(324, 0, 'config', 'config_account_id', '3', 0),
+(323, 0, 'config', 'config_login_attempts', '5', 0),
+(322, 0, 'config', 'config_customer_price', '0', 0),
+(321, 0, 'config', 'config_customer_group_display', 'a:1:{i:0;s:1:"1";}', 1),
+(320, 0, 'config', 'config_customer_group_id', '1', 0),
+(319, 0, 'config', 'config_customer_online', '0', 0),
+(318, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(317, 0, 'config', 'config_tax_default', 'shipping', 0),
+(316, 0, 'config', 'config_tax', '1', 0),
+(315, 0, 'config', 'config_voucher_max', '1000', 0),
+(314, 0, 'config', 'config_voucher_min', '1', 0),
+(313, 0, 'config', 'config_review_mail', '0', 0),
+(312, 0, 'config', 'config_review_guest', '1', 0),
+(311, 0, 'config', 'config_review_status', '1', 0),
+(310, 0, 'config', 'config_limit_admin', '20', 0),
+(309, 0, 'config', 'config_product_description_length', '100', 0),
+(308, 0, 'config', 'config_product_limit', '15', 0),
+(307, 0, 'config', 'config_product_count', '1', 0),
+(306, 0, 'config', 'config_weight_class_id', '1', 0),
+(305, 0, 'config', 'config_length_class_id', '1', 0),
+(304, 0, 'config', 'config_currency_auto', '1', 0),
+(303, 0, 'config', 'config_currency', 'USD', 0),
+(299, 0, 'config', 'config_country_id', '222', 0),
+(300, 0, 'config', 'config_zone_id', '3563', 0),
+(301, 0, 'config', 'config_language', 'en', 0),
+(302, 0, 'config', 'config_admin_language', 'en', 0),
+(289, 0, 'config', 'config_telephone', '123456789', 0),
+(290, 0, 'config', 'config_fax', '', 0),
+(291, 0, 'config', 'config_image', '', 0),
+(292, 0, 'config', 'config_open', '', 0),
+(293, 0, 'config', 'config_comment', '', 0),
+(294, 0, 'config', 'config_meta_title', 'Your Store', 0),
+(295, 0, 'config', 'config_meta_description', 'My Store', 0),
+(296, 0, 'config', 'config_meta_keyword', '', 0),
+(297, 0, 'config', 'config_template', 'default', 0),
+(298, 0, 'config', 'config_layout_id', '4', 0),
+(288, 0, 'config', 'config_email', 'quangthi_90@yahoo.com.vn', 0),
+(287, 0, 'config', 'config_geocode', '', 0),
+(286, 0, 'config', 'config_address', 'Address 1', 0),
+(285, 0, 'config', 'config_owner', 'Your Name', 0),
+(284, 0, 'config', 'config_name', 'Nấm Linh Chi Nông Lâm - Trường Đại học Nông Lâm TP.HCM', 0),
+(382, 0, 'config', 'config_seo_url', '0', 0),
+(383, 0, 'config', 'config_file_max_size', '300000', 0),
+(384, 0, 'config', 'config_file_ext_allowed', 'txt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc\r\nrtf\r\nxls\r\nppt\r\nodt\r\nods', 0),
+(385, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/vnd.microsoft.icon\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\napplication/x-rar-compressed\r\napplication/x-msdownload\r\napplication/vnd.ms-cab-compressed\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf\r\nimage/vnd.adobe.photoshop\r\napplication/postscript\r\napplication/msword\r\napplication/rtf\r\napplication/vnd.ms-excel\r\napplication/vnd.ms-powerpoint\r\napplication/vnd.oasis.opendocument.text\r\napplication/vnd.oasis.opendocument.spreadsheet', 0),
+(386, 0, 'config', 'config_maintenance', '0', 0),
+(387, 0, 'config', 'config_password', '1', 0),
+(388, 0, 'config', 'config_encryption', '607e8718e2fa64f322b08bd0ea9d0d36', 0),
+(389, 0, 'config', 'config_compression', '0', 0),
+(390, 0, 'config', 'config_error_display', '1', 0),
+(391, 0, 'config', 'config_error_log', '1', 0),
+(392, 0, 'config', 'config_error_filename', 'error.log', 0),
+(393, 0, 'config', 'config_google_analytics', '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stock_status`
+-- Structure de la table `stock_status`
 --
 
 CREATE TABLE IF NOT EXISTS `stock_status` (
@@ -3174,7 +3258,7 @@ CREATE TABLE IF NOT EXISTS `stock_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `stock_status`
+-- Contenu de la table `stock_status`
 --
 
 INSERT INTO `stock_status` (`stock_status_id`, `language_id`, `name`) VALUES
@@ -3186,7 +3270,7 @@ INSERT INTO `stock_status` (`stock_status_id`, `language_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `store`
+-- Structure de la table `store`
 --
 
 CREATE TABLE IF NOT EXISTS `store` (
@@ -3200,7 +3284,7 @@ CREATE TABLE IF NOT EXISTS `store` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tax_class`
+-- Structure de la table `tax_class`
 --
 
 CREATE TABLE IF NOT EXISTS `tax_class` (
@@ -3213,7 +3297,7 @@ CREATE TABLE IF NOT EXISTS `tax_class` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
--- Dumping data for table `tax_class`
+-- Contenu de la table `tax_class`
 --
 
 INSERT INTO `tax_class` (`tax_class_id`, `title`, `description`, `date_added`, `date_modified`) VALUES
@@ -3223,7 +3307,7 @@ INSERT INTO `tax_class` (`tax_class_id`, `title`, `description`, `date_added`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tax_rate`
+-- Structure de la table `tax_rate`
 --
 
 CREATE TABLE IF NOT EXISTS `tax_rate` (
@@ -3238,7 +3322,7 @@ CREATE TABLE IF NOT EXISTS `tax_rate` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=88 ;
 
 --
--- Dumping data for table `tax_rate`
+-- Contenu de la table `tax_rate`
 --
 
 INSERT INTO `tax_rate` (`tax_rate_id`, `geo_zone_id`, `name`, `rate`, `type`, `date_added`, `date_modified`) VALUES
@@ -3248,7 +3332,7 @@ INSERT INTO `tax_rate` (`tax_rate_id`, `geo_zone_id`, `name`, `rate`, `type`, `d
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tax_rate_to_customer_group`
+-- Structure de la table `tax_rate_to_customer_group`
 --
 
 CREATE TABLE IF NOT EXISTS `tax_rate_to_customer_group` (
@@ -3258,7 +3342,7 @@ CREATE TABLE IF NOT EXISTS `tax_rate_to_customer_group` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tax_rate_to_customer_group`
+-- Contenu de la table `tax_rate_to_customer_group`
 --
 
 INSERT INTO `tax_rate_to_customer_group` (`tax_rate_id`, `customer_group_id`) VALUES
@@ -3268,7 +3352,7 @@ INSERT INTO `tax_rate_to_customer_group` (`tax_rate_id`, `customer_group_id`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tax_rule`
+-- Structure de la table `tax_rule`
 --
 
 CREATE TABLE IF NOT EXISTS `tax_rule` (
@@ -3281,7 +3365,7 @@ CREATE TABLE IF NOT EXISTS `tax_rule` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=129 ;
 
 --
--- Dumping data for table `tax_rule`
+-- Contenu de la table `tax_rule`
 --
 
 INSERT INTO `tax_rule` (`tax_rule_id`, `tax_class_id`, `tax_rate_id`, `based`, `priority`) VALUES
@@ -3293,7 +3377,7 @@ INSERT INTO `tax_rule` (`tax_rule_id`, `tax_class_id`, `tax_rate_id`, `based`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `upload`
+-- Structure de la table `upload`
 --
 
 CREATE TABLE IF NOT EXISTS `upload` (
@@ -3308,7 +3392,7 @@ CREATE TABLE IF NOT EXISTS `upload` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `url_alias`
+-- Structure de la table `url_alias`
 --
 
 CREATE TABLE IF NOT EXISTS `url_alias` (
@@ -3321,7 +3405,7 @@ CREATE TABLE IF NOT EXISTS `url_alias` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=874 ;
 
 --
--- Dumping data for table `url_alias`
+-- Contenu de la table `url_alias`
 --
 
 INSERT INTO `url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
@@ -3425,7 +3509,7 @@ INSERT INTO `url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Structure de la table `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -3446,16 +3530,16 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `user`
+-- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`user_id`, `user_group_id`, `username`, `password`, `salt`, `firstname`, `lastname`, `email`, `image`, `code`, `ip`, `status`, `date_added`) VALUES
-(1, 1, 'admin', '76eec932300234ce3b91f236adbcd4ffd6f2878a', '72150e11f', 'John', 'Doe', 'quangthi_90@yahoo.com.vn', '', '', '::1', 1, '2014-12-02 18:41:20');
+(1, 1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '72150e11f', 'John', 'Doe', 'quangthi_90@yahoo.com.vn', '', '', '::1', 1, '2014-12-02 18:41:20');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_group`
+-- Structure de la table `user_group`
 --
 
 CREATE TABLE IF NOT EXISTS `user_group` (
@@ -3466,7 +3550,7 @@ CREATE TABLE IF NOT EXISTS `user_group` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
--- Dumping data for table `user_group`
+-- Contenu de la table `user_group`
 --
 
 INSERT INTO `user_group` (`user_group_id`, `name`, `permission`) VALUES
@@ -3476,7 +3560,7 @@ INSERT INTO `user_group` (`user_group_id`, `name`, `permission`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `voucher`
+-- Structure de la table `voucher`
 --
 
 CREATE TABLE IF NOT EXISTS `voucher` (
@@ -3498,7 +3582,7 @@ CREATE TABLE IF NOT EXISTS `voucher` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `voucher_history`
+-- Structure de la table `voucher_history`
 --
 
 CREATE TABLE IF NOT EXISTS `voucher_history` (
@@ -3513,7 +3597,7 @@ CREATE TABLE IF NOT EXISTS `voucher_history` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `voucher_theme`
+-- Structure de la table `voucher_theme`
 --
 
 CREATE TABLE IF NOT EXISTS `voucher_theme` (
@@ -3523,7 +3607,7 @@ CREATE TABLE IF NOT EXISTS `voucher_theme` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `voucher_theme`
+-- Contenu de la table `voucher_theme`
 --
 
 INSERT INTO `voucher_theme` (`voucher_theme_id`, `image`) VALUES
@@ -3534,7 +3618,7 @@ INSERT INTO `voucher_theme` (`voucher_theme_id`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `voucher_theme_description`
+-- Structure de la table `voucher_theme_description`
 --
 
 CREATE TABLE IF NOT EXISTS `voucher_theme_description` (
@@ -3545,7 +3629,7 @@ CREATE TABLE IF NOT EXISTS `voucher_theme_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `voucher_theme_description`
+-- Contenu de la table `voucher_theme_description`
 --
 
 INSERT INTO `voucher_theme_description` (`voucher_theme_id`, `language_id`, `name`) VALUES
@@ -3556,7 +3640,7 @@ INSERT INTO `voucher_theme_description` (`voucher_theme_id`, `language_id`, `nam
 -- --------------------------------------------------------
 
 --
--- Table structure for table `weight_class`
+-- Structure de la table `weight_class`
 --
 
 CREATE TABLE IF NOT EXISTS `weight_class` (
@@ -3566,7 +3650,7 @@ CREATE TABLE IF NOT EXISTS `weight_class` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `weight_class`
+-- Contenu de la table `weight_class`
 --
 
 INSERT INTO `weight_class` (`weight_class_id`, `value`) VALUES
@@ -3578,7 +3662,7 @@ INSERT INTO `weight_class` (`weight_class_id`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `weight_class_description`
+-- Structure de la table `weight_class_description`
 --
 
 CREATE TABLE IF NOT EXISTS `weight_class_description` (
@@ -3590,7 +3674,7 @@ CREATE TABLE IF NOT EXISTS `weight_class_description` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `weight_class_description`
+-- Contenu de la table `weight_class_description`
 --
 
 INSERT INTO `weight_class_description` (`weight_class_id`, `language_id`, `title`, `unit`) VALUES
@@ -3602,7 +3686,7 @@ INSERT INTO `weight_class_description` (`weight_class_id`, `language_id`, `title
 -- --------------------------------------------------------
 
 --
--- Table structure for table `zone`
+-- Structure de la table `zone`
 --
 
 CREATE TABLE IF NOT EXISTS `zone` (
@@ -3615,7 +3699,7 @@ CREATE TABLE IF NOT EXISTS `zone` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4225 ;
 
 --
--- Dumping data for table `zone`
+-- Contenu de la table `zone`
 --
 
 INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
@@ -7724,7 +7808,7 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `zone_to_geo_zone`
+-- Structure de la table `zone_to_geo_zone`
 --
 
 CREATE TABLE IF NOT EXISTS `zone_to_geo_zone` (
@@ -7738,7 +7822,7 @@ CREATE TABLE IF NOT EXISTS `zone_to_geo_zone` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=110 ;
 
 --
--- Dumping data for table `zone_to_geo_zone`
+-- Contenu de la table `zone_to_geo_zone`
 --
 
 INSERT INTO `zone_to_geo_zone` (`zone_to_geo_zone_id`, `country_id`, `zone_id`, `geo_zone_id`, `date_added`, `date_modified`) VALUES
