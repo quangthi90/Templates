@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 3.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 15, 2014 at 05:05 PM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Host: localhost
+-- Generation Time: Dec 15, 2014 at 05:39 PM
+-- Server version: 5.5.25a
+-- PHP Version: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `templates`
+-- Database: `linhchinonglam`
 --
 
 -- --------------------------------------------------------
@@ -959,7 +959,7 @@ CREATE TABLE IF NOT EXISTS `currency` (
 
 INSERT INTO `currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
 (1, 'Pound Sterling', 'GBP', '£', '', '2', 0.64039999, 1, '2014-12-15 16:57:15'),
-(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2014-12-15 16:57:15'),
+(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2014-12-15 17:29:46'),
 (3, 'Euro', 'EUR', '', '€', '2', 0.80519998, 1, '2014-12-15 16:57:15');
 
 -- --------------------------------------------------------
@@ -1558,7 +1558,7 @@ CREATE TABLE IF NOT EXISTS `layout_module` (
   `position` varchar(14) NOT NULL,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`layout_module_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=83 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=87 ;
 
 --
 -- Dumping data for table `layout_module`
@@ -1570,12 +1570,12 @@ INSERT INTO `layout_module` (`layout_module_id`, `layout_id`, `code`, `position`
 (20, 5, '0', 'column_left', 2),
 (69, 10, 'affiliate', 'column_right', 1),
 (68, 6, 'account', 'column_right', 1),
-(81, 1, 'carousel.31', 'content_bottom', 1),
+(86, 1, 'featured.28', 'content_bottom', 3),
 (72, 3, 'account', 'column_left', 1),
 (73, 3, 'banner.30', 'column_left', 2),
-(80, 1, 'carousel.29', 'content_bottom', 2),
-(79, 1, 'slideshow.27', 'content_top', 1),
-(82, 1, 'featured.28', 'content_bottom', 3);
+(85, 1, 'slideshow.27', 'content_top', 1),
+(84, 1, 'carousel.29', 'content_bottom', 4),
+(83, 1, 'carousel.31', 'content_bottom', 1);
 
 -- --------------------------------------------------------
 
@@ -1589,7 +1589,7 @@ CREATE TABLE IF NOT EXISTS `layout_route` (
   `store_id` int(11) NOT NULL,
   `route` varchar(255) NOT NULL,
   PRIMARY KEY (`layout_route_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=57 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=58 ;
 
 --
 -- Dumping data for table `layout_route`
@@ -1599,7 +1599,7 @@ INSERT INTO `layout_route` (`layout_route_id`, `layout_id`, `store_id`, `route`)
 (38, 6, 0, 'account/%'),
 (17, 10, 0, 'affiliate/%'),
 (44, 3, 0, 'product/category'),
-(56, 1, 0, 'common/home'),
+(57, 1, 0, 'common/home'),
 (20, 2, 0, 'product/product'),
 (24, 11, 0, 'information/information'),
 (23, 7, 0, 'checkout/%'),
@@ -1780,7 +1780,7 @@ CREATE TABLE IF NOT EXISTS `module` (
 INSERT INTO `module` (`module_id`, `name`, `code`, `setting`) VALUES
 (30, 'Category', 'banner', 'a:5:{s:4:"name";s:17:"Banner - Category";s:9:"banner_id";s:1:"6";s:5:"width";s:3:"300";s:6:"height";s:3:"300";s:6:"status";s:1:"1";}'),
 (29, 'Home Page', 'carousel', 'a:5:{s:4:"name";s:20:"Carousel - Home Page";s:9:"banner_id";s:1:"8";s:5:"width";s:3:"130";s:6:"height";s:3:"100";s:6:"status";s:1:"1";}'),
-(28, 'Featured - Home Page', 'featured', 'a:6:{s:4:"name";s:20:"Featured - Home Page";s:7:"product";a:4:{i:0;s:2:"42";i:1;s:2:"30";i:2;s:2:"47";i:3;s:2:"28";}s:5:"limit";s:1:"4";s:5:"width";s:3:"200";s:6:"height";s:3:"200";s:6:"status";s:1:"1";}'),
+(28, 'Featured - Home Page', 'featured', 'a:6:{s:4:"name";s:20:"Featured - Home Page";s:7:"product";a:12:{i:0;s:2:"29";i:1;s:2:"35";i:2;s:2:"40";i:3;s:2:"48";i:4;s:2:"32";i:5;s:2:"34";i:6;s:2:"41";i:7;s:2:"28";i:8;s:2:"42";i:9;s:2:"47";i:10;s:2:"30";i:11;s:2:"36";}s:5:"limit";s:2:"20";s:5:"width";s:3:"200";s:6:"height";s:3:"200";s:6:"status";s:1:"1";}'),
 (27, 'Slideshow - Home Page', 'slideshow', 'a:5:{s:4:"name";s:21:"Slideshow - Home Page";s:9:"banner_id";s:1:"7";s:5:"width";s:3:"960";s:6:"height";s:3:"380";s:6:"status";s:1:"1";}'),
 (31, 'Carousel Home Products', 'carousel', 'a:5:{s:4:"name";s:22:"Carousel Home Products";s:9:"banner_id";s:1:"6";s:5:"width";s:3:"130";s:6:"height";s:3:"100";s:6:"status";s:1:"0";}');
 
