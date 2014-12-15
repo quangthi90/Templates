@@ -1,0 +1,14 @@
+<modification>
+	<id>News edit in admin page</id>
+	<version>1.5.1.x</version>
+	<vqmver>0.2</vqmver>
+	<author>Fanha Giang</author>
+	<file name="catalog/controller/common/seo_url.php">
+		<operation>
+			<search position="replace"><![CDATA[if (($data['route'] == 'product/product']]></search>
+			<add><![CDATA[
+				if (($data['route'] == 'news/news' && $key == 'news_id') || ($data['route'] == 'product/product'
+			]]></add>
+		</operation>
+	</file>
+</modification>
