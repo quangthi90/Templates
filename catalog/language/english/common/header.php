@@ -14,4 +14,5 @@ $_['text_logout']        = 'Logout';
 $_['text_checkout']      = 'Checkout';
 $_['text_search']        = 'Search';
 $_['text_all']           = 'See All';
+/*Bommer add*/
 $_['text_product']       = 'Sản phẩm';
