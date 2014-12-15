@@ -63,7 +63,7 @@ a:hover{
 	padding: 20px;
 }
 
-.btn-main {
+.btn-primary,.btn-main {
     background-color: #822601;
     background-image: linear-gradient(to bottom, #d03b07, #822601);
     background-repeat: repeat-x;
@@ -72,16 +72,21 @@ a:hover{
     font-weight: bold;
     padding: 5px 10px;
 }
-.btn-main.btn-sm {
+.btn-primary.btn-sm,.btn-main.btn-sm {
 	padding: 3px 8px;
 	font-size: 12px;
 }
-.btn-main:hover{
+.btn-primary:hover,.btn-main:hover{
 	color: #FFF;
 	background-color: #360700;
     background-image: linear-gradient(to bottom, #d03b07, #360700);
     background-repeat: repeat-x;
     border-color: #360700 #360700 #802420;
+}
+
+.btn-info.btn-sm {
+	font-size: 13px;
+	padding: 4px 8px;
 }
 
 .break {
@@ -109,7 +114,20 @@ a:hover{
 .panel.panel-flat .panel-body {
 	padding: 0px;
 }
-
+.breadcrumb {
+	display: none;
+}
+.heading-title {
+	font-size: 25px;
+	text-transform: uppercase;
+	color: #900;
+	text-align: center;
+	margin: 0;
+	font-weight: bold;
+}
+.buttons {
+	overflow: hidden;
+}
 
 /* START HEADER */
 header {
@@ -133,7 +151,6 @@ header #menu {
     background-repeat: repeat-x;
     border-color:  transparent;    
     margin-bottom: 0px;
-    border-bottom: 2px solid #FFF;
 }
 #menu .nav > li > a {
 	font-size: 14px;
@@ -313,3 +330,57 @@ footer p {
 	padding: 5px;
 	background-color: rgb(247, 204, 125);
 }
+
+/* START PRODUCT LIST*/
+.product-list {
+    overflow: hidden;
+    margin: 0px auto;
+}
+.product-list .product-item {
+    width: 192px;
+    height: 300px;
+    margin: 5px;
+    float: left;
+    border: 1px solid #F0F0F0;
+    text-align: center;
+    position: relative;
+}
+.product-list .product-item .image {
+    padding: 10px;
+}
+
+.product-list .product-item .caption {
+}
+.product-list .product-item .caption h4.product-heading {
+	margin: 0px;
+	font-weight: bold;
+	max-height: 35px;
+	overflow: hidden;
+}
+.product-list .product-item .price {
+    margin: 8px 0px;	
+    font-size: 14px;
+    font-weight: normal;
+    color: red;
+    position: absolute;
+    bottom: 35px;
+    left: 0;
+    right: 0;
+}
+.product-list .product-item .price .price-new {
+	font-weight: bold;
+}
+.product-list .product-item .price .price-old {
+	text-decoration: line-through;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.product-list .product-item .actions {
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    right: 0px;
+}
+
+/* END PRODUCT LIST */
