@@ -1,0 +1,116 @@
+<modification>
+        <id>TG New Postion</id>
+        <version>1.0</version>
+        <vqmver>2.2.1</vqmver>
+        <author>themeglobal.com</author>
+		
+		<file name="catalog/controller/common/home.php">
+				<operation>
+                        <search position="after"><![CDATA[
+                        $this->children = array(
+                        ]]></search>
+                        <add><![CDATA[
+						'common/content_tg_user',
+						'common/content_tg_user2',
+						'common/content_tg_user3',
+						'common/content_tg_user4',
+                        ]]></add>
+                </operation>
+        </file>
+        
+		
+		<file name="catalog/controller/common/footer.php">
+				<operation>
+                        <search position="before"><![CDATA[
+                        $this->render();
+                        ]]></search>
+                        <add><![CDATA[
+						$this->children = array(
+						'common/content_tg_user2'
+						);
+                        ]]></add>
+                </operation>
+        </file>
+		
+		<file name="catalog/controller/product/category.php">
+				<operation>
+                        <search position="after"><![CDATA[
+                        $this->children = array(
+                        ]]></search>
+                        <add><![CDATA[
+						'common/content_tg_user',
+                        ]]></add>
+                </operation>
+        </file>
+		
+		<file name="admin/view/template/module/carousel.tpl">
+				<operation>
+                        <search position="before"><![CDATA[
+                        <?php if ($module['position'] == 'content_top') { ?>
+                        ]]></search>
+                        <add><![CDATA[
+						<?php if ($module['position'] == 'content_tg_user2') { ?>
+						<option value="content_tg_user2" selected="selected">Content TG User Footer</option>
+						<?php } else { ?>
+						<option value="content_tg_user2">Content TG User Footer</option>
+						<?php } ?>
+                        ]]></add>
+                </operation>
+				<operation>
+                        <search position="before"><![CDATA[
+                        html += '      <option value="content_top"><?php echo $text_content_top; ?></option>';
+                        ]]></search>
+                        <add><![CDATA[
+						html += '      <option value="content_tg_user2">Content TG User Footer</option>';
+                        ]]></add>
+                </operation>
+        </file>
+		
+		<file name="admin/view/template/module/banner.tpl">
+				<operation>
+                        <search position="before"><![CDATA[
+                        <?php if ($module['position'] == 'content_top') { ?>
+                        ]]></search>
+                        <add><![CDATA[
+						<?php if ($module['position'] == 'content_tg_user') { ?>
+						<option value="content_tg_user" selected="selected">Content TG User Header</option>
+						<?php } else { ?>
+						<option value="content_tg_user">Content TG User Header</option>
+						<?php } ?>
+                        ]]></add>
+                </operation>
+				<operation>
+                        <search position="before"><![CDATA[
+                        html += '      <option value="content_top"><?php echo $text_content_top; ?></option>';
+                        ]]></search>
+                        <add><![CDATA[
+						html += '      <option value="content_tg_user">Content TG User Header</option>';
+                        ]]></add>
+                </operation>
+        </file>
+		
+		<file name="admin/view/template/module/welcome.tpl">
+				<operation>
+                        <search position="before"><![CDATA[
+                        <?php if ($module['position'] == 'content_top') { ?>
+                        ]]></search>
+                        <add><![CDATA[
+						<?php if ($module['position'] == 'content_tg_user') { ?>
+						<option value="content_tg_user" selected="selected">Content TG User Header</option>
+						<?php } else { ?>
+						<option value="content_tg_user">Content TG User Header</option>
+						<?php } ?>
+                        ]]></add>
+                </operation>
+				<operation>
+                        <search position="before"><![CDATA[
+                        html += '        <option value="content_top"><?php echo $text_content_top; ?></option>';
+                        ]]></search>
+                        <add><![CDATA[
+						html += '      <option value="content_tg_user">Content TG User Header</option>';
+                        ]]></add>
+                </operation>
+        </file>
+
+</modification>
+
