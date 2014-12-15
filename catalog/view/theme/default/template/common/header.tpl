@@ -54,23 +54,11 @@
     <nav id="menu" class="navbar">
       <ul class="nav navbar-nav">
         <li><a href="<?php echo $home; ?>"><i class="fa fa-home fa-4x" style="font-size: 20px;"></i></a></li>
-        <li><a href="#">Sản phẩm</a>
+        <li><a href="#"><?php echo $text_product; ?></a>
           <ul class="dropdown-menu">
-            <li class=""><a href="http://linhchinonglam.com/danh-muc/9/nam-linh-chi-nong-lam.html">Nấm Linh Chi Nông Lâm</a></li>
-            <li class=""><a href="http://linhchinonglam.com/danh-muc/131/dong-trung-ha-thao-nong-lam.html">Đông Trùng Hạ Thảo Nông Lâm</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/113/linh-chi-nhat-thuong-hang.html">Linh Chi Nhật Thượng Hạng</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/99/nam-lim-xanh-nong-lam.html">Nấm Lim Xanh Nông Lâm</a></li>
-            <li class=""><a href="http://linhchinonglam.com/danh-muc/112/nam-thuong-hoang-nong-lam.html">Nấm Thượng Hoàng Nông Lâm</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/156/nam-van-chi-nong-lam.html">Nấm Vân Chi Nông Lâm</a></li>
-            <li class=""><a href="http://linhchinonglam.com/danh-muc/157/nam-hau-thu-nong-lam.html">Nấm Hầu Thủ Nông Lâm</a></li>
-            <li class=""><a href="http://linhchinonglam.com/danh-muc/122/nam-linh-chi-han-quoc.html">Nấm Linh Chi Hàn Quốc</a></li>
-            <li class=""><a href="http://linhchinonglam.com/danh-muc/10/bao-tu-nam-linh-chi-nong-lam.html">Bào Tử Linh Chi Nông Lâm</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/104/tra-bot-linh-chi-nong-lam.html">Trà - Bột Linh Chi Nông Lâm</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/12/ruou-linh-chi-nhan-sam-hai-ma.html">Rượu Linh Chi-Sâm-Hải Mã</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/196/gao-thao-duoc-nong-lam.html">Gạo Thảo Dược Nông Lâm</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/168/chum-ngay-nong-lam.html">Chùm Ngây Nông Lâm</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/11/mat-ong-nong-lam.html">Mật Ong Nông Lâm</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/13/to-yen.html">Tổ Yến Sào Cao Cấp</a></li><li><a href="http://linhchinonglam.com/danh-muc/141/phu-lieu-la-han-qua-co-ngot.html">Phụ Liệu La Hán Quả - Cỏ Ngọt</a></li>
+          <?php foreach ($categories as $category) { ?>
+            <li class=""><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+          <?php } ?>
           </ul>
         </li>
         <li><a href="#">Giới thiệu</a>
