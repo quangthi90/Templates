@@ -543,7 +543,7 @@
 				}
 			},
 			menuHide: function($sub) {
-				if (this.$root.triggerHandler('beforehide.smapi', $sub[0]) === false) {
+				if (!$sub || this.$root.triggerHandler('beforehide.smapi', $sub[0]) === false) {
 					return;
 				}
 				$sub.stop(true, true);

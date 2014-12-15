@@ -23,17 +23,20 @@
 <?php foreach ($links as $link) { ?>
 <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
 <?php } ?>
-<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<link href="catalog/view/javascript/jquery/sm/jquery.smartmenus.bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="catalog/view/javascript/jquery/sm/jquery.smartmenus.bootstrap.css" rel="stylesheet" type="text/css
+" />
 <?php //<link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" /> ?>
 <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
 <link href="catalog/view/theme/default/stylesheet/custom.css" rel="stylesheet">
+<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="catalog/view/javascript/jquery/sm/jquery.smartmenus.min.js" type="text/javascript"></script>
 <script src="catalog/view/javascript/jquery/sm/jquery.smartmenus.bootstrap.min.js" type="text/javascript"></script>
 <script src="catalog/view/javascript/scrollTop.js" type="text/javascript"></script>
@@ -67,14 +70,12 @@
             <li><a href="http://linhchinonglam.com/danh-muc/233/phong-su.html">Phóng Sự</a></li>
             <li><a href="http://linhchinonglam.com/tin-tuc/2/gioi-thieu.html">Chúng Tôi Là Ai ?</a></li><li><a href="http://linhchinonglam.com/tin-tuc/6/giay-kiem-dinh-phan-tich.html">Giấy Kiểm Định Phân Tích</a></li>
             <li><a href="http://linhchinonglam.com/tin-tuc/113/giay-chung-nhan-cong-bo-san-pham.html">Giấy Chứng Nhận, Công Bố SP</a></li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="http://linhchinonglam.com/danh-muc/116/tin-tuc-su-kien.html">Tin Tức &amp; Sự Kiện</a>
-              <div class="dropdown-menu">
-                <div class="dropdown-inner">
-                  <ul class="list-unstyled">
-                      <li><a href="http://linhchinonglam.com/tin-tuc/79/thong-diep-nhan-ai.html">Thông Điệp Nhân Ái</a></li><li><a href="http://linhchinonglam.com/tin-tuc/80/chuong-trinh-nhan-dao.html">Chương Trình Nhân Đạo</a></li><li><a href="http://linhchinonglam.com/danh-muc/187/nhung-manh-doi-bat-hanh.html">Những Mảnh Đời Bất Hạnh</a></li>
-                  </ul>
-                </div>
-              </div>
+            <li><a href="http://linhchinonglam.com/danh-muc/116/tin-tuc-su-kien.html">Tin Tức &amp; Sự Kiện</a>
+              <ul class="dropdown-menu">
+                  <li><a href="http://linhchinonglam.com/tin-tuc/79/thong-diep-nhan-ai.html">Thông Điệp Nhân Ái</a></li>
+                  <li><a href="http://linhchinonglam.com/tin-tuc/80/chuong-trinh-nhan-dao.html">Chương Trình Nhân Đạo</a></li>
+                  <li><a href="http://linhchinonglam.com/danh-muc/187/nhung-manh-doi-bat-hanh.html">Những Mảnh Đời Bất Hạnh</a></li>
+              </ul>
             </li>
         </ul>
         </li>
