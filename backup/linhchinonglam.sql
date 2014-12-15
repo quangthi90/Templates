@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2014 at 07:12 PM
+-- Generation Time: Dec 15, 2014 at 05:19 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -411,44 +411,22 @@ CREATE TABLE IF NOT EXISTS `category` (
 --
 
 INSERT INTO `category` (`category_id`, `image`, `parent_id`, `top`, `column`, `sort_order`, `status`, `date_added`, `date_modified`) VALUES
-(25, '', 0, 1, 1, 3, 1, '2009-01-31 01:04:25', '2011-05-30 12:14:55'),
-(27, '', 20, 0, 0, 2, 1, '2009-01-31 01:55:34', '2010-08-22 06:32:15'),
-(20, 'catalog/demo/compaq_presario.jpg', 0, 1, 1, 1, 1, '2009-01-05 21:49:43', '2011-07-16 02:14:42'),
-(24, '', 0, 1, 1, 5, 1, '2009-01-20 02:36:26', '2011-05-30 12:15:18'),
-(18, 'catalog/demo/hp_2.jpg', 0, 1, 0, 2, 1, '2009-01-05 21:49:15', '2011-05-30 12:13:55'),
-(17, '', 0, 1, 1, 4, 1, '2009-01-03 21:08:57', '2011-05-30 12:15:11'),
-(28, '', 25, 0, 0, 1, 1, '2009-02-02 13:11:12', '2010-08-22 06:32:46'),
-(26, '', 20, 0, 0, 1, 1, '2009-01-31 01:55:14', '2010-08-22 06:31:45'),
-(29, '', 25, 0, 0, 1, 1, '2009-02-02 13:11:37', '2010-08-22 06:32:39'),
-(30, '', 25, 0, 0, 1, 1, '2009-02-02 13:11:59', '2010-08-22 06:33:00'),
-(31, '', 25, 0, 0, 1, 1, '2009-02-03 14:17:24', '2010-08-22 06:33:06'),
-(32, '', 25, 0, 0, 1, 1, '2009-02-03 14:17:34', '2010-08-22 06:33:12'),
-(33, '', 0, 1, 1, 6, 1, '2009-02-03 14:17:55', '2011-05-30 12:15:25'),
-(34, 'catalog/demo/ipod_touch_4.jpg', 0, 1, 4, 7, 1, '2009-02-03 14:18:11', '2011-05-30 12:15:31'),
-(35, '', 28, 0, 0, 0, 1, '2010-09-17 10:06:48', '2010-09-18 14:02:42'),
-(36, '', 28, 0, 0, 0, 1, '2010-09-17 10:07:13', '2010-09-18 14:02:55'),
-(37, '', 34, 0, 0, 0, 1, '2010-09-18 14:03:39', '2011-04-22 01:55:08'),
-(38, '', 34, 0, 0, 0, 1, '2010-09-18 14:03:51', '2010-09-18 14:03:51'),
-(39, '', 34, 0, 0, 0, 1, '2010-09-18 14:04:17', '2011-04-22 01:55:20'),
-(40, '', 34, 0, 0, 0, 1, '2010-09-18 14:05:36', '2010-09-18 14:05:36'),
-(41, '', 34, 0, 0, 0, 1, '2010-09-18 14:05:49', '2011-04-22 01:55:30'),
-(42, '', 34, 0, 0, 0, 1, '2010-09-18 14:06:34', '2010-11-07 20:31:04'),
-(43, '', 34, 0, 0, 0, 1, '2010-09-18 14:06:49', '2011-04-22 01:55:40'),
-(44, '', 34, 0, 0, 0, 1, '2010-09-21 15:39:21', '2010-11-07 20:30:55'),
-(45, '', 18, 0, 0, 0, 1, '2010-09-24 18:29:16', '2011-04-26 08:52:11'),
-(46, '', 18, 0, 0, 0, 1, '2010-09-24 18:29:31', '2011-04-26 08:52:23'),
-(47, '', 34, 0, 0, 0, 1, '2010-11-07 11:13:16', '2010-11-07 11:13:16'),
-(48, '', 34, 0, 0, 0, 1, '2010-11-07 11:13:33', '2010-11-07 11:13:33'),
-(49, '', 34, 0, 0, 0, 1, '2010-11-07 11:14:04', '2010-11-07 11:14:04'),
-(50, '', 34, 0, 0, 0, 1, '2010-11-07 11:14:23', '2011-04-22 01:16:01'),
-(51, '', 34, 0, 0, 0, 1, '2010-11-07 11:14:38', '2011-04-22 01:16:13'),
-(52, '', 34, 0, 0, 0, 1, '2010-11-07 11:16:09', '2011-04-22 01:54:57'),
-(53, '', 34, 0, 0, 0, 1, '2010-11-07 11:28:53', '2011-04-22 01:14:36'),
-(54, '', 34, 0, 0, 0, 1, '2010-11-07 11:29:16', '2011-04-22 01:16:50'),
-(55, '', 34, 0, 0, 0, 1, '2010-11-08 10:31:32', '2010-11-08 10:31:32'),
-(56, '', 34, 0, 0, 0, 1, '2010-11-08 10:31:50', '2011-04-22 01:16:37'),
-(57, '', 0, 1, 1, 3, 1, '2011-04-26 08:53:16', '2011-05-30 12:15:05'),
-(58, '', 52, 0, 0, 0, 1, '2011-05-08 13:44:16', '2011-05-08 13:44:16');
+(25, '', 0, 1, 1, 4, 1, '2009-01-31 01:04:25', '2014-12-15 11:01:55'),
+(20, 'catalog/demo/compaq_presario.jpg', 0, 1, 1, 2, 1, '2009-01-05 21:49:43', '2014-12-15 10:58:31'),
+(24, '', 0, 1, 1, 7, 1, '2009-01-20 02:36:26', '2014-12-15 11:06:22'),
+(18, 'catalog/demo/hp_2.jpg', 0, 1, 0, 3, 1, '2009-01-05 21:49:15', '2014-12-15 11:01:00'),
+(17, '', 0, 1, 1, 6, 1, '2009-01-03 21:08:57', '2014-12-15 11:05:13'),
+(33, '', 0, 1, 1, 1, 1, '2009-02-03 14:17:55', '2014-12-15 10:57:01'),
+(34, 'catalog/demo/ipod_touch_4.jpg', 0, 1, 4, 8, 1, '2009-02-03 14:18:11', '2014-12-15 11:07:43'),
+(43, '', 0, 1, 0, 9, 1, '2010-09-18 14:06:49', '2014-12-15 11:09:18'),
+(44, '', 0, 1, 0, 10, 1, '2010-09-21 15:39:21', '2014-12-15 11:10:41'),
+(47, '', 0, 1, 0, 11, 1, '2010-11-07 11:13:16', '2014-12-15 11:11:54'),
+(48, '', 0, 1, 0, 12, 1, '2010-11-07 11:13:33', '2014-12-15 11:12:39'),
+(49, '', 0, 1, 0, 13, 1, '2010-11-07 11:14:04', '2014-12-15 11:13:21'),
+(50, '', 0, 1, 0, 14, 1, '2010-11-07 11:14:23', '2014-12-15 11:14:07'),
+(51, '', 0, 1, 0, 15, 1, '2010-11-07 11:14:38', '2014-12-15 11:15:02'),
+(52, '', 0, 0, 0, 16, 1, '2010-11-07 11:16:09', '2014-12-15 11:15:48'),
+(57, '', 0, 1, 1, 5, 1, '2011-04-26 08:53:16', '2014-12-15 11:03:10');
 
 -- --------------------------------------------------------
 
@@ -473,44 +451,22 @@ CREATE TABLE IF NOT EXISTS `category_description` (
 --
 
 INSERT INTO `category_description` (`category_id`, `language_id`, `name`, `description`, `meta_title`, `meta_description`, `meta_keyword`) VALUES
-(28, 1, 'Monitors', '', '', '', ''),
-(33, 1, 'Cameras', '', '', '', ''),
-(32, 1, 'Web Cameras', '', '', '', ''),
-(31, 1, 'Scanners', '', '', '', ''),
-(30, 1, 'Printers', '', '', '', ''),
-(29, 1, 'Mice and Trackballs', '', '', '', ''),
-(27, 1, 'Mac', '', '', '', ''),
-(26, 1, 'PC', '', '', '', ''),
-(17, 1, 'Software', '', '', '', ''),
-(25, 1, 'Components', '', '', '', ''),
-(24, 1, 'Phones &amp; PDAs', '', '', '', ''),
-(20, 1, 'Desktops', '&lt;p&gt;\r\n	Example of category description text&lt;/p&gt;\r\n', '', 'Example of category description', ''),
-(35, 1, 'test 1', '', '', '', ''),
-(36, 1, 'test 2', '', '', '', ''),
-(37, 1, 'test 5', '', '', '', ''),
-(38, 1, 'test 4', '', '', '', ''),
-(39, 1, 'test 6', '', '', '', ''),
-(40, 1, 'test 7', '', '', '', ''),
-(41, 1, 'test 8', '', '', '', ''),
-(42, 1, 'test 9', '', '', '', ''),
-(43, 1, 'test 11', '', '', '', ''),
-(34, 1, 'MP3 Players', '&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n', '', '', ''),
-(18, 1, 'Laptops &amp; Notebooks', '&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n', '', '', ''),
-(44, 1, 'test 12', '', '', '', ''),
-(45, 1, 'Windows', '', '', '', ''),
-(46, 1, 'Macs', '', '', '', ''),
-(47, 1, 'test 15', '', '', '', ''),
-(48, 1, 'test 16', '', '', '', ''),
-(49, 1, 'test 17', '', '', '', ''),
-(50, 1, 'test 18', '', '', '', ''),
-(51, 1, 'test 19', '', '', '', ''),
-(52, 1, 'test 20', '', '', '', ''),
-(53, 1, 'test 21', '', '', '', ''),
-(54, 1, 'test 22', '', '', '', ''),
-(55, 1, 'test 23', '', '', '', ''),
-(56, 1, 'test 24', '', '', '', ''),
-(57, 1, 'Tablets', '', '', '', ''),
-(58, 1, 'test 25', '', '', '', '');
+(33, 1, 'Nấm Linh Chi Nông Lâm', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Nấm Linh Chi Nông Lâm', '', ''),
+(17, 1, 'Nấm Vân Chi Nông Lâm', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Nấm Vân Chi Nông Lâm', '', ''),
+(25, 1, 'Nấm Lim Xanh Nông Lâm', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Nấm Lim Xanh Nông Lâm', '', ''),
+(24, 1, 'Nấm Hầu Thủ Nông Lâm', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Nấm Hầu Thủ Nông Lâm', '', ''),
+(20, 1, 'Đông Trùng Hạ Thảo Nông Lâm', '&lt;p&gt;\r\n	Example of category description text&lt;/p&gt;\r\n', 'Đông Trùng Hạ Thảo Nông Lâm', 'Example of category description', ''),
+(34, 1, 'Nấm Linh Chi Hàn Quốc', '&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n', 'Nấm Linh Chi Hàn Quốc', '', ''),
+(18, 1, 'Linh Chi Nhật Thượng Hạng', '&lt;br&gt;', 'Linh Chi Nhật Thượng Hạng', '', ''),
+(43, 1, 'Bào Tử Linh Chi Nông Lâm', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Bào Tử Linh Chi Nông Lâm', '', ''),
+(44, 1, 'Trà - Bột Linh Chi Nông Lâm', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Trà - Bột Linh Chi Nông Lâm', '', ''),
+(47, 1, 'Rượu Linh Chi-Sâm-Hải-Mã', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Rượu Linh Chi-Sâm-Hải-Mã', '', ''),
+(48, 1, 'Gạo Thảo Dược Nông Lâm', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Gạo Thảo Dược Nông Lâm', '', ''),
+(49, 1, 'Chùm Ngây Nông Lâm', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Chùm Ngây Nông Lâm', '', ''),
+(50, 1, 'Mật Ong Nông Lâm', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Mật Ong Nông Lâm', '', ''),
+(51, 1, 'Tổ Yên Sào Cao Cấp', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Tổ Yên Sào Cao Cấp', '', ''),
+(52, 1, 'Phụ Liệu La Hán Quả - Cỏ Ngọt', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Phụ Liệu La Hán Quả - Cỏ Ngọt', '', ''),
+(57, 1, 'Nấm Thượng Hoàng Nông Lâm', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Nấm Thượng Hoàng Nông Lâm', '', '');
 
 -- --------------------------------------------------------
 
@@ -543,75 +499,20 @@ CREATE TABLE IF NOT EXISTS `category_path` (
 
 INSERT INTO `category_path` (`category_id`, `path_id`, `level`) VALUES
 (25, 25, 0),
-(28, 25, 0),
-(28, 28, 1),
-(35, 25, 0),
-(35, 28, 1),
-(35, 35, 2),
-(36, 25, 0),
-(36, 28, 1),
-(36, 36, 2),
-(29, 25, 0),
-(29, 29, 1),
-(30, 25, 0),
-(30, 30, 1),
-(31, 25, 0),
-(31, 31, 1),
-(32, 25, 0),
-(32, 32, 1),
 (20, 20, 0),
-(27, 20, 0),
-(27, 27, 1),
-(26, 20, 0),
-(26, 26, 1),
 (24, 24, 0),
 (18, 18, 0),
-(45, 18, 0),
-(45, 45, 1),
-(46, 18, 0),
-(46, 46, 1),
 (17, 17, 0),
 (33, 33, 0),
 (34, 34, 0),
-(37, 34, 0),
-(37, 37, 1),
-(38, 34, 0),
-(38, 38, 1),
-(39, 34, 0),
-(39, 39, 1),
-(40, 34, 0),
-(40, 40, 1),
-(41, 34, 0),
-(41, 41, 1),
-(42, 34, 0),
-(42, 42, 1),
-(43, 34, 0),
-(43, 43, 1),
-(44, 34, 0),
-(44, 44, 1),
-(47, 34, 0),
-(47, 47, 1),
-(48, 34, 0),
-(48, 48, 1),
-(49, 34, 0),
-(49, 49, 1),
-(50, 34, 0),
-(50, 50, 1),
-(51, 34, 0),
-(51, 51, 1),
-(52, 34, 0),
-(52, 52, 1),
-(58, 34, 0),
-(58, 52, 1),
-(58, 58, 2),
-(53, 34, 0),
-(53, 53, 1),
-(54, 34, 0),
-(54, 54, 1),
-(55, 34, 0),
-(55, 55, 1),
-(56, 34, 0),
-(56, 56, 1),
+(43, 43, 0),
+(44, 44, 0),
+(47, 47, 0),
+(48, 48, 0),
+(49, 49, 0),
+(50, 50, 0),
+(51, 51, 0),
+(52, 52, 0),
 (57, 57, 0);
 
 -- --------------------------------------------------------
@@ -626,6 +527,28 @@ CREATE TABLE IF NOT EXISTS `category_to_layout` (
   `layout_id` int(11) NOT NULL,
   PRIMARY KEY (`category_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `category_to_layout`
+--
+
+INSERT INTO `category_to_layout` (`category_id`, `store_id`, `layout_id`) VALUES
+(33, 0, 0),
+(20, 0, 0),
+(18, 0, 0),
+(25, 0, 0),
+(57, 0, 0),
+(17, 0, 0),
+(24, 0, 0),
+(34, 0, 0),
+(43, 0, 0),
+(44, 0, 0),
+(47, 0, 0),
+(48, 0, 0),
+(49, 0, 0),
+(50, 0, 0),
+(51, 0, 0),
+(52, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -649,39 +572,17 @@ INSERT INTO `category_to_store` (`category_id`, `store_id`) VALUES
 (20, 0),
 (24, 0),
 (25, 0),
-(26, 0),
-(27, 0),
-(28, 0),
-(29, 0),
-(30, 0),
-(31, 0),
-(32, 0),
 (33, 0),
 (34, 0),
-(35, 0),
-(36, 0),
-(37, 0),
-(38, 0),
-(39, 0),
-(40, 0),
-(41, 0),
-(42, 0),
 (43, 0),
 (44, 0),
-(45, 0),
-(46, 0),
 (47, 0),
 (48, 0),
 (49, 0),
 (50, 0),
 (51, 0),
 (52, 0),
-(53, 0),
-(54, 0),
-(55, 0),
-(56, 0),
-(57, 0),
-(58, 0);
+(57, 0);
 
 -- --------------------------------------------------------
 
@@ -1057,9 +958,9 @@ CREATE TABLE IF NOT EXISTS `currency` (
 --
 
 INSERT INTO `currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Pound Sterling', 'GBP', '£', '', '2', 0.64179999, 1, '2014-12-06 03:29:18'),
-(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2014-12-06 19:12:29'),
-(3, 'Euro', 'EUR', '', '€', '2', 0.81389999, 1, '2014-12-06 03:29:18');
+(1, 'Pound Sterling', 'GBP', '£', '', '2', 0.63630003, 1, '2014-12-13 08:09:31'),
+(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2014-12-15 04:49:18'),
+(3, 'Euro', 'EUR', '', '€', '2', 0.80229998, 1, '2014-12-13 08:09:31');
 
 -- --------------------------------------------------------
 
@@ -2428,7 +2329,7 @@ INSERT INTO `product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`
 (46, 'Product 19', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/sony_vaio_1.jpg', 10, 1, 1000.0000, 0, 9, '2009-02-03', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 2, 1, 1, 0, 1, 0, '2009-02-03 21:08:29', '2011-09-30 01:06:39'),
 (47, 'Product 21', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, 100.0000, 400, 9, '2009-02-03', 1.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 0, 1, 0, 1, 0, '2009-02-03 21:08:40', '2011-09-30 01:05:28'),
 (48, 'product 20', 'test 1', '', '', '', '', '', 'test 2', 995, 5, 'catalog/demo/ipod_classic_1.jpg', 8, 1, 100.0000, 0, 9, '2009-02-08', 1.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 2, 1, 1, 0, 1, 0, '2009-02-08 17:21:51', '2011-09-30 01:07:06'),
-(49, 'SAM1', '', '', '', '', '', '', '', 0, 8, 'catalog/demo/samsung_tab_1.jpg', 0, 1, 199.9900, 0, 9, '2011-04-25', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 1, 1, 0, '2011-04-26 08:57:34', '2011-09-30 01:06:23');
+(49, 'SAM1', '', '', '', '', '', '', '', 1, 7, 'catalog/demo/samsung_tab_1.jpg', 0, 1, 199.9900, 0, 9, '2011-04-25', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 1, 1, 0, '2011-04-26 08:57:34', '2014-12-07 13:23:49');
 
 -- --------------------------------------------------------
 
@@ -2495,7 +2396,7 @@ INSERT INTO `product_description` (`product_id`, `language_id`, `name`, `descrip
 (34, 1, 'iPod Shuffle', '&lt;div&gt;\r\n	&lt;strong&gt;Born to be worn.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Clip on the worlds most wearable music player and take up to 240 songs with you anywhere. Choose from five colors including four new hues to make your musical fashion statement.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;strong&gt;Random meets rhythm.&lt;/strong&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		With iTunes autofill, iPod shuffle can deliver a new musical experience every time you sync. For more randomness, you can shuffle songs during playback with the slide of a switch.&lt;/p&gt;\r\n	&lt;strong&gt;Everything is easy.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Charge and sync with the included USB dock. Operate the iPod shuffle controls with one hand. Enjoy up to 12 hours straight of skip-free music playback.&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', '', '', ''),
 (43, 1, 'MacBook', '&lt;div&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Intel Core 2 Duo processor&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the new MacBook is the fastest ever.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;1GB memory, larger hard drives&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		The new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Sleek, 1.08-inch-thin design&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		MacBook makes it easy to hit the road thanks to its tough polycarbonate case, built-in wireless technologies, and innovative MagSafe Power Adapter that releases automatically if someone accidentally trips on the cord.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Built-in iSight camera&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		Right out of the box, you can have a video chat with friends or family,2 record a video at your desk, or take fun pictures with Photo Booth&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', '', '', ''),
 (31, 1, 'Nikon D300', '&lt;div class=&quot;cpt_product_description &quot;&gt;\r\n	&lt;div&gt;\r\n		Engineered with pro-level features and performance, the 12.3-effective-megapixel D300 combines brand new technologies with advanced features inherited from Nikon&amp;#39;s newly announced D3 professional digital SLR camera to offer serious photographers remarkable performance combined with agility.&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		Similar to the D3, the D300 features Nikon&amp;#39;s exclusive EXPEED Image Processing System that is central to driving the speed and processing power needed for many of the camera&amp;#39;s new features. The D300 features a new 51-point autofocus system with Nikon&amp;#39;s 3D Focus Tracking feature and two new LiveView shooting modes that allow users to frame a photograph using the camera&amp;#39;s high-resolution LCD monitor. The D300 shares a similar Scene Recognition System as is found in the D3; it promises to greatly enhance the accuracy of autofocus, autoexposure, and auto white balance by recognizing the subject or scene being photographed and applying this information to the calculations for the three functions.&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		The D300 reacts with lightning speed, powering up in a mere 0.13 seconds and shooting with an imperceptible 45-millisecond shutter release lag time. The D300 is capable of shooting at a rapid six frames per second and can go as fast as eight frames per second when using the optional MB-D10 multi-power battery pack. In continuous bursts, the D300 can shoot up to 100 shots at full 12.3-megapixel resolution. (NORMAL-LARGE image setting, using a SanDisk Extreme IV 1GB CompactFlash card.)&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		The D300 incorporates a range of innovative technologies and features that will significantly improve the accuracy, control, and performance photographers can get from their equipment. Its new Scene Recognition System advances the use of Nikon&amp;#39;s acclaimed 1,005-segment sensor to recognize colors and light patterns that help the camera determine the subject and the type of scene being photographed before a picture is taken. This information is used to improve the accuracy of autofocus, autoexposure, and auto white balance functions in the D300. For example, the camera can track moving subjects better and by identifying them, it can also automatically select focus points faster and with greater accuracy. It can also analyze highlights and more accurately determine exposure, as well as infer light sources to deliver more accurate white balance detection.&lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;!-- cpt_container_end --&gt;', '', '', '', ''),
-(49, 1, 'Samsung Galaxy Tab 10.1', '&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1, is the world&amp;rsquo;s thinnest tablet, measuring 8.6 mm thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its younger brother Samsung Galaxy Tab 8.9.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 gives pure Android 3.0 experience, adding its new TouchWiz UX or TouchWiz 4.0 &amp;ndash; includes a live panel, which lets you to customize with different content, such as your pictures, bookmarks, and social feeds, sporting a 10.1 inches WXGA capacitive touch screen with 1280 x 800 pixels of resolution, equipped with 3 megapixel rear camera with LED flash and a 2 megapixel front camera, HSPA+ connectivity up to 21Mbps, 720p HD video recording capability, 1080p HD playback, DLNA support, Bluetooth 2.1, USB 2.0, gyroscope, Wi-Fi 802.11 a/b/g/n, micro-SD slot, 3.5mm headphone jack, and SIM slot, including the Samsung Stick &amp;ndash; a Bluetooth microphone that can be carried in a pocket like a pen and sound dock with powered subwoofer.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 will come in 16GB / 32GB / 64GB verities and pre-loaded with Social Hub, Reader&amp;rsquo;s Hub, Music Hub and Samsung Mini Apps Tray &amp;ndash; which gives you access to more commonly used apps to help ease multitasking and it is capable of Adobe Flash Player 10.2, powered by 6860mAh battery that gives you 10hours of video-playback time.&amp;nbsp;&amp;auml;&amp;ouml;&lt;/p&gt;\r\n', '', '', '', ''),
+(49, 1, 'Samsung Galaxy Tab 10.1', '&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1, is the world’s thinnest tablet, measuring 8.6 mm thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its younger brother Samsung Galaxy Tab 8.9.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 gives pure Android 3.0 experience, adding its new TouchWiz UX or TouchWiz 4.0 – includes a live panel, which lets you to customize with different content, such as your pictures, bookmarks, and social feeds, sporting a 10.1 inches WXGA capacitive touch screen with 1280 x 800 pixels of resolution, equipped with 3 megapixel rear camera with LED flash and a 2 megapixel front camera, HSPA+ connectivity up to 21Mbps, 720p HD video recording capability, 1080p HD playback, DLNA support, Bluetooth 2.1, USB 2.0, gyroscope, Wi-Fi 802.11 a/b/g/n, micro-SD slot, 3.5mm headphone jack, and SIM slot, including the Samsung Stick – a Bluetooth microphone that can be carried in a pocket like a pen and sound dock with powered subwoofer.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 will come in 16GB / 32GB / 64GB verities and pre-loaded with Social Hub, Reader’s Hub, Music Hub and Samsung Mini Apps Tray – which gives you access to more commonly used apps to help ease multitasking and it is capable of Adobe Flash Player 10.2, powered by 6860mAh battery that gives you 10hours of video-playback time.&amp;nbsp;äö&lt;/p&gt;\r\n', '', 'abc', '', ''),
 (42, 1, 'Apple Cinema 30&quot;', '&lt;p&gt;\r\n	&lt;font face=&quot;helvetica,geneva,arial&quot; size=&quot;2&quot;&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there&amp;#39;s no limit to what you can achieve. &lt;br /&gt;\r\n	&lt;br /&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it&amp;#39;s designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data. &lt;br /&gt;\r\n	&lt;br /&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple&amp;#39;s ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications. &lt;br /&gt;\r\n	&lt;br /&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment. &lt;br /&gt;\r\n	&lt;br /&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.&lt;br /&gt;\r\n	&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;\r\n&lt;h3&gt;\r\n	Features:&lt;/h3&gt;\r\n&lt;p&gt;\r\n	Unrivaled display performance&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for 2560-by-1600 pixel resolution for display of high definition still and video imagery.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Wide-format design for simultaneous display of two full pages of text and graphics.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Industry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Incredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Lightning-fast pixel response for full-motion digital video playback.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for 16.7 million saturated colors, for use in all graphics-intensive applications.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Simple setup and operation&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Single cable with elegant breakout for connection to DVI, USB and FireWire ports&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Built-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Two FireWire 400 ports to support iSight and other desktop peripherals&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Sleek, elegant design&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Huge virtual workspace, very small footprint.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Narrow Bezel design to minimize visual impact of using dual displays&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Unique hinge design for effortless adjustment&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;h3&gt;\r\n	Technical specifications&lt;/h3&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen size (diagonal viewable image size)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Apple Cinema HD Display: 30 inches (29.7-inch viewable)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen type&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Thin film transistor (TFT) active-matrix liquid crystal display (AMLCD)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Resolutions&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		2560 x 1600 pixels (optimum resolution)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		2048 x 1280&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1920 x 1200&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1280 x 800&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1024 x 640&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Display colors (maximum)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		16.7 million&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Viewing angle (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		170&amp;deg; horizontal; 170&amp;deg; vertical&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Brightness (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch Cinema HD Display: 400 cd/m2&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Contrast ratio (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		700:1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Response time (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		16 ms&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Pixel pitch&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch Cinema HD Display: 0.250 mm&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen treatment&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Antiglare hardcoat&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;User controls (hardware and software)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Display Power,&lt;/li&gt;\r\n	&lt;li&gt;\r\n		System sleep, wake&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Brightness&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Monitor tilt&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Connectors and cables&lt;/b&gt;&lt;br /&gt;\r\n	Cable&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		DVI (Digital Visual Interface)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		FireWire 400&lt;/li&gt;\r\n	&lt;li&gt;\r\n		USB 2.0&lt;/li&gt;\r\n	&lt;li&gt;\r\n		DC power (24 V)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Connectors&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Two-port, self-powered USB 2.0 hub&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Two FireWire 400 ports&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Kensington security port&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;VESA mount adapter&lt;/b&gt;&lt;br /&gt;\r\n	Requires optional Cinema Display VESA Mount Adapter (M9649G/A)&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Compatible with VESA FDMI (MIS-D, 100, C) compliant mounting solutions&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Electrical requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Input voltage: 100-240 VAC 50-60Hz&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Maximum power when operating: 150W&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Energy saver mode: 3W or less&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Environmental requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Operating temperature: 50&amp;deg; to 95&amp;deg; F (10&amp;deg; to 35&amp;deg; C)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Storage temperature: -40&amp;deg; to 116&amp;deg; F (-40&amp;deg; to 47&amp;deg; C)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Operating humidity: 20% to 80% noncondensing&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Maximum operating altitude: 10,000 feet&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Agency approvals&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		FCC Part 15 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN55022 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN55024&lt;/li&gt;\r\n	&lt;li&gt;\r\n		VCCI Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		AS/NZS 3548 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		CNS 13438 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ICES-003 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ISO 13406 part 2&lt;/li&gt;\r\n	&lt;li&gt;\r\n		MPR II&lt;/li&gt;\r\n	&lt;li&gt;\r\n		IEC 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		UL 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		CSA 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ENERGY STAR&lt;/li&gt;\r\n	&lt;li&gt;\r\n		TCO &amp;#39;03&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Size and weight&lt;/b&gt;&lt;br /&gt;\r\n	30-inch Apple Cinema HD Display&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Height: 21.3 inches (54.3 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Width: 27.2 inches (68.8 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Depth: 8.46 inches (21.5 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Weight: 27.5 pounds (12.5 kg)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;System Requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Mac Pro, all graphic options&lt;/li&gt;\r\n	&lt;li&gt;\r\n		MacBook Pro&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Power Mac G5 (PCI-X) with ATI Radeon 9650 or better or NVIDIA GeForce 6800 GT DDL or better&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Power Mac G5 (PCI Express), all graphics options&lt;/li&gt;\r\n	&lt;li&gt;\r\n		PowerBook G4 with dual-link DVI support&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Windows PC and graphics card that supports DVI ports with dual-link digital bandwidth and VESA DDC standard for plug-and-play setup&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '', '', '', ''),
 (30, 1, 'Canon EOS 5D', '&lt;p&gt;\r\n	Canon''s press material for the EOS 5D states that it ''defines (a) new D-SLR category'', while we''re not typically too concerned with marketing talk this particular statement is clearly pretty accurate. The EOS 5D is unlike any previous digital SLR in that it combines a full-frame (35 mm sized) high resolution sensor (12.8 megapixels) with a relatively compact body (slightly larger than the EOS 20D, although in your hand it feels noticeably ''chunkier''). The EOS 5D is aimed to slot in between the EOS 20D and the EOS-1D professional digital SLR''s, an important difference when compared to the latter is that the EOS 5D doesn''t have any environmental seals. While Canon don''t specifically refer to the EOS 5D as a ''professional'' digital SLR it will have obvious appeal to professionals who want a high quality digital SLR in a body lighter than the EOS-1D. It will also no doubt appeal to current EOS 20D owners (although lets hope they''ve not bought too many EF-S lenses...) äë&lt;/p&gt;\r\n', '', '', '', '');
 
@@ -2552,7 +2453,7 @@ CREATE TABLE IF NOT EXISTS `product_image` (
   `sort_order` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_image_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2352 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2364 ;
 
 --
 -- Dumping data for table `product_image`
@@ -2609,12 +2510,12 @@ INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_or
 (1987, 29, 'catalog/demo/palm_treo_pro_2.jpg', 0),
 (1993, 46, 'catalog/demo/sony_vaio_2.jpg', 0),
 (1992, 46, 'catalog/demo/sony_vaio_3.jpg', 0),
-(2327, 49, 'catalog/demo/samsung_tab_7.jpg', 0),
-(2326, 49, 'catalog/demo/samsung_tab_6.jpg', 0),
-(2325, 49, 'catalog/demo/samsung_tab_5.jpg', 0),
-(2324, 49, 'catalog/demo/samsung_tab_4.jpg', 0),
-(2323, 49, 'catalog/demo/samsung_tab_3.jpg', 0),
-(2322, 49, 'catalog/demo/samsung_tab_2.jpg', 0),
+(2363, 49, 'catalog/demo/samsung_tab_7.jpg', 0),
+(2362, 49, 'catalog/demo/samsung_tab_6.jpg', 0),
+(2361, 49, 'catalog/demo/samsung_tab_5.jpg', 0),
+(2360, 49, 'catalog/demo/samsung_tab_4.jpg', 0),
+(2359, 49, 'catalog/demo/samsung_tab_3.jpg', 0),
+(2358, 49, 'catalog/demo/samsung_tab_2.jpg', 0),
 (2317, 42, 'catalog/demo/canon_logo.jpg', 0),
 (2316, 42, 'catalog/demo/hp_1.jpg', 0),
 (2315, 42, 'catalog/demo/compaq_presario.jpg', 0),
@@ -2746,7 +2647,7 @@ CREATE TABLE IF NOT EXISTS `product_reward` (
   `customer_group_id` int(11) NOT NULL DEFAULT '0',
   `points` int(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_reward_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=546 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=548 ;
 
 --
 -- Dumping data for table `product_reward`
@@ -2771,7 +2672,7 @@ INSERT INTO `product_reward` (`product_reward_id`, `product_id`, `customer_group
 (351, 36, 1, 0),
 (353, 34, 1, 0),
 (355, 32, 1, 0),
-(521, 49, 1, 1000);
+(547, 49, 1, 1000);
 
 -- --------------------------------------------------------
 
@@ -2827,15 +2728,12 @@ INSERT INTO `product_to_category` (`product_id`, `category_id`) VALUES
 (31, 33),
 (32, 34),
 (33, 20),
-(33, 28),
 (34, 34),
 (35, 20),
 (36, 34),
 (40, 20),
 (40, 24),
-(41, 27),
 (42, 20),
-(42, 28),
 (43, 18),
 (43, 20),
 (44, 18),
@@ -2873,6 +2771,13 @@ CREATE TABLE IF NOT EXISTS `product_to_layout` (
   `layout_id` int(11) NOT NULL,
   PRIMARY KEY (`product_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `product_to_layout`
+--
+
+INSERT INTO `product_to_layout` (`product_id`, `store_id`, `layout_id`) VALUES
+(49, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -3402,7 +3307,7 @@ CREATE TABLE IF NOT EXISTS `url_alias` (
   PRIMARY KEY (`url_alias_id`),
   KEY `query` (`query`),
   KEY `keyword` (`keyword`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=874 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=894 ;
 
 --
 -- Dumping data for table `url_alias`
@@ -3410,47 +3315,24 @@ CREATE TABLE IF NOT EXISTS `url_alias` (
 
 INSERT INTO `url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (824, 'product_id=48', 'ipod-classic'),
-(836, 'category_id=20', 'desktops'),
-(834, 'category_id=26', 'pc'),
-(835, 'category_id=27', 'mac'),
+(877, 'category_id=20', 'dong-trung-ha-thao-nong-lam'),
 (730, 'manufacturer_id=8', 'apple'),
 (772, 'information_id=4', 'about_us'),
 (768, 'product_id=42', 'test'),
-(789, 'category_id=34', 'mp3-players'),
-(781, 'category_id=36', 'test2'),
-(774, 'category_id=18', 'laptop-notebook'),
-(775, 'category_id=46', 'macs'),
-(776, 'category_id=45', 'windows'),
-(777, 'category_id=25', 'component'),
-(778, 'category_id=29', 'mouse'),
-(779, 'category_id=28', 'monitor'),
-(780, 'category_id=35', 'test1'),
-(782, 'category_id=30', 'printer'),
-(783, 'category_id=31', 'scanner'),
-(784, 'category_id=32', 'web-camera'),
-(785, 'category_id=57', 'tablet'),
-(786, 'category_id=17', 'software'),
-(787, 'category_id=24', 'smartphone'),
-(788, 'category_id=33', 'camera'),
-(790, 'category_id=43', 'test11'),
-(791, 'category_id=44', 'test12'),
-(792, 'category_id=47', 'test15'),
-(793, 'category_id=48', 'test16'),
-(794, 'category_id=49', 'test17'),
-(795, 'category_id=50', 'test18'),
-(796, 'category_id=51', 'test19'),
-(797, 'category_id=52', 'test20'),
-(798, 'category_id=58', 'test25'),
-(799, 'category_id=53', 'test21'),
-(800, 'category_id=54', 'test22'),
-(801, 'category_id=55', 'test23'),
-(802, 'category_id=56', 'test24'),
-(803, 'category_id=38', 'test4'),
-(804, 'category_id=37', 'test5'),
-(805, 'category_id=39', 'test6'),
-(806, 'category_id=40', 'test7'),
-(807, 'category_id=41', 'test8'),
-(808, 'category_id=42', 'test9'),
+(884, 'category_id=34', 'nam-linh-chi-han-quoc'),
+(880, 'category_id=25', 'nam-lim-xanh-nong-lam'),
+(881, 'category_id=57', 'nam-thuong-hoang-nong-lam'),
+(882, 'category_id=17', 'nam-van-chi-nong-lam'),
+(883, 'category_id=24', 'nam-hau-thu-nong-lam'),
+(876, 'category_id=33', 'nam-linh-chi-nong-lam'),
+(887, 'category_id=44', 'tra-bot-linh-chi-nong-lam'),
+(888, 'category_id=47', 'ruou-linh-chi-sam-hai-ma'),
+(889, 'category_id=48', 'gao-thao-duoc-nong-lam'),
+(890, 'category_id=49', 'chum-ngay-nong-lam'),
+(891, 'category_id=50', 'mat-ong-nong-lam'),
+(892, 'category_id=51', 'to-yen-sao-cao-cap'),
+(893, 'category_id=52', 'test20'),
+(886, 'category_id=43', 'bao-tu-linh-chi-nong-lam'),
 (809, 'product_id=30', 'canon-eos-5d'),
 (840, 'product_id=47', 'hp-lp3065'),
 (811, 'product_id=28', 'htc-touch-hd'),
@@ -3460,7 +3342,7 @@ INSERT INTO `url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (816, 'product_id=31', 'nikon-d300'),
 (817, 'product_id=29', 'palm-treo-pro'),
 (818, 'product_id=35', 'product-8'),
-(819, 'product_id=49', 'samsung-galaxy-tab-10-1'),
+(875, 'product_id=49', 'samsung-galaxy-tab-10-1'),
 (820, 'product_id=33', 'samsung-syncmaster-941bw'),
 (821, 'product_id=46', 'sony-vaio'),
 (837, 'product_id=41', 'imac'),
@@ -3504,7 +3386,8 @@ INSERT INTO `url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (870, 'affiliate/forgotten', 'affiliate-forgot-password'),
 (871, 'affiliate/register', 'create-affiliate-account'),
 (872, 'affiliate/login', 'affiliate-login'),
-(873, 'affiliate/account', 'affiliates');
+(873, 'affiliate/account', 'affiliates'),
+(879, 'category_id=18', 'linh-chi-nhat-thuong-hang');
 
 -- --------------------------------------------------------
 
