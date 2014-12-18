@@ -16,9 +16,8 @@ final class Loader {
 		$file = DIR_APPLICATION . 'model/' . $model . '.php';
 		$class = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $model);
 
-global $vqmod; $file = $vqmod->modCheck($file);
 		if (file_exists($file)) {
-			include_once($file);
+			include_once(VQMod::modCheck($file));
 
 			$this->registry->set('model_' . str_replace('/', '_', $model), new $class($this->registry));
 		} else {
@@ -30,13 +29,12 @@ global $vqmod; $file = $vqmod->modCheck($file);
 	public function view($template, $data = array()) {
 		$file = DIR_TEMPLATE . $template;
 
-global $vqmod; $file = $vqmod->modCheck($file);
 		if (file_exists($file)) {
 			extract($data);
 
 			ob_start();
 
-			require($file);
+			require(VQMod::modCheck($file));
 
 			$output = ob_get_contents();
 
@@ -52,9 +50,8 @@ global $vqmod; $file = $vqmod->modCheck($file);
 	public function library($library) {
 		$file = DIR_SYSTEM . 'library/' . $library . '.php';
 
-global $vqmod; $file = $vqmod->modCheck($file);
 		if (file_exists($file)) {
-			include_once($file);
+			include_once(VQMod::modCheck($file));
 		} else {
 			trigger_error('Error: Could not load library ' . $file . '!');
 			exit();
@@ -64,9 +61,8 @@ global $vqmod; $file = $vqmod->modCheck($file);
 	public function helper($helper) {
 		$file = DIR_SYSTEM . 'helper/' . $helper . '.php';
 
-global $vqmod; $file = $vqmod->modCheck($file);
 		if (file_exists($file)) {
-			include_once($file);
+			include_once(VQMod::modCheck($file));
 		} else {
 			trigger_error('Error: Could not load helper ' . $file . '!');
 			exit();

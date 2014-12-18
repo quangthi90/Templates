@@ -69,7 +69,7 @@ function autoload($class) {
 	$file = DIR_SYSTEM . 'library/' . str_replace('\\', '/', strtolower($class)) . '.php';
 
 	if (file_exists($file)) {
-		include(modification($file));
+		include(VQMod::modCheck(modification($file)));
 
 		return true;
 	} else {
@@ -81,14 +81,14 @@ spl_autoload_register('autoload');
 spl_autoload_extensions('.php');
 
 // Engine
-require_once($vqmod->modCheck(modification(DIR_SYSTEM . 'engine/action.php')));
-require_once($vqmod->modCheck(modification(DIR_SYSTEM . 'engine/controller.php')));
-require_once($vqmod->modCheck(modification(DIR_SYSTEM . 'engine/event.php')));
-require_once($vqmod->modCheck(modification(DIR_SYSTEM . 'engine/front.php')));
-require_once($vqmod->modCheck(modification(DIR_SYSTEM . 'engine/loader.php')));
-require_once($vqmod->modCheck(modification(DIR_SYSTEM . 'engine/model.php')));
-require_once($vqmod->modCheck(modification(DIR_SYSTEM . 'engine/registry.php')));
+require_once(VQMod::modCheck(modification(DIR_SYSTEM . 'engine/action.php')));
+require_once(VQMod::modCheck(modification(DIR_SYSTEM . 'engine/controller.php')));
+require_once(VQMod::modCheck(modification(DIR_SYSTEM . 'engine/event.php')));
+require_once(VQMod::modCheck(modification(DIR_SYSTEM . 'engine/front.php')));
+require_once(VQMod::modCheck(modification(DIR_SYSTEM . 'engine/loader.php')));
+require_once(VQMod::modCheck(modification(DIR_SYSTEM . 'engine/model.php')));
+require_once(VQMod::modCheck(modification(DIR_SYSTEM . 'engine/registry.php')));
 
 // Helper
-require_once($vqmod->modCheck(DIR_SYSTEM . 'helper/json.php'));
-require_once($vqmod->modCheck(DIR_SYSTEM . 'helper/utf8.php'));
+require_once(VQMod::modCheck(DIR_SYSTEM . 'helper/json.php'));
+require_once(VQMod::modCheck(DIR_SYSTEM . 'helper/utf8.php'));

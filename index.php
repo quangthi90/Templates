@@ -15,10 +15,10 @@ if (!defined('DIR_APPLICATION')) {
 
 // VirtualQMOD
 require_once('./vqmod/vqmod.php');
-$vqmod = new VQMod();
+VQMod::bootup();
 
 // VQMODDED Startup
-require_once($vqmod->modCheck(DIR_SYSTEM . 'startup.php'));
+require_once(VQMod::modCheck(DIR_SYSTEM . 'startup.php'));
 
 // Registry
 $registry = new Registry();

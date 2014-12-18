@@ -1,0 +1,54 @@
+<modification>
+	<id>News edit in admin page 1</id>
+	<version>2.0.x</version>
+	<vqmver>1.0</vqmver>
+	<author>Bommer Luu</author>
+	<file name="admin/view/template/common/menu.tpl">
+		<operation>
+			<search position="after"><![CDATA[<?php echo $text_contact; ?></a></li>]]></search>
+			<add><![CDATA[
+				<li id="news"><a class="parent"><?php echo $text_news_title; ?></a>
+					<ul>
+						<li><a href="<?php echo $news_category; ?>"><?php echo $text_news_category; ?></a></li>
+						<li><a href="<?php echo $news_article; ?>"><?php echo $text_news_article; ?></a></li>
+						<li><a href="<?php echo $news_comment; ?>"><?php echo $text_news_comment; ?></a></li>
+						<li><a href="<?php echo $news_setting; ?>"><?php echo $text_news_setting; ?></a></li>
+					</ul>
+			  	</li>
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/controller/common/menu.php">
+		<operation>
+			<search position="after"><![CDATA[language->get('text_module');]]></search>
+			<add><![CDATA[
+				$data['text_news_title'] = $this->language->get('text_news_title');
+				$data['text_news_category'] = $this->language->get('text_news_category');
+				$data['text_news_article'] = $this->language->get('text_news_article');
+				$data['text_news_comment'] = $this->language->get('text_news_comment');
+				$data['text_news_setting'] = $this->language->get('text_news_setting');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[$data['module'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');]]></search>
+			<add><![CDATA[
+				$data['news_article'] = $this->url->link('news/article', 'token=' . $this->session->data['token'], 'SSL');
+				$data['news_category'] = $this->url->link('news/category', 'token=' . $this->session->data['token'], 'SSL');
+				$data['news_comment'] = $this->url->link('news/comment', 'token=' . $this->session->data['token'], 'SSL');
+				$data['news_setting'] = $this->url->link('news/setting', 'token=' . $this->session->data['token'], 'SSL');
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/english/common/menu.php">
+		<operation>
+			<search position="after"><![CDATA[Modules]]></search>
+			<add><![CDATA[
+				$_['text_news_title']						= 'News';
+				$_['text_news_category']					= 'Categories';
+				$_['text_news_article']						= 'Articles';
+				$_['text_news_comment']						= 'Comments';
+				$_['text_news_setting']						= 'Settings';
+			]]></add>
+		</operation>
+	</file>
+</modification>
