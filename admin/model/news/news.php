@@ -1,9 +1,9 @@
 <?php
 //OpenCart Extension
 //Project Name: OpenCart News
-//Author: Fanha Giang a.k.a fanha99
-//Email (PayPal Account): fanha99@gmail.com
-//License: Commercial
+//Author: Bommer Luu
+//Email (PayPal Account): lqthi.khtn@gmail.com
+//License: OpenCart 2.0.x
 ?>
 <?php
 class ModelNewsNews extends Model {
@@ -318,7 +318,7 @@ class ModelNewsNews extends Model {
 
 		return $related_news_data;
 	}
-       	public function addnews_category($data) {
+       	public function addNewsCategory($data) {
 		$this->db->query("INSERT INTO " . DB_PREFIX . "news_category SET parent_id = '" . (int)$data['parent_id'] . "', `top` = '" . (isset($data['top']) ? (int)$data['top'] : 0) . "', `column` = '" . (int)$data['column'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW(), date_added = NOW()");
 	
 		$news_category_id = $this->db->getLastId();
@@ -338,10 +338,8 @@ class ModelNewsNews extends Model {
 		}
 
 		if (isset($data['news_category_layout'])) {
-			foreach ($data['news_category_layout'] as $store_id => $layout) {
-				if ($layout['layout_id']) {
-					$this->db->query("INSERT INTO " . DB_PREFIX . "news_category_to_layout SET news_category_id = '" . (int)$news_category_id . "', store_id = '" . (int)$store_id . "', layout_id = '" . (int)$layout['layout_id'] . "'");
-				}
+			foreach ($data['news_category_layout'] as $store_id => $layout_id) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "news_category_to_layout SET news_category_id = '" . (int)$news_category_id . "', store_id = '" . (int)$store_id . "', layout_id = '" . (int)$layout_id . "'");
 			}
 		}
 						
