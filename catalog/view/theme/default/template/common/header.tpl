@@ -64,7 +64,8 @@
           <?php } ?>
           </ul>
         </li>
-        <li><a href="#">Giới thiệu</a>
+        <?php foreach ($news_categories as $category) { ?>
+        <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
           <ul class="dropdown-menu">
             <li><a href="http://linhchinonglam.com/tin-tuc/5/hinh-anh-hoat-dong.html">Hình Ảnh &amp; Hoạt Động</a></li>
             <li><a href="http://linhchinonglam.com/danh-muc/233/phong-su.html">Phóng Sự</a></li>
@@ -77,51 +78,9 @@
                   <li><a href="http://linhchinonglam.com/danh-muc/187/nhung-manh-doi-bat-hanh.html">Những Mảnh Đời Bất Hạnh</a></li>
               </ul>
             </li>
-        </ul>
-        </li>
-        <li><a href="#">Dịch vụ</a>
-          <ul class="dropdown-menu">
-            <li class=""><a href="http://linhchinonglam.com/tin-tuc/7/cung-cap-meo-giong-nam.html">Cung Cấp Meo Giống Nấm</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/9/trang-thiet-bi-trong-nam.html">Trang Thiết Bị Trồng Nấm</a></li><li><a href="http://linhchinonglam.com/tin-tuc/8/dao-tao-chuyen-giao-cong-nghe.html">Đào Tạo &amp; Chuyển Giao CN</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/10/huong-dan-xay-dung-trang-trai-trong-nam.html">Xây Dựng Trang Trại</a></li>
-        </ul>
-        </li>
-        <li><a href="#">Đại lý</a>
-          <ul class="dropdown-menu">
-            <li class=""><a href="http://linhchinonglam.com/tin-tuc/99/he-thong-showroom.html">Hệ Thống Showroom Linh Chi Nông Lâm</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/11/dai-ly-mien-nam.html">Danh Sách Đại Lý Miền Nam</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/51/dai-ly-mien-bac.html">Danh Sách Đại Lý Miền Bắc</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/49/dai-ly-nam-linh-chi-o-tay-nguyen.html">Danh Sách Đại Lý Tây Nguyên</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/62/khu-vuc-mien-trung.html">Danh Sách Đại Lý Miền Trung</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/111/danh-sach-dai-ly-ban-hang-on-line.html">Danh Sách Đại Lý Bán Hàng Online</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/107/danh-sach-chuoi-cua-hang-medicare.html">Danh Sách Chuỗi Cửa Hàng Medicare</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/53/tuyen-dai-ly-nha-phan-phoi-nam-linh-chi.html">Tuyển Đại Lý - Nhà Phân Phối Nấm Linh Chi</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/95/tuyen-dung-nhan-su-cap-cao.html">Tuyển Dụng Nhân Sự Cấp Cao</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/61/tuyen-nhan-vien-kinh-doanh-phat-trien-thi-truong.html">Tuyển Nhân Viên Kinh Doanh Phát Triển Thị Trường</a></li>
-        </ul>
-        </li>
-        <li><a href="#">Sức khỏe</a>
-          <ul class="dropdown-menu">
-            <li><a href="http://linhchinonglam.com/danh-muc/71/duoc-tinh-nam-linh-chi-do.html">Dược Tính Nấm Linh Chi Đỏ</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/29/tin-tuc-suc-khoe.html">Tin Tức Sức Khỏe</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/122/ban-tin-24h.html">Bản Tin 24H</a></li>
           </ul>
         </li>
-        <li><a href="#">Tư vấn</a>
-          <ul class="dropdown-menu">
-            <li><a href="http://linhchinonglam.com/danh-muc/80/cach-lua-chon-va-su-dung-san-pham.html">Cách Lựa Chọn Và Sử Dụng Sản Phẩm</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/236/cau-hoi-thuong-gap.html">Câu Hỏi Thường Gặp</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/79/cau-hoi-thuong-gap-ve-nam-linh-chi.html">Kiến thức chuyên ngành Nấm Linh Chi</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/74/tu-van-su-dung.html">Sử Dụng Nấm Linh Chi</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Từ thiện</a>
-          <ul class="dropdown-menu">
-            <li><a href="http://linhchinonglam.com/tin-tuc/79/thong-diep-nhan-ai.html">Thông Điệp Nhân Ái</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/80/chuong-trinh-nhan-dao.html">Chương Trình Nhân Đạo</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/187/nhung-manh-doi-bat-hanh.html">Những Mảnh Đời Bất Hạnh</a></li>
-          </ul>
-        </li>
+        <?php } ?>
         <li style="width: 100px;"><a href="#">Liên hệ</a></li>
       </ul>
     </nav>

@@ -51,4 +51,46 @@
 			]]></add>
 		</operation>
 	</file>
+	<file name="catalog/controller/common/header.php">
+		<operation>
+			<search position="before"><![CDATA[// Menu]]></search>
+			<add><![CDATA[
+				// News Menu
+				$this->load->model('news/category');
+
+				$data['categories'] = array();
+
+				$categories = $this->model_news_category->getCategories(0);
+
+				foreach ($categories as $category) {
+					if ($category['top']) {
+						// Level 2
+						$children_data = array();
+
+						$children = $this->model_news_category->getCategories($category['news_category_id']);
+
+						foreach ($children as $child) {
+							$filter_data = array(
+								'filter_category_id'  => $child['news_category_id'],
+								'filter_sub_category' => true
+							);
+
+							$children_data[] = array(
+								'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+								'href'  => $this->url->link('news/category', 'path=' . $category['news_category_id'] . '_' . $child['news_category_id'])
+							);
+						}
+
+						// Level 1
+						$data['news_categories'][] = array(
+							'name'     => $category['name'],
+							'children' => $children_data,
+							'column'   => $category['column'] ? $category['column'] : 1,
+							'href'     => $this->url->link('news/category', 'path=' . $category['news_category_id'])
+						);
+					}
+				}
+			]]></add>
+		</operation>
+	</file>
 </modification>
