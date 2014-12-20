@@ -242,6 +242,9 @@ class ControllerProductProduct extends Controller {
 			$data['text_tags'] = $this->language->get('text_tags');
 			$data['text_related'] = $this->language->get('text_related');
 			$data['text_loading'] = $this->language->get('text_loading');
+			//BOMMER
+			$data['text_price'] = $this->language->get('text_price');
+			//BOMMER
 
 			$data['entry_qty'] = $this->language->get('entry_qty');
 			$data['entry_name'] = $this->language->get('entry_name');
@@ -259,9 +262,16 @@ class ControllerProductProduct extends Controller {
 
 			$this->load->model('catalog/review');
 
+			//BOMMER
+			$data['tab_product_intro'] = $this->language->get('tab_product_intro');
+			//BOMMER
 			$data['tab_description'] = $this->language->get('tab_description');
 			$data['tab_attribute'] = $this->language->get('tab_attribute');
 			$data['tab_review'] = sprintf($this->language->get('tab_review'), $product_info['reviews']);
+
+			//BOMMER
+			$data['meta_description'] = $product_info['meta_description'];
+			//BOMMER
 
 			$data['product_id'] = (int)$this->request->get['product_id'];
 			$data['manufacturer'] = $product_info['manufacturer'];

@@ -30,7 +30,7 @@ $_['text_week']                               = 'week';
 $_['text_semi_month']                         = 'half-month';
 $_['text_month']                              = 'month';
 $_['text_year']                               = 'year';
-$_['text_price']                               = 'Price:';
+$_['text_price']                               = 'Giá bán:';
 
 // Entry
 $_['entry_qty']                               = 'Qty';
@@ -43,7 +43,7 @@ $_['entry_captcha']                           = 'Enter the code in the box below
 
 // Tabs
 //BOMMER
-$_['tab_product_intro']                       = 'Product introduction';
+$_['tab_product_intro']                       = 'Giới thiệu';
 //BOMMER
 $_['tab_description']                         = 'Description';
 $_['tab_attribute']                           = 'Specification';

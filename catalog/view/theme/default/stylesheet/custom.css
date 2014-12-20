@@ -32,6 +32,9 @@ a:hover{
 .text-bold {
 	font-weight: bold;
 }
+.text-left {
+	text-align: left !important;
+}
 
 .btn {
 	border-radius: 0px !important;
@@ -66,6 +69,14 @@ a:hover{
 }
 .innerAll.inner-2x  {
 	padding: 20px;
+}
+
+.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active {
+	background-color: #d03b07;
+	border-color: #802420;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
+	background-color: #d03b07;
 }
 
 .btn-primary,.btn-main {
@@ -122,16 +133,27 @@ a:hover{
 .breadcrumb {
 	display: none;
 }
-.heading-title {
-	font-size: 25px;
+.heading-title {	
 	text-transform: uppercase;
 	color: #900;
 	text-align: center;
 	margin: 0;
 	font-weight: bold;
 }
+h2.heading-title {
+	font-size: 25px;
+}
+h3.heading-title {
+	font-size: 20px;
+	text-transform: capitalize;
+}
+
 .buttons {
 	overflow: hidden;
+}
+.price {
+	color: #BE3D0B;
+	font-size: 16px;
 }
 
 /* START HEADER */
@@ -176,6 +198,7 @@ header #menu {
 footer {
 	background: #000 url("../image/footer_bg.jpg") repeat-x top center;
 	color: #DDB780;
+	margin-top: 0px;
 }
 footer .footer-info, footer .vistor-statistics {
 	text-align: center;	
@@ -386,6 +409,10 @@ footer p {
     bottom: 10px;
     left: 0px;
     right: 0px;
+}
+.product-shopping-cart {
+	padding: 10px;
+	border: 1px solid #F0F0F0;
 }
 
 /* END PRODUCT LIST */
