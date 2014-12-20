@@ -2,3 +2,4 @@
 /system/logs
 /image/cache
 /*.htaccess
+/vqmod/mods.cache
