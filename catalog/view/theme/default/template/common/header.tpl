@@ -66,22 +66,24 @@
         </li>
         <?php foreach ($news_categories as $category) { ?>
         <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
+          <?php if (!empty($category['children'])){ ?>
           <ul class="dropdown-menu">
-            <li><a href="http://linhchinonglam.com/tin-tuc/5/hinh-anh-hoat-dong.html">Hình Ảnh &amp; Hoạt Động</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/233/phong-su.html">Phóng Sự</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/2/gioi-thieu.html">Chúng Tôi Là Ai ?</a></li><li><a href="http://linhchinonglam.com/tin-tuc/6/giay-kiem-dinh-phan-tich.html">Giấy Kiểm Định Phân Tích</a></li>
-            <li><a href="http://linhchinonglam.com/tin-tuc/113/giay-chung-nhan-cong-bo-san-pham.html">Giấy Chứng Nhận, Công Bố SP</a></li>
-            <li><a href="http://linhchinonglam.com/danh-muc/116/tin-tuc-su-kien.html">Tin Tức &amp; Sự Kiện</a>
+            <?php foreach ($category['children'] as $child) { ?>
+            <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a>
+              <?php if (!empty($child['children'])){ ?>
               <ul class="dropdown-menu">
-                  <li><a href="http://linhchinonglam.com/tin-tuc/79/thong-diep-nhan-ai.html">Thông Điệp Nhân Ái</a></li>
-                  <li><a href="http://linhchinonglam.com/tin-tuc/80/chuong-trinh-nhan-dao.html">Chương Trình Nhân Đạo</a></li>
-                  <li><a href="http://linhchinonglam.com/danh-muc/187/nhung-manh-doi-bat-hanh.html">Những Mảnh Đời Bất Hạnh</a></li>
+                <?php foreach ($child['children'] as $child_news) { ?>
+                <li><a href="<?php echo $child_news['href']; ?>"><?php echo $child_news['name']; ?></a></li>
+                <?php } ?>
               </ul>
+              <?php } ?>
             </li>
+            <?php } ?>
           </ul>
+          <?php } ?>
         </li>
         <?php } ?>
-        <li style="width: 100px;"><a href="#">Liên hệ</a></li>
+        <li><a href="#">Liên hệ</a></li>
       </ul>
     </nav>
   </div>  

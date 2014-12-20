@@ -8,7 +8,7 @@
 <?php
 class ModelNewsNews extends Model {
 	public function addNews($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "news SET allow_comment = '" . (int)$data['allow_comment'] . "', comment_permission = '" . (int)$data['comment_permission'] . "', comment_need_approval = '" . (int)$data['comment_need_approval'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "news SET allow_comment = '" . (int)$data['allow_comment'] . "', comment_permission = '" . (int)$data['comment_permission'] . "', comment_need_approval = '" . (int)$data['comment_need_approval'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', top = '" . (bool)$data['top'] . "'");
 
 		$news_id = $this->db->getLastId(); 
 		
@@ -44,11 +44,11 @@ class ModelNewsNews extends Model {
 	}
 	
 	public function editNews($news_id, $data, $ignore_date_modified) {
-		$this->db->query("UPDATE " . DB_PREFIX . "news SET allow_comment = '" . (int)$data['allow_comment'] . "', comment_permission = '" . (int)$data['comment_permission'] . "', comment_need_approval = '" . (int)$data['comment_need_approval'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "' WHERE news_id = '" . (int)$news_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "news SET allow_comment = '" . (int)$data['allow_comment'] . "', comment_permission = '" . (int)$data['comment_permission'] . "', comment_need_approval = '" . (int)$data['comment_need_approval'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', top = '" . (bool)$data['top'] . "' WHERE news_id = '" . (int)$news_id . "'");
 		
 		$get_date_added = mysql_query("SELECT * FROM " . DB_PREFIX . "news_description WHERE news_id = '" . (int)$news_id . "'");
 		$date_added = mysql_fetch_array($get_date_added);
-		$this->session->data['date_added'] = $date_added['date_added'];
+		// $this->session->data['date_added'] = $date_added['date_added'];
 		$this->session->data['date_modified'] = $date_added['date_modified'];
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_description WHERE news_id = '" . (int)$news_id . "'");
 					
@@ -441,7 +441,7 @@ class ModelNewsNews extends Model {
 		$query = $this->db->query("SELECT name, parent_id FROM " . DB_PREFIX . "news_category c LEFT JOIN " . DB_PREFIX . "news_category_description cd ON (c.news_category_id = cd.news_category_id) WHERE c.news_category_id = '" . (int)$news_category_id . "' AND cd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY c.sort_order, cd.name ASC");
 		
 		if ($query->row['parent_id']) {
-			return $this->getPath($query->row['parent_id'], $this->config->get('config_language_id')) . $this->language->get('text_separator') . $query->row['name'];
+			return $this->getPath($query->row['parent_id'], $this->config->get('config_language_id')) . ' > ' . $query->row['name'];
 		} else {
 			return $query->row['name'];
 		}

@@ -84,8 +84,7 @@ class ControllerCommonHeader extends Controller {
 
 				// News Menu
 				$this->load->model('news/category');
-
-				$data['categories'] = array();
+				$this->load->model('news/news');
 
 				$categories = $this->model_news_category->getCategories(0);
 
@@ -97,17 +96,47 @@ class ControllerCommonHeader extends Controller {
 						$children = $this->model_news_category->getCategories($category['news_category_id']);
 
 						foreach ($children as $child) {
-							$filter_data = array(
-								'filter_category_id'  => $child['news_category_id'],
-								'filter_sub_category' => true
-							);
-
-							$children_data[] = array(
-								'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-								'href'  => $this->url->link('news/category', 'path=' . $category['news_category_id'] . '_' . $child['news_category_id'])
-							);
+							if ($child['top']){
+								// Level 3
+								$children_news_data = array();
+								$child_newss = $this->model_news_news->getNewss(array('filter_news_category_id' => $child['news_category_id']));
+								foreach ($child_newss as $child_news) {
+									if ($child_news['top']){
+										$children_news_data[] = array(
+											'name'  => $child_news['title'],
+											'href'  => $this->url->link('news/detail', 'news_id=' . $child_news['news_id']),
+											'sort_order' => $child_news['sort_order']
+										);
+									}
+								}
+								$children_data[] = array(
+									'name'  => $child['name'],
+									'href'  => $this->url->link('news/category', 'path=' . $category['news_category_id'] . '_' . $child['news_category_id']),
+									'sort_order' => $child['sort_order'],
+									'children' => $children_news_data
+								);
+							}
 						}
 
+						$newss = $this->model_news_news->getNewss(array('filter_news_category_id' => $category['news_category_id']));
+
+						foreach ($newss as $news) {
+							if ($news['top']){
+								$children_data[] = array(
+									'name'  => $news['title'],
+									'href'  => $this->url->link('news/detail', 'news_id=' . $news['news_id']),
+									'sort_order' => $news['sort_order']
+								);
+							}
+						}
+
+						uasort($children_data, function($a, $b){
+							if ($a['sort_order'] == $b['sort_order']) {
+						        return 0;
+							}
+							return ($a['sort_order'] < $b['sort_order']) ? -1 : 1;
+						});
+						
 						// Level 1
 						$data['news_categories'][] = array(
 							'name'     => $category['name'],

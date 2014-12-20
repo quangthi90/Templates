@@ -1,9 +1,9 @@
 <?php
 //OpenCart Extension
 //Project Name: OpenCart News
-//Author: Fanha Giang a.k.a fanha99
-//Email (PayPal Account): fanha99@gmail.com
-//License: Commercial
+//Author: Bommer Luu
+//Email (PayPal Account): lqthi.khtn@gmail.com
+//License: OpenCart 2.0.x
 ?>
 <?php
 class ControllerNewsArticle extends Controller { 
@@ -12,17 +12,17 @@ class ControllerNewsArticle extends Controller {
 	public function index() {
 		$this->load->language('news/article');
 
-		$this->document->setTitle = $this->language->get('heading_title');
+		$this->document->setTitle($this->language->get('heading_title'));
 		 
 		$this->load->model('news/news');
 
 		$this->getList();
 	}
 
-	public function insert() {
+	public function add() {
 		$this->load->language('news/article');
 
-		$this->document->setTitle = $this->language->get('heading_title');
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('news/news');
 				
@@ -46,16 +46,16 @@ class ControllerNewsArticle extends Controller {
 				$url .= '&order=' . $this->request->get['order'];
 			}
 			
-			$this->redirect($this->url->link('news/article', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->response->redirect($this->url->link('news/article', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
 		$this->getForm();
 	}
 
-	public function update() {
+	public function edit() {
 		$this->load->language('news/article');
 
-		$this->document->setTitle = $this->language->get('heading_title');
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('news/news');
 		
@@ -85,7 +85,7 @@ class ControllerNewsArticle extends Controller {
 				$url .= '&order=' . $this->request->get['order'];
 			}
 			
-			$this->redirect($this->url->link('news/article', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->response->redirect($this->url->link('news/article', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
 		$this->getForm();
@@ -94,7 +94,7 @@ class ControllerNewsArticle extends Controller {
 	public function delete() {
 		$this->load->language('news/article');
 
-		$this->document->setTitle = $this->language->get('heading_title');
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('news/news');
 		
@@ -120,7 +120,7 @@ class ControllerNewsArticle extends Controller {
 				$url .= '&order=' . $this->request->get['order'];
 			}
 			
-			$this->redirect($this->url->link('news/article', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->response->redirect($this->url->link('news/article', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
 		$this->getList();
@@ -172,32 +172,25 @@ class ControllerNewsArticle extends Controller {
        		'text'      => $this->language->get('heading_title'),
       		'separator' => ' :: '
    		);
-		$this->data['breadcrumbs'] = $this->document->breadcrumbs;					
-		$this->data['insert'] = $this->url->link('news/article/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('news/article/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');	
+		$data['breadcrumbs'] = $this->document->breadcrumbs;					
+		$data['add'] = $this->url->link('news/article/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$data['delete'] = $this->url->link('news/article/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');	
 
-		$this->data['newss'] = array();
+		$data['newss'] = array();
 
-		$data = array(
+		$filter_data = array(
 			'sort'  => $sort,
 			'order' => $order,
-			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
-			'limit' => $this->config->get('config_admin_limit')
+			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
+			'limit' => $this->config->get('config_limit_admin')
 		);
 		
 		$news_total = $this->model_news_news->getTotalNewss();
 	
-		$results = $this->model_news_news->getNewss($data);
+		$results = $this->model_news_news->getNewss($filter_data);
  
     	foreach ($results as $result) {
-			$action = array();
-						
-			$action[] = array(
-				'text' => $this->language->get('text_edit'),
-				'href' => $this->url->link('news/article/update', 'token=' . $this->session->data['token'] . '&news_id=' . $result['news_id'] . $url, 'SSL')
-			);
-						
-			$this->data['newss'][] = array(
+			$data['newss'][] = array(
 				'news_id' => $result['news_id'],
 				'title'      => $result['title'],
 				'date_added'      => $result['date_added'],
@@ -207,36 +200,40 @@ class ControllerNewsArticle extends Controller {
 				'unapproved_comment' => $this->model_news_news->getTotalUnapprovedCommentsByNewsId($result['news_id']),
 				'sort_order' => $result['sort_order'],
 				'selected'   => isset($this->request->post['selected']) && in_array($result['news_id'], $this->request->post['selected']),
-				'action'     => $action
+				'edit'        => $this->url->link('news/article/edit', 'token=' . $this->session->data['token'] . '&news_id=' . $result['news_id'] . $url, 'SSL'),
+				'delete'      => $this->url->link('news/article/delete', 'token=' . $this->session->data['token'] . '&news_id=' . $result['news_id'] . $url, 'SSL')
 			);
 		}	
 	
-		$this->data['heading_title'] = $this->language->get('heading_title');
+		$data['heading_title'] = $this->language->get('heading_title');
 
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
+		$data['text_no_results'] = $this->language->get('text_no_results');
+		$data['text_list'] = $this->language->get('text_list');
+		$data['text_confirm'] = $this->language->get('text_confirm');
 
-		$this->data['column_title'] = $this->language->get('column_title');
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_date_modified'] = $this->language->get('column_date_modified');
-		$this->data['column_comment'] = $this->language->get('column_comment');
-		$this->data['column_sort_order'] = $this->language->get('column_sort_order');
-		$this->data['column_action'] = $this->language->get('column_action');		
+		$data['column_title'] = $this->language->get('column_title');
+		$data['column_date_added'] = $this->language->get('column_date_added');
+		$data['column_date_modified'] = $this->language->get('column_date_modified');
+		$data['column_comment'] = $this->language->get('column_comment');
+		$data['column_sort_order'] = $this->language->get('column_sort_order');
+		$data['column_action'] = $this->language->get('column_action');		
 		
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
+		$data['button_add'] = $this->language->get('button_add');
+		$data['button_edit'] = $this->language->get('button_edit');
+		$data['button_delete'] = $this->language->get('button_delete');
  
  		if (isset($this->error['warning'])) {
-			$this->data['error_warning'] = $this->error['warning'];
+			$data['error_warning'] = $this->error['warning'];
 		} else {
-			$this->data['error_warning'] = '';
+			$data['error_warning'] = '';
 		}
 		
 		if (isset($this->session->data['success'])) {
-			$this->data['success'] = $this->session->data['success'];
+			$data['success'] = $this->session->data['success'];
 		
 			unset($this->session->data['success']);
 		} else {
-			$this->data['success'] = '';
+			$data['success'] = '';
 		}
 
 		$url = '';
@@ -251,10 +248,10 @@ class ControllerNewsArticle extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 		
-		$this->data['sort_title'] = $this->url->link('news/article', 'token=' . $this->session->data['token'] . '&sort=nd.title' . $url, 'SSL');
-		$this->data['sort_date_added'] = $this->url->link('news/article', 'token=' . $this->session->data['token'] . '&sort=nd.date_added' . $url, 'SSL');
-		$this->data['sort_date_modified'] = $this->url->link('news/article', 'token=' . $this->session->data['token'] . '&sort=nd.date_modified' . $url, 'SSL');
-		$this->data['sort_sort_order'] = $this->url->link('news/article', 'token=' . $this->session->data['token'] . '&sort=n.sort_order' . $url, 'SSL');
+		$data['sort_title'] = $this->url->link('news/article', 'token=' . $this->session->data['token'] . '&sort=nd.title' . $url, 'SSL');
+		$data['sort_date_added'] = $this->url->link('news/article', 'token=' . $this->session->data['token'] . '&sort=nd.date_added' . $url, 'SSL');
+		$data['sort_date_modified'] = $this->url->link('news/article', 'token=' . $this->session->data['token'] . '&sort=nd.date_modified' . $url, 'SSL');
+		$data['sort_sort_order'] = $this->url->link('news/article', 'token=' . $this->session->data['token'] . '&sort=n.sort_order' . $url, 'SSL');
 		
 		$url = '';
 
@@ -269,105 +266,112 @@ class ControllerNewsArticle extends Controller {
 		$pagination = new Pagination();
 		$pagination->total = $news_total;
 		$pagination->page = $page;
-		$pagination->limit = $this->config->get('config_admin_limit');
+		$pagination->limit = $this->config->get('config_limit_admin');
 		$pagination->text = $this->language->get('text_pagination');
 		$pagination->url = $this->url->link('news/article', 'token=' . $this->session->data['token'] . $url, 'SSL') . '&page={page}';
 			
-		$this->data['pagination'] = $pagination->render();
+		$data['pagination'] = $pagination->render();
 
-		$this->data['sort'] = $sort;
-		$this->data['order'] = $order;
-		
-		$this->template = 'news/article_list.tpl';
-		$this->children = array(
-			'common/header',	
-			'common/footer'	
-		);
-		
-		$this->response->setOutput($this->render(TRUE), $this->config->get('config_compression'));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($news_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($news_total - $this->config->get('config_limit_admin'))) ? $news_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $news_total, ceil($news_total / $this->config->get('config_limit_admin')));
+
+		$data['sort'] = $sort;
+		$data['order'] = $order;
+
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
+
+		$this->response->setOutput($this->load->view('news/article_list.tpl', $data));
 	}
 
 	private function getForm() {
-                $this->data['heading_title'] = $this->language->get('heading_title');
-                $this->data['tab_general'] = $this->language->get('tab_general');
-                $this->data['tab_data'] = $this->language->get('tab_data');
-                $this->data['tab_related_news'] = $this->language->get('tab_related_news');
-                $this->data['text_browse'] = $this->language->get('text_browse');
-                $this->data['text_clear'] = $this->language->get('text_clear');	
-                $this->data['text_default'] = $this->language->get('text_default');
-                $this->data['text_select_all'] = $this->language->get('text_select_all');
-		$this->data['text_unselect_all'] = $this->language->get('text_unselect_all');
-                $this->data['text_enabled'] = $this->language->get('text_enabled');
-                $this->data['text_disabled'] = $this->language->get('text_disabled');
-                $this->data['text_image_manager'] = $this->language->get('text_image_manager');
-                $this->data['text_yes'] = $this->language->get('text_yes');
-                $this->data['text_no'] = $this->language->get('text_no');
-                $this->data['text_all_user'] = $this->language->get('text_all_user');
-                $this->data['text_member_only'] = $this->language->get('text_member_only');
-                $this->data['text_approved'] = $this->language->get('text_approved');
-                $this->data['text_unapproved'] = $this->language->get('text_unapproved');
-                $this->data['text_no_results'] = $this->language->get('text_no_results');
-                $this->data['text_no_comments'] = $this->language->get('text_no_comments');
-                $this->data['text_ignore_date_modified'] = $this->language->get('text_ignore_date_modified');
-		$this->data['entry_title'] = $this->language->get('entry_title');
-		$this->data['entry_description'] = $this->language->get('entry_description');
-		$this->data['entry_short_description'] = $this->language->get('entry_short_description');
-		$this->data['entry_meta_description'] = $this->language->get('entry_meta_description');
-		$this->data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
-		$this->data['entry_image'] = $this->language->get('entry_image');
-		$this->data['entry_store'] = $this->language->get('entry_store');
-		$this->data['entry_keyword'] = $this->language->get('entry_keyword');
-		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_allow_comment'] = $this->language->get('entry_allow_comment');
-		$this->data['entry_comment_permission'] = $this->language->get('entry_comment_permission');
-		$this->data['entry_comment_need_approval'] = $this->language->get('entry_comment_need_approval');
-		$this->data['entry_category'] = $this->language->get('entry_category');
-		
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
+		$data['text_form'] = !isset($this->request->get['category_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
+        $data['heading_title'] = $this->language->get('heading_title');
+        $data['tab_general'] = $this->language->get('tab_general');
+        $data['tab_data'] = $this->language->get('tab_data');
+        $data['tab_related_news'] = $this->language->get('tab_related_news');
+        $data['text_browse'] = $this->language->get('text_browse');
+        $data['text_clear'] = $this->language->get('text_clear');	
+        $data['text_default'] = $this->language->get('text_default');
+        $data['text_select_all'] = $this->language->get('text_select_all');
+		$data['text_unselect_all'] = $this->language->get('text_unselect_all');
+        $data['text_enabled'] = $this->language->get('text_enabled');
+        $data['text_disabled'] = $this->language->get('text_disabled');
+        $data['text_image_manager'] = $this->language->get('text_image_manager');
+        $data['text_yes'] = $this->language->get('text_yes');
+        $data['text_no'] = $this->language->get('text_no');
+        $data['text_all_user'] = $this->language->get('text_all_user');
+        $data['text_member_only'] = $this->language->get('text_member_only');
+        $data['text_approved'] = $this->language->get('text_approved');
+        $data['text_unapproved'] = $this->language->get('text_unapproved');
+        $data['text_no_results'] = $this->language->get('text_no_results');
+        $data['text_no_comments'] = $this->language->get('text_no_comments');
+        $data['text_ignore_date_modified'] = $this->language->get('text_ignore_date_modified');
+		$data['entry_title'] = $this->language->get('entry_title');
+		$data['entry_description'] = $this->language->get('entry_description');
+		$data['entry_short_description'] = $this->language->get('entry_short_description');
+		$data['entry_meta_description'] = $this->language->get('entry_meta_description');
+		$data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
+		$data['entry_image'] = $this->language->get('entry_image');
+		$data['entry_store'] = $this->language->get('entry_store');
+		$data['entry_top'] = $this->language->get('entry_top');
+		$data['entry_keyword'] = $this->language->get('entry_keyword');
+		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
+		$data['entry_status'] = $this->language->get('entry_status');
+		$data['entry_allow_comment'] = $this->language->get('entry_allow_comment');
+		$data['entry_comment_permission'] = $this->language->get('entry_comment_permission');
+		$data['entry_comment_need_approval'] = $this->language->get('entry_comment_need_approval');
+		$data['entry_category'] = $this->language->get('entry_category');
 
-		$this->data['token'] = $this->session->data['token'];
+		$data['help_filter'] = $this->language->get('help_filter');
+		$data['help_keyword'] = $this->language->get('help_keyword');
+		$data['help_top'] = $this->language->get('help_top');
+		$data['help_column'] = $this->language->get('help_column');
+		
+		$data['button_save'] = $this->language->get('button_save');
+		$data['button_cancel'] = $this->language->get('button_cancel');
+
+		$data['token'] = $this->session->data['token'];
 		
 		if(isset($this->request->get['news_id'])){
-			$this->data['check_news_id'] = $this->request->get['news_id'];
+			$data['check_news_id'] = $this->request->get['news_id'];
 		}else{
-			$this->data['check_news_id'] = '';
+			$data['check_news_id'] = '';
 		}
 
  		if (isset($this->error['warning'])) {
-			$this->data['error_warning'] = $this->error['warning'];
+			$data['error_warning'] = $this->error['warning'];
 		} else {
-			$this->data['error_warning'] = '';
+			$data['error_warning'] = '';
 		}
 
  		if (isset($this->error['title'])) {
-			$this->data['error_title'] = $this->error['title'];
+			$data['error_title'] = $this->error['title'];
 		} else {
-			$this->data['error_title'] = '';
+			$data['error_title'] = '';
 		}
 		
 	 	if (isset($this->error['description'])) {
-			$this->data['error_description'] = $this->error['description'];
+			$data['error_description'] = $this->error['description'];
 		} else {
-			$this->data['error_description'] = '';
+			$data['error_description'] = '';
 		}
 		
 		if (isset($this->error['short_description'])) {
-			$this->data['error_short_description'] = $this->error['short_description'];
+			$data['error_short_description'] = $this->error['short_description'];
 		} else {
-			$this->data['error_short_description'] = '';
+			$data['error_short_description'] = '';
 		}
 		$this->load->model('news/news');
 				
-		$this->data['categories'] = $this->model_news_news->getCategories(0);
+		$data['categories'] = $this->model_news_news->getCategories(0);
 		
 		if (isset($this->request->post['news_category'])) {
-			$this->data['news_category'] = $this->request->post['news_category'];
+			$data['news_category'] = $this->request->post['news_category'];
 		} elseif (isset($this->request->get['news_id'])) {
-			$this->data['news_category'] = $this->model_news_news->getnewsCategories($this->request->get['news_id']);
+			$data['news_category'] = $this->model_news_news->getnewsCategories($this->request->get['news_id']);
 		} else {
-			$this->data['news_category'] = array();
+			$data['news_category'] = array();
 		}
 		$url = '';
 			
@@ -396,14 +400,14 @@ class ControllerNewsArticle extends Controller {
        		'text'      => $this->language->get('heading_title'),
       		'separator' => ' :: '
    		);
-		$this->data['breadcrumbs'] = $this->document->breadcrumbs;						
+		$data['breadcrumbs'] = $this->document->breadcrumbs;						
 		if (!isset($this->request->get['news_id'])) {
-			$this->data['action'] = $this->url->link('news/article/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+			$data['action'] = $this->url->link('news/article/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
-			$this->data['action'] = $this->url->link('news/article/update', 'token=' . $this->session->data['token'] . '&news_id=' . $this->request->get['news_id'] . $url, 'SSL');
+			$data['action'] = $this->url->link('news/article/edit', 'token=' . $this->session->data['token'] . '&news_id=' . $this->request->get['news_id'] . $url, 'SSL');
 		}
 		
-		$this->data['cancel'] = $this->url->link('news/article', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$data['cancel'] = $this->url->link('news/article', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		if (isset($this->request->get['news_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
 			$news_info = $this->model_news_news->getNews($this->request->get['news_id']);
@@ -411,117 +415,124 @@ class ControllerNewsArticle extends Controller {
 		
 		$this->load->model('localisation/language');
 		
-		$this->data['languages'] = $this->model_localisation_language->getLanguages();
+		$data['languages'] = $this->model_localisation_language->getLanguages();
 		
 		if (isset($this->request->post['news_description'])) {
-			$this->data['news_description'] = $this->request->post['news_description'];
+			$data['news_description'] = $this->request->post['news_description'];
 		} elseif (isset($this->request->get['news_id'])) {
-			$this->data['news_description'] = $this->model_news_news->getNewsDescriptions($this->request->get['news_id']);
+			$data['news_description'] = $this->model_news_news->getNewsDescriptions($this->request->get['news_id']);
 		} else {
-			$this->data['news_description'] = array();
+			$data['news_description'] = array();
 		}
 
 		if (isset($this->request->post['image'])) {
-			$this->data['image'] = $this->request->post['image'];
+			$data['image'] = $this->request->post['image'];
 		} elseif (isset($news_info)) {
-			$this->data['image'] = $news_info['image'];
+			$data['image'] = $news_info['image'];
 		} else {
-			$this->data['image'] = '';
+			$data['image'] = '';
 		}
 		
 		$this->load->model('tool/image');
-		
-		if (isset($news_info) && $news_info['image'] && file_exists(DIR_IMAGE . $news_info['image'])) {
-			$this->data['preview'] = $this->model_tool_image->resize($news_info['image'], 100, 100);
+
+		if (isset($this->request->post['image']) && is_file(DIR_IMAGE . $this->request->post['image'])) {
+			$data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
+		} elseif (!empty($news_info) && is_file(DIR_IMAGE . $news_info['image'])) {
+			$data['thumb'] = $this->model_tool_image->resize($news_info['image'], 100, 100);
 		} else {
-			$this->data['preview'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
+			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+		}
+		
+		if (isset($this->request->post['top'])) {
+			$data['top'] = $this->request->post['top'];
+		} elseif (!empty($news_info)) {
+			$data['top'] = $news_info['top'];
+		} else {
+			$data['top'] = 0;
 		}
 		
 		if (isset($this->request->post['status'])) {
-			$this->data['status'] = $this->request->post['status'];
+			$data['status'] = $this->request->post['status'];
 		} elseif (isset($news_info)) {
-			$this->data['status'] = $news_info['status'];
+			$data['status'] = $news_info['status'];
 		} else {
-			$this->data['status'] = 1;
+			$data['status'] = 1;
 		}
 		
 		if (isset($this->request->post['allow_comment'])) {
-			$this->data['allow_comment'] = $this->request->post['allow_comment'];
+			$data['allow_comment'] = $this->request->post['allow_comment'];
 		} elseif (isset($news_info)) {
-			$this->data['allow_comment'] = $news_info['allow_comment'];
+			$data['allow_comment'] = $news_info['allow_comment'];
 		} else {
-			$this->data['allow_comment'] = 1;
+			$data['allow_comment'] = 1;
 		}
 		
 		if (isset($this->request->post['comment_permission'])) {
-			$this->data['comment_permission'] = $this->request->post['comment_permission'];
+			$data['comment_permission'] = $this->request->post['comment_permission'];
 		} elseif (isset($news_info)) {
-			$this->data['comment_permission'] = $news_info['comment_permission'];
+			$data['comment_permission'] = $news_info['comment_permission'];
 		} else {
-			$this->data['comment_permission'] = 0;
+			$data['comment_permission'] = 0;
 		}
 		
 		if (isset($this->request->post['comment_need_approval'])) {
-			$this->data['comment_need_approval'] = $this->request->post['comment_need_approval'];
+			$data['comment_need_approval'] = $this->request->post['comment_need_approval'];
 		} elseif (isset($news_info)) {
-			$this->data['comment_need_approval'] = $news_info['comment_need_approval'];
+			$data['comment_need_approval'] = $news_info['comment_need_approval'];
 		} else {
-			$this->data['comment_need_approval'] = 0;
+			$data['comment_need_approval'] = 0;
 		}
 		
 		$this->load->model('setting/store');
 		
-		$this->data['stores'] = $this->model_setting_store->getStores();
+		$data['stores'] = $this->model_setting_store->getStores();
 		
 		if (isset($this->request->post['news_store'])) {
-			$this->data['news_store'] = $this->request->post['news_store'];
+			$data['news_store'] = $this->request->post['news_store'];
 		} elseif (isset($news_info)) {
-			$this->data['news_store'] = $this->model_news_news->getNewsStores($this->request->get['news_id']);
+			$data['news_store'] = $this->model_news_news->getNewsStores($this->request->get['news_id']);
 		} else {
-			$this->data['news_store'] = array(0);
+			$data['news_store'] = array(0);
 		}		
 		
 		if (isset($this->request->post['keyword'])) {
-			$this->data['keyword'] = $this->request->post['keyword'];
+			$data['keyword'] = $this->request->post['keyword'];
 		} elseif (isset($news_info)) {
-			$this->data['keyword'] = $news_info['keyword'];
+			$data['keyword'] = $news_info['keyword'];
 		} else {
-			$this->data['keyword'] = '';
+			$data['keyword'] = '';
 		}
 		
 		if (isset($this->request->post['sort_order'])) {
-			$this->data['sort_order'] = $this->request->post['sort_order'];
+			$data['sort_order'] = $this->request->post['sort_order'];
 		} elseif (isset($news_info)) {
-			$this->data['sort_order'] = $news_info['sort_order'];
+			$data['sort_order'] = $news_info['sort_order'];
 		} else {
-			$this->data['sort_order'] = '';
+			$data['sort_order'] = '';
 		}
 		
 		if (isset($this->request->post['ignore_date_modified'])) {
-			$this->data['ignore_date_modified'] = $this->request->post['ignore_date_modified'];
+			$data['ignore_date_modified'] = $this->request->post['ignore_date_modified'];
 		}else{
-			$this->data['ignore_date_modified'] = '';
+			$data['ignore_date_modified'] = '';
 		}
 		
-		// Related News start
-		$this->data['newss'] = $this->model_news_news->getNewss(0);
+		// Related News
+		$data['newss'] = $this->model_news_news->getNewss(array('sort' => 'n.sort_order'));
 		
 		if (isset($this->request->post['related_news'])) {
-			$this->data['related_news'] = $this->request->post['related_news'];
+			$data['related_news'] = $this->request->post['related_news'];
 		} elseif (isset($news_info)) {
-			$this->data['related_news'] = $this->model_news_news->getRelatedNews($this->request->get['news_id']);
+			$data['related_news'] = $this->model_news_news->getRelatedNews($this->request->get['news_id']);
 		} else {
-			$this->data['related_news'] = array();
+			$data['related_news'] = array();
 		}
-		// Related News end
 		
-		$this->template = 'news/article_form.tpl';
-		$this->children = array(
-			'common/header',	
-			'common/footer'	
-		);
-		
-		$this->response->setOutput($this->render(TRUE), $this->config->get('config_compression'));
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
+
+		$this->response->setOutput($this->load->view('news/article_form.tpl', $data));
 	}
 
 	private function validateForm() {
@@ -530,16 +541,12 @@ class ControllerNewsArticle extends Controller {
 		}
 
 		foreach ($this->request->post['news_description'] as $language_id => $value) {
-			if ((strlen(utf8_decode($value['title'])) < 3) || (strlen(utf8_decode($value['title'])) > 32)) {
+			if ((strlen(utf8_decode($value['title'])) < 3) || (strlen(utf8_decode($value['title'])) > 100)) {
 				$this->error['title'][$language_id] = $this->language->get('error_title');
 			}
 		
 			if (strlen(utf8_decode($value['description'])) < 3) {
 				$this->error['description'][$language_id] = $this->language->get('error_description');
-			}
-			
-			if ((strlen(utf8_decode($value['short_description'])) < 3) || (strlen(utf8_decode($value['short_description'])) > 1000)) {
-				$this->error['short_description'][$language_id] = $this->language->get('error_short_description');
 			}
 		}
 

@@ -59,13 +59,13 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_meta_description; ?></label>
                     <div class="col-sm-10">
-                      <textarea name="news_category_description[<?php echo $language['language_id']; ?>][meta_description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($news_category_description[$language['language_id']]) ? $news_category_description[$language['language_id']]['meta_description'] : ''; ?></textarea>
+                      <textarea name="news_category_description[<?php echo $language['language_id']; ?>][meta_description]" placeholder="<?php echo $entry_meta_description; ?>" class="form-control"><?php echo isset($news_category_description[$language['language_id']]) ? $news_category_description[$language['language_id']]['meta_description'] : ''; ?></textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_meta_keyword; ?></label>
                     <div class="col-sm-10">
-                      <textarea name="news_category_description[<?php echo $language['language_id']; ?>][meta_keyword]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($news_category_description[$language['language_id']]) ? $news_category_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea>
+                      <textarea name="news_category_description[<?php echo $language['language_id']; ?>][meta_keyword]" placeholder="<?php echo $entry_meta_keyword; ?>" class="form-control"><?php echo isset($news_category_description[$language['language_id']]) ? $news_category_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea>
                     </div>
                   </div>
                   <div class="form-group">
