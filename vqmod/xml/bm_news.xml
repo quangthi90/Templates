@@ -77,7 +77,7 @@
 									if ($child_news['top']){
 										$children_news_data[] = array(
 											'name'  => $child_news['title'],
-											'href'  => $this->url->link('news/detail', 'news_id=' . $child_news['news_id']),
+											'href'  => $this->url->link('news/news', 'news_id=' . $child_news['news_id']),
 											'sort_order' => $child_news['sort_order']
 										);
 									}
@@ -97,7 +97,7 @@
 							if ($news['top']){
 								$children_data[] = array(
 									'name'  => $news['title'],
-									'href'  => $this->url->link('news/detail', 'news_id=' . $news['news_id']),
+									'href'  => $this->url->link('news/news', 'news_id=' . $news['news_id']),
 									'sort_order' => $news['sort_order']
 								);
 							}
