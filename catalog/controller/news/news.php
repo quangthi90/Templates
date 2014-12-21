@@ -86,7 +86,7 @@ class ControllerNewsNews extends Controller {
 			$data['allow_comment'] = $news_info['allow_comment']; 
 			$data['comment_permission'] = $news_info['comment_permission']; 
 			$data['comment_need_approval'] = $news_info['comment_need_approval'];
-			$data['image'] = $this->model_tool_image->resize($news_info['image'], $this->config->get('news_setting_image_width'), $this->config->get('news_setting_image_height'));
+			$data['image'] = $this->model_tool_image->resize($news_info['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height'));
 			
 			$data['comment_total'] = $this->model_news_news->getTotalCommentsByNewsId($this->request->get['news_id']);
 			
