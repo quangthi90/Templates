@@ -17,7 +17,7 @@
 		  		<?php if ($related_newss) { ?>
 		  		<div class="news-related">
 		  			<div class="break"></div>
-			  		<h2 class="heading-title" style="margin-bottom: 10px;"><?php echo $text_related_news; ?></h2>
+			  		<!--h2 class="heading-title" style="margin-bottom: 10px;"><?php echo $text_related_news; ?></h2-->
 			  		<ul class="content-list">
 			  			<?php foreach ($related_newss as $related_news) { ?>
 			  			<li><a href="<?php echo $related_news['href']; ?>"><?php echo $related_news['title']; ?></a></li>
