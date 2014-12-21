@@ -417,10 +417,25 @@ footer p {
 
 /* END PRODUCT LIST */
 /* START CONTENT LIST */
+.news-featured {
+	overflow: hidden;
+}
+.news-featured .news-item {
+    float: left;	
+    width: 230px;
+    margin: 20px;
+}
+.news-featured .news-item img {
+    width: 230px;	
+}
+.news-featured .news-item .news-title {
+    display: block;
+}
+
 ul.content-list {
 	overflow: hidden;
 	list-style: none;
-	padding: 0px;
+	padding: 0px 20px;
 }
 ul.content-list li {
 	display: block;

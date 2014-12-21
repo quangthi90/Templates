@@ -11,33 +11,50 @@
   			<h2 class="heading-title"><?php echo $heading_title; ?></h2>
   			<div class="break"></div>
   			<?php if($newss) { ?>
-				<?php foreach ($newss as $news) { ?>
-					<div style="min-height:<?php echo $min_height; ?>px;padding: 10px 20px; border-bottom:1px dotted;">
-						<?php if($news['image']){ ?><a href="<?php echo $news['href']; ?>"><img src="<?php echo $news['image']; ?>" border="0" align="left" style="margin-right: 10px;" alt="<?php echo $news['title']; ?>" title="<?php echo $news['title']; ?>" /></a><?php } ?>
-						<p>
-							<a href="<?php echo $news['href']; ?>"><b><?php echo $news['title']; ?></b></a><br />
-							<?php if($news['date_modified'] != $news['date_added']){ ?>
-							<span class="news-properties" style="font-size: 11px; color: #aaaaaa;"><b><?php echo $text_updated_on; ?></b> <?php echo $news['date_modified']; ?> | <b><?php echo $text_posted_on; ?></b> <?php echo $news['date_added']; ?></span><br />
-							<?php }else{ ?>
-							<span class="news-properties" style="font-size: 11px; color: #aaaaaa;"><b><?php echo $text_posted_on; ?></b> <?php echo $news['date_added']; ?></span><br />
+  				<?php if(count($newss) > 3) { ?>
+  					<div class="news-featured">
+  						<?php for ($i = 0; $i < 3; $i++) { $news = $newss[$i]; ?>
+							<div class="news-item">
+								<?php if($news['image']){ ?>
+									<a href="<?php echo $news['href']; ?>">
+										<img src="<?php echo $news['image']; ?>" alt="<?php echo $news['title']; ?>" title="<?php echo $news['title']; ?>" />
+									</a>
+								<?php } ?>
+								<a href="<?php echo $news['href']; ?>" class="text-bold news-title"><?php echo $news['title']; ?></a>
+							</div>
+						<?php } ?>
+						<div style="clear:both"></div>
+  					</div>
+  					<div class="break"></div>
+  					<div class="news-list">
+  						<ul class="content-list">
+  							<?php for ($j = 3; $j < count($newss); $j++) { $news = $newss[$j]; ?>
+								<li>
+									<a href="<?php echo $news['href']; ?>" class="text-bold">
+										<?php echo $news['title']; ?>
+									</a>
+								</li>
 							<?php } ?>
-						</p>
-						<p style="text-align: justify;">
-							<?php echo $news['short_description']; ?><br />
-							<span class="news-properties" style="font-size: 11px; color: #aaaaaa;"><?php echo $text_read; ?> <b><?php echo $news['count_read']; ?></b> <?php echo $text_times; ?> | <a href="<?php echo $news['href_comment']; ?>" style="font-size: 11px;"><?php echo $news['news_comment_count']; ?> <?php echo $text_comments; ?></a></span>
-						</p>
-					</div>
-					<div style="clear:both"></div>
-				<?php } ?>
-				<div class="pagination"><?php echo $pagination; ?></div>
-			<?php } else{ ?>
+  						</ul>  						
+  					</div>  					
+  				<?php } else { ?>
+  					<div class="news-featured">
+  						<?php for ($i = 0; $i < count($newss); $i++) { $news = $newss[$i]; ?>
+							<div class="news-item">
+								<?php if($news['image']){ ?>
+									<a href="<?php echo $news['href']; ?>">
+										<img src="<?php echo $news['image']; ?>" alt="<?php echo $news['title']; ?>" title="<?php echo $news['title']; ?>" />
+									</a>
+								<?php } ?>
+								<a href="<?php echo $news['href']; ?>" class="text-bold"><?php echo $news['title']; ?></a>
+							</div>
+							<div style="clear:both"></div>
+						<?php } ?>
+  					</div>
+  				<?php } ?>
+			<?php } else { ?>
 				<?php echo $text_news_not_found; ?>
-			<?php } ?>  
-			<div class="buttons">
-				<div class="pull-right">
-					<a href="<?php echo $continue; ?>" class="btn btn-primary btn-sm"><span><?php echo $button_continue; ?></span></a>
-				</div>
-			</div>
+			<?php } ?>
 		  	<?php echo $content_bottom; ?>
   		</div>
   		<div class="content-down" id="content-down"></div>
