@@ -12,58 +12,17 @@
   			<div class="break"></div>
   			<div class="news-info">
 				<div class="news-intro" style="text-align: justify;"><?php echo $short_description; ?></div><br />
-				<?php if($image){ ?><center><img src="<?php echo $image; ?>" border="0"/></center><br /><?php } ?>
-				<div class="news-description" style="text-align: justify;"><?php echo $description; ?></div><br />  		
+				<div class="news-description" style="text-align: justify;"><?php echo $description; ?></div><br />		
 		  		<?php if ($related_newss) { ?>
-		  		<div class="break"></div>
-		  		<h2 class="heading-title" style="margin-bottom: 10px;"><?php echo $text_related_news; ?></h2>
-		  		<ul class="content-list">
-		  			<?php foreach ($related_newss as $related_news) { ?>
-		  			<li><a href="<?php echo $related_news['href']; ?>"><?php echo $related_news['title']; ?></a></li>
-		  			<?php } ?>
-		  		</ul>
+			  		<div class="break"></div>
+			  		<h2 class="heading-title" style="margin-bottom: 10px;"><?php echo $text_related_news; ?></h2>
+			  		<ul class="content-list">
+			  			<?php foreach ($related_newss as $related_news) { ?>
+			  			<li><a href="<?php echo $related_news['href']; ?>"><?php echo $related_news['title']; ?></a></li>
+			  			<?php } ?>
+			  		</ul>
 		  		<?php } ?>		
-			</div>	
-		  	<?php if($allow_comment) { ?>
-			<div id="tab-comment" style="padding: 0 15px">
-				<a name="comment_area"></a> 
-				<h2><?php echo $text_comments; ?></h2>
-		  		<?php if ($comments) { ?>
-					<?php foreach ($comments as $comment) { ?>
-					<div class="comment"><b><?php echo $comment['name']; ?></b> | <?php echo $comment['date_added']; ?><br />
-					<?php echo $comment['comment']; ?></div>
-					<?php } ?>
-					<div class="pagination"><?php echo $pagination; ?></div>
-				<?php } else { ?>
-					<div class="comment"><?php echo $text_no_comment; ?></div>
-				<?php } ?>
-						
-		  		<?php if ($comment_permission == 0 || ($comment_permission == 1 && $logged)) { ?>
-				<br /><h2 id="comment-title"><?php echo $text_write_comment; ?></h2>
-				<b><?php echo $entry_name; ?></b><br />
-				<input type="text" name="name" value="" />
-			    <br /><br />
-
-		        <b><?php echo $entry_email; ?></b><br />
-		        <input type="text" name="email" value="" />
-		        <br /><br />
-				
-				<b><?php echo $entry_comment; ?></b>
-				<textarea name="comment" cols="40" rows="8" style="width: 98%;"></textarea>
-				<span><?php echo $text_note; ?></span><br />
-
-				<br />
-				<b><?php echo $entry_captcha; ?></b><br />
-		        	<input type="text" name="captcha" value="" autocomplete="off" />
-				<br />
-			        <img src="index.php?route=news/news/captcha" id="captcha" />
-				<br />
-				<div class="buttons">
-				  <div class="right"><a id="button-comment" class="button"><span><?php echo $button_comment; ?></span></a></div>
-				</div>
-				<?php } ?>
 			</div>
-			<?php } ?>
 		  	<?php echo $content_bottom; ?>
   		</div>
   		<div class="content-down" id="content-down"></div>

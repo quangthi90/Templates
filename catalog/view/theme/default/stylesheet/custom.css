@@ -417,6 +417,12 @@ footer p {
 
 /* END PRODUCT LIST */
 /* START CONTENT LIST */
+.news-description img {
+	max-width: 100%;
+}
+.news-description table {
+	width: 100% !important;
+}
 .news-featured {
 	overflow: hidden;
 }
@@ -435,14 +441,16 @@ footer p {
 ul.content-list {
 	overflow: hidden;
 	list-style: none;
-	padding: 0px 20px;
+	padding: 0px;
+	margin-left: 5px;
 }
 ul.content-list li {
 	display: block;
-	width: 390px;
+	width: 375px;
 	float: left;
 	background: transparent url("../image/icon-category.gif") no-repeat 0 50%;
 	padding: 5px 0px 5px 18px;
+	margin: 0px 15px;
 }
 ul.content-list li a {
 	font-weight: bold;
