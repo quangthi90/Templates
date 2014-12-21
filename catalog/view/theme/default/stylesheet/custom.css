@@ -416,3 +416,20 @@ footer p {
 }
 
 /* END PRODUCT LIST */
+/* START CONTENT LIST */
+ul.content-list {
+	overflow: hidden;
+	list-style: none;
+	padding: 0px;
+}
+ul.content-list li {
+	display: block;
+	width: 390px;
+	float: left;
+	background: transparent url("../image/icon-category.gif") no-repeat 0 50%;
+	padding: 5px 0px 5px 18px;
+}
+ul.content-list li a {
+	font-weight: bold;
+}
+/* END CONTENT LIST */

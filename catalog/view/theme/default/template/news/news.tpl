@@ -10,18 +10,14 @@
   		<div id="content-mid">
   			<h2 class="heading-title"><?php echo $heading_title; ?></h2>
   			<div class="break"></div>
-  			<div class="news-info" style="padding: 0 15px">
-				<?php if($date_modified != $date_added){ ?>
-				<span class="news-properties"><b><?php echo $text_updated_on; ?></b> <?php echo $date_modified; ?> | <b><?php echo $text_posted_on; ?></b> <?php echo $date_added; ?> | <?php echo $text_read; ?> <b><?php echo $count_read; ?></b> <?php echo $text_times; ?> | <b><?php echo $comment_total; ?></b> <?php echo $text_comments; ?></span><br /><br />
-				<?php }else{ ?>
-				<span class="news-properties"><b><?php echo $text_posted_on; ?></b> <?php echo $date_added; ?> | <?php echo $text_read; ?> <b><?php echo $count_read; ?></b> <?php echo $text_times; ?> | 0 Comments</span><br /><br />
-				<?php } ?>
+  			<div class="news-info">
 				<div class="news-intro" style="text-align: justify;"><?php echo $short_description; ?></div><br />
 				<?php if($image){ ?><center><img src="<?php echo $image; ?>" border="0"/></center><br /><?php } ?>
 				<div class="news-description" style="text-align: justify;"><?php echo $description; ?></div><br />  		
 		  		<?php if ($related_newss) { ?>
-		  		<h2><?php echo $text_related_news; ?></h2>
-		  		<ul style="margin-top: 0px;">
+		  		<div class="break"></div>
+		  		<h2 class="heading-title" style="margin-bottom: 10px;"><?php echo $text_related_news; ?></h2>
+		  		<ul class="content-list">
 		  			<?php foreach ($related_newss as $related_news) { ?>
 		  			<li><a href="<?php echo $related_news['href']; ?>"><?php echo $related_news['title']; ?></a></li>
 		  			<?php } ?>
@@ -68,15 +64,6 @@
 				<?php } ?>
 			</div>
 			<?php } ?>
-			<!--  
-			  <?php if ($tags) { ?>
-			  <div class="tags"><b><?php echo $text_tags; ?></b>
-			    <?php foreach ($tags as $tag) { ?>
-			    <a href="<?php echo $tag['href']; ?>"><?php echo $tag['tag']; ?></a>,
-			    <?php } ?>
-			  </div>
-			  <?php } ?>
-			-->  
 		  	<?php echo $content_bottom; ?>
   		</div>
   		<div class="content-down" id="content-down"></div>
