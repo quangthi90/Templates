@@ -100,7 +100,7 @@ class ControllerNewsCategory extends Controller {
 					'description' => html_entity_decode($result['description']),
 					'short_description' => html_entity_decode($result['short_description']),
 					'count_read' => $result['count_read'],
-					'image' => $this->model_tool_image->resize(($result['image']) ? ($result['image']) : 'no_image.jpg', $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height')),
+					'image' => $this->model_tool_image->resize(($result['image']) || is_file(HTTP_IMAGE . $result['image']) ? ($result['image']) : 'no_image.jpg', $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height')),
 					'href'  => $this->url->link('news/news', 'path=' . $path . '&news_id=' . $result['news_id']),
 					'href_comment'  => $this->url->link('news/news', 'path=' . $path . '&news_id=' . $result['news_id'] . '#comment_area'),
 					// 'news_comment_count' =>$this->model_news_category->getTotalCommentsByNewsId($result['news_id'])
