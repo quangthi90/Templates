@@ -53,7 +53,20 @@
         <a id="logo" href="<?php echo $home; ?>">
           <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" />
         </a>
-    </div>
+        <div id="topbar">
+        <?php if($logged){ ?>
+        <ul>
+          <li><?php echo $text_logged; ?></li>
+          <li><a href="<?php echo $logout; ?>" class="btn btn-xs btn-default"><?php echo $text_logout; ?></a></li>
+        </ul>
+        <?php } else { ?>
+        <ul>
+          <li><a href="<?php echo $login; ?>" class="btn btn-xs btn-primary"><?php echo $text_login; ?></a></li>
+          <li><a href="<?php echo $register; ?>" class="btn btn-xs btn-primary"><?php echo $text_register; ?></a></li>
+        </ul>
+        <?php } ?>
+      </div>
+    </div>    
     <nav id="menu" class="navbar">
       <ul class="nav navbar-nav">
         <li><a href="<?php echo $home; ?>"><i class="fa fa-home fa-4x" style="font-size: 20px;"></i></a></li>
