@@ -83,7 +83,8 @@
           <?php } ?>
         </li>
         <?php } ?>
-        <li><a href="#">Liên hệ</a></li>
+        <li><a href="<?php echo $contact; ?>">Liên hệ</a>
+        </li>
       </ul>
     </nav>
   </div>  

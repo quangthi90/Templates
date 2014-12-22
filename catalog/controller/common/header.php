@@ -52,6 +52,9 @@ class ControllerCommonHeader extends Controller {
 		/*Bommer add*/
 		$data['text_product'] = $this->language->get('text_product');
 
+		//BOMMER
+		$data['contact'] = $this->url->link('information/contact');
+		//BOMMER
 		$data['home'] = $this->url->link('common/home');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
 		$data['logged'] = $this->customer->isLogged();
@@ -65,7 +68,7 @@ class ControllerCommonHeader extends Controller {
 		$data['shopping_cart'] = $this->url->link('checkout/cart');
 		$data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
 		$data['contact'] = $this->url->link('information/contact');
-		$data['telephone'] = $this->config->get('config_telephone');
+		$data['telephone'] = $this->config->get('config_telephone');		
 
 		$status = true;
 
