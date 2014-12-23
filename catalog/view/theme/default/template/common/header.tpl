@@ -54,17 +54,18 @@
           <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" />
         </a>
         <div id="topbar">
-        <?php if($logged){ ?>
-        <ul>
-          <li><?php echo $text_logged; ?></li>
-          <li><a href="<?php echo $logout; ?>" class="btn btn-xs btn-default"><?php echo $text_logout; ?></a></li>
-        </ul>
-        <?php } else { ?>
-        <ul>
-          <li><a href="<?php echo $login; ?>" class="btn btn-xs btn-primary"><?php echo $text_login; ?></a></li>
-          <li><a href="<?php echo $register; ?>" class="btn btn-xs btn-primary"><?php echo $text_register; ?></a></li>
-        </ul>
-        <?php } ?>
+        <ul>          
+          <?php if($logged){ ?>        
+            <li><?php echo $text_logged; ?></li>
+            <li><a href="<?php echo $logout; ?>" class="btn btn-xs btn-default"><?php echo $text_logout; ?></a></li>
+          <?php } else { ?>
+            <li><a href="<?php echo $login; ?>" class="btn btn-xs btn-primary"><?php echo $text_login; ?></a></li>
+            <li><a href="<?php echo $register; ?>" class="btn btn-xs btn-primary"><?php echo $text_register; ?></a></li>
+          <?php } ?>
+          <li>
+            <?php echo $cart; ?>
+          </li>
+        </ul>        
       </div>
     </div>    
     <nav id="menu" class="navbar">
