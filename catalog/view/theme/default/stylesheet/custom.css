@@ -105,6 +105,10 @@ a:hover{
     background-repeat: repeat-x;
     border-color: #360700 #360700 #802420;
 }
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+	background-color: #df5c39;
+	border-color: #df5c39;
+}
 
 .btn-info.btn-sm {
 	font-size: 13px;
