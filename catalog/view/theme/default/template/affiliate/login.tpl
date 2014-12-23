@@ -2,7 +2,7 @@
 <div class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+      <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
   <?php if ($success) { ?>
@@ -11,27 +11,24 @@
   <?php if ($error_warning) { ?>
   <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?></div>
   <?php } ?>
-  <div class="row"><?php echo $column_left; ?>
-    <?php if ($column_left && $column_right) { ?>
-    <?php $class = 'col-sm-6'; ?>
-    <?php } elseif ($column_left || $column_right) { ?>
-    <?php $class = 'col-sm-9'; ?>
-    <?php } else { ?>
-    <?php $class = 'col-sm-12'; ?>
-    <?php } ?>
-    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?></h1>
+  <div id="content" class="content-container">
+    <div class="content-up" id="content-up"></div>
+    <div id="content-mid">
+      <h2 class="heading-title"><?php echo $heading_title; ?></h2>
+      <div class="break"></div>
       <?php echo $text_description; ?>
       <div class="row">
         <div class="col-sm-6">
           <div class="well">
-            <h2><?php echo $text_new_affiliate; ?></h2>
+            <h3 class="heading-title text-left"><?php echo $text_new_affiliate; ?></h3>
+            <div class="line"></div>
             <p><?php echo $text_register_account; ?></p>
             <a class="btn btn-primary" href="<?php echo $register; ?>"><?php echo $button_continue; ?></a></div>
         </div>
         <div class="col-sm-6">
-          <div class="well">
-            <h2><?php echo $text_returning_affiliate; ?></h2>
+          <div class="well">            
+            <h3 class="heading-title text-left"><?php echo $text_returning_affiliate; ?></h3>
+            <div class="line"></div>
             <p><strong><?php echo $text_i_am_returning_affiliate; ?></strong></p>
             <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
               <div class="form-group">
@@ -50,7 +47,9 @@
           </div>
         </div>
       </div>
-      <?php echo $content_bottom; ?></div>
-    <?php echo $column_right; ?></div>
+      <?php echo $content_bottom; ?>
+    </div>
+    <div class="content-down" id="content-down"></div>
+  </div>
 </div>
 <?php echo $footer; ?>

@@ -2,19 +2,14 @@
 <div class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+      <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
-  <div class="row"><?php echo $column_left; ?>
-    <?php if ($column_left && $column_right) { ?>
-    <?php $class = 'col-sm-6'; ?>
-    <?php } elseif ($column_left || $column_right) { ?>
-    <?php $class = 'col-sm-9'; ?>
-    <?php } else { ?>
-    <?php $class = 'col-sm-12'; ?>
-    <?php } ?>
-    <div id="content" class="<?php echo $class; ?>"> <?php echo $content_top; ?>
-      <h2><?php echo $text_edit_address; ?></h2>
+  <div id="content" class="content-container">
+    <div class="content-up" id="content-up"></div>
+    <div id="content-mid">
+      <h2 class="heading-title"><?php echo $text_edit_address; ?></h2>
+      <div class="break"></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
         <fieldset>
           <div class="form-group required">
@@ -283,8 +278,10 @@
           </div>
         </div>
       </form>
-      <?php echo $content_bottom; ?></div>
-    <?php echo $column_right; ?></div>
+      <?php echo $content_bottom; ?>
+    </div>
+    <div class="content-down" id="content-down"></div>
+  </div>
 </div>
 <script type="text/javascript"><!--
 // Sort the custom fields

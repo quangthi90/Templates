@@ -38,6 +38,7 @@ a:hover{
 
 .btn {
 	border-radius: 0px !important;
+
 }
 .btn-xs {
 	font-size: 11px;
@@ -82,7 +83,9 @@ a:hover{
 .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
 	background-color: #d03b07;
 }
-
+.btn-primary,.btn-main, .btn-default, .btn-danger, .btn-info {
+    padding: 5px 10px;
+}
 .btn-primary,.btn-main {
     background-color: #822601;
     background-image: linear-gradient(to bottom, #d03b07, #822601);
@@ -90,7 +93,6 @@ a:hover{
     border-color: #822601 #822601 #802420;
     color: #ffffff;
     font-weight: bold;
-    padding: 5px 10px;
 }
 .btn-primary.btn-sm,.btn-main.btn-sm {
 	padding: 3px 8px;
@@ -119,6 +121,12 @@ a:hover{
 	margin-left: 16px;
 }
 
+.line {
+	height: 1px;
+	border-bottom: 1px solid #802420;
+	padding: 2px 0px;
+	margin-bottom: 10px;
+}
 
 .panel.panel-flat {
 	border: none;
@@ -154,6 +162,8 @@ h3.heading-title {
 
 .buttons {
 	overflow: hidden;
+	border-top: 1px solid #F0F0F0;
+	padding-top: 10px;
 }
 .price {
 	color: #BE3D0B;

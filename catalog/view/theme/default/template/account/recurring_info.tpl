@@ -2,21 +2,40 @@
 <div class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+      <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
   <?php if ($error_warning) { ?>
   <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?></div>
   <?php } ?>
-  <div class="row"><?php echo $column_left; ?>
-    <?php if ($column_left && $column_right) { ?>
-    <?php $class = 'col-sm-6'; ?>
-    <?php } elseif ($column_left || $column_right) { ?>
-    <?php $class = 'col-sm-9'; ?>
-    <?php } else { ?>
-    <?php $class = 'col-sm-12'; ?>
+  <div id="content" class="content-container">
+    <div class="content-up" id="content-up"></div>
+    <div id="content-mid">
+      <h2 class="heading-title"><?php echo $heading_title; ?></h2>
+      <div class="break"></div>
+
+      <?php echo $content_bottom; ?>
+    </div>
+    <div class="content-down" id="content-down"></div>
+  </div>
+</div>
+<?php echo $footer; ?>
+
+<?php echo $header; ?>
+<div class="container">
+  <ul class="breadcrumb">
+    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+      <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
-    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?><h2><?php echo $heading_title; ?></h2>
+  </ul>
+  <?php if ($error_warning) { ?>
+  <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?></div>
+  <?php } ?>
+  <div id="content" class="content-container">
+    <div class="content-up" id="content-up"></div>
+    <div id="content-mid">
+      <h2 class="heading-title"><?php echo $heading_title; ?></h2>
+      <div class="break"></div>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -55,7 +74,8 @@
         </tr>
         </tbody>
       </table>
-      <h2><?php echo $text_transactions; ?></h2>
+      <h3 class="heading-title"><?php echo $text_transactions; ?></h3>
+      <div class="line"></div>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -81,7 +101,7 @@
       <?php echo $buttons; ?>
       <?php echo $content_bottom; ?>
     </div>
-    <?php echo $column_right; ?>
+    <div class="content-down" id="content-down"></div>
   </div>
 </div>
 <?php echo $footer; ?>
