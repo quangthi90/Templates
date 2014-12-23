@@ -180,7 +180,7 @@ header {
 header .header-logo {
 	height: 135px;
 	text-align: center;
-	background: #000 url(../image/banner.png) no-repeat 0 0;
+	background: #000 url(../image/banner.png) no-repeat 0 10px;
 	padding-top: 35px;
 	position: relative;
 }

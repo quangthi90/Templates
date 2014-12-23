@@ -47,9 +47,9 @@
 									</a>
 								<?php } ?>
 								<a href="<?php echo $news['href']; ?>" class="text-bold"><?php echo $news['title']; ?></a>
-							</div>
-							<div style="clear:both"></div>
+							</div>							
 						<?php } ?>
+						<div style="clear:both"></div>
   					</div>
   				<?php } ?>
 			<?php } else { ?>
