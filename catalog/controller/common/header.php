@@ -61,6 +61,9 @@ class ControllerCommonHeader extends Controller {
 		$data['account'] = $this->url->link('account/account', '', 'SSL');
 		$data['register'] = $this->url->link('account/register', '', 'SSL');
 		$data['login'] = $this->url->link('account/login', '', 'SSL');
+		//BOMMER
+		$data['login_affiliate'] = $this->url->link('affiliate/login', '', 'SSL');
+		//BOMMER
 		$data['order'] = $this->url->link('account/order', '', 'SSL');
 		$data['transaction'] = $this->url->link('account/transaction', '', 'SSL');
 		$data['download'] = $this->url->link('account/download', '', 'SSL');

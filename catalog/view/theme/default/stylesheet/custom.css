@@ -41,7 +41,7 @@ a:hover{
 
 }
 .btn-xs {
-	font-size: 11px;
+	font-size: 11px !important;
 	padding: 2px 10px !important; 
 }
 
@@ -109,7 +109,6 @@ a:hover{
 	background-color: #df5c39;
 	border-color: #df5c39;
 }
-
 .btn-info.btn-sm {
 	font-size: 13px;
 	padding: 4px 8px;
@@ -227,6 +226,32 @@ header #menu {
 #topbar ul li {
 	display: inline-block;
 	margin: 3px 5px;
+}
+#topbar .login-btns.open .dropdown-toggle  {
+	background-image: none;
+	background-color: #FFFFFF;
+	border: 1px solid #E6E6E6;
+	color: #666;
+	box-shadow: none;
+	text-shadow: none;
+}
+#topbar .login-btns ul.dropdown-menu {
+	border-radius: 0px;
+	padding: 10px;
+}
+#topbar .login-btns ul.dropdown-menu li {
+	display: block;
+}
+#topbar .login-btns ul.dropdown-menu li a {
+	color: #FFF;
+}
+
+#topbar .login-btns ul.dropdown-menu li a:hover {
+	color: #FFF;
+	background-color: #360700;
+	background-image: linear-gradient(to bottom, #d03b07, #360700);
+	background-repeat: repeat-x;
+	border-color: #360700 #360700 #802420;
 }
 
 /*END HEADER*/
