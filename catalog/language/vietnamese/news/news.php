@@ -1,42 +1,48 @@
 <?php
-//OpenCart Extension
-//Project Name: OpenCart News
-//Author: Fanha Giang a.k.a fanha99
-//Email (PayPal Account): fanha99@gmail.com
-//License: Commercial
-?>
-<?php
+/*------------------------------------------------------------------------
+# Advanced News System for OpenCart 1.5.x
+# ------------------------------------------------------------------------
+# Copyright (C) 2011 OpenCartSoft.com. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: www.OpenCartSoft.com
+# Websites:  http://www.opencartsoft.com -  Email: admin@opencartsoft.com
+# This file may not be redistributed in whole or significant part.
+-------------------------------------------------------------------------*/
+
 // Text
-$_['text_news'] = 'News';
-$_['text_news_not_found'] = 'News Not Found!';
-$_['text_updated_on'] = 'Last Update';
-$_['text_posted_on'] = 'Posted On';
-$_['text_read'] = 'Read';
-$_['text_times'] = 'times';
-$_['text_read_more'] = 'Read more';
-$_['text_comment'] = 'Comments';
-$_['text_write_comment'] = 'Write A Comment';
-$_['text_note']           = '<span style="color: #FF0000;">Note:</span> HTML is not translated!';
-$_['text_no_comment'] = 'No Comment Found!';
-$_['text_comments'] = 'Comments';
-$_['text_comment_must_logged'] = 'You must logged in!';
-$_['text_related_news'] = 'Related News';
-$_['text_wait']         = 'Please Wait!';
+$_['text_search']       = 'Tìm kiếm';
+$_['text_news']      = 'Tin tức';
+$_['text_share']        = 'Chia sẻ bạn bè';
+$_['text_wait']         = 'Vui lòng chờ!';
+$_['text_tags']         = 'Tags:';
+$_['text_error']        = 'Không tìm thấy tin tức!';
+$_['text_comment']      = '%s nhận xét'; 
+$_['text_write']        = 'Viết nhận xét';
+$_['text_no_comment']   = 'Chưa có nhận xét cho tin tức này.';
+$_['text_post_on']        = 'Ngày đăng tin:';
+$_['text_viewed']        = 'Số lần xem:';
+$_['button_send']        = 'Gửi';
+$_['text_success']      = 'Cám ơn bạn đã viết nhận xét.';
+$_['text_approved'] 		= 'Nhận xét của bạn sẽ được đăng trong thời gian sớm nhất có thể. Chúc bạn vui vẻ!';
 
 // Entry
-$_['entry_name'] = 'Your Name';
-$_['entry_email'] = 'Your Email Address';
-$_['entry_comment'] = 'Your Comment';
-$_['entry_captcha'] = 'Enter the code in the box below:';
-$_['button_comment'] = 'Comment';
+$_['entry_name']        = 'Họ và tên:';
+$_['entry_email']        = 'Email:';
+$_['entry_comment']      = 'Nhận xét của bạn:';
+$_['entry_rating']      = 'Đánh giá:';
+$_['entry_good']        = 'Tốt';
+$_['entry_bad']         = 'Không tốt';
+$_['entry_captcha']     = 'Nhập mã số xác nhận bên dưới:';
 
-// Success
-$_['success_messages_approval']        = 'Thank you for your comment. It has been submitted to the webmaster for approval.';
-$_['success_messages']          = 'Success: Your comment has successfully sent!';
+// Tabs
+$_['tab_description']   = 'Giới thiệu';
+$_['tab_related']       = 'Tin liên quan'; 
+$_['tab_others']       = 'Các tin khác';
+$_['tab_comment']       = 'Nhận xét'; 
 
-// Error
-$_['error_name']          = 'Error: Your Name must be between 3 and 64 characters!';
-$_['error_email']          = 'Error: Your email address is not valid!';
-$_['error_comment']          = 'Error: Comment Text must be between 25 and 1000 characters!';
-$_['error_captcha']       = 'Error: Verification code does not match the image!';
+//Error
+$_['error_name']        = 'Lỗi: Họ và tên phải có từ 3 đến 25 ký tự!';
+$_['error_email']       = 'Lỗi: Địa chỉ email không hợp lệ!';
+$_['error_text']        = 'Lỗi: Nội dung nhận xét phải từ 25 ký tự trở lên!';
+$_['error_captcha']     = 'Lỗi: Mã xác nhận không chính xác!';
 ?>

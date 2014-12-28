@@ -9,6 +9,7 @@ define('HTTP_IMAGE', 'http://'.HTTP.'/image/');
 // HTTPS
 define('HTTPS_SERVER', 'https://'.HTTP.'/admin/');
 define('HTTPS_IMAGE', 'https://'.HTTP.'/image/');
+define('HTTPS_CATALOG', 'https://'.HTTP.'/');
 
 // DIR
 define('BASE_DIR', str_replace(DIRECTORY_SEPARATOR.'admin', '', realpath(dirname(__FILE__))));
