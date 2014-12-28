@@ -197,6 +197,15 @@ header #menu {
     border-color:  transparent;    
     margin-bottom: 0px;
 }
+
+header #menu a.icon-home-sm {
+	background: transparent url('../image/logo_sm.png') no-repeat center;
+	height: 42px;
+	width: 50px;
+	line-height: 0px;
+	border-right: 1px solid #EF6F3E;
+}
+
 #menu .nav > li > a {
 	font-size: 14px;
 	text-transform: uppercase;
@@ -252,6 +261,15 @@ header #menu {
 	background-image: linear-gradient(to bottom, #d03b07, #360700);
 	background-repeat: repeat-x;
 	border-color: #360700 #360700 #802420;
+}
+#topbar .affiliate-label {
+	float: left;
+	margin: 5px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 28px;
+	text-transform: uppercase;
+	color: #DB6108;
 }
 
 /*END HEADER*/
