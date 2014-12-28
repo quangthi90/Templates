@@ -54,31 +54,33 @@
           <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" />
         </a>
         <div id="topbar">
-        <ul>          
-          <?php if($logged){ ?>        
-            <li><?php echo $text_logged; ?></li>
-            <li><a href="<?php echo $logout; ?>" class="btn btn-xs btn-default"><?php echo $text_logout; ?></a></li>
-          <?php } else { ?>
+          <h3 class="affiliate-label">Đơn Vị Ủy Quyền Phân Phối</h3>
+          <ul>
+            <?php if($logged){ ?>
+              <li><?php echo $text_logged; ?></li>
+              <li><a href="<?php echo $logout; ?>" class="btn btn-xs btn-default"><?php echo $text_logout; ?></a></li>
+            <?php } else { ?>
+              <li>
+                <div class="btn-group login-btns">
+                  <a class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><?php echo $text_login; ?>&nbsp;&nbsp;<span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="<?php echo $login; ?>" class="btn btn-primary">Login as a user</a>
+                    <li><a href="<?php echo $login_affiliate; ?>" class="btn btn-primary">Login as an affiliate</a>
+                  </ul>
+                </div>
+              </li>
+              <li><a href="<?php echo $register; ?>" class="btn btn-xs btn-primary"><?php echo $text_register; ?></a></li>
+            <?php } ?>
             <li>
-              <div class="btn-group login-btns">
-                <a class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><?php echo $text_login; ?>&nbsp;&nbsp;<span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="<?php echo $login; ?>" class="btn btn-primary">Login as a user</a>
-                  <li><a href="<?php echo $login_affiliate; ?>" class="btn btn-primary">Login as an affiliate</a>
-                </ul>
-              </div>
+              <?php echo $cart; ?>
             </li>
-            <li><a href="<?php echo $register; ?>" class="btn btn-xs btn-primary"><?php echo $text_register; ?></a></li>
-          <?php } ?>
-          <li>
-            <?php echo $cart; ?>
-          </li>
-        </ul>        
-      </div>
+          </ul>
+        </div>
     </div>    
     <nav id="menu" class="navbar">
       <ul class="nav navbar-nav">
+        <li><a href="<?php echo $home; ?>" class="icon-home-sm"></a></li>
         <li><a href="<?php echo $home; ?>"><i class="fa fa-home fa-4x" style="font-size: 20px;"></i></a></li>
         <li><a href="#"><?php echo $text_product; ?></a>
           <ul class="dropdown-menu">
