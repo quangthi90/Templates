@@ -139,17 +139,6 @@ class ControllerCommonHeader extends Controller {
 			$data['class'] = 'common-home';
 		}
 
-		// check affiliate
-		if ( isset($this->session->data['tracking']) ) {
-			$this->load->model('affiliate/affiliate');
-			$affiliate = $this->model_affiliate_affiliate->getAffiliateByCode( $this->session->data['tracking'] );
-			if ( $affiliate ) {
-				$data['href_home'] = $this->url->link('common/home', 'tracking=0', 'SSL');
-			}
-		} else {
-			
-		}
-
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
 			return $this->load->view($this->config->get('config_template') . '/template/common/header.tpl', $data);
 		} else {

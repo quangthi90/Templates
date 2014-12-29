@@ -1,0 +1,165 @@
+<modification>
+	<id>for site linhchinonglam.com</id>
+	<version>2.0.x</version>
+	<vqmver>1.0</vqmver>
+	<author>Bommer Luu</author>
+	<file name="catalog/controller/common/header.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$data['text_all'] = $this->language->get('text_all');
+			]]></search>
+			<add><![CDATA[
+				$data['text_product'] = $this->language->get('text_product');
+				$data['contact'] = $this->url->link('information/contact');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				$data['login'] = $this->url->link('account/login', '', 'SSL');
+			]]></search>
+			<add><![CDATA[
+				$data['login_affiliate'] = $this->url->link('affiliate/login', '', 'SSL');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+				$data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', '', 'SSL'), $this->customer->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
+			]]></search>
+			<add><![CDATA[
+				if ( $this->affiliate->isLogged() )
+					$data['text_logged'] = sprintf($this->affiliate->getFirstName() . ' ' . $this->affiliate->getLastname(), $this->url->link('affiliate/account', '', 'SSL'), $this->affiliate->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
+				else
+					$data['text_logged'] = sprintf($this->customer->getFirstName() . ' ' . $this->customer->getLastname(), $this->url->link('account/account', '', 'SSL'), $this->customer->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+				$data['logged'] = $this->customer->isLogged();
+			]]></search>
+			<add><![CDATA[
+				$data['logged'] = $this->customer->isLogged() || $this->affiliate->isLogged();
+			]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[
+				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
+			]]></search>
+			<add><![CDATA[
+				// check affiliate
+				if ( isset($this->session->data['tracking']) || $this->affiliate->isLogged() ) {
+					if ( !$code = $this->affiliate->getCode() ) {
+						$code = $this->session->data['tracking'];
+					}
+					$this->load->model('affiliate/affiliate');
+					if ( $affiliate = $this->model_affiliate_affiliate->getAffiliateByCode($code) ) {
+						$data['href_home'] = $this->url->link('common/home', 'tracking=0', 'SSL');
+					}
+				}
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+				$data['logout'] = $this->url->link('account/logout', '', 'SSL');
+			]]></search>
+			<add><![CDATA[
+				if ( !$this->affiliate->isLogged() )
+					$data['logout'] = $this->url->link('account/logout', '', 'SSL');
+				else
+					$data['logout'] = $this->url->link('affiliate/logout', '', 'SSL');
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/language/english/common/header.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['text_all']           = 'See All';
+			]]></search>
+			<add><![CDATA[
+				$_['text_product']       = 'products';
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/language/vietnamese/common/header.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['text_all']           = 'Xem tất cả';
+			]]></search>
+			<add><![CDATA[
+				$_['text_product']       = 'Sản phẩm';
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/product/product.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$data['text_loading'] = $this->language->get('text_loading');
+			]]></search>
+			<add><![CDATA[
+				$data['text_price'] = $this->language->get('text_price');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[
+				$data['tab_description'] = $this->language->get('tab_description');
+			]]></search>
+			<add><![CDATA[
+				$data['tab_product_intro'] = $this->language->get('tab_product_intro');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				$data['points'] = $product_info['points'];
+			]]></search>
+			<add><![CDATA[
+				$data['meta_description'] = $product_info['meta_description'];
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/language/english/product/product.php">
+		<operation>
+			<search position="before"><![CDATA[
+				$_['tab_description']                         = 'Description';
+			]]></search>
+			<add><![CDATA[
+				$_['tab_product_intro']                       = 'Product introduction';
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/language/vietnamese/product/product.php">
+		<operation>
+			<search position="before"><![CDATA[
+				$_['tab_description']   = 'Mô tả';
+			]]></search>
+			<add><![CDATA[
+				$_['tab_product_intro']   = 'Giới thiệu sản phẩm';
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/common/footer.php">
+		<operation>
+			<search position="before"><![CDATA[
+				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/footer.tpl')) {
+			]]></search>
+			<add><![CDATA[
+				// check affiliate
+				if ( isset($this->session->data['tracking']) ) {
+					$this->load->model('affiliate/affiliate');
+					$affiliate = $this->model_affiliate_affiliate->getAffiliateByCode( $this->session->data['tracking'] );
+					if ( !$affiliate ) {
+						$data['phone'] = $this->config->get('config_telephone');
+						$data['address'] = $this->config->get('config_address');
+						$data['email'] = $this->config->get('config_email');
+					} else {
+						$data['phone'] = $affiliate['telephone'];
+						$data['address'] = $affiliate['address_1'];
+						$data['email'] = $affiliate['email'];
+					}
+				} else {
+					$data['phone'] = $this->config->get('config_telephone');
+					$data['address'] = $this->config->get('config_address');
+					$data['email'] = $this->config->get('config_email');
+				}
+			]]></add>
+		</operation>
+	</file>
+</modification>

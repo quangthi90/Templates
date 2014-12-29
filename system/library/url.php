@@ -20,9 +20,6 @@ class Url {
 			$url = $this->ssl;
 		}
 
-		/*Bommer add*/
-		if ( $route == 'common/home' ) return $url;
-
 		$url .= 'index.php?route=' . $route;
 
 		if ($args) {

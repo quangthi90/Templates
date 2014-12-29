@@ -1,5 +1,5 @@
 <modification>
-	<id>News edit in admin page 1</id>
+	<id>System edit</id>
 	<version>2.0.x</version>
 	<vqmver>1.0</vqmver>
 	<author>Bommer Luu</author>
@@ -56,6 +56,14 @@
 				} elseif (isset($this->request->get['npath'])) {
 					$this->request->get['path'] = $this->request->get['npath'];
 					$this->request->get['route'] = 'news/category';
+			]]></add>
+		</operation>
+	</file>
+	<file name="system/library/url.php">
+		<operation>
+			<search position="before"><![CDATA[$url .= 'index.php?route=' . $route;]]></search>
+			<add><![CDATA[
+				if ( $route == 'common/home' && $args == '' ) return $url;
 			]]></add>
 		</operation>
 	</file>
