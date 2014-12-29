@@ -18,8 +18,8 @@
         <p style="font-size: 17px">THÀNH VIÊN TRUNG TÂM ƯƠM TẠO DOANH NGHIỆP CÔNG NGHỆ</p>
         <p style="font-size: 17px">ĐẠI HỌC NÔNG LÂM THÀNH PHỐ HỒ CHÍ MINH</p>
         <p style="font-size: 13px">
-          <strong>Đ/c: </strong> Số 2A5 Đường N1 Trường Đại học Nông Lâm - Khu phố 6 - Phường Linh Trung - Quận Thủ Đức - Tp. HCM</p>
-        <p><strong>Hotline:</strong> 0938 877 743  -  <strong>Email:</strong> linhchinonglam@gmail.com</p>
+          <strong>Đ/c: </strong><?php echo $address; ?></p>
+        <p><strong>Hotline:</strong> <?php echo $phone; ?>  -  <strong>Email:</strong> <?php echo $email; ?></p>
     </div>
     <div class="vistor-statistics">
       <p><strong>THỐNG KÊ LƯỢT TRUY CẬP</strong></p>

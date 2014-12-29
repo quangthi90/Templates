@@ -3,5 +3,5 @@
 $_['heading_title'] = 'Sản phẩm nổi bật';
 
 // Text
-$_['text_reviews']  = 'Dựa trên %s đánh giá.'; 
+$_['text_tax']  = 'Thuế:'; 
 ?>

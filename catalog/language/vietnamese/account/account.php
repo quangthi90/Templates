@@ -18,4 +18,5 @@ $_['text_return']        = 'Yêu cầu trả hàng';
 $_['text_transaction']   = 'Giao dịch của bạn'; 
 $_['text_newsletter']    = 'Đăng ký / hủy đăng ký thông báo';
 $_['text_recurring']     = 'Thanh toán Định kỳ';
+$_['text_transactions']  = 'Giao dịch';
 ?>

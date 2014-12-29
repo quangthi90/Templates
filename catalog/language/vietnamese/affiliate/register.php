@@ -20,7 +20,6 @@ $_['text_agree']                = 'Tôi đã đọc & đồng ý với <a class=
 $_['entry_firstname']           = 'Tên:';
 $_['entry_lastname']            = 'Họ và tên lót:';
 $_['entry_email']               = 'E-Mail:';
-$_['entry_email_confirm']       = 'Xác nhận E-Mail:';
 $_['entry_telephone']           = 'Điện Thoại:';
 $_['entry_fax']                 = 'Fax:';
 $_['entry_company']             = 'Công ty:';
@@ -48,7 +47,6 @@ $_['error_exists']      = 'Lỗi: E-Mail đã có người sử dụng!';
 $_['error_firstname']   = 'Tên phải từ 1 đến 32 kí tự!';
 $_['error_lastname']    = 'Họ và tên lót phải từ 1 đến 32 kí tự!';
 $_['error_email']       = 'E-Mail không hợp lệ!';
-$_['error_email_confirm'] = 'Xác nhận E-Mail sai! Vui lòng kiểm tra lại!';
 $_['error_telephone']   = 'Điện thoại phải từ 3 đến 32 kí tự!';
 $_['error_password']    = 'Mật khẩu phải từ 4 đến 20 kí tự!';
 $_['error_confirm']     = 'Nhập lại mật khẩu không chính xác!';

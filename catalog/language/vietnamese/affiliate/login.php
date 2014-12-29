@@ -18,4 +18,6 @@ $_['entry_password']                = 'Mật Khẩu:';
 
 // Error
 $_['error_login']                   = 'Lỗi: Email hoặc Mật Khẩu không chính xác.';
+$_['error_attempts']                = 'Cảnh báo: Tài khoản của bạn đã vượt quá số lần đăng nhập cho phép. Vui lòng thử lại sau 1 giờ.';
+$_['error_approved']                = 'Cảnh báo: Tài khoản của bạn phải được duyệt trước khi đăng nhập.';
 ?>

@@ -20,8 +20,6 @@ $_['text_register']                  = 'Đăng ký tài khoản';
 $_['text_guest']                     = 'Khách Thanh Toán';
 $_['text_register_account']          = 'Bằng việc tạo tài khoản bạn có thể mua sắm nhanh hơn, theo dõi Đơn hàng và Trạng thái đơn hàng bạn đã đặt.<p>Đặc biệt bạn còn được nhận nhiều chương trình ưu đãi khi là khách hàng thân thiết, khách hàng VIP!';
 $_['text_forgotten']                 = 'Quên Mật Khẩu';
-$_['text_logged']                    = 'You are logged in as <a href="%s">%s</a> <b>(</b> <a href="%s">Logout</a> <b>)</b>';
-$_['text_items']                     = '%s sản phẩm - %s';
 $_['text_your_details']              = 'Thông tin tài khoản';
 $_['text_your_address']              = 'Địa Chỉ';
 $_['text_your_password']             = 'Mật Khẩu';
@@ -31,6 +29,16 @@ $_['text_address_existing']          = 'Tôi muốn dùng địa chỉ đã Đă
 $_['text_shipping_method']           = 'Vui lòng chọn phương thức vận chuyển cho đơn hàng này.';
 $_['text_payment_method']            = 'Vui lòng chọn phương thức thanh toán cho đơn hàng này.';
 $_['text_comments']                  = 'Thêm ghi chú cho đơn hàng của bạn';
+$_['text_recurring']                 = 'Sản phẩm định kỳ';
+$_['text_payment_recurring']         = 'Hồ sơ thanh toán';
+$_['text_trial_description']         = '%s mỗi %d %s cho %d thanh toán sau đó';
+$_['text_payment_description']       = '%s mỗi %d %s cho %d thanh toán';
+$_['text_payment_until_canceled_description'] = '%s mỗi %d %s cho đến khi bị hủy';
+$_['text_day']                       = 'ngày';
+$_['text_week']                      = 'tuần';
+$_['text_semi_month']                = 'nửa tháng';
+$_['text_month']                     = 'tháng';
+$_['text_year']                      = 'năm';
 
 // Column
 $_['column_name']                    = 'Tên sản phẩm';
@@ -42,15 +50,15 @@ $_['column_total']                   = 'Tổng Cộng';
 // Entry
 $_['entry_email_address']            = 'Địa chỉ E-Mail:';
 $_['entry_email']                    = 'E-Mail:';
-$_['entry_email_confirm']            = 'Xác nhận E-Mail:';
 $_['entry_password']                 = 'Mật khẩu:';
 $_['entry_confirm']                  = 'Nhập lại mật khẩu:';
 $_['entry_firstname']                = 'Tên:';
 $_['entry_lastname']                 = 'Họ và tên lót:';
 $_['entry_telephone']                = 'Điện thoại:';
 $_['entry_fax']                      = 'Fax:';
+$_['entry_address']                  = 'Chọn địa chỉ';
 $_['entry_company']                  = 'Công ty:';
-$_['entry_company_id']               = 'Trang Web:';
+$_['entry_customer_group']           = 'Nhóm khách hàng:';
 $_['entry_address_1']                = 'Địa chỉ dòng 1:';
 $_['entry_address_2']                = 'Địa chỉ dòng 2:';
 $_['entry_postcode']                 = 'Mã Bưu Điện:';
@@ -63,8 +71,9 @@ $_['entry_shipping'] 	             = 'Địa chỉ nhận hàng và địa chỉ
 // Error
 $_['error_warning']                  = 'Có lỗi khi xử lý đơn hàng của bạn! Nếu lỗi vẫn tồn tại vui lòng chọn phương thức thanh toán khác hoặc bạn có thể liên hệ bộ phân chăm sóc khách hàng bằng cách <a href="%s">Bấm vào đây</a>.';
 $_['error_login']                    = 'Lỗi: Địa chỉ Email / Mật khẩu không đúng.';
+$_['error_attempts']                 = 'Cảnh báo: Tài khoản của bạn đã vượt quá số lần cho phép đăng nhập, vui lòng thử lại sau 1 giờ.';
+$_['error_approved']                 = 'Cảnh báo: Tài khoản của bạn phải được duyệt trước khi bạn có thể đăng nhập.';
 $_['error_exists']                   = 'Lỗi: E-Mail đã có người sử dụng!';
-$_['error_email_confirm']            = 'Lỗi: Xác nhận E-Mail sai! Vui lòng kiểm  tra lại!';
 $_['error_firstname']                = 'Tên phải từ 1 đến 32 kí tự!';
 $_['error_lastname']                 = 'Họ và tên lót phải từ 1 đến 32 kí tự!';
 $_['error_email']                    = 'E-Mail không hợp lệ!';
@@ -82,4 +91,5 @@ $_['error_shipping']                 = 'Lỗi: Thiếu phương thức vận chu
 $_['error_no_shipping']              = 'Lỗi: Không có tùy chọn phương thức vận chuyển. Vui lòng <a href="%s">liên hệ chúng tôi</a> để được tư vấn!';
 $_['error_payment']                  = 'Lỗi: Thiếu phương thức thanh toán!';
 $_['error_no_payment']               = 'Lỗi: Không có tùy chọn phương thức thanh toán. Vui lòng <a href="%s">liên hệ chúng tôi</a> để được tư vấn!';
+$_['error_custom_field']             = '%s bắt buộc!';
 ?>

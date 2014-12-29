@@ -70,6 +70,28 @@ class ControllerCommonFooter extends Controller {
 			$this->model_tool_online->whosonline($ip, $this->customer->getId(), $url, $referer);
 		}
 
+		// check affiliate
+		if ( isset($this->session->data['tracking']) ) {
+			$this->load->model('affiliate/affiliate');
+			$affiliate = $this->model_affiliate_affiliate->getAffiliateByCode( $this->session->data['tracking'] );
+			if ( !$affiliate ) {
+				$data['phone'] = $this->config->get('config_telephone');
+				$data['address'] = $this->config->get('config_address');
+				$data['email'] = $this->config->get('config_email');
+			} else {
+				// print("<pre>");
+				// var_dump($affiliate);
+				// exit;
+				$data['phone'] = $affiliate['telephone'];
+				$data['address'] = $affiliate['address_1'];
+				$data['email'] = $affiliate['email'];
+			}
+		} else {
+			$data['phone'] = $this->config->get('config_telephone');
+			$data['address'] = $this->config->get('config_address');
+			$data['email'] = $this->config->get('config_email');
+		}
+
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/footer.tpl')) {
 			return $this->load->view($this->config->get('config_template') . '/template/common/footer.tpl', $data);
 		} else {

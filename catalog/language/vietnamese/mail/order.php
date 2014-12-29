@@ -26,7 +26,6 @@ $_['text_new_total']            = 'Tổng cộng';
 $_['text_new_download']         = 'Khi thanh toán hoàn tất bạn có thể bấm vào đường dẫn bên dưới để tải tập tin của bạn:';
 $_['text_new_comment']          = 'Ghi chú đơn hàng của bạn:';
 $_['text_new_footer']           = 'Vui lòng trả lời thư này nếu có bất kì câu hỏi nào. Trân trọng cám ơn!';
-$_['text_new_powered']          = 'TÊN SHOP<p>* Địa chỉ:<p>- Cơ sở 1: Phòng XXX, K6, Thành Công, Ba Đình, Hà nội<p>- Cơ sở 2: Số 3 ngõ 6 phố Cao Thắng , Yết Kiêu, Hà Đông, Hà nội<p>- Điện thoại: 09123.66.88.99';
 $_['text_update_subject']       = '%s - Cập nhật đơn hàng %s';
 $_['text_update_order']         = 'Mã Đơn Hàng:';
 $_['text_update_date_added']    = 'Ngày Đặt:';

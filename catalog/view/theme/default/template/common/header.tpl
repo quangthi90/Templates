@@ -54,7 +54,9 @@
           <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" />
         </a>
         <div id="topbar">
+          <?php if ( isset($href_home) ) { ?>
           <h3 class="affiliate-label">Đơn Vị Ủy Quyền Phân Phối</h3>
+          <?php } ?>
           <ul>
             <?php if($logged){ ?>
               <li><?php echo $text_logged; ?></li>
@@ -80,7 +82,9 @@
     </div>    
     <nav id="menu" class="navbar">
       <ul class="nav navbar-nav">
-        <li><a href="<?php echo $home; ?>" class="icon-home-sm"></a></li>
+        <?php if ( isset($href_home) ) { ?>
+        <li><a href="<?php echo $href_home; ?>" class="icon-home-sm"></a></li>
+        <?php } ?>
         <li><a href="<?php echo $home; ?>"><i class="fa fa-home fa-4x" style="font-size: 20px;"></i></a></li>
         <li><a href="#"><?php echo $text_product; ?></a>
           <ul class="dropdown-menu">

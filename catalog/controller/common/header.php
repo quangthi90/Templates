@@ -49,21 +49,13 @@ class ControllerCommonHeader extends Controller {
 		$data['text_checkout'] = $this->language->get('text_checkout');
 		$data['text_category'] = $this->language->get('text_category');
 		$data['text_all'] = $this->language->get('text_all');
-		/*Bommer add*/
-		$data['text_product'] = $this->language->get('text_product');
 
-		//BOMMER
-		$data['contact'] = $this->url->link('information/contact');
-		//BOMMER
 		$data['home'] = $this->url->link('common/home');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
 		$data['logged'] = $this->customer->isLogged();
 		$data['account'] = $this->url->link('account/account', '', 'SSL');
 		$data['register'] = $this->url->link('account/register', '', 'SSL');
 		$data['login'] = $this->url->link('account/login', '', 'SSL');
-		//BOMMER
-		$data['login_affiliate'] = $this->url->link('affiliate/login', '', 'SSL');
-		//BOMMER
 		$data['order'] = $this->url->link('account/order', '', 'SSL');
 		$data['transaction'] = $this->url->link('account/transaction', '', 'SSL');
 		$data['download'] = $this->url->link('account/download', '', 'SSL');
@@ -145,6 +137,17 @@ class ControllerCommonHeader extends Controller {
 			$data['class'] = str_replace('/', '-', $this->request->get['route']) . $class;
 		} else {
 			$data['class'] = 'common-home';
+		}
+
+		// check affiliate
+		if ( isset($this->session->data['tracking']) ) {
+			$this->load->model('affiliate/affiliate');
+			$affiliate = $this->model_affiliate_affiliate->getAffiliateByCode( $this->session->data['tracking'] );
+			if ( $affiliate ) {
+				$data['href_home'] = $this->url->link('common/home', 'tracking=0', 'SSL');
+			}
+		} else {
+			
 		}
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {

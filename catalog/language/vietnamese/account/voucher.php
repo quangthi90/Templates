@@ -19,6 +19,10 @@ $_['entry_message']    = 'Lời nhắn của Bạn:<br /><span class="help">(Tù
 $_['entry_amount']     = 'Số tiền tặng:<br /><span class="help">(Giá trị từ 100.000 VND đến 99.000.000 VND)</span>';
 $_['entry_theme']      = 'Mẫu phiếu Quà tặng:';
 
+// Help
+$_['help_message']     = 'Không bắt buộc';
+$_['help_amount']      = 'Giá trị phải từ %s đến %s';
+
 // Error
 $_['error_to_name']    = 'Tên người nhận từ 1 đến 64 kí tự!';
 $_['error_from_name']  = 'Tên bạn từ 1 đến 64 kí tự!';

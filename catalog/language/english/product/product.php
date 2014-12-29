@@ -42,9 +42,6 @@ $_['entry_bad']                               = 'Bad';
 $_['entry_captcha']                           = 'Enter the code in the box below';
 
 // Tabs
-//BOMMER
-$_['tab_product_intro']                       = 'Product introduction';
-//BOMMER
 $_['tab_description']                         = 'Description';
 $_['tab_attribute']                           = 'Specification';
 $_['tab_review']                              = 'Reviews (%s)';
