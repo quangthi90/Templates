@@ -142,22 +142,47 @@
 			]]></search>
 			<add><![CDATA[
 				// check affiliate
-				if ( isset($this->session->data['tracking']) ) {
+				if ( isset($this->session->data['tracking']) || $this->affiliate->isLogged() ) {
+					if ( !$code = $this->affiliate->getCode() ) {
+						$code = $this->session->data['tracking'];
+					}
 					$this->load->model('affiliate/affiliate');
-					$affiliate = $this->model_affiliate_affiliate->getAffiliateByCode( $this->session->data['tracking'] );
-					if ( !$affiliate ) {
-						$data['phone'] = $this->config->get('config_telephone');
-						$data['address'] = $this->config->get('config_address');
-						$data['email'] = $this->config->get('config_email');
-					} else {
+					if ( $affiliate = $this->model_affiliate_affiliate->getAffiliateByCode($code) ) {
 						$data['phone'] = $affiliate['telephone'];
 						$data['address'] = $affiliate['address_1'];
 						$data['email'] = $affiliate['email'];
+					} else {
+						$data['phone'] = $this->config->get('config_telephone');
+						$data['address'] = $this->config->get('config_address');
+						$data['email'] = $this->config->get('config_email');
 					}
 				} else {
 					$data['phone'] = $this->config->get('config_telephone');
 					$data['address'] = $this->config->get('config_address');
 					$data['email'] = $this->config->get('config_email');
+				}
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/common/home.php">
+		<operation>
+			<search position="before"><![CDATA[
+				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/home.tpl')) {
+			]]></search>
+			<add><![CDATA[
+				// check affiliate
+				if ( isset($this->session->data['tracking']) || $this->affiliate->isLogged() ) {
+					if ( !$code = $this->affiliate->getCode() ) {
+						$code = $this->session->data['tracking'];
+					}
+					$this->load->model('affiliate/affiliate');
+					if ( $affiliate = $this->model_affiliate_affiliate->getAffiliateByCode($code) ) {
+						$data['phone'] = $affiliate['telephone'];
+					} else {
+						$data['phone'] = $this->config->get('config_telephone');
+					}
+				} else {
+					$data['phone'] = $this->config->get('config_telephone');
 				}
 			]]></add>
 		</operation>

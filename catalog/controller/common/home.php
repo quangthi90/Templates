@@ -20,19 +20,6 @@ class ControllerCommonHome extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		// check affiliate
-		if ( isset($this->session->data['tracking']) ) {
-			$this->load->model('affiliate/affiliate');
-			$affiliate = $this->model_affiliate_affiliate->getAffiliateByCode( $this->session->data['tracking'] );
-			if ( !$affiliate ) {
-				$data['phone'] = $this->config->get('config_telephone');
-			} else {
-				$data['phone'] = $affiliate['telephone'];
-			}
-		} else {
-			$data['phone'] = $this->config->get('config_telephone');
-		}
-
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/home.tpl')) {
 			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/common/home.tpl', $data));
 		} else {
