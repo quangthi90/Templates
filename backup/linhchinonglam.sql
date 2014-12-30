@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2014 at 03:42 PM
+-- Generation Time: Dec 30, 2014 at 03:30 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -55,14 +55,15 @@ CREATE TABLE IF NOT EXISTS `address` (
   `custom_field` text NOT NULL,
   PRIMARY KEY (`address_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `address`
 --
 
 INSERT INTO `address` (`address_id`, `customer_id`, `firstname`, `lastname`, `company`, `address_1`, `address_2`, `city`, `postcode`, `country_id`, `zone_id`, `custom_field`) VALUES
-(1, 1, 'Thiet', 'Ngo Van', 'BOSCH', 'Ho Chi Minh City', 'Ho Chi Minh City', 'Ho Chi Minh City', '70000', 230, 3780, '');
+(1, 1, 'Thiet', 'Ngo Van', 'BOSCH', 'Ho Chi Minh City', 'Ho Chi Minh City', 'Ho Chi Minh City', '70000', 230, 3780, ''),
+(2, 2, 'Bommer', 'Luu', '', '129/6/5 Lê Văn Thọ F11 Gò Vấp', '', 'HCM', '84', 230, 3780, '');
 
 -- --------------------------------------------------------
 
@@ -103,7 +104,14 @@ CREATE TABLE IF NOT EXISTS `affiliate` (
   `approved` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`affiliate_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `affiliate`
+--
+
+INSERT INTO `affiliate` (`affiliate_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `password`, `salt`, `company`, `website`, `address_1`, `address_2`, `city`, `postcode`, `country_id`, `zone_id`, `code`, `commission`, `tax`, `payment`, `cheque`, `paypal`, `bank_name`, `bank_branch_number`, `bank_swift_code`, `bank_account_name`, `bank_account_number`, `ip`, `status`, `approved`, `date_added`) VALUES
+(1, 'Bommer', 'Luu', 'quangthi_90@yahoo.com.vn', '0904803779', '', 'b664bd6c6953025dc518a1d892d64a25f6a0eda0', 'a643e1bdc', '', '', '129/6/5 Lê Văn Thọ F11 Gò Vấp', '', 'HCM', '84', 230, 3780, 'dai-ly-1', 5.00, '', 'cheque', 'abc xyz', '', '', '', '', '', '', '::1', 1, 1, '2014-12-23 16:27:32');
 
 -- --------------------------------------------------------
 
@@ -119,7 +127,19 @@ CREATE TABLE IF NOT EXISTS `affiliate_activity` (
   `ip` varchar(40) NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`activity_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `affiliate_activity`
+--
+
+INSERT INTO `affiliate_activity` (`activity_id`, `affiliate_id`, `key`, `data`, `ip`, `date_added`) VALUES
+(1, 1, 'register', 'a:2:{s:12:"affiliate_id";i:1;s:4:"name";s:10:"Bommer Luu";}', '::1', '2014-12-23 16:27:32'),
+(2, 1, 'login', 'a:2:{s:12:"affiliate_id";s:1:"1";s:4:"name";s:10:"Bommer Luu";}', '::1', '2014-12-23 18:49:11'),
+(3, 1, 'login', 'a:2:{s:12:"affiliate_id";s:1:"1";s:4:"name";s:10:"Bommer Luu";}', '::1', '2014-12-29 02:21:24'),
+(4, 1, 'login', 'a:2:{s:12:"affiliate_id";s:1:"1";s:4:"name";s:10:"Bommer Luu";}', '::1', '2014-12-29 15:37:48'),
+(5, 1, 'login', 'a:2:{s:12:"affiliate_id";s:1:"1";s:4:"name";s:10:"Bommer Luu";}', '::1', '2014-12-29 18:36:45'),
+(6, 1, 'login', 'a:2:{s:12:"affiliate_id";s:1:"1";s:4:"name";s:10:"Bommer Luu";}', '::1', '2014-12-29 18:38:34');
 
 -- --------------------------------------------------------
 
@@ -137,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `affiliate_login` (
   PRIMARY KEY (`affiliate_login_id`),
   KEY `email` (`email`),
   KEY `ip` (`ip`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -972,9 +992,9 @@ CREATE TABLE IF NOT EXISTS `currency` (
 --
 
 INSERT INTO `currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Pound Sterling', 'GBP', '£', '', '2', 0.63990003, 1, '2014-12-21 18:13:59'),
-(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2014-12-22 15:41:13'),
-(3, 'Euro', 'EUR', '', '€', '2', 0.81770003, 1, '2014-12-21 18:13:59');
+(1, 'Pound Sterling', 'GBP', '£', '', '2', 0.64279997, 1, '2014-12-28 13:24:22'),
+(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2014-12-29 09:26:39'),
+(3, 'Euro', 'EUR', '', '€', '2', 0.81950003, 1, '2014-12-28 13:24:22');
 
 -- --------------------------------------------------------
 
@@ -1005,14 +1025,15 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `token` varchar(255) NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `customer`
 --
 
 INSERT INTO `customer` (`customer_id`, `customer_group_id`, `store_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `password`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `status`, `approved`, `safe`, `token`, `date_added`) VALUES
-(1, 1, 0, 'Thiet', 'Ngo Van', 'abc@gmail.com', '12121212121', '12121212121', '9e48d1b29dc718bb785c428d3b48ef70e349f942', 'd5785b545', 'a:1:{s:84:"YToyOntzOjEwOiJwcm9kdWN0X2lkIjtpOjMwO3M6Njoib3B0aW9uIjthOjE6e2k6MjI2O3M6MjoiMTUiO319";i:2;}', 'a:3:{i:0;i:46;i:1;i:42;i:2;i:30;}', 0, 1, '', '::1', 1, 1, 0, '', '2014-12-04 22:28:30');
+(1, 1, 0, 'Thiet', 'Ngo Van', 'abc@gmail.com', '12121212121', '12121212121', '9e48d1b29dc718bb785c428d3b48ef70e349f942', 'd5785b545', 'a:1:{s:84:"YToyOntzOjEwOiJwcm9kdWN0X2lkIjtpOjMwO3M6Njoib3B0aW9uIjthOjE6e2k6MjI2O3M6MjoiMTUiO319";i:2;}', 'a:3:{i:0;i:46;i:1;i:42;i:2;i:30;}', 0, 1, '', '::1', 1, 1, 0, '', '2014-12-04 22:28:30'),
+(2, 1, 0, 'Bommer', 'Luu User', 'quangthi_90@yahoo.com.vn', '0904803779', '', '6ec9664261cd14ceba9911477f8a644afe0cb8f8', '81b993bdd', 'a:0:{}', '', 0, 2, '', '::1', 1, 1, 0, '', '2014-12-23 15:51:25');
 
 -- --------------------------------------------------------
 
@@ -1028,7 +1049,7 @@ CREATE TABLE IF NOT EXISTS `customer_activity` (
   `ip` varchar(40) NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`activity_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `customer_activity`
@@ -1036,7 +1057,21 @@ CREATE TABLE IF NOT EXISTS `customer_activity` (
 
 INSERT INTO `customer_activity` (`activity_id`, `customer_id`, `key`, `data`, `ip`, `date_added`) VALUES
 (1, 1, 'register', 'a:2:{s:11:"customer_id";s:1:"1";s:4:"name";s:13:"Thiet Ngo Van";}', '::1', '2014-12-04 22:28:32'),
-(2, 1, 'order_account', 'a:3:{s:11:"customer_id";s:1:"1";s:4:"name";s:13:"Thiet Ngo Van";s:8:"order_id";i:1;}', '::1', '2014-12-04 22:29:48');
+(2, 1, 'order_account', 'a:3:{s:11:"customer_id";s:1:"1";s:4:"name";s:13:"Thiet Ngo Van";s:8:"order_id";i:1;}', '::1', '2014-12-04 22:29:48'),
+(3, 2, 'register', 'a:2:{s:11:"customer_id";s:1:"2";s:4:"name";s:10:"Bommer Luu";}', '::1', '2014-12-23 15:51:26'),
+(4, 2, 'login', 'a:2:{s:11:"customer_id";s:1:"2";s:4:"name";s:10:"Bommer Luu";}', '::1', '2014-12-23 16:35:26'),
+(5, 2, 'order_account', 'a:3:{s:11:"customer_id";s:1:"2";s:4:"name";s:10:"Bommer Luu";s:8:"order_id";i:2;}', '::1', '2014-12-23 16:36:07'),
+(6, 2, 'edit', 'a:2:{s:11:"customer_id";s:1:"2";s:4:"name";s:10:"Bommer Luu";}', '::1', '2014-12-23 16:37:08'),
+(7, 2, 'order_account', 'a:3:{s:11:"customer_id";s:1:"2";s:4:"name";s:15:"Bommer Luu User";s:8:"order_id";i:3;}', '::1', '2014-12-23 16:38:40'),
+(8, 2, 'login', 'a:2:{s:11:"customer_id";s:1:"2";s:4:"name";s:15:"Bommer Luu User";}', '::1', '2014-12-23 18:48:02'),
+(9, 2, 'login', 'a:2:{s:11:"customer_id";s:1:"2";s:4:"name";s:15:"Bommer Luu User";}', '::1', '2014-12-23 23:40:39'),
+(10, 2, 'login', 'a:2:{s:11:"customer_id";s:1:"2";s:4:"name";s:15:"Bommer Luu User";}', '::1', '2014-12-28 20:35:03'),
+(11, 2, 'order_account', 'a:3:{s:11:"customer_id";s:1:"2";s:4:"name";s:15:"Bommer Luu User";s:8:"order_id";i:5;}', '::1', '2014-12-28 20:36:39'),
+(12, 2, 'order_account', 'a:3:{s:11:"customer_id";s:1:"2";s:4:"name";s:15:"Bommer Luu User";s:8:"order_id";i:6;}', '::1', '2014-12-28 20:38:09'),
+(13, 2, 'login', 'a:2:{s:11:"customer_id";s:1:"2";s:4:"name";s:15:"Bommer Luu User";}', '::1', '2014-12-29 02:24:51'),
+(14, 2, 'login', 'a:2:{s:11:"customer_id";s:1:"2";s:4:"name";s:15:"Bommer Luu User";}', '::1', '2014-12-29 02:25:11'),
+(15, 2, 'login', 'a:2:{s:11:"customer_id";s:1:"2";s:4:"name";s:15:"Bommer Luu User";}', '::1', '2014-12-29 15:27:45'),
+(16, 2, 'login', 'a:2:{s:11:"customer_id";s:1:"2";s:4:"name";s:15:"Bommer Luu User";}', '::1', '2014-12-29 18:38:16');
 
 -- --------------------------------------------------------
 
@@ -1119,14 +1154,15 @@ CREATE TABLE IF NOT EXISTS `customer_ip` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`customer_ip_id`),
   KEY `ip` (`ip`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `customer_ip`
 --
 
 INSERT INTO `customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added`) VALUES
-(1, 1, '::1', '2014-12-04 22:28:33');
+(1, 1, '::1', '2014-12-04 22:28:33'),
+(2, 2, '::1', '2014-12-23 15:51:27');
 
 -- --------------------------------------------------------
 
@@ -1144,7 +1180,7 @@ CREATE TABLE IF NOT EXISTS `customer_login` (
   PRIMARY KEY (`customer_login_id`),
   KEY `email` (`email`),
   KEY `ip` (`ip`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -1314,7 +1350,7 @@ CREATE TABLE IF NOT EXISTS `extension` (
   `type` varchar(32) NOT NULL,
   `code` varchar(32) NOT NULL,
   PRIMARY KEY (`extension_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=429 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=431 ;
 
 --
 -- Dumping data for table `extension`
@@ -1339,7 +1375,9 @@ INSERT INTO `extension` (`extension_id`, `type`, `code`) VALUES
 (398, 'total', 'voucher'),
 (407, 'payment', 'free_checkout'),
 (427, 'module', 'featured'),
-(419, 'module', 'slideshow');
+(419, 'module', 'slideshow'),
+(429, 'module', 'affiliate'),
+(430, 'module', 'information');
 
 -- --------------------------------------------------------
 
@@ -1526,7 +1564,7 @@ CREATE TABLE IF NOT EXISTS `language` (
 --
 
 INSERT INTO `language` (`language_id`, `name`, `code`, `locale`, `image`, `directory`, `sort_order`, `status`) VALUES
-(1, 'English', 'en', 'en_US.UTF-8,en_US,en-gb,english', 'gb.png', 'english', 1, 1);
+(1, 'Tiếng Việt', 'en', 'en_US.UTF-8,en_US,en-gb,english', 'gb.png', 'vietnamese', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1572,7 +1610,7 @@ CREATE TABLE IF NOT EXISTS `layout_module` (
   `position` varchar(14) NOT NULL,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`layout_module_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=105 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=110 ;
 
 --
 -- Dumping data for table `layout_module`
@@ -1584,12 +1622,13 @@ INSERT INTO `layout_module` (`layout_module_id`, `layout_id`, `code`, `position`
 (20, 5, '0', 'column_left', 2),
 (69, 10, 'affiliate', 'column_right', 1),
 (68, 6, 'account', 'column_right', 1),
+(109, 1, 'affiliate', 'content_top', 0),
 (72, 3, 'account', 'column_left', 1),
 (73, 3, 'banner.30', 'column_left', 2),
-(104, 1, 'slideshow.27', 'content_top', 1),
-(101, 1, 'carousel.31', 'content_bottom', 3),
-(102, 1, 'carousel.29', 'content_bottom', 3),
-(103, 1, 'featured.28', 'content_bottom', 2);
+(108, 1, 'featured.28', 'content_bottom', 2),
+(107, 1, 'carousel.29', 'content_bottom', 3),
+(106, 1, 'carousel.31', 'content_bottom', 3),
+(105, 1, 'slideshow.27', 'content_top', 1);
 
 -- --------------------------------------------------------
 
@@ -1603,7 +1642,7 @@ CREATE TABLE IF NOT EXISTS `layout_route` (
   `store_id` int(11) NOT NULL,
   `route` varchar(255) NOT NULL,
   PRIMARY KEY (`layout_route_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=62 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=63 ;
 
 --
 -- Dumping data for table `layout_route`
@@ -1613,7 +1652,7 @@ INSERT INTO `layout_route` (`layout_route_id`, `layout_id`, `store_id`, `route`)
 (38, 6, 0, 'account/%'),
 (17, 10, 0, 'affiliate/%'),
 (44, 3, 0, 'product/category'),
-(61, 1, 0, 'common/home'),
+(62, 1, 0, 'common/home'),
 (20, 2, 0, 'product/product'),
 (24, 11, 0, 'information/information'),
 (23, 7, 0, 'checkout/%'),
@@ -1822,7 +1861,7 @@ CREATE TABLE IF NOT EXISTS `news` (
 --
 
 INSERT INTO `news` (`news_id`, `image`, `count_read`, `allow_comment`, `comment_permission`, `comment_need_approval`, `sort_order`, `status`, `top`) VALUES
-(4, '', 7, 0, 0, 0, 1, 1, 1),
+(4, '', 9, 0, 0, 0, 1, 1, 1),
 (5, 'catalog/news/hoi-thao-phat-trien-thi-truong.jpg', 0, 0, 0, 0, 2, 1, 0),
 (6, '', 2, 0, 0, 0, 3, 1, 1),
 (7, '', 0, 0, 0, 0, 4, 1, 1),
@@ -1832,7 +1871,7 @@ INSERT INTO `news` (`news_id`, `image`, `count_read`, `allow_comment`, `comment_
 (11, '', 0, 0, 0, 0, 11, 1, 0),
 (12, 'catalog/news/phong-su-phan-5.jpg', 0, 0, 0, 0, 12, 1, 0),
 (13, 'catalog/news/ve-voi-yeu-thuong.jpg', 0, 0, 0, 0, 8, 1, 1),
-(14, 'catalog/news/ky-ket-hop-tact.jpg', 5, 0, 0, 0, 6, 1, 1),
+(14, 'catalog/news/ky-ket-hop-tact.jpg', 6, 0, 0, 0, 6, 1, 1),
 (15, 'catalog/news/hoi-cho-trien-lam.jpg', 0, 0, 0, 0, 7, 1, 1),
 (16, '', 0, 1, 0, 0, 13, 1, 1),
 (17, '', 0, 1, 0, 0, 14, 1, 1),
@@ -3078,14 +3117,19 @@ CREATE TABLE IF NOT EXISTS `order` (
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`order_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`order_id`, `invoice_no`, `invoice_prefix`, `store_id`, `store_name`, `store_url`, `customer_id`, `customer_group_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `custom_field`, `payment_firstname`, `payment_lastname`, `payment_company`, `payment_address_1`, `payment_address_2`, `payment_city`, `payment_postcode`, `payment_country`, `payment_country_id`, `payment_zone`, `payment_zone_id`, `payment_address_format`, `payment_custom_field`, `payment_method`, `payment_code`, `shipping_firstname`, `shipping_lastname`, `shipping_company`, `shipping_address_1`, `shipping_address_2`, `shipping_city`, `shipping_postcode`, `shipping_country`, `shipping_country_id`, `shipping_zone`, `shipping_zone_id`, `shipping_address_format`, `shipping_custom_field`, `shipping_method`, `shipping_code`, `comment`, `total`, `order_status_id`, `affiliate_id`, `commission`, `marketing_id`, `tracking`, `language_id`, `currency_id`, `currency_code`, `currency_value`, `ip`, `forwarded_ip`, `user_agent`, `accept_language`, `date_added`, `date_modified`) VALUES
-(1, 0, 'INV-2013-00', 0, 'Your Store', 'http://localhost/bmdesign/', 1, 1, 'Thiet', 'Ngo Van', 'abc@gmail.com', '12121212121', '12121212121', 'b:0;', 'Thiet', 'Ngo Van', 'BOSCH', 'Ho Chi Minh City', 'Ho Chi Minh City', 'Ho Chi Minh City', '70000', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Cash On Delivery', 'cod', 'Thiet', 'Ngo Van', 'BOSCH', 'Ho Chi Minh City', 'Ho Chi Minh City', 'Ho Chi Minh City', '70000', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Flat Shipping Rate', 'flat.flat', '', 1015.0000, 1, 0, 0.0000, 0, '', 1, 2, 'USD', 1.00000000, '::1', '', 'Mozilla/5.0 (Windows NT 6.1; rv:33.0) Gecko/20100101 Firefox/33.0', 'en-US,en;q=0.5', '2014-12-04 22:29:36', '2014-12-04 22:29:45');
+(1, 0, 'INV-2013-00', 0, 'Your Store', 'http://localhost/bmdesign/', 1, 1, 'Thiet', 'Ngo Van', 'abc@gmail.com', '12121212121', '12121212121', 'b:0;', 'Thiet', 'Ngo Van', 'BOSCH', 'Ho Chi Minh City', 'Ho Chi Minh City', 'Ho Chi Minh City', '70000', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Cash On Delivery', 'cod', 'Thiet', 'Ngo Van', 'BOSCH', 'Ho Chi Minh City', 'Ho Chi Minh City', 'Ho Chi Minh City', '70000', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Flat Shipping Rate', 'flat.flat', '', 1015.0000, 1, 0, 0.0000, 0, '', 1, 2, 'USD', 1.00000000, '::1', '', 'Mozilla/5.0 (Windows NT 6.1; rv:33.0) Gecko/20100101 Firefox/33.0', 'en-US,en;q=0.5', '2014-12-04 22:29:36', '2014-12-04 22:29:45'),
+(2, 0, 'INV-2013-00', 0, 'Nấm Linh Chi Nông Lâm - Trường Đại học Nông Lâm TP.HCM', 'http://localhost/Templates/', 2, 1, 'Bommer', 'Luu', 'quangthi_90@yahoo.com.vn', '0904803779', '', 'b:0;', 'Bommer', 'Luu', '', '129/6/5 Lê Văn Thọ F11 Gò Vấp', '', 'HCM', '84', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Cash On Delivery', 'cod', 'Bommer', 'Luu', '', '129/6/5 Lê Văn Thọ F11 Gò Vấp', '', 'HCM', '84', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Flat Shipping Rate', 'flat.flat', '', 325.0000, 1, 0, 0.0000, 0, '', 1, 2, 'USD', 1.00000000, '::1', '', 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36', 'en-US,en;q=0.8,vi;q=0.6,es;q=0.4,ja;q=0.2', '2014-12-23 16:36:02', '2014-12-23 16:36:05'),
+(3, 0, 'INV-2013-00', 0, 'Nấm Linh Chi Nông Lâm - Trường Đại học Nông Lâm TP.HCM', 'http://localhost/Templates/', 2, 1, 'Bommer', 'Luu User', 'quangthi_90@yahoo.com.vn', '0904803779', '', 'b:0;', 'Bommer', 'Luu', '', '129/6/5 Lê Văn Thọ F11 Gò Vấp', '', 'HCM', '84', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Cash On Delivery', 'cod', 'Bommer', 'Luu', '', '129/6/5 Lê Văn Thọ F11 Gò Vấp', '', 'HCM', '84', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Flat Shipping Rate', 'flat.flat', '', 85.0000, 1, 1, 4.0000, 0, '5499358445551', 1, 2, 'USD', 1.00000000, '::1', '', 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36', 'en-US,en;q=0.8,vi;q=0.6,es;q=0.4,ja;q=0.2', '2014-12-23 16:38:36', '2014-12-23 16:38:39'),
+(4, 0, 'INV-2013-00', 0, 'Nấm Linh Chi Nông Lâm - Trường Đại học Nông Lâm TP.HCM', 'http://localhost/Templates/', 2, 1, 'Bommer', 'Luu User', 'quangthi_90@yahoo.com.vn', '0904803779', '', 'b:0;', 'Bommer', 'Luu', '', '129/6/5 Lê Văn Thọ F11 Gò Vấp', '', 'HCM', '84', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Cash On Delivery', 'cod', 'Bommer', 'Luu', '', '129/6/5 Lê Văn Thọ F11 Gò Vấp', '', 'HCM', '84', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Flat Shipping Rate', 'flat.flat', '', 85.0000, 0, 1, 4.0000, 0, '5499358445551', 1, 2, 'USD', 1.00000000, '::1', '', 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0', 'en-US,en;q=0.5', '2014-12-28 20:35:23', '2014-12-28 20:35:23'),
+(5, 0, 'INV-2013-00', 0, 'Nấm Linh Chi Nông Lâm - Trường Đại học Nông Lâm TP.HCM', 'http://localhost/Templates/', 2, 1, 'Bommer', 'Luu User', 'quangthi_90@yahoo.com.vn', '0904803779', '', 'b:0;', 'Bommer', 'Luu', '', '129/6/5 Lê Văn Thọ F11 Gò Vấp', '', 'HCM', '84', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Cash On Delivery', 'cod', 'Bommer', 'Luu', '', '129/6/5 Lê Văn Thọ F11 Gò Vấp', '', 'HCM', '84', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Flat Shipping Rate', 'flat.flat', '', 165.0000, 1, 1, 8.0000, 0, '5499358445551', 1, 2, 'USD', 1.00000000, '::1', '', 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0', 'en-US,en;q=0.5', '2014-12-28 20:36:30', '2014-12-28 20:36:37'),
+(6, 0, 'INV-2013-00', 0, 'Nấm Linh Chi Nông Lâm - Trường Đại học Nông Lâm TP.HCM', 'http://localhost/Templates/', 2, 1, 'Bommer', 'Luu User', 'quangthi_90@yahoo.com.vn', '0904803779', '', 'b:0;', 'Bommer', 'Luu', '', '129/6/5 Lê Văn Thọ F11 Gò Vấp', '', 'HCM', '84', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Cash On Delivery', 'cod', 'Bommer', 'Luu', '', '129/6/5 Lê Văn Thọ F11 Gò Vấp', '', 'HCM', '84', 'Viet Nam', 230, 'Ho Chi Minh City', 3780, '', 'b:0;', 'Flat Shipping Rate', 'flat.flat', '', 85.0000, 1, 1, 4.0000, 0, '5499358445551', 1, 2, 'USD', 1.00000000, '::1', '', 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0', 'en-US,en;q=0.5', '2014-12-28 20:38:06', '2014-12-28 20:38:08');
 
 -- --------------------------------------------------------
 
@@ -3182,14 +3226,18 @@ CREATE TABLE IF NOT EXISTS `order_history` (
   `comment` text NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`order_history_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `order_history`
 --
 
 INSERT INTO `order_history` (`order_history_id`, `order_id`, `order_status_id`, `notify`, `comment`, `date_added`) VALUES
-(1, 1, 1, 0, '', '2014-12-04 22:29:45');
+(1, 1, 1, 0, '', '2014-12-04 22:29:45'),
+(2, 2, 1, 0, '', '2014-12-23 16:36:05'),
+(3, 3, 1, 0, '', '2014-12-23 16:38:39'),
+(4, 5, 1, 0, '', '2014-12-28 20:36:37'),
+(5, 6, 1, 0, '', '2014-12-28 20:38:08');
 
 -- --------------------------------------------------------
 
@@ -3227,14 +3275,19 @@ CREATE TABLE IF NOT EXISTS `order_product` (
   `tax` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `reward` int(8) NOT NULL,
   PRIMARY KEY (`order_product_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `order_product`
 --
 
 INSERT INTO `order_product` (`order_product_id`, `order_id`, `product_id`, `name`, `model`, `quantity`, `price`, `total`, `tax`, `reward`) VALUES
-(1, 1, 40, 'iPhone', 'product 11', 10, 101.0000, 1010.0000, 0.0000, 0);
+(1, 1, 40, 'iPhone', 'product 11', 10, 101.0000, 1010.0000, 0.0000, 0),
+(2, 2, 30, 'Canon EOS 5D', 'Product 3', 4, 80.0000, 320.0000, 0.0000, 800),
+(3, 3, 30, 'Canon EOS 5D', 'Product 3', 1, 80.0000, 80.0000, 0.0000, 200),
+(4, 4, 30, 'Canon EOS 5D', 'Product 3', 1, 80.0000, 80.0000, 0.0000, 200),
+(5, 5, 30, 'Canon EOS 5D', 'Product 3', 2, 80.0000, 160.0000, 0.0000, 400),
+(6, 6, 31, 'Nikon D300', 'Product 4', 1, 80.0000, 80.0000, 0.0000, 0);
 
 -- --------------------------------------------------------
 
@@ -3330,7 +3383,7 @@ CREATE TABLE IF NOT EXISTS `order_total` (
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`order_total_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `order_total`
@@ -3339,7 +3392,22 @@ CREATE TABLE IF NOT EXISTS `order_total` (
 INSERT INTO `order_total` (`order_total_id`, `order_id`, `code`, `title`, `value`, `sort_order`) VALUES
 (1, 1, 'sub_total', 'Sub-Total', 1010.0000, 1),
 (2, 1, 'shipping', 'Flat Shipping Rate', 5.0000, 3),
-(3, 1, 'total', 'Total', 1015.0000, 9);
+(3, 1, 'total', 'Total', 1015.0000, 9),
+(4, 2, 'sub_total', 'Sub-Total', 320.0000, 1),
+(5, 2, 'shipping', 'Flat Shipping Rate', 5.0000, 3),
+(6, 2, 'total', 'Total', 325.0000, 9),
+(7, 3, 'sub_total', 'Sub-Total', 80.0000, 1),
+(8, 3, 'shipping', 'Flat Shipping Rate', 5.0000, 3),
+(9, 3, 'total', 'Total', 85.0000, 9),
+(10, 4, 'sub_total', 'Sub-Total', 80.0000, 1),
+(11, 4, 'shipping', 'Flat Shipping Rate', 5.0000, 3),
+(12, 4, 'total', 'Total', 85.0000, 9),
+(13, 5, 'sub_total', 'Sub-Total', 160.0000, 1),
+(14, 5, 'shipping', 'Flat Shipping Rate', 5.0000, 3),
+(15, 5, 'total', 'Total', 165.0000, 9),
+(16, 6, 'sub_total', 'Sub-Total', 80.0000, 1),
+(17, 6, 'shipping', 'Flat Shipping Rate', 5.0000, 3),
+(18, 6, 'total', 'Total', 85.0000, 9);
 
 -- --------------------------------------------------------
 
@@ -3411,7 +3479,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 INSERT INTO `product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`) VALUES
 (28, 'Product 1', '', '', '', '', '', '', '', 939, 7, 'catalog/demo/htc_touch_hd_1.jpg', 5, 1, 100.0000, 200, 9, '2009-02-03', 146.40000000, 2, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 0, 1, 0, '2009-02-03 16:06:50', '2011-09-30 01:05:39'),
 (29, 'Product 2', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/palm_treo_pro_1.jpg', 6, 1, 279.9900, 0, 9, '2009-02-03', 133.00000000, 2, 0.00000000, 0.00000000, 0.00000000, 3, 1, 1, 0, 1, 0, '2009-02-03 16:42:17', '2011-09-30 01:06:08'),
-(30, 'Product 3', '', '', '', '', '', '', '', 7, 6, 'catalog/products/p (11).jpg', 9, 1, 100.0000, 0, 9, '2009-02-03', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 0, 1, 10, '2009-02-03 16:59:00', '2014-12-21 22:25:08'),
+(30, 'Product 3', '', '', '', '', '', '', '', 7, 6, 'catalog/products/p (11).jpg', 9, 1, 100.0000, 0, 9, '2009-02-03', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 0, 1, 20, '2009-02-03 16:59:00', '2014-12-23 16:31:44'),
 (31, 'Product 4', '', '', '', '', '', '', '', 1000, 6, 'catalog/demo/nikon_d300_1.jpg', 0, 1, 80.0000, 0, 9, '2009-02-03', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 3, 1, 1, 0, 1, 0, '2009-02-03 17:00:10', '2011-09-30 01:06:00'),
 (32, 'Product 5', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/ipod_touch_1.jpg', 8, 1, 100.0000, 0, 9, '2009-02-03', 5.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 1, 1, 1, 0, 1, 0, '2009-02-03 17:07:26', '2011-09-30 01:07:22'),
 (33, 'Product 6', '', '', '', '', '', '', '', 1000, 6, 'catalog/demo/samsung_syncmaster_941bw.jpg', 0, 1, 200.0000, 0, 9, '2009-02-03', 5.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 2, 1, 1, 0, 1, 0, '2009-02-03 17:08:31', '2011-09-30 01:06:29'),
@@ -3495,8 +3563,8 @@ INSERT INTO `product_description` (`product_id`, `language_id`, `name`, `descrip
 (43, 1, 'MacBook', '&lt;div&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Intel Core 2 Duo processor&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the new MacBook is the fastest ever.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;1GB memory, larger hard drives&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		The new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Sleek, 1.08-inch-thin design&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		MacBook makes it easy to hit the road thanks to its tough polycarbonate case, built-in wireless technologies, and innovative MagSafe Power Adapter that releases automatically if someone accidentally trips on the cord.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Built-in iSight camera&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		Right out of the box, you can have a video chat with friends or family,2 record a video at your desk, or take fun pictures with Photo Booth&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', '', '', ''),
 (31, 1, 'Nikon D300', '&lt;div class=&quot;cpt_product_description &quot;&gt;\r\n	&lt;div&gt;\r\n		Engineered with pro-level features and performance, the 12.3-effective-megapixel D300 combines brand new technologies with advanced features inherited from Nikon&amp;#39;s newly announced D3 professional digital SLR camera to offer serious photographers remarkable performance combined with agility.&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		Similar to the D3, the D300 features Nikon&amp;#39;s exclusive EXPEED Image Processing System that is central to driving the speed and processing power needed for many of the camera&amp;#39;s new features. The D300 features a new 51-point autofocus system with Nikon&amp;#39;s 3D Focus Tracking feature and two new LiveView shooting modes that allow users to frame a photograph using the camera&amp;#39;s high-resolution LCD monitor. The D300 shares a similar Scene Recognition System as is found in the D3; it promises to greatly enhance the accuracy of autofocus, autoexposure, and auto white balance by recognizing the subject or scene being photographed and applying this information to the calculations for the three functions.&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		The D300 reacts with lightning speed, powering up in a mere 0.13 seconds and shooting with an imperceptible 45-millisecond shutter release lag time. The D300 is capable of shooting at a rapid six frames per second and can go as fast as eight frames per second when using the optional MB-D10 multi-power battery pack. In continuous bursts, the D300 can shoot up to 100 shots at full 12.3-megapixel resolution. (NORMAL-LARGE image setting, using a SanDisk Extreme IV 1GB CompactFlash card.)&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		The D300 incorporates a range of innovative technologies and features that will significantly improve the accuracy, control, and performance photographers can get from their equipment. Its new Scene Recognition System advances the use of Nikon&amp;#39;s acclaimed 1,005-segment sensor to recognize colors and light patterns that help the camera determine the subject and the type of scene being photographed before a picture is taken. This information is used to improve the accuracy of autofocus, autoexposure, and auto white balance functions in the D300. For example, the camera can track moving subjects better and by identifying them, it can also automatically select focus points faster and with greater accuracy. It can also analyze highlights and more accurately determine exposure, as well as infer light sources to deliver more accurate white balance detection.&lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;!-- cpt_container_end --&gt;', '', '', '', ''),
 (49, 1, 'Samsung Galaxy Tab 10.1', '&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1, is the world’s thinnest tablet, measuring 8.6 mm thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its younger brother Samsung Galaxy Tab 8.9.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 gives pure Android 3.0 experience, adding its new TouchWiz UX or TouchWiz 4.0 – includes a live panel, which lets you to customize with different content, such as your pictures, bookmarks, and social feeds, sporting a 10.1 inches WXGA capacitive touch screen with 1280 x 800 pixels of resolution, equipped with 3 megapixel rear camera with LED flash and a 2 megapixel front camera, HSPA+ connectivity up to 21Mbps, 720p HD video recording capability, 1080p HD playback, DLNA support, Bluetooth 2.1, USB 2.0, gyroscope, Wi-Fi 802.11 a/b/g/n, micro-SD slot, 3.5mm headphone jack, and SIM slot, including the Samsung Stick – a Bluetooth microphone that can be carried in a pocket like a pen and sound dock with powered subwoofer.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 will come in 16GB / 32GB / 64GB verities and pre-loaded with Social Hub, Reader’s Hub, Music Hub and Samsung Mini Apps Tray – which gives you access to more commonly used apps to help ease multitasking and it is capable of Adobe Flash Player 10.2, powered by 6860mAh battery that gives you 10hours of video-playback time.&amp;nbsp;äö&lt;/p&gt;\r\n', '', 'abc', '', ''),
-(42, 1, 'Apple Cinema 30&quot;', '&lt;p&gt;\r\n	&lt;font face=&quot;helvetica,geneva,arial&quot; size=&quot;2&quot;&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there&amp;#39;s no limit to what you can achieve. &lt;br /&gt;\r\n	&lt;br /&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it&amp;#39;s designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data. &lt;br /&gt;\r\n	&lt;br /&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple&amp;#39;s ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications. &lt;br /&gt;\r\n	&lt;br /&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment. &lt;br /&gt;\r\n	&lt;br /&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.&lt;br /&gt;\r\n	&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;\r\n&lt;h3&gt;\r\n	Features:&lt;/h3&gt;\r\n&lt;p&gt;\r\n	Unrivaled display performance&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for 2560-by-1600 pixel resolution for display of high definition still and video imagery.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Wide-format design for simultaneous display of two full pages of text and graphics.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Industry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Incredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Lightning-fast pixel response for full-motion digital video playback.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for 16.7 million saturated colors, for use in all graphics-intensive applications.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Simple setup and operation&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Single cable with elegant breakout for connection to DVI, USB and FireWire ports&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Built-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Two FireWire 400 ports to support iSight and other desktop peripherals&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Sleek, elegant design&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Huge virtual workspace, very small footprint.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Narrow Bezel design to minimize visual impact of using dual displays&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Unique hinge design for effortless adjustment&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;h3&gt;\r\n	Technical specifications&lt;/h3&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen size (diagonal viewable image size)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Apple Cinema HD Display: 30 inches (29.7-inch viewable)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen type&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Thin film transistor (TFT) active-matrix liquid crystal display (AMLCD)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Resolutions&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		2560 x 1600 pixels (optimum resolution)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		2048 x 1280&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1920 x 1200&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1280 x 800&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1024 x 640&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Display colors (maximum)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		16.7 million&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Viewing angle (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		170&amp;deg; horizontal; 170&amp;deg; vertical&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Brightness (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch Cinema HD Display: 400 cd/m2&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Contrast ratio (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		700:1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Response time (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		16 ms&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Pixel pitch&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch Cinema HD Display: 0.250 mm&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen treatment&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Antiglare hardcoat&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;User controls (hardware and software)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Display Power,&lt;/li&gt;\r\n	&lt;li&gt;\r\n		System sleep, wake&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Brightness&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Monitor tilt&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Connectors and cables&lt;/b&gt;&lt;br /&gt;\r\n	Cable&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		DVI (Digital Visual Interface)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		FireWire 400&lt;/li&gt;\r\n	&lt;li&gt;\r\n		USB 2.0&lt;/li&gt;\r\n	&lt;li&gt;\r\n		DC power (24 V)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Connectors&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Two-port, self-powered USB 2.0 hub&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Two FireWire 400 ports&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Kensington security port&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;VESA mount adapter&lt;/b&gt;&lt;br /&gt;\r\n	Requires optional Cinema Display VESA Mount Adapter (M9649G/A)&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Compatible with VESA FDMI (MIS-D, 100, C) compliant mounting solutions&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Electrical requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Input voltage: 100-240 VAC 50-60Hz&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Maximum power when operating: 150W&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Energy saver mode: 3W or less&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Environmental requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Operating temperature: 50&amp;deg; to 95&amp;deg; F (10&amp;deg; to 35&amp;deg; C)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Storage temperature: -40&amp;deg; to 116&amp;deg; F (-40&amp;deg; to 47&amp;deg; C)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Operating humidity: 20% to 80% noncondensing&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Maximum operating altitude: 10,000 feet&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Agency approvals&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		FCC Part 15 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN55022 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN55024&lt;/li&gt;\r\n	&lt;li&gt;\r\n		VCCI Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		AS/NZS 3548 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		CNS 13438 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ICES-003 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ISO 13406 part 2&lt;/li&gt;\r\n	&lt;li&gt;\r\n		MPR II&lt;/li&gt;\r\n	&lt;li&gt;\r\n		IEC 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		UL 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		CSA 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ENERGY STAR&lt;/li&gt;\r\n	&lt;li&gt;\r\n		TCO &amp;#39;03&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Size and weight&lt;/b&gt;&lt;br /&gt;\r\n	30-inch Apple Cinema HD Display&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Height: 21.3 inches (54.3 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Width: 27.2 inches (68.8 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Depth: 8.46 inches (21.5 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Weight: 27.5 pounds (12.5 kg)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;System Requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Mac Pro, all graphic options&lt;/li&gt;\r\n	&lt;li&gt;\r\n		MacBook Pro&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Power Mac G5 (PCI-X) with ATI Radeon 9650 or better or NVIDIA GeForce 6800 GT DDL or better&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Power Mac G5 (PCI Express), all graphics options&lt;/li&gt;\r\n	&lt;li&gt;\r\n		PowerBook G4 with dual-link DVI support&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Windows PC and graphics card that supports DVI ports with dual-link digital bandwidth and VESA DDC standard for plug-and-play setup&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '', '', '', ''),
-(30, 1, 'Canon EOS 5D', '&lt;p&gt;\r\n	Canon''s press material for the EOS 5D states that it ''defines (a) new D-SLR category'', while we''re not typically too concerned with marketing talk this particular statement is clearly pretty accurate. The EOS 5D is unlike any previous digital SLR in that it combines a full-frame (35 mm sized) high resolution sensor (12.8 megapixels) with a relatively compact body (slightly larger than the EOS 20D, although in your hand it feels noticeably ''chunkier''). The EOS 5D is aimed to slot in between the EOS 20D and the EOS-1D professional digital SLR''s, an important difference when compared to the latter is that the EOS 5D doesn''t have any environmental seals. While Canon don''t specifically refer to the EOS 5D as a ''professional'' digital SLR it will have obvious appeal to professionals who want a high quality digital SLR in a body lighter than the EOS-1D. It will also no doubt appeal to current EOS 20D owners (although lets hope they''ve not bought too many EF-S lenses...) äë&lt;/p&gt;\r\n', '', 'Canon EOS 5D', 'Lorem ipsum dolor sit amet, at duo ipsum nulla, pro omittam temporibus eu. Ut aperiam neglegentur his. Vitae ignota has et, ea sit nobis dicant. Ne soleat fierent per, falli democritum ea eam. Aliquam molestiae nam ne, per cibo suscipit ut, duo admodum su', '');
+(30, 1, 'Canon EOS 5D', '&lt;p&gt;\r\n	Canon''s press material for the EOS 5D states that it ''defines (a) new D-SLR category'', while we''re not typically too concerned with marketing talk this particular statement is clearly pretty accurate. The EOS 5D is unlike any previous digital SLR in that it combines a full-frame (35 mm sized) high resolution sensor (12.8 megapixels) with a relatively compact body (slightly larger than the EOS 20D, although in your hand it feels noticeably ''chunkier''). The EOS 5D is aimed to slot in between the EOS 20D and the EOS-1D professional digital SLR''s, an important difference when compared to the latter is that the EOS 5D doesn''t have any environmental seals. While Canon don''t specifically refer to the EOS 5D as a ''professional'' digital SLR it will have obvious appeal to professionals who want a high quality digital SLR in a body lighter than the EOS-1D. It will also no doubt appeal to current EOS 20D owners (although lets hope they''ve not bought too many EF-S lenses...) äë&lt;/p&gt;\r\n', '', 'Canon EOS 5D', 'Lorem ipsum dolor sit amet, at duo ipsum nulla, pro omittam temporibus eu. Ut aperiam neglegentur his. Vitae ignota has et, ea sit nobis dicant. Ne soleat fierent per, falli democritum ea eam. Aliquam molestiae nam ne, per cibo suscipit ut, duo admodum su', ''),
+(42, 1, 'Apple Cinema 30&quot;', '&lt;p&gt;\r\n	&lt;font face=&quot;helvetica,geneva,arial&quot; size=&quot;2&quot;&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there&amp;#39;s no limit to what you can achieve. &lt;br /&gt;\r\n	&lt;br /&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it&amp;#39;s designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data. &lt;br /&gt;\r\n	&lt;br /&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple&amp;#39;s ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications. &lt;br /&gt;\r\n	&lt;br /&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment. &lt;br /&gt;\r\n	&lt;br /&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.&lt;br /&gt;\r\n	&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;\r\n&lt;h3&gt;\r\n	Features:&lt;/h3&gt;\r\n&lt;p&gt;\r\n	Unrivaled display performance&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for 2560-by-1600 pixel resolution for display of high definition still and video imagery.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Wide-format design for simultaneous display of two full pages of text and graphics.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Industry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Incredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Lightning-fast pixel response for full-motion digital video playback.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for 16.7 million saturated colors, for use in all graphics-intensive applications.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Simple setup and operation&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Single cable with elegant breakout for connection to DVI, USB and FireWire ports&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Built-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Two FireWire 400 ports to support iSight and other desktop peripherals&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Sleek, elegant design&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Huge virtual workspace, very small footprint.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Narrow Bezel design to minimize visual impact of using dual displays&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Unique hinge design for effortless adjustment&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;h3&gt;\r\n	Technical specifications&lt;/h3&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen size (diagonal viewable image size)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Apple Cinema HD Display: 30 inches (29.7-inch viewable)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen type&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Thin film transistor (TFT) active-matrix liquid crystal display (AMLCD)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Resolutions&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		2560 x 1600 pixels (optimum resolution)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		2048 x 1280&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1920 x 1200&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1280 x 800&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1024 x 640&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Display colors (maximum)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		16.7 million&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Viewing angle (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		170&amp;deg; horizontal; 170&amp;deg; vertical&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Brightness (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch Cinema HD Display: 400 cd/m2&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Contrast ratio (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		700:1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Response time (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		16 ms&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Pixel pitch&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch Cinema HD Display: 0.250 mm&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen treatment&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Antiglare hardcoat&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;User controls (hardware and software)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Display Power,&lt;/li&gt;\r\n	&lt;li&gt;\r\n		System sleep, wake&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Brightness&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Monitor tilt&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Connectors and cables&lt;/b&gt;&lt;br /&gt;\r\n	Cable&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		DVI (Digital Visual Interface)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		FireWire 400&lt;/li&gt;\r\n	&lt;li&gt;\r\n		USB 2.0&lt;/li&gt;\r\n	&lt;li&gt;\r\n		DC power (24 V)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Connectors&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Two-port, self-powered USB 2.0 hub&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Two FireWire 400 ports&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Kensington security port&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;VESA mount adapter&lt;/b&gt;&lt;br /&gt;\r\n	Requires optional Cinema Display VESA Mount Adapter (M9649G/A)&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Compatible with VESA FDMI (MIS-D, 100, C) compliant mounting solutions&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Electrical requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Input voltage: 100-240 VAC 50-60Hz&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Maximum power when operating: 150W&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Energy saver mode: 3W or less&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Environmental requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Operating temperature: 50&amp;deg; to 95&amp;deg; F (10&amp;deg; to 35&amp;deg; C)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Storage temperature: -40&amp;deg; to 116&amp;deg; F (-40&amp;deg; to 47&amp;deg; C)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Operating humidity: 20% to 80% noncondensing&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Maximum operating altitude: 10,000 feet&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Agency approvals&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		FCC Part 15 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN55022 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN55024&lt;/li&gt;\r\n	&lt;li&gt;\r\n		VCCI Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		AS/NZS 3548 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		CNS 13438 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ICES-003 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ISO 13406 part 2&lt;/li&gt;\r\n	&lt;li&gt;\r\n		MPR II&lt;/li&gt;\r\n	&lt;li&gt;\r\n		IEC 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		UL 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		CSA 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ENERGY STAR&lt;/li&gt;\r\n	&lt;li&gt;\r\n		TCO &amp;#39;03&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Size and weight&lt;/b&gt;&lt;br /&gt;\r\n	30-inch Apple Cinema HD Display&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Height: 21.3 inches (54.3 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Width: 27.2 inches (68.8 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Depth: 8.46 inches (21.5 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Weight: 27.5 pounds (12.5 kg)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;System Requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Mac Pro, all graphic options&lt;/li&gt;\r\n	&lt;li&gt;\r\n		MacBook Pro&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Power Mac G5 (PCI-X) with ATI Radeon 9650 or better or NVIDIA GeForce 6800 GT DDL or better&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Power Mac G5 (PCI Express), all graphics options&lt;/li&gt;\r\n	&lt;li&gt;\r\n		PowerBook G4 with dual-link DVI support&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Windows PC and graphics card that supports DVI ports with dual-link digital bandwidth and VESA DDC standard for plug-and-play setup&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -3551,14 +3619,14 @@ CREATE TABLE IF NOT EXISTS `product_image` (
   `sort_order` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_image_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2374 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2378 ;
 
 --
 -- Dumping data for table `product_image`
 --
 
 INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_order`) VALUES
-(2373, 30, 'catalog/products/p (17).jpg', 0),
+(2377, 30, 'catalog/products/p (13).jpg', 0),
 (2321, 47, 'catalog/demo/hp_3.jpg', 0),
 (2035, 28, 'catalog/demo/htc_touch_hd_2.jpg', 0),
 (2351, 41, 'catalog/demo/imac_3.jpg', 0),
@@ -3585,7 +3653,7 @@ INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_or
 (1990, 48, 'catalog/demo/ipod_classic_3.jpg', 0),
 (1981, 40, 'catalog/demo/iphone_2.jpg', 0),
 (1980, 40, 'catalog/demo/iphone_5.jpg', 0),
-(2372, 30, 'catalog/products/p (15).jpg', 0),
+(2376, 30, 'catalog/products/p (12).jpg', 0),
 (2320, 47, 'catalog/demo/hp_2.jpg', 0),
 (2034, 28, 'catalog/demo/htc_touch_hd_3.jpg', 0),
 (2350, 41, 'catalog/demo/imac_2.jpg', 0),
@@ -3619,8 +3687,8 @@ INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_or
 (2315, 42, 'catalog/demo/compaq_presario.jpg', 0),
 (2314, 42, 'catalog/demo/canon_eos_5d_1.jpg', 0),
 (2313, 42, 'catalog/demo/canon_eos_5d_2.jpg', 0),
-(2371, 30, 'catalog/products/p (12).jpg', 0),
-(2370, 30, 'catalog/products/p (13).jpg', 0);
+(2375, 30, 'catalog/products/p (15).jpg', 0),
+(2374, 30, 'catalog/products/p (17).jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -3652,8 +3720,7 @@ INSERT INTO `product_option` (`product_option_id`, `product_id`, `option_id`, `v
 (219, 42, 8, '2011-02-20', 1),
 (222, 42, 7, '', 1),
 (221, 42, 9, '22:25', 1),
-(220, 42, 10, '2011-02-20 22:25', 1),
-(226, 30, 5, '', 1);
+(220, 42, 10, '2011-02-20 22:25', 1);
 
 -- --------------------------------------------------------
 
@@ -3696,9 +3763,7 @@ INSERT INTO `product_option_value` (`product_option_value_id`, `product_option_i
 (11, 223, 42, 2, 45, 3998, 1, 40.0000, '+', 0, '+', 40.00000000, '+'),
 (12, 224, 35, 11, 46, 0, 1, 5.0000, '+', 0, '+', 0.00000000, '+'),
 (13, 224, 35, 11, 47, 10, 1, 10.0000, '+', 0, '+', 0.00000000, '+'),
-(14, 224, 35, 11, 48, 15, 1, 15.0000, '+', 0, '+', 0.00000000, '+'),
-(15, 226, 30, 5, 39, 2, 1, 0.0000, '+', 0, '+', 0.00000000, '+'),
-(16, 226, 30, 5, 40, 5, 1, 0.0000, '+', 0, '+', 0.00000000, '+');
+(14, 224, 35, 11, 48, 15, 1, 15.0000, '+', 0, '+', 0.00000000, '+');
 
 -- --------------------------------------------------------
 
@@ -3752,7 +3817,7 @@ CREATE TABLE IF NOT EXISTS `product_reward` (
   `customer_group_id` int(11) NOT NULL DEFAULT '0',
   `points` int(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_reward_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=551 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=552 ;
 
 --
 -- Dumping data for table `product_reward`
@@ -3766,7 +3831,7 @@ INSERT INTO `product_reward` (`product_reward_id`, `product_id`, `customer_group
 (339, 29, 1, 0),
 (343, 48, 1, 0),
 (335, 40, 1, 0),
-(550, 30, 1, 200),
+(551, 30, 1, 200),
 (331, 44, 1, 700),
 (333, 45, 1, 800),
 (337, 31, 1, 0),
@@ -3795,7 +3860,7 @@ CREATE TABLE IF NOT EXISTS `product_special` (
   `date_end` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`product_special_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=446 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=448 ;
 
 --
 -- Dumping data for table `product_special`
@@ -3803,8 +3868,8 @@ CREATE TABLE IF NOT EXISTS `product_special` (
 
 INSERT INTO `product_special` (`product_special_id`, `product_id`, `customer_group_id`, `priority`, `price`, `date_start`, `date_end`) VALUES
 (419, 42, 1, 1, 90.0000, '0000-00-00', '0000-00-00'),
-(445, 30, 1, 2, 90.0000, '0000-00-00', '0000-00-00'),
-(444, 30, 1, 1, 80.0000, '0000-00-00', '0000-00-00');
+(447, 30, 1, 2, 90.0000, '0000-00-00', '0000-00-00'),
+(446, 30, 1, 1, 80.0000, '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -4104,7 +4169,7 @@ CREATE TABLE IF NOT EXISTS `setting` (
   `value` text NOT NULL,
   `serialized` tinyint(1) NOT NULL,
   PRIMARY KEY (`setting_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=726 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=947 ;
 
 --
 -- Dumping data for table `setting`
@@ -4139,121 +4204,121 @@ INSERT INTO `setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `serial
 (54, 0, 'reward', 'reward_status', '1', 0),
 (146, 0, 'category', 'category_status', '1', 0),
 (158, 0, 'account', 'account_status', '1', 0),
-(159, 0, 'affiliate', 'affiliate_status', '1', 0),
-(714, 0, 'config', 'config_seo_url', '1', 0),
-(715, 0, 'config', 'config_file_max_size', '300000', 0),
-(716, 0, 'config', 'config_file_ext_allowed', 'txt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc\r\nrtf\r\nxls\r\nppt\r\nodt\r\nods', 0),
-(721, 0, 'config', 'config_compression', '0', 0),
-(718, 0, 'config', 'config_maintenance', '0', 0),
-(719, 0, 'config', 'config_password', '1', 0),
-(720, 0, 'config', 'config_encryption', '607e8718e2fa64f322b08bd0ea9d0d36', 0),
-(717, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/vnd.microsoft.icon\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\napplication/x-rar-compressed\r\napplication/x-msdownload\r\napplication/vnd.ms-cab-compressed\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf\r\nimage/vnd.adobe.photoshop\r\napplication/postscript\r\napplication/msword\r\napplication/rtf\r\napplication/vnd.ms-excel\r\napplication/vnd.ms-powerpoint\r\napplication/vnd.oasis.opendocument.text\r\napplication/vnd.oasis.opendocument.spreadsheet', 0),
+(726, 0, 'affiliate', 'affiliate_status', '0', 0),
+(943, 0, 'config', 'config_error_display', '1', 0),
+(942, 0, 'config', 'config_compression', '0', 0),
+(935, 0, 'config', 'config_seo_url', '1', 0),
+(936, 0, 'config', 'config_file_max_size', '300000', 0),
+(937, 0, 'config', 'config_file_ext_allowed', 'txt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc\r\nrtf\r\nxls\r\nppt\r\nodt\r\nods', 0),
+(938, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/vnd.microsoft.icon\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\napplication/x-rar-compressed\r\napplication/x-msdownload\r\napplication/vnd.ms-cab-compressed\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf\r\nimage/vnd.adobe.photoshop\r\napplication/postscript\r\napplication/msword\r\napplication/rtf\r\napplication/vnd.ms-excel\r\napplication/vnd.ms-powerpoint\r\napplication/vnd.oasis.opendocument.text\r\napplication/vnd.oasis.opendocument.spreadsheet', 0),
+(939, 0, 'config', 'config_maintenance', '0', 0),
+(940, 0, 'config', 'config_password', '1', 0),
+(941, 0, 'config', 'config_encryption', '607e8718e2fa64f322b08bd0ea9d0d36', 0),
+(931, 0, 'config', 'config_fraud_status_id', '7', 0),
+(932, 0, 'config', 'config_secure', '0', 0),
+(933, 0, 'config', 'config_shared', '0', 0),
+(934, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
 (94, 0, 'voucher', 'voucher_sort_order', '8', 0),
 (95, 0, 'voucher', 'voucher_status', '1', 0),
 (103, 0, 'free_checkout', 'free_checkout_status', '1', 0),
 (104, 0, 'free_checkout', 'free_checkout_order_status_id', '1', 0),
-(710, 0, 'config', 'config_fraud_status_id', '7', 0),
-(711, 0, 'config', 'config_secure', '0', 0),
-(712, 0, 'config', 'config_shared', '0', 0),
-(713, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(709, 0, 'config', 'config_fraud_score', '', 0),
-(708, 0, 'config', 'config_fraud_key', '', 0),
-(707, 0, 'config', 'config_fraud_detection', '0', 0),
-(706, 0, 'config', 'config_mail_alert', '', 0),
-(705, 0, 'config', 'config_mail', 'a:7:{s:8:"protocol";s:4:"mail";s:9:"parameter";s:0:"";s:13:"smtp_hostname";s:0:"";s:13:"smtp_username";s:0:"";s:13:"smtp_password";s:0:"";s:9:"smtp_port";s:0:"";s:12:"smtp_timeout";s:0:"";}', 1),
-(702, 0, 'config', 'config_ftp_password', '', 0),
-(703, 0, 'config', 'config_ftp_root', '', 0),
-(704, 0, 'config', 'config_ftp_status', '0', 0),
-(701, 0, 'config', 'config_ftp_username', '', 0),
-(700, 0, 'config', 'config_ftp_port', '21', 0),
-(699, 0, 'config', 'config_ftp_hostname', 'localhost', 0),
-(698, 0, 'config', 'config_image_location_height', '50', 0),
-(697, 0, 'config', 'config_image_location_width', '268', 0),
-(696, 0, 'config', 'config_image_cart_height', '47', 0),
-(695, 0, 'config', 'config_image_cart_width', '47', 0),
-(694, 0, 'config', 'config_image_wishlist_height', '47', 0),
-(693, 0, 'config', 'config_image_wishlist_width', '47', 0),
-(692, 0, 'config', 'config_image_compare_height', '90', 0),
-(691, 0, 'config', 'config_image_compare_width', '90', 0),
-(690, 0, 'config', 'config_image_related_height', '170', 0),
-(689, 0, 'config', 'config_image_related_width', '170', 0),
-(688, 0, 'config', 'config_image_additional_height', '74', 0),
-(687, 0, 'config', 'config_image_additional_width', '74', 0),
-(686, 0, 'config', 'config_image_product_height', '170', 0),
-(685, 0, 'config', 'config_image_product_width', '170', 0),
-(683, 0, 'config', 'config_image_popup_width', '500', 0),
-(684, 0, 'config', 'config_image_popup_height', '500', 0),
-(682, 0, 'config', 'config_image_thumb_height', '228', 0),
-(681, 0, 'config', 'config_image_thumb_width', '228', 0),
-(680, 0, 'config', 'config_image_category_height', '170', 0),
-(679, 0, 'config', 'config_image_category_width', '170', 0),
-(678, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
-(677, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
-(675, 0, 'config', 'config_return_id', '0', 0),
-(676, 0, 'config', 'config_return_status_id', '2', 0),
-(674, 0, 'config', 'config_affiliate_mail', '0', 0),
-(671, 0, 'config', 'config_affiliate_auto', '0', 0),
-(672, 0, 'config', 'config_affiliate_commission', '5', 0),
-(673, 0, 'config', 'config_affiliate_id', '4', 0),
-(670, 0, 'config', 'config_affiliate_approval', '0', 0),
-(669, 0, 'config', 'config_stock_checkout', '0', 0),
-(668, 0, 'config', 'config_stock_warning', '0', 0),
-(667, 0, 'config', 'config_stock_display', '0', 0),
-(666, 0, 'config', 'config_order_mail', '0', 0),
-(665, 0, 'config', 'config_complete_status', 'a:1:{i:0;s:1:"5";}', 1),
-(663, 0, 'config', 'config_order_status_id', '1', 0),
-(664, 0, 'config', 'config_processing_status', 'a:1:{i:0;s:1:"2";}', 1),
-(662, 0, 'config', 'config_checkout_id', '5', 0),
-(661, 0, 'config', 'config_checkout_guest', '1', 0),
-(660, 0, 'config', 'config_cart_weight', '1', 0),
-(659, 0, 'config', 'config_api_id', '1', 0),
-(658, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
-(657, 0, 'config', 'config_account_mail', '0', 0),
-(656, 0, 'config', 'config_account_id', '3', 0),
-(655, 0, 'config', 'config_login_attempts', '5', 0),
-(647, 0, 'config', 'config_voucher_max', '1000', 0),
-(648, 0, 'config', 'config_tax', '1', 0),
-(649, 0, 'config', 'config_tax_default', 'shipping', 0),
-(650, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(651, 0, 'config', 'config_customer_online', '0', 0),
-(652, 0, 'config', 'config_customer_group_id', '1', 0),
-(653, 0, 'config', 'config_customer_group_display', 'a:1:{i:0;s:1:"1";}', 1),
-(654, 0, 'config', 'config_customer_price', '0', 0),
-(646, 0, 'config', 'config_voucher_min', '1', 0),
-(642, 0, 'config', 'config_limit_admin', '20', 0),
-(643, 0, 'config', 'config_review_status', '1', 0),
-(644, 0, 'config', 'config_review_guest', '1', 0),
-(645, 0, 'config', 'config_review_mail', '0', 0),
-(641, 0, 'config', 'config_product_description_length', '100', 0),
-(640, 0, 'config', 'config_product_limit', '15', 0),
-(639, 0, 'config', 'config_product_count', '1', 0),
-(638, 0, 'config', 'config_weight_class_id', '1', 0),
-(637, 0, 'config', 'config_length_class_id', '1', 0),
-(636, 0, 'config', 'config_currency_auto', '1', 0),
-(635, 0, 'config', 'config_currency', 'USD', 0),
-(634, 0, 'config', 'config_admin_language', 'en', 0),
-(633, 0, 'config', 'config_language', 'en', 0),
-(632, 0, 'config', 'config_zone_id', '3563', 0),
-(630, 0, 'config', 'config_layout_id', '4', 0),
-(631, 0, 'config', 'config_country_id', '222', 0),
-(629, 0, 'config', 'config_template', 'default', 0),
-(621, 0, 'config', 'config_telephone', '123456789', 0),
-(622, 0, 'config', 'config_fax', '', 0),
-(623, 0, 'config', 'config_image', '', 0),
-(624, 0, 'config', 'config_open', '', 0),
-(625, 0, 'config', 'config_comment', '', 0),
-(626, 0, 'config', 'config_meta_title', 'Your Store', 0),
-(627, 0, 'config', 'config_meta_description', 'My Store', 0),
-(628, 0, 'config', 'config_meta_keyword', '', 0),
-(620, 0, 'config', 'config_email', 'quangthi_90@yahoo.com.vn', 0),
-(619, 0, 'config', 'config_geocode', '', 0),
-(618, 0, 'config', 'config_address', 'Address 1', 0),
-(617, 0, 'config', 'config_owner', 'Your Name', 0),
-(616, 0, 'config', 'config_name', 'Nấm Linh Chi Nông Lâm - Trường Đại học Nông Lâm TP.HCM', 0),
-(722, 0, 'config', 'config_error_display', '1', 0),
-(723, 0, 'config', 'config_error_log', '1', 0),
-(724, 0, 'config', 'config_error_filename', 'error.log', 0),
-(725, 0, 'config', 'config_google_analytics', '', 0);
+(930, 0, 'config', 'config_fraud_score', '', 0),
+(929, 0, 'config', 'config_fraud_key', '', 0),
+(928, 0, 'config', 'config_fraud_detection', '0', 0),
+(927, 0, 'config', 'config_mail_alert', '', 0),
+(924, 0, 'config', 'config_ftp_root', '', 0),
+(925, 0, 'config', 'config_ftp_status', '0', 0),
+(926, 0, 'config', 'config_mail', 'a:7:{s:8:"protocol";s:4:"mail";s:9:"parameter";s:0:"";s:13:"smtp_hostname";s:0:"";s:13:"smtp_username";s:0:"";s:13:"smtp_password";s:0:"";s:9:"smtp_port";s:0:"";s:12:"smtp_timeout";s:0:"";}', 1),
+(923, 0, 'config', 'config_ftp_password', '', 0),
+(922, 0, 'config', 'config_ftp_username', '', 0),
+(921, 0, 'config', 'config_ftp_port', '21', 0),
+(920, 0, 'config', 'config_ftp_hostname', 'localhost', 0),
+(919, 0, 'config', 'config_image_location_height', '50', 0),
+(918, 0, 'config', 'config_image_location_width', '268', 0),
+(917, 0, 'config', 'config_image_cart_height', '47', 0),
+(916, 0, 'config', 'config_image_cart_width', '47', 0),
+(915, 0, 'config', 'config_image_wishlist_height', '47', 0),
+(914, 0, 'config', 'config_image_wishlist_width', '47', 0),
+(913, 0, 'config', 'config_image_compare_height', '90', 0),
+(912, 0, 'config', 'config_image_compare_width', '90', 0),
+(911, 0, 'config', 'config_image_related_height', '170', 0),
+(910, 0, 'config', 'config_image_related_width', '170', 0),
+(909, 0, 'config', 'config_image_additional_height', '74', 0),
+(908, 0, 'config', 'config_image_additional_width', '74', 0),
+(907, 0, 'config', 'config_image_product_height', '170', 0),
+(902, 0, 'config', 'config_image_thumb_width', '228', 0),
+(903, 0, 'config', 'config_image_thumb_height', '228', 0),
+(904, 0, 'config', 'config_image_popup_width', '500', 0),
+(905, 0, 'config', 'config_image_popup_height', '500', 0),
+(906, 0, 'config', 'config_image_product_width', '170', 0),
+(901, 0, 'config', 'config_image_category_height', '170', 0),
+(900, 0, 'config', 'config_image_category_width', '170', 0),
+(899, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
+(898, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
+(896, 0, 'config', 'config_return_id', '0', 0),
+(897, 0, 'config', 'config_return_status_id', '2', 0),
+(895, 0, 'config', 'config_affiliate_mail', '0', 0),
+(893, 0, 'config', 'config_affiliate_commission', '5', 0),
+(894, 0, 'config', 'config_affiliate_id', '4', 0),
+(892, 0, 'config', 'config_affiliate_auto', '0', 0),
+(891, 0, 'config', 'config_affiliate_approval', '0', 0),
+(890, 0, 'config', 'config_stock_checkout', '0', 0),
+(889, 0, 'config', 'config_stock_warning', '0', 0),
+(888, 0, 'config', 'config_stock_display', '0', 0),
+(887, 0, 'config', 'config_order_mail', '0', 0),
+(886, 0, 'config', 'config_complete_status', 'a:1:{i:0;s:1:"5";}', 1),
+(885, 0, 'config', 'config_processing_status', 'a:1:{i:0;s:1:"2";}', 1),
+(884, 0, 'config', 'config_order_status_id', '1', 0),
+(883, 0, 'config', 'config_checkout_id', '5', 0),
+(882, 0, 'config', 'config_checkout_guest', '1', 0),
+(881, 0, 'config', 'config_cart_weight', '1', 0),
+(880, 0, 'config', 'config_api_id', '1', 0),
+(879, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
+(878, 0, 'config', 'config_account_mail', '0', 0),
+(870, 0, 'config', 'config_tax_default', 'shipping', 0),
+(871, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(872, 0, 'config', 'config_customer_online', '0', 0),
+(873, 0, 'config', 'config_customer_group_id', '1', 0),
+(874, 0, 'config', 'config_customer_group_display', 'a:1:{i:0;s:1:"1";}', 1),
+(877, 0, 'config', 'config_account_id', '3', 0),
+(876, 0, 'config', 'config_login_attempts', '5', 0),
+(875, 0, 'config', 'config_customer_price', '0', 0),
+(869, 0, 'config', 'config_tax', '1', 0),
+(868, 0, 'config', 'config_voucher_max', '1000', 0),
+(867, 0, 'config', 'config_voucher_min', '1', 0),
+(864, 0, 'config', 'config_review_status', '1', 0),
+(866, 0, 'config', 'config_review_mail', '0', 0),
+(865, 0, 'config', 'config_review_guest', '1', 0),
+(863, 0, 'config', 'config_limit_admin', '20', 0),
+(862, 0, 'config', 'config_product_description_length', '100', 0),
+(861, 0, 'config', 'config_product_limit', '15', 0),
+(860, 0, 'config', 'config_product_count', '1', 0),
+(859, 0, 'config', 'config_weight_class_id', '1', 0),
+(858, 0, 'config', 'config_length_class_id', '1', 0),
+(857, 0, 'config', 'config_currency_auto', '1', 0),
+(856, 0, 'config', 'config_currency', 'USD', 0),
+(855, 0, 'config', 'config_admin_language', 'en', 0),
+(854, 0, 'config', 'config_language', 'en', 0),
+(853, 0, 'config', 'config_zone_id', '3563', 0),
+(851, 0, 'config', 'config_layout_id', '4', 0),
+(852, 0, 'config', 'config_country_id', '222', 0),
+(850, 0, 'config', 'config_template', 'default', 0),
+(849, 0, 'config', 'config_meta_keyword', '', 0),
+(848, 0, 'config', 'config_meta_description', 'My Store', 0),
+(847, 0, 'config', 'config_meta_title', 'Your Store', 0),
+(845, 0, 'config', 'config_open', '', 0),
+(846, 0, 'config', 'config_comment', '', 0),
+(843, 0, 'config', 'config_fax', '', 0),
+(844, 0, 'config', 'config_image', '', 0),
+(840, 0, 'config', 'config_geocode', '', 0),
+(841, 0, 'config', 'config_email', 'linhchinonglam@gmail.com', 0),
+(842, 0, 'config', 'config_telephone', '08.668 56 669 - 0934.188.808', 0),
+(838, 0, 'config', 'config_owner', 'Your Name', 0),
+(839, 0, 'config', 'config_address', 'Số 2A5 Đường N1 Trường Đại học Nông Lâm - Khu phố 6 - Phường Linh Trung - Quận Thủ Đức - Tp. HCM', 0),
+(837, 0, 'config', 'config_name', 'Nấm Linh Chi Nông Lâm - Trường Đại học Nông Lâm TP.HCM', 0),
+(944, 0, 'config', 'config_error_log', '1', 0),
+(945, 0, 'config', 'config_error_filename', 'error.log', 0),
+(946, 0, 'config', 'config_google_analytics', '', 0);
 
 -- --------------------------------------------------------
 
@@ -4413,7 +4478,7 @@ CREATE TABLE IF NOT EXISTS `url_alias` (
   PRIMARY KEY (`url_alias_id`),
   KEY `query` (`query`),
   KEY `keyword` (`keyword`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1074 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1075 ;
 
 --
 -- Dumping data for table `url_alias`
@@ -4444,7 +4509,7 @@ INSERT INTO `url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (901, 'news_category_id=4', 'suc-khoe'),
 (900, 'news_category_id=3', 'dai-ly'),
 (899, 'news_category_id=2', 'dich-vu'),
-(1071, 'product_id=30', 'canon-eos-5d'),
+(1074, 'product_id=30', 'canon-eos-5d'),
 (840, 'product_id=47', 'hp-lp3065'),
 (811, 'product_id=28', 'htc-touch-hd'),
 (812, 'product_id=43', 'macbook'),
@@ -4632,7 +4697,7 @@ CREATE TABLE IF NOT EXISTS `user_group` (
 --
 
 INSERT INTO `user_group` (`user_group_id`, `name`, `permission`) VALUES
-(1, 'Administrator', 'a:2:{s:6:"access";a:185:{i:0;s:17:"catalog/attribute";i:1;s:23:"catalog/attribute_group";i:2;s:16:"catalog/category";i:3;s:16:"catalog/download";i:4;s:14:"catalog/filter";i:5;s:19:"catalog/information";i:6;s:20:"catalog/manufacturer";i:7;s:14:"catalog/option";i:8;s:15:"catalog/product";i:9;s:17:"catalog/recurring";i:10;s:14:"catalog/review";i:11;s:18:"common/column_left";i:12;s:18:"common/filemanager";i:13;s:11:"common/menu";i:14;s:14:"common/profile";i:15;s:12:"common/stats";i:16;s:18:"dashboard/activity";i:17;s:15:"dashboard/chart";i:18;s:18:"dashboard/customer";i:19;s:13:"dashboard/map";i:20;s:16:"dashboard/online";i:21;s:15:"dashboard/order";i:22;s:16:"dashboard/recent";i:23;s:14:"dashboard/sale";i:24;s:13:"design/banner";i:25;s:13:"design/layout";i:26;s:14:"extension/feed";i:27;s:19:"extension/installer";i:28;s:22:"extension/modification";i:29;s:16:"extension/module";i:30;s:17:"extension/openbay";i:31;s:17:"extension/payment";i:32;s:18:"extension/shipping";i:33;s:15:"extension/total";i:34;s:16:"feed/google_base";i:35;s:19:"feed/google_sitemap";i:36;s:15:"feed/openbaypro";i:37;s:20:"localisation/country";i:38;s:21:"localisation/currency";i:39;s:21:"localisation/geo_zone";i:40;s:21:"localisation/language";i:41;s:25:"localisation/length_class";i:42;s:21:"localisation/location";i:43;s:25:"localisation/order_status";i:44;s:26:"localisation/return_action";i:45;s:26:"localisation/return_reason";i:46;s:26:"localisation/return_status";i:47;s:25:"localisation/stock_status";i:48;s:22:"localisation/tax_class";i:49;s:21:"localisation/tax_rate";i:50;s:25:"localisation/weight_class";i:51;s:17:"localisation/zone";i:52;s:19:"marketing/affiliate";i:53;s:17:"marketing/contact";i:54;s:16:"marketing/coupon";i:55;s:19:"marketing/marketing";i:56;s:14:"module/account";i:57;s:16:"module/affiliate";i:58;s:20:"module/amazon_button";i:59;s:13:"module/banner";i:60;s:17:"module/bestseller";i:61;s:15:"module/carousel";i:62;s:15:"module/category";i:63;s:19:"module/ebay_listing";i:64;s:15:"module/featured";i:65;s:13:"module/filter";i:66;s:22:"module/google_hangouts";i:67;s:11:"module/html";i:68;s:18:"module/information";i:69;s:13:"module/latest";i:70;s:16:"module/pp_button";i:71;s:15:"module/pp_login";i:72;s:16:"module/slideshow";i:73;s:14:"module/special";i:74;s:12:"module/store";i:75;s:12:"news/article";i:76;s:13:"news/category";i:77;s:12:"news/comment";i:78;s:12:"news/setting";i:79;s:14:"openbay/amazon";i:80;s:22:"openbay/amazon_listing";i:81;s:22:"openbay/amazon_product";i:82;s:16:"openbay/amazonus";i:83;s:24:"openbay/amazonus_listing";i:84;s:24:"openbay/amazonus_product";i:85;s:12:"openbay/ebay";i:86;s:20:"openbay/ebay_profile";i:87;s:21:"openbay/ebay_template";i:88;s:12:"openbay/etsy";i:89;s:20:"openbay/etsy_product";i:90;s:21:"openbay/etsy_shipping";i:91;s:17:"openbay/etsy_shop";i:92;s:23:"payment/amazon_checkout";i:93;s:24:"payment/authorizenet_aim";i:94;s:24:"payment/authorizenet_sim";i:95;s:21:"payment/bank_transfer";i:96;s:22:"payment/bluepay_hosted";i:97;s:24:"payment/bluepay_redirect";i:98;s:14:"payment/cheque";i:99;s:11:"payment/cod";i:100;s:17:"payment/firstdata";i:101;s:24:"payment/firstdata_remote";i:102;s:21:"payment/free_checkout";i:103;s:22:"payment/klarna_account";i:104;s:22:"payment/klarna_invoice";i:105;s:14:"payment/liqpay";i:106;s:14:"payment/nochex";i:107;s:15:"payment/paymate";i:108;s:16:"payment/paypoint";i:109;s:13:"payment/payza";i:110;s:26:"payment/perpetual_payments";i:111;s:18:"payment/pp_express";i:112;s:18:"payment/pp_payflow";i:113;s:25:"payment/pp_payflow_iframe";i:114;s:14:"payment/pp_pro";i:115;s:21:"payment/pp_pro_iframe";i:116;s:19:"payment/pp_standard";i:117;s:14:"payment/realex";i:118;s:21:"payment/realex_remote";i:119;s:22:"payment/sagepay_direct";i:120;s:22:"payment/sagepay_server";i:121;s:18:"payment/sagepay_us";i:122;s:24:"payment/securetrading_pp";i:123;s:24:"payment/securetrading_ws";i:124;s:14:"payment/skrill";i:125;s:19:"payment/twocheckout";i:126;s:28:"payment/web_payment_software";i:127;s:16:"payment/worldpay";i:128;s:16:"report/affiliate";i:129;s:25:"report/affiliate_activity";i:130;s:22:"report/affiliate_login";i:131;s:24:"report/customer_activity";i:132;s:22:"report/customer_credit";i:133;s:21:"report/customer_login";i:134;s:22:"report/customer_online";i:135;s:21:"report/customer_order";i:136;s:22:"report/customer_reward";i:137;s:16:"report/marketing";i:138;s:24:"report/product_purchased";i:139;s:21:"report/product_viewed";i:140;s:18:"report/sale_coupon";i:141;s:17:"report/sale_order";i:142;s:18:"report/sale_return";i:143;s:20:"report/sale_shipping";i:144;s:15:"report/sale_tax";i:145;s:17:"sale/custom_field";i:146;s:13:"sale/customer";i:147;s:20:"sale/customer_ban_ip";i:148;s:19:"sale/customer_group";i:149;s:10:"sale/order";i:150;s:14:"sale/recurring";i:151;s:11:"sale/return";i:152;s:12:"sale/voucher";i:153;s:18:"sale/voucher_theme";i:154;s:15:"setting/setting";i:155;s:13:"setting/store";i:156;s:16:"shipping/auspost";i:157;s:17:"shipping/citylink";i:158;s:14:"shipping/fedex";i:159;s:13:"shipping/flat";i:160;s:13:"shipping/free";i:161;s:13:"shipping/item";i:162;s:23:"shipping/parcelforce_48";i:163;s:15:"shipping/pickup";i:164;s:19:"shipping/royal_mail";i:165;s:12:"shipping/ups";i:166;s:13:"shipping/usps";i:167;s:15:"shipping/weight";i:168;s:11:"tool/backup";i:169;s:14:"tool/error_log";i:170;s:11:"tool/upload";i:171;s:12:"total/coupon";i:172;s:12:"total/credit";i:173;s:14:"total/handling";i:174;s:16:"total/klarna_fee";i:175;s:19:"total/low_order_fee";i:176;s:12:"total/reward";i:177;s:14:"total/shipping";i:178;s:15:"total/sub_total";i:179;s:9:"total/tax";i:180;s:11:"total/total";i:181;s:13:"total/voucher";i:182;s:8:"user/api";i:183;s:9:"user/user";i:184;s:20:"user/user_permission";}s:6:"modify";a:185:{i:0;s:17:"catalog/attribute";i:1;s:23:"catalog/attribute_group";i:2;s:16:"catalog/category";i:3;s:16:"catalog/download";i:4;s:14:"catalog/filter";i:5;s:19:"catalog/information";i:6;s:20:"catalog/manufacturer";i:7;s:14:"catalog/option";i:8;s:15:"catalog/product";i:9;s:17:"catalog/recurring";i:10;s:14:"catalog/review";i:11;s:18:"common/column_left";i:12;s:18:"common/filemanager";i:13;s:11:"common/menu";i:14;s:14:"common/profile";i:15;s:12:"common/stats";i:16;s:18:"dashboard/activity";i:17;s:15:"dashboard/chart";i:18;s:18:"dashboard/customer";i:19;s:13:"dashboard/map";i:20;s:16:"dashboard/online";i:21;s:15:"dashboard/order";i:22;s:16:"dashboard/recent";i:23;s:14:"dashboard/sale";i:24;s:13:"design/banner";i:25;s:13:"design/layout";i:26;s:14:"extension/feed";i:27;s:19:"extension/installer";i:28;s:22:"extension/modification";i:29;s:16:"extension/module";i:30;s:17:"extension/openbay";i:31;s:17:"extension/payment";i:32;s:18:"extension/shipping";i:33;s:15:"extension/total";i:34;s:16:"feed/google_base";i:35;s:19:"feed/google_sitemap";i:36;s:15:"feed/openbaypro";i:37;s:20:"localisation/country";i:38;s:21:"localisation/currency";i:39;s:21:"localisation/geo_zone";i:40;s:21:"localisation/language";i:41;s:25:"localisation/length_class";i:42;s:21:"localisation/location";i:43;s:25:"localisation/order_status";i:44;s:26:"localisation/return_action";i:45;s:26:"localisation/return_reason";i:46;s:26:"localisation/return_status";i:47;s:25:"localisation/stock_status";i:48;s:22:"localisation/tax_class";i:49;s:21:"localisation/tax_rate";i:50;s:25:"localisation/weight_class";i:51;s:17:"localisation/zone";i:52;s:19:"marketing/affiliate";i:53;s:17:"marketing/contact";i:54;s:16:"marketing/coupon";i:55;s:19:"marketing/marketing";i:56;s:14:"module/account";i:57;s:16:"module/affiliate";i:58;s:20:"module/amazon_button";i:59;s:13:"module/banner";i:60;s:17:"module/bestseller";i:61;s:15:"module/carousel";i:62;s:15:"module/category";i:63;s:19:"module/ebay_listing";i:64;s:15:"module/featured";i:65;s:13:"module/filter";i:66;s:22:"module/google_hangouts";i:67;s:11:"module/html";i:68;s:18:"module/information";i:69;s:13:"module/latest";i:70;s:16:"module/pp_button";i:71;s:15:"module/pp_login";i:72;s:16:"module/slideshow";i:73;s:14:"module/special";i:74;s:12:"module/store";i:75;s:12:"news/article";i:76;s:13:"news/category";i:77;s:12:"news/comment";i:78;s:12:"news/setting";i:79;s:14:"openbay/amazon";i:80;s:22:"openbay/amazon_listing";i:81;s:22:"openbay/amazon_product";i:82;s:16:"openbay/amazonus";i:83;s:24:"openbay/amazonus_listing";i:84;s:24:"openbay/amazonus_product";i:85;s:12:"openbay/ebay";i:86;s:20:"openbay/ebay_profile";i:87;s:21:"openbay/ebay_template";i:88;s:12:"openbay/etsy";i:89;s:20:"openbay/etsy_product";i:90;s:21:"openbay/etsy_shipping";i:91;s:17:"openbay/etsy_shop";i:92;s:23:"payment/amazon_checkout";i:93;s:24:"payment/authorizenet_aim";i:94;s:24:"payment/authorizenet_sim";i:95;s:21:"payment/bank_transfer";i:96;s:22:"payment/bluepay_hosted";i:97;s:24:"payment/bluepay_redirect";i:98;s:14:"payment/cheque";i:99;s:11:"payment/cod";i:100;s:17:"payment/firstdata";i:101;s:24:"payment/firstdata_remote";i:102;s:21:"payment/free_checkout";i:103;s:22:"payment/klarna_account";i:104;s:22:"payment/klarna_invoice";i:105;s:14:"payment/liqpay";i:106;s:14:"payment/nochex";i:107;s:15:"payment/paymate";i:108;s:16:"payment/paypoint";i:109;s:13:"payment/payza";i:110;s:26:"payment/perpetual_payments";i:111;s:18:"payment/pp_express";i:112;s:18:"payment/pp_payflow";i:113;s:25:"payment/pp_payflow_iframe";i:114;s:14:"payment/pp_pro";i:115;s:21:"payment/pp_pro_iframe";i:116;s:19:"payment/pp_standard";i:117;s:14:"payment/realex";i:118;s:21:"payment/realex_remote";i:119;s:22:"payment/sagepay_direct";i:120;s:22:"payment/sagepay_server";i:121;s:18:"payment/sagepay_us";i:122;s:24:"payment/securetrading_pp";i:123;s:24:"payment/securetrading_ws";i:124;s:14:"payment/skrill";i:125;s:19:"payment/twocheckout";i:126;s:28:"payment/web_payment_software";i:127;s:16:"payment/worldpay";i:128;s:16:"report/affiliate";i:129;s:25:"report/affiliate_activity";i:130;s:22:"report/affiliate_login";i:131;s:24:"report/customer_activity";i:132;s:22:"report/customer_credit";i:133;s:21:"report/customer_login";i:134;s:22:"report/customer_online";i:135;s:21:"report/customer_order";i:136;s:22:"report/customer_reward";i:137;s:16:"report/marketing";i:138;s:24:"report/product_purchased";i:139;s:21:"report/product_viewed";i:140;s:18:"report/sale_coupon";i:141;s:17:"report/sale_order";i:142;s:18:"report/sale_return";i:143;s:20:"report/sale_shipping";i:144;s:15:"report/sale_tax";i:145;s:17:"sale/custom_field";i:146;s:13:"sale/customer";i:147;s:20:"sale/customer_ban_ip";i:148;s:19:"sale/customer_group";i:149;s:10:"sale/order";i:150;s:14:"sale/recurring";i:151;s:11:"sale/return";i:152;s:12:"sale/voucher";i:153;s:18:"sale/voucher_theme";i:154;s:15:"setting/setting";i:155;s:13:"setting/store";i:156;s:16:"shipping/auspost";i:157;s:17:"shipping/citylink";i:158;s:14:"shipping/fedex";i:159;s:13:"shipping/flat";i:160;s:13:"shipping/free";i:161;s:13:"shipping/item";i:162;s:23:"shipping/parcelforce_48";i:163;s:15:"shipping/pickup";i:164;s:19:"shipping/royal_mail";i:165;s:12:"shipping/ups";i:166;s:13:"shipping/usps";i:167;s:15:"shipping/weight";i:168;s:11:"tool/backup";i:169;s:14:"tool/error_log";i:170;s:11:"tool/upload";i:171;s:12:"total/coupon";i:172;s:12:"total/credit";i:173;s:14:"total/handling";i:174;s:16:"total/klarna_fee";i:175;s:19:"total/low_order_fee";i:176;s:12:"total/reward";i:177;s:14:"total/shipping";i:178;s:15:"total/sub_total";i:179;s:9:"total/tax";i:180;s:11:"total/total";i:181;s:13:"total/voucher";i:182;s:8:"user/api";i:183;s:9:"user/user";i:184;s:20:"user/user_permission";}}'),
+(1, 'Administrator', 'a:2:{s:6:"access";a:187:{i:0;s:17:"catalog/attribute";i:1;s:23:"catalog/attribute_group";i:2;s:16:"catalog/category";i:3;s:16:"catalog/download";i:4;s:14:"catalog/filter";i:5;s:19:"catalog/information";i:6;s:20:"catalog/manufacturer";i:7;s:14:"catalog/option";i:8;s:15:"catalog/product";i:9;s:17:"catalog/recurring";i:10;s:14:"catalog/review";i:11;s:18:"common/column_left";i:12;s:18:"common/filemanager";i:13;s:11:"common/menu";i:14;s:14:"common/profile";i:15;s:12:"common/stats";i:16;s:18:"dashboard/activity";i:17;s:15:"dashboard/chart";i:18;s:18:"dashboard/customer";i:19;s:13:"dashboard/map";i:20;s:16:"dashboard/online";i:21;s:15:"dashboard/order";i:22;s:16:"dashboard/recent";i:23;s:14:"dashboard/sale";i:24;s:13:"design/banner";i:25;s:13:"design/layout";i:26;s:14:"extension/feed";i:27;s:19:"extension/installer";i:28;s:22:"extension/modification";i:29;s:16:"extension/module";i:30;s:17:"extension/openbay";i:31;s:17:"extension/payment";i:32;s:18:"extension/shipping";i:33;s:15:"extension/total";i:34;s:16:"feed/google_base";i:35;s:19:"feed/google_sitemap";i:36;s:15:"feed/openbaypro";i:37;s:20:"localisation/country";i:38;s:21:"localisation/currency";i:39;s:21:"localisation/geo_zone";i:40;s:21:"localisation/language";i:41;s:25:"localisation/length_class";i:42;s:21:"localisation/location";i:43;s:25:"localisation/order_status";i:44;s:26:"localisation/return_action";i:45;s:26:"localisation/return_reason";i:46;s:26:"localisation/return_status";i:47;s:25:"localisation/stock_status";i:48;s:22:"localisation/tax_class";i:49;s:21:"localisation/tax_rate";i:50;s:25:"localisation/weight_class";i:51;s:17:"localisation/zone";i:52;s:19:"marketing/affiliate";i:53;s:17:"marketing/contact";i:54;s:16:"marketing/coupon";i:55;s:19:"marketing/marketing";i:56;s:14:"module/account";i:57;s:16:"module/affiliate";i:58;s:20:"module/amazon_button";i:59;s:13:"module/banner";i:60;s:17:"module/bestseller";i:61;s:15:"module/carousel";i:62;s:15:"module/category";i:63;s:19:"module/ebay_listing";i:64;s:15:"module/featured";i:65;s:13:"module/filter";i:66;s:22:"module/google_hangouts";i:67;s:11:"module/html";i:68;s:18:"module/information";i:69;s:13:"module/latest";i:70;s:16:"module/pp_button";i:71;s:15:"module/pp_login";i:72;s:16:"module/slideshow";i:73;s:14:"module/special";i:74;s:12:"module/store";i:75;s:12:"news/article";i:76;s:13:"news/category";i:77;s:12:"news/comment";i:78;s:12:"news/setting";i:79;s:14:"openbay/amazon";i:80;s:22:"openbay/amazon_listing";i:81;s:22:"openbay/amazon_product";i:82;s:16:"openbay/amazonus";i:83;s:24:"openbay/amazonus_listing";i:84;s:24:"openbay/amazonus_product";i:85;s:12:"openbay/ebay";i:86;s:20:"openbay/ebay_profile";i:87;s:21:"openbay/ebay_template";i:88;s:12:"openbay/etsy";i:89;s:20:"openbay/etsy_product";i:90;s:21:"openbay/etsy_shipping";i:91;s:17:"openbay/etsy_shop";i:92;s:23:"payment/amazon_checkout";i:93;s:24:"payment/authorizenet_aim";i:94;s:24:"payment/authorizenet_sim";i:95;s:21:"payment/bank_transfer";i:96;s:22:"payment/bluepay_hosted";i:97;s:24:"payment/bluepay_redirect";i:98;s:14:"payment/cheque";i:99;s:11:"payment/cod";i:100;s:17:"payment/firstdata";i:101;s:24:"payment/firstdata_remote";i:102;s:21:"payment/free_checkout";i:103;s:22:"payment/klarna_account";i:104;s:22:"payment/klarna_invoice";i:105;s:14:"payment/liqpay";i:106;s:14:"payment/nochex";i:107;s:15:"payment/paymate";i:108;s:16:"payment/paypoint";i:109;s:13:"payment/payza";i:110;s:26:"payment/perpetual_payments";i:111;s:18:"payment/pp_express";i:112;s:18:"payment/pp_payflow";i:113;s:25:"payment/pp_payflow_iframe";i:114;s:14:"payment/pp_pro";i:115;s:21:"payment/pp_pro_iframe";i:116;s:19:"payment/pp_standard";i:117;s:14:"payment/realex";i:118;s:21:"payment/realex_remote";i:119;s:22:"payment/sagepay_direct";i:120;s:22:"payment/sagepay_server";i:121;s:18:"payment/sagepay_us";i:122;s:24:"payment/securetrading_pp";i:123;s:24:"payment/securetrading_ws";i:124;s:14:"payment/skrill";i:125;s:19:"payment/twocheckout";i:126;s:28:"payment/web_payment_software";i:127;s:16:"payment/worldpay";i:128;s:16:"report/affiliate";i:129;s:25:"report/affiliate_activity";i:130;s:22:"report/affiliate_login";i:131;s:24:"report/customer_activity";i:132;s:22:"report/customer_credit";i:133;s:21:"report/customer_login";i:134;s:22:"report/customer_online";i:135;s:21:"report/customer_order";i:136;s:22:"report/customer_reward";i:137;s:16:"report/marketing";i:138;s:24:"report/product_purchased";i:139;s:21:"report/product_viewed";i:140;s:18:"report/sale_coupon";i:141;s:17:"report/sale_order";i:142;s:18:"report/sale_return";i:143;s:20:"report/sale_shipping";i:144;s:15:"report/sale_tax";i:145;s:17:"sale/custom_field";i:146;s:13:"sale/customer";i:147;s:20:"sale/customer_ban_ip";i:148;s:19:"sale/customer_group";i:149;s:10:"sale/order";i:150;s:14:"sale/recurring";i:151;s:11:"sale/return";i:152;s:12:"sale/voucher";i:153;s:18:"sale/voucher_theme";i:154;s:15:"setting/setting";i:155;s:13:"setting/store";i:156;s:16:"shipping/auspost";i:157;s:17:"shipping/citylink";i:158;s:14:"shipping/fedex";i:159;s:13:"shipping/flat";i:160;s:13:"shipping/free";i:161;s:13:"shipping/item";i:162;s:23:"shipping/parcelforce_48";i:163;s:15:"shipping/pickup";i:164;s:19:"shipping/royal_mail";i:165;s:12:"shipping/ups";i:166;s:13:"shipping/usps";i:167;s:15:"shipping/weight";i:168;s:11:"tool/backup";i:169;s:14:"tool/error_log";i:170;s:11:"tool/upload";i:171;s:12:"total/coupon";i:172;s:12:"total/credit";i:173;s:14:"total/handling";i:174;s:16:"total/klarna_fee";i:175;s:19:"total/low_order_fee";i:176;s:12:"total/reward";i:177;s:14:"total/shipping";i:178;s:15:"total/sub_total";i:179;s:9:"total/tax";i:180;s:11:"total/total";i:181;s:13:"total/voucher";i:182;s:8:"user/api";i:183;s:9:"user/user";i:184;s:20:"user/user_permission";i:185;s:16:"module/affiliate";i:186;s:18:"module/information";}s:6:"modify";a:187:{i:0;s:17:"catalog/attribute";i:1;s:23:"catalog/attribute_group";i:2;s:16:"catalog/category";i:3;s:16:"catalog/download";i:4;s:14:"catalog/filter";i:5;s:19:"catalog/information";i:6;s:20:"catalog/manufacturer";i:7;s:14:"catalog/option";i:8;s:15:"catalog/product";i:9;s:17:"catalog/recurring";i:10;s:14:"catalog/review";i:11;s:18:"common/column_left";i:12;s:18:"common/filemanager";i:13;s:11:"common/menu";i:14;s:14:"common/profile";i:15;s:12:"common/stats";i:16;s:18:"dashboard/activity";i:17;s:15:"dashboard/chart";i:18;s:18:"dashboard/customer";i:19;s:13:"dashboard/map";i:20;s:16:"dashboard/online";i:21;s:15:"dashboard/order";i:22;s:16:"dashboard/recent";i:23;s:14:"dashboard/sale";i:24;s:13:"design/banner";i:25;s:13:"design/layout";i:26;s:14:"extension/feed";i:27;s:19:"extension/installer";i:28;s:22:"extension/modification";i:29;s:16:"extension/module";i:30;s:17:"extension/openbay";i:31;s:17:"extension/payment";i:32;s:18:"extension/shipping";i:33;s:15:"extension/total";i:34;s:16:"feed/google_base";i:35;s:19:"feed/google_sitemap";i:36;s:15:"feed/openbaypro";i:37;s:20:"localisation/country";i:38;s:21:"localisation/currency";i:39;s:21:"localisation/geo_zone";i:40;s:21:"localisation/language";i:41;s:25:"localisation/length_class";i:42;s:21:"localisation/location";i:43;s:25:"localisation/order_status";i:44;s:26:"localisation/return_action";i:45;s:26:"localisation/return_reason";i:46;s:26:"localisation/return_status";i:47;s:25:"localisation/stock_status";i:48;s:22:"localisation/tax_class";i:49;s:21:"localisation/tax_rate";i:50;s:25:"localisation/weight_class";i:51;s:17:"localisation/zone";i:52;s:19:"marketing/affiliate";i:53;s:17:"marketing/contact";i:54;s:16:"marketing/coupon";i:55;s:19:"marketing/marketing";i:56;s:14:"module/account";i:57;s:16:"module/affiliate";i:58;s:20:"module/amazon_button";i:59;s:13:"module/banner";i:60;s:17:"module/bestseller";i:61;s:15:"module/carousel";i:62;s:15:"module/category";i:63;s:19:"module/ebay_listing";i:64;s:15:"module/featured";i:65;s:13:"module/filter";i:66;s:22:"module/google_hangouts";i:67;s:11:"module/html";i:68;s:18:"module/information";i:69;s:13:"module/latest";i:70;s:16:"module/pp_button";i:71;s:15:"module/pp_login";i:72;s:16:"module/slideshow";i:73;s:14:"module/special";i:74;s:12:"module/store";i:75;s:12:"news/article";i:76;s:13:"news/category";i:77;s:12:"news/comment";i:78;s:12:"news/setting";i:79;s:14:"openbay/amazon";i:80;s:22:"openbay/amazon_listing";i:81;s:22:"openbay/amazon_product";i:82;s:16:"openbay/amazonus";i:83;s:24:"openbay/amazonus_listing";i:84;s:24:"openbay/amazonus_product";i:85;s:12:"openbay/ebay";i:86;s:20:"openbay/ebay_profile";i:87;s:21:"openbay/ebay_template";i:88;s:12:"openbay/etsy";i:89;s:20:"openbay/etsy_product";i:90;s:21:"openbay/etsy_shipping";i:91;s:17:"openbay/etsy_shop";i:92;s:23:"payment/amazon_checkout";i:93;s:24:"payment/authorizenet_aim";i:94;s:24:"payment/authorizenet_sim";i:95;s:21:"payment/bank_transfer";i:96;s:22:"payment/bluepay_hosted";i:97;s:24:"payment/bluepay_redirect";i:98;s:14:"payment/cheque";i:99;s:11:"payment/cod";i:100;s:17:"payment/firstdata";i:101;s:24:"payment/firstdata_remote";i:102;s:21:"payment/free_checkout";i:103;s:22:"payment/klarna_account";i:104;s:22:"payment/klarna_invoice";i:105;s:14:"payment/liqpay";i:106;s:14:"payment/nochex";i:107;s:15:"payment/paymate";i:108;s:16:"payment/paypoint";i:109;s:13:"payment/payza";i:110;s:26:"payment/perpetual_payments";i:111;s:18:"payment/pp_express";i:112;s:18:"payment/pp_payflow";i:113;s:25:"payment/pp_payflow_iframe";i:114;s:14:"payment/pp_pro";i:115;s:21:"payment/pp_pro_iframe";i:116;s:19:"payment/pp_standard";i:117;s:14:"payment/realex";i:118;s:21:"payment/realex_remote";i:119;s:22:"payment/sagepay_direct";i:120;s:22:"payment/sagepay_server";i:121;s:18:"payment/sagepay_us";i:122;s:24:"payment/securetrading_pp";i:123;s:24:"payment/securetrading_ws";i:124;s:14:"payment/skrill";i:125;s:19:"payment/twocheckout";i:126;s:28:"payment/web_payment_software";i:127;s:16:"payment/worldpay";i:128;s:16:"report/affiliate";i:129;s:25:"report/affiliate_activity";i:130;s:22:"report/affiliate_login";i:131;s:24:"report/customer_activity";i:132;s:22:"report/customer_credit";i:133;s:21:"report/customer_login";i:134;s:22:"report/customer_online";i:135;s:21:"report/customer_order";i:136;s:22:"report/customer_reward";i:137;s:16:"report/marketing";i:138;s:24:"report/product_purchased";i:139;s:21:"report/product_viewed";i:140;s:18:"report/sale_coupon";i:141;s:17:"report/sale_order";i:142;s:18:"report/sale_return";i:143;s:20:"report/sale_shipping";i:144;s:15:"report/sale_tax";i:145;s:17:"sale/custom_field";i:146;s:13:"sale/customer";i:147;s:20:"sale/customer_ban_ip";i:148;s:19:"sale/customer_group";i:149;s:10:"sale/order";i:150;s:14:"sale/recurring";i:151;s:11:"sale/return";i:152;s:12:"sale/voucher";i:153;s:18:"sale/voucher_theme";i:154;s:15:"setting/setting";i:155;s:13:"setting/store";i:156;s:16:"shipping/auspost";i:157;s:17:"shipping/citylink";i:158;s:14:"shipping/fedex";i:159;s:13:"shipping/flat";i:160;s:13:"shipping/free";i:161;s:13:"shipping/item";i:162;s:23:"shipping/parcelforce_48";i:163;s:15:"shipping/pickup";i:164;s:19:"shipping/royal_mail";i:165;s:12:"shipping/ups";i:166;s:13:"shipping/usps";i:167;s:15:"shipping/weight";i:168;s:11:"tool/backup";i:169;s:14:"tool/error_log";i:170;s:11:"tool/upload";i:171;s:12:"total/coupon";i:172;s:12:"total/credit";i:173;s:14:"total/handling";i:174;s:16:"total/klarna_fee";i:175;s:19:"total/low_order_fee";i:176;s:12:"total/reward";i:177;s:14:"total/shipping";i:178;s:15:"total/sub_total";i:179;s:9:"total/tax";i:180;s:11:"total/total";i:181;s:13:"total/voucher";i:182;s:8:"user/api";i:183;s:9:"user/user";i:184;s:20:"user/user_permission";i:185;s:16:"module/affiliate";i:186;s:18:"module/information";}}'),
 (10, 'Demonstration', '');
 
 -- --------------------------------------------------------
