@@ -32,43 +32,43 @@ $_['text_ignore_date_modified']	= 'Không thể thay đổi ngày tháng';
 $_['text_separator']			= ' > ';
 
 // Column
-$_['column_title']      	= 'Article Title';
-$_['column_date_added']      	= 'Date Added';
-$_['column_date_modified']      	= 'Date Modified';
-$_['column_comment']      	= 'Approved / Total Comments';
-$_['column_sort_order'] 	= 'Sort Order';
-$_['column_action']     	= 'Action';
+$_['column_title']				= 'Tiêu đề';
+$_['column_date_added']			= 'Ngày tạo';
+$_['column_date_modified']		= 'Ngày sửa';
+$_['column_comment']			= 'Duyệt / Tổng bình luận';
+$_['column_sort_order']			= 'Thứ tự';
+$_['column_action']				= 'Hành động';
 
 // Entry
-$_['entry_title']       	= 'Article Title';
-$_['entry_description'] 	= 'Article Content';
-$_['entry_short_description'] 	= 'Intro text';
-$_['entry_meta_description'] 	= 'Meta Tag Description';
-$_['entry_meta_keyword'] 	= 'Meta Tag Keywords';
-$_['entry_image']       	= 'Image';
-$_['entry_status']          = 'News Status';
-$_['entry_store']       	= 'Stores';
-$_['entry_top']              = 'Top';
-$_['entry_keyword']     	= 'SEO Keyword';
-$_['entry_sort_order']  	= 'Sort Order';
-$_['entry_allow_comment']  	= 'Allow user to send a comment';
-$_['entry_comment_permission']  	= 'Comment Permission';
-$_['entry_comment_need_approval']  	= 'Comment need approval';
-$_['entry_category']         = 'Categories';
+$_['entry_title']				= 'Tiêu đề';
+$_['entry_description']			= 'Nội dung';
+$_['entry_short_description']	= 'Giới thiệu';
+$_['entry_meta_description']	= 'Mô tả từ khóa';
+$_['entry_meta_keyword']		= 'Từ khóa';
+$_['entry_image']				= 'Hình ảnh';
+$_['entry_status']				= 'Trạng thái';
+$_['entry_store']				= 'Cửa hàng';
+$_['entry_top']					= 'Đính vào header';
+$_['entry_keyword']				= 'SEO Keyword';
+$_['entry_sort_order']			= 'Thứ tự';
+$_['entry_allow_comment']		= 'Đồng ý để người dùng gửi bình luận';
+$_['entry_comment_permission']	= 'Phân quyền bình luận';
+$_['entry_comment_need_approval']	= 'Bình luận phải được duyệt';
+$_['entry_category']			= 'Danh mục';
 
 // Help
-$_['help_filter']            = '(Autocomplete)';
-$_['help_keyword']           = 'Do not use spaces, instead replace spaces with - and make sure the keyword is globally unique.';
-$_['help_top']               = 'Display in the top menu bar. Only works for the top parent categories.';
-$_['help_column']            = 'Number of columns to use for the bottom 3 categories. Only works for the top parent categories.';
+$_['help_filter']				= '(Tự động nhắc từ)';
+$_['help_keyword']           	= 'Không được sử dụng khoảng trắng, dùng - thay cho khoảng trắng và chắc chắn cụm từ phải là duy nhất.';
+$_['help_top']               	= 'Hiển thị thông tin lên menu chính ở header.';
+$_['help_column']            	= 'Number of columns to use for the bottom 3 categories. Only works for the top parent categories.';
 
 // Error 
-$_['error_permission']  	= 'Warning: You do not have permission to modify article!';
-$_['error_title']       	= 'Article Title must be between 3 and 100 characters!';
-$_['error_description'] 	= 'Article Content must be between 3 characters!';
-$_['error_short_description'] 	= 'Intro text must be between 3 and 1000 characters!';
-$_['error_account']     	= 'Warning: This news page cannot be deleted as it is currently assigned as the default store account terms!';
-$_['error_checkout']    	= 'Warning: This news page cannot be deleted as it is currently assigned as the default store checkout terms!';
-$_['error_store']       	= 'Warning: This news page cannot be deleted as its currently used by %s stores!';
-$_['error_required_data']   = 'Required Data has not been entered. Check for field errors!';
+$_['error_permission']  		= 'Cảnh báo: Bạn không có quyền thay đổi tin tức này!';
+$_['error_title']       		= 'Tiêu đề phải từ 3 đến 100 ký tự!';
+$_['error_description'] 		= 'Nội dung phải nhiều hơn 3 ký tự!';
+$_['error_short_description'] 	= 'Giới thiệu phải từ 3 đến 1000 ký tự!';
+$_['error_account']     		= 'Cảnh báo: This news page cannot be deleted as it is currently assigned as the default store account terms!';
+$_['error_checkout']    		= 'Cảnh báo: This news page cannot be deleted as it is currently assigned as the default store checkout terms!';
+$_['error_store']       		= 'Cảnh báo: This news page cannot be deleted as its currently used by %s stores!';
+$_['error_required_data']   	= 'Required Data has not been entered. Check for field errors!';
 ?>
