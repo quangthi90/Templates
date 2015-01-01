@@ -1,9 +1,9 @@
 <?php
 //OpenCart Extension
 //Project Name: OpenCart News
-//Author: Fanha Giang a.k.a fanha99
-//Email (PayPal Account): fanha99@gmail.com
-//License: Commercial
+//Author: Bommer Luu
+//Email (PayPal Account): lqthi.khtn@gmail.com
+//License: OpenCart 2.0.x
 ?>
 <?php 
 class ControllerNewsNews extends Controller {
