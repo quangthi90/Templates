@@ -60,7 +60,7 @@
 				$this->load->model('news/news');
 
 				$categories = $this->model_news_category->getCategories(0);
-
+				$data['news_categories'] = array();
 				foreach ($categories as $category) {
 					if ($category['top']) {
 						// Level 2

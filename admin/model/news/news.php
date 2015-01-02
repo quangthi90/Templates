@@ -212,7 +212,7 @@ class ModelNewsNews extends Model {
 	}
 	
 	public function getTotalNewss($data = array()) {
-		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "news n, " . DB_PREFIX . "news_description nd WHERE n.news_id = nd.news_id";
+		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "news n, " . DB_PREFIX . "news_description nd WHERE n.news_id = nd.news_id AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 
       	if (!empty($data['filter_title'])) {
 			$sql .= " AND LCASE(nd.title) LIKE '" . $this->db->escape(utf8_strtolower($data['filter_title'])) . "%'";
