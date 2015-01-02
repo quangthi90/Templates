@@ -127,6 +127,12 @@ class ControllerNewsArticle extends Controller {
 	}
 
 	private function getList() {
+		if (isset($this->request->get['filter_title'])) {
+			$filter_title = $this->request->get['filter_title'];
+		} else {
+			$filter_title = null;
+		}
+
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
 		} else {
@@ -144,9 +150,13 @@ class ControllerNewsArticle extends Controller {
 		} else {
 			$order = 'ASC';
 		}
-		
+
 		$url = '';
-			
+
+		if (isset($this->request->get['filter_title'])) {
+			$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
+		}
+
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
 		}
@@ -179,15 +189,16 @@ class ControllerNewsArticle extends Controller {
 		$data['newss'] = array();
 
 		$filter_data = array(
-			'sort'  => $sort,
-			'order' => $order,
-			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
-			'limit' => $this->config->get('config_limit_admin')
+			'filter_title' 	=> $filter_title,
+			'sort'  		=> $sort,
+			'order' 		=> $order,
+			'start' 		=> ($page - 1) * $this->config->get('config_limit_admin'),
+			'limit' 		=> $this->config->get('config_limit_admin')
 		);
-		
-		$news_total = $this->model_news_news->getTotalNewss();
 	
 		$results = $this->model_news_news->getNewss($filter_data);
+
+		$news_total = $this->model_news_news->getTotalNewss($filter_data);
  
     	foreach ($results as $result) {
 			$data['newss'][] = array(
@@ -216,11 +227,14 @@ class ControllerNewsArticle extends Controller {
 		$data['column_date_modified'] = $this->language->get('column_date_modified');
 		$data['column_comment'] = $this->language->get('column_comment');
 		$data['column_sort_order'] = $this->language->get('column_sort_order');
-		$data['column_action'] = $this->language->get('column_action');		
+		$data['column_action'] = $this->language->get('column_action');
+
+		$data['entry_title'] = $this->language->get('entry_title');
 		
 		$data['button_add'] = $this->language->get('button_add');
 		$data['button_edit'] = $this->language->get('button_edit');
 		$data['button_delete'] = $this->language->get('button_delete');
+		$data['button_filter'] = $this->language->get('button_filter');
  
  		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
@@ -255,6 +269,10 @@ class ControllerNewsArticle extends Controller {
 		
 		$url = '';
 
+		if (isset($this->request->get['filter_name'])) {
+			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+		}
+
 		if (isset($this->request->get['sort'])) {
 			$url .= '&sort=' . $this->request->get['sort'];
 		}
@@ -276,6 +294,10 @@ class ControllerNewsArticle extends Controller {
 
 		$data['sort'] = $sort;
 		$data['order'] = $order;
+
+		$data['filter_title'] = $filter_title;
+
+		$data['token'] = $this->session->data['token'];
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
@@ -579,9 +601,9 @@ class ControllerNewsArticle extends Controller {
 			$this->load->model('news/news');
 			
 			if (isset($this->request->get['filter_title'])) {
-				$filter_name = $this->request->get['filter_title'];
+				$filter_title = $this->request->get['filter_title'];
 			} else {
-				$filter_name = '';
+				$filter_title = '';
 			}
 			
 			if (isset($this->request->get['limit'])) {
@@ -591,7 +613,7 @@ class ControllerNewsArticle extends Controller {
 			}			
 						
 			$data = array(
-				'filter_name'         => $filter_name,
+				'filter_title'         => $filter_title,
 				'start'               => 0,
 				'limit'               => $limit
 			);

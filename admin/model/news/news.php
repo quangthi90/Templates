@@ -211,8 +211,14 @@ class ModelNewsNews extends Model {
 		return $news_store_data;
 	}
 	
-	public function getTotalNewss() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "news");
+	public function getTotalNewss($data = array()) {
+		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "news n, " . DB_PREFIX . "news_description nd WHERE n.news_id = nd.news_id";
+
+      	if (!empty($data['filter_title'])) {
+			$sql .= " AND LCASE(nd.title) LIKE '" . $this->db->escape(utf8_strtolower($data['filter_title'])) . "%'";
+		}
+
+		$query = $this->db->query($sql);
 		
 		return $query->row['total'];
 	}	

@@ -37,6 +37,17 @@
         <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $text_list; ?></h3>
       </div>
       <div class="panel-body">
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label" for="input-name"><?php echo $entry_title; ?></label>
+                <input type="text" name="filter_title" value="<?php echo $filter_title; ?>" placeholder="<?php echo $entry_title; ?>" id="input-name" class="form-control" />
+              </div>
+              <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
+            </div>
+          </div>
+        </div>
         <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-article">
           <table class="table table-bordered table-hover">
             <thead>
@@ -99,4 +110,38 @@
     </div>
   </div>
 </div>
+<script type="text/javascript"><!--
+$('#button-filter').on('click', function() {
+  var url = 'index.php?route=news/article&token=<?php echo $token; ?>';
+
+  var filter_title = $('input[name=\'filter_title\']').val();
+
+  if (filter_title) {
+    url += '&filter_title=' + encodeURIComponent(filter_title);
+  }
+
+  location = url;
+});
+//--></script> 
+<script type="text/javascript">
+  $('input[name=\'filter_title\']').autocomplete({
+    'source': function(request, response) {
+      $.ajax({
+        url: 'index.php?route=news/article/autocomplete&token=<?php echo $token; ?>&filter_title=' +  encodeURIComponent(request),
+        dataType: 'json',
+        success: function(json) {
+          response($.map(json, function(item) {
+            return {
+              label: item['title'],
+              value: item['news_id']
+            }
+          }));
+        }
+      });
+    },
+    'select': function(item) {
+      $('input[name=\'filter_title\']').val(item['label']);
+    }
+  });
+</script>
 <?php echo $footer; ?>
