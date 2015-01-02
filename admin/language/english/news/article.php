@@ -56,7 +56,8 @@ $_['entry_sort_order']  	= 'Sort Order';
 $_['entry_allow_comment']  	= 'Allow user to send a comment';
 $_['entry_comment_permission']  	= 'Comment Permission';
 $_['entry_comment_need_approval']  	= 'Comment need approval';
-$_['entry_category']         = 'Categories';
+$_['entry_category']        = 'Categories';
+$_['entry_related']			= 'Related News';
 
 // Help
 $_['help_filter']            = '(Autocomplete)';

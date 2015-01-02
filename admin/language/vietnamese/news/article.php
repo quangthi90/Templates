@@ -55,6 +55,7 @@ $_['entry_allow_comment']		= 'Đồng ý để người dùng gửi bình luận
 $_['entry_comment_permission']	= 'Phân quyền bình luận';
 $_['entry_comment_need_approval']	= 'Bình luận phải được duyệt';
 $_['entry_category']			= 'Danh mục';
+$_['entry_related']				= 'Bài viết liên quan';
 
 // Help
 $_['help_filter']				= '(Tự động nhắc từ)';

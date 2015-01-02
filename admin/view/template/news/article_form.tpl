@@ -230,30 +230,18 @@
               </div>
             </div>
             <div class="tab-pane" id="tab-related">
-              <div class="table-responsive">
-                <table class="table table-bordered table-hover">
-                  <tbody>
-                    <tr>
-                    	<td>
-                    		<div class="scrollbox">
-					                <?php $class = 'odd'; ?>
-					                <?php foreach ($newss as $news) { ?>
-					                <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
-					                <div class="<?php echo $class; ?>">
-					                  <?php if (in_array($news['news_id'], $related_news)) { ?>
-					                  <input type="checkbox" name="related_news[]" value="<?php echo $news['news_id']; ?>" checked="checked" />
-					                  <?php echo $news['title']; ?>
-					                  <?php } else { ?>
-					                  <input type="checkbox" name="related_news[]" value="<?php echo $news['news_id']; ?>" />
-					                  <?php echo $news['title']; ?>
-					                  <?php } ?>
-					                </div>
-					                <?php } ?>
-					              </div>
-                    	</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-related"><span data-toggle="tooltip"><?php echo $entry_related; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="related" value="" placeholder="<?php echo $entry_related; ?>" id="input-related" class="form-control" />
+                  <div id="news-related" class="well well-sm" style="height: 150px; overflow: auto;">
+                    <?php foreach ($related_news as $news) { ?>
+                    <div id="news-related<?php echo $news['news_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $news['title']; ?>
+                      <input type="hidden" name="related_news[]" value="<?php echo $news['news_id']; ?>" />
+                    </div>
+                    <?php } ?>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -298,4 +286,34 @@ function image_upload(field, thumb) {
  <script type="text/javascript"><!--
 $('#language a:first').tab('show');
 //--></script>
+<script type="text/javascript">
+  // Related
+  $('input[name=\'related\']').autocomplete({
+    'source': function(request, response) {
+      $.ajax({
+        url: 'index.php?route=news/article/autocomplete&token=<?php echo $token; ?>&filter_title=' +  encodeURIComponent(request),
+        dataType: 'json',     
+        success: function(json) {
+          response($.map(json, function(item) {
+            return {
+              label: item['title'],
+              value: item['news_id']
+            }
+          }));
+        }
+      });
+    },
+    'select': function(item) {
+      $('input[name=\'related\']').val('');
+      
+      $('#news-related' + item['value']).remove();
+      
+      $('#news-related').append('<div id="news-related' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="related_news[]" value="' + item['value'] + '" /></div>');  
+    } 
+  });
+
+  $('#news-related').delegate('.fa-minus-circle', 'click', function() {
+    $(this).parent().remove();
+  });
+</script>
 <?php echo $footer; ?>

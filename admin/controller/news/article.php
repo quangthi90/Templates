@@ -72,6 +72,10 @@ class ControllerNewsArticle extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
+
+			if (isset($this->request->get['news_id'])) {
+				$url .= '&news_id=' . $this->request->get['news_id'];
+			}
 			
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
@@ -107,6 +111,10 @@ class ControllerNewsArticle extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
+
+			if (isset($this->request->get['news_id'])) {
+				$url .= '&news_id=' . $this->request->get['news_id'];
+			}
 			
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
@@ -252,6 +260,10 @@ class ControllerNewsArticle extends Controller {
 
 		$url = '';
 
+		if (isset($this->request->get['filter_title'])) {
+			$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
+		}
+
 		if ($order == 'ASC') {
 			$url .= '&order=DESC';
 		} else {
@@ -329,6 +341,7 @@ class ControllerNewsArticle extends Controller {
         $data['text_no_results'] = $this->language->get('text_no_results');
         $data['text_no_comments'] = $this->language->get('text_no_comments');
         $data['text_ignore_date_modified'] = $this->language->get('text_ignore_date_modified');
+		
 		$data['entry_title'] = $this->language->get('entry_title');
 		$data['entry_description'] = $this->language->get('entry_description');
 		$data['entry_short_description'] = $this->language->get('entry_short_description');
@@ -344,6 +357,7 @@ class ControllerNewsArticle extends Controller {
 		$data['entry_comment_permission'] = $this->language->get('entry_comment_permission');
 		$data['entry_comment_need_approval'] = $this->language->get('entry_comment_need_approval');
 		$data['entry_category'] = $this->language->get('entry_category');
+		$data['entry_related'] = $this->language->get('entry_related');
 
 		$data['help_filter'] = $this->language->get('help_filter');
 		$data['help_keyword'] = $this->language->get('help_keyword');
@@ -396,6 +410,10 @@ class ControllerNewsArticle extends Controller {
 			$data['news_category'] = array();
 		}
 		$url = '';
+
+		if (isset($this->request->get['filter_title'])) {
+			$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
+		}
 			
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
@@ -540,14 +558,25 @@ class ControllerNewsArticle extends Controller {
 		}
 		
 		// Related News
-		$data['newss'] = $this->model_news_news->getNewss(array('sort' => 'n.sort_order'));
-		
 		if (isset($this->request->post['related_news'])) {
-			$data['related_news'] = $this->request->post['related_news'];
-		} elseif (isset($news_info)) {
-			$data['related_news'] = $this->model_news_news->getRelatedNews($this->request->get['news_id']);
+			$newss = $this->request->post['related_news'];
+		} elseif (isset($this->request->get['news_id'])) {
+			$newss = $this->model_news_news->getRelatedNews($this->request->get['news_id']);
 		} else {
-			$data['related_news'] = array();
+			$newss = array();
+		}
+
+		$data['related_news'] = array();
+
+		foreach ($newss as $news_id) {
+			$news = $this->model_news_news->getNews($news_id);
+
+			if ($news) {
+				$data['related_news'][] = array(
+					'news_id' => $news['news_id'],
+					'title'       => $news['title']
+				);
+			}
 		}
 		
 		$data['header'] = $this->load->controller('common/header');

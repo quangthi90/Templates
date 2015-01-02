@@ -108,7 +108,7 @@ class ModelNewsNews extends Model {
 	}	
 
 	public function getNews($news_id) {
-		$query = $this->db->query("SELECT DISTINCT *, (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'news_id=" . (int)$news_id . "') AS keyword FROM " . DB_PREFIX . "news WHERE news_id = '" . (int)$news_id . "'");
+		$query = $this->db->query("SELECT DISTINCT *, (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'news_id=" . (int)$news_id . "') AS keyword FROM " . DB_PREFIX . "news n, " . DB_PREFIX . "news_description nd WHERE nd.news_id = n.news_id AND n.news_id = '" . (int)$news_id . "'");
 		
 		return $query->row;
 	}
