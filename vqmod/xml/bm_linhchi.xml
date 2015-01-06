@@ -187,4 +187,24 @@
 			]]></add>
 		</operation>
 	</file>
+	<file name="admin/language/english/catalog/product.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				$_['entry_meta_description'] = 'Meta Tag Description';
+			]]></search>
+			<add><![CDATA[
+				$_['entry_meta_description'] = 'Product introduce';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/vietnamese/catalog/product.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				$_['entry_meta_description'] = 'Mô tả từ khóa:';
+			]]></search>
+			<add><![CDATA[
+				$_['entry_meta_description'] = 'Giới thiệu sản phẩm';
+			]]></add>
+		</operation>
+	</file>
 </modification>
