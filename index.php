@@ -207,7 +207,7 @@ if (isset($request->get['tracking'])) {
 	setcookie('tracking', $request->get['tracking'], time() + 3600 * 24 * 1000, '/');
 	$session->data['tracking'] = $request->get['tracking'];
 	$db->query("UPDATE `" . DB_PREFIX . "marketing` SET clicks = (clicks + 1) WHERE code = '" . $db->escape($request->get['tracking']) . "'");
-} else {
+} elseif (isset($request->cookie['tracking'])) {
 	$session->data['tracking'] = $request->cookie['tracking'];
 }
 
