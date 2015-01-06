@@ -187,24 +187,4 @@
 			]]></add>
 		</operation>
 	</file>
-	<file name="index.php">
-		<operation>
-			<search position="after"><![CDATA[
-				setcookie('tracking', $request->get['tracking'], time() + 3600 * 24 * 1000, '/');
-			]]></search>
-			<add><![CDATA[
-				$session->data['tracking'] = $request->get['tracking'];
-			]]></add>
-		</operation>
-		<operation>
-			<search position="before"><![CDATA[
-				// Affiliate
-			]]></search>
-			<add><![CDATA[
-				elseif (isset($request->cookie['tracking'])) {
-					$session->data['tracking'] = $request->cookie['tracking'];
-				}
-			]]></add>
-		</operation>
-	</file>
 </modification>
