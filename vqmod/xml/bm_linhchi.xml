@@ -167,7 +167,7 @@
 	<file name="catalog/controller/common/home.php">
 		<operation>
 			<search position="before"><![CDATA[
-				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/home.tpl')) {
+				$data['column_left'] = $this->load->controller('common/column_left');
 			]]></search>
 			<add><![CDATA[
 				// check affiliate
@@ -183,6 +183,47 @@
 					}
 				} else {
 					$data['phone'] = $this->config->get('config_telephone');
+				}
+			]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[
+				$data['column_left'] = $this->load->controller('common/column_left');
+			]]></search>
+			<add><![CDATA[
+				$data['home_url'] = HTTP_SERVER;
+				
+				// Column 1
+				$data['col_1_html'] = html_entity_decode($this->config->get('introduce_col_1_html'));
+				$data['col_1_title'] = $this->config->get('introduce_col_1_title');
+				$data['col_1_description'] = $this->config->get('introduce_col_1_description');
+				$data['col_1_link'] = $this->config->get('introduce_col_1_link');
+				
+				// Column 2
+				$data['col_2_html'] = html_entity_decode($this->config->get('introduce_col_2_html'));
+				$data['col_2_title'] = $this->config->get('introduce_col_2_title');
+				$data['col_2_description'] = $this->config->get('introduce_col_2_description');
+				$data['col_2_link'] = $this->config->get('introduce_col_2_link');
+
+				// Column 3
+				$data['col_3_html'] = html_entity_decode($this->config->get('introduce_col_3_html'));
+				$data['col_3_link'] = $this->config->get('introduce_col_3_link');
+
+				// 4 Last news
+				$this->load->model('news/news');
+				$results = $this->model_news_news->getNewss(array(
+					'sort' => 'nd.date_added',
+					'order' => 'DESC',
+					'start' => 0,
+					'limit' => 4
+				));
+
+				$data['newses'] = array();
+				foreach ($results as $news) {
+					$data['newses'][] = array(
+						'title' => $news['title'],
+						'href' => $this->url->link('news/news', 'news_id=' . $news['news_id'], 'SSL')
+					);
 				}
 			]]></add>
 		</operation>
