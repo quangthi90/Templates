@@ -47,7 +47,7 @@
             </a>
           </div>
           <div class="caption">
-            <h4 class="product-heading" title="<?php echo $product['href']; ?>"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
+            <h4 class="product-heading" title="<?php echo $product['name']; ?>"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
             <p class="hidden"><?php echo $product['description']; ?></p>            
           </div>
           <?php if ($product['price']) { ?>

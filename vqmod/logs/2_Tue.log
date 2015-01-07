@@ -1,0 +1,26 @@
+---------- Date: 2015-01-06 09:05:55 ~ IP : ::1 ----------
+REQUEST URI : /Templates/admin/index.php?route=common/dashboard&token=03e29f923fe14e2e0ff546f70a1fb726
+MOD DETAILS:
+   modFile   : F:\Program\xampp\htdocs\Templates\vqmod/xml/bm_linhchi.xml
+   id        : for site linhchinonglam.com
+   version   : 2.0.x
+   vqmver    : 1.0
+   author    : Bommer Luu
+VQModObject::parseMods - Could not resolve path for [admin/view/template/default/common/menu.tpl] (SKIPPED)
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2015-01-06 09:07:03 ~ IP : ::1 ----------
+REQUEST URI : /Templates/admin/index.php?route=common/dashboard&token=03e29f923fe14e2e0ff546f70a1fb726
+MOD DETAILS:
+   modFile   : F:\Program\xampp\htdocs\Templates\vqmod/xml/bm_linhchi.xml
+   id        : for site linhchinonglam.com
+   version   : 2.0.x
+   vqmver    : 1.0
+   author    : Bommer Luu
+VQModObject::parseMods - Could not resolve path for [admin/view/template/default/common/menu.tpl] (SKIPPED)
+
+----------------------------------------------------------------------
+
+

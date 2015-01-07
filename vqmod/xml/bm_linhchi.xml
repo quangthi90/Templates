@@ -207,4 +207,52 @@
 			]]></add>
 		</operation>
 	</file>
+	<file name="admin/controller/common/menu.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$data['text_help'] = $this->language->get('text_help');
+			]]></search>
+			<add><![CDATA[
+				$data['text_home_intro'] = $this->language->get('text_home_intro');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				$data['geo_zone'] = $this->url->link('localisation/geo_zone', 'token=' . $this->session->data['token'], 'SSL');
+			]]></search>
+			<add><![CDATA[
+				$data['home_intro'] = $this->url->link('plugin/introduce', 'token=' . $this->session->data['token'], 'SSL');
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/english/common/menu.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['text_geo_zone']                    = 'Geo Zones';
+			]]></search>
+			<add><![CDATA[
+				$_['text_home_intro']                  = 'Home Introduce';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/vietnamese/common/menu.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['text_geo_zone']                    = 'Vùng Geo';
+			]]></search>
+			<add><![CDATA[
+				$_['text_home_intro']                  = 'Giới thiệu ở trang chủ';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/common/menu.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+			]]></search>
+			<add><![CDATA[
+				<li><a href="<?php echo $home_intro; ?>"><?php echo $text_home_intro; ?></a></li>
+			]]></add>
+		</operation>
+	</file>
 </modification>
