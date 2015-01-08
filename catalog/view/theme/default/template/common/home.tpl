@@ -27,12 +27,12 @@
                                 <h3 class="text-bold" title="Giới thiệu về linh chi đại học Nông Lâm"><a href="#">GIỚI THIỆU</a></h3>
                             </div>
                             <div class="panel-body">
-                                <iframe class="yt-embed" frameborder="0" height="133" width="240" allowfullscreen="" src="//www.youtube.com/embed/3FHQzV18i4w?rel=0?showinfo=0&amp;controls=1&amp;autoplay=0"></iframe>
-                                <a href="#" class="topic-title text-bold">Chúng tôi là ai?</a>
+                                <?php echo $col_1_html; ?>
+                                <a href="#" class="topic-title text-bold"><?php echo $col_1_title; ?></a>
                                 <div class="topic-content">
-                                    Thương hiệu Linh Chi Nông Lâm thuộc Công công ty CP Ươm tạo Doanh nghiệp Công nghệ Nông Lâm là thành viên của Trung tâm Ươm tạo Doanh nghiệp Công nghệ - Trường Đại học Nông Lâm Tp. Hồ Chí Minh.
+                                    <?php echo $col_1_description; ?>
                                 </div>
-                                <a href="#" class="btn btn-main btn-sm pull-right">Xem thêm</a>
+                                <a href="<?php echo $col_1_link; ?>" class="btn btn-main btn-sm pull-right">Xem thêm</a>
                             </div>
                         </div>
                     </div>
@@ -43,13 +43,13 @@
                             </div>
                             <div class="panel-body">
                                 <a href="#">
-                                    <img class="topic-img" src="<?php echo $product_img_url; ?>" alt="Sản phẩm của Linh Chi Nông Lâm">
+                                    <?php echo $col_2_html; ?>
                                 </a>
-                                <a href="#" class="topic-title text-bold">Chúng tôi tự tin về chất lượng sản phẩm</a>
+                                <a href="#" class="topic-title text-bold"><?php echo $col_2_title; ?></a>
                                 <div class="topic-content">
-                                    Cách đây hàng nghìn năm, nấm linh chi đã được xếp vào hàng thượng phẩm với rất nhiều công dụng tốt cho sức khỏe con người.
+                                    <?php echo $col_2_description; ?>
                                 </div>
-                                <a href="#" class="btn btn-main btn-sm pull-right">Xem thêm</a>
+                                <a href="<?php echo $col_2_link; ?>" class="btn btn-main btn-sm pull-right">Xem thêm</a>
                             </div>
                         </div>
                     </div>
@@ -60,25 +60,18 @@
                             </div>
                             <div class="panel-body">
                                 <a href="#">
-                                    <img class="topic-img" src="<?php echo $service_img_url; ?>" alt="">
+                                    <?php echo $col_3_html; ?>
                                 </a>
                                 <div class="topic-content" style="margin-top: 10px; height: 165px;">
                                     <ul class="list-unstyled">
+                                    <?php foreach ($newses as $news) { ?>
                                         <li>
-                                            <a title="" href="http://linhchinonglam.com/tin-tuc/124/qua-tet-y-nghia-tu-thao-duoc.html">Quà tết cao cấp 2015 những món quà ý nghĩa từ thảo dược <span class="mark-new"></span></a>
+                                            <a href="<?php echo $news['href']; ?>"><?php echo $news['title']; ?><span class="mark-new"></a>
                                         </li>
-                                        <li>
-                                            <a href="http://linhchinonglam.com/tin-tuc/112/phong-su-chuong-trinh-tu-thien-linh-chi-nong-lam.html">Phóng Sự Từ Thiện Linh Chi Nông Lâm <span class="mark-new"></a>
-                                        </li>
-                                        <li>
-                                            <a href="http://linhchinonglam.com/tin-tuc/95/tuyen-dung-nhan-su-cap-cao.html">Tuyển Dụng Nhân Sự Cấp Cao <span class="mark-new"></a>
-                                        </li>
-                                        <li>
-                                            <a href="http://linhchinonglam.com/tin-tuc/53/tuyen-dai-ly-nha-phan-phoi-nam-linh-chi.html">Tuyển Đại Lý - Nhà Phân Phối Nấm Linh Chi <span class="mark-new"></a>
-                                        </li>
+                                    <?php } ?>
                                     </ul>
                                 </div>
-                                <a href="#" class="btn btn-main btn-sm pull-right">Xem thêm</a>
+                                <a href="<?php echo $col_3_link; ?>" class="btn btn-main btn-sm pull-right">Xem thêm</a>
                             </div>
                         </div>
                     </div>
