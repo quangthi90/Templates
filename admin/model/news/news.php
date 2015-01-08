@@ -44,12 +44,9 @@ class ModelNewsNews extends Model {
 	}
 	
 	public function editNews($news_id, $data, $ignore_date_modified) {
-		$this->db->query("UPDATE " . DB_PREFIX . "news SET allow_comment = '" . (int)$data['allow_comment'] . "', comment_permission = '" . (int)$data['comment_permission'] . "', comment_need_approval = '" . (int)$data['comment_need_approval'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', top = '" . (bool)$data['top'] . "' WHERE news_id = '" . (int)$news_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "news SET allow_comment = '" . (int)$data['allow_comment'] . "', comment_permission = '" . (int)$data['comment_permission'] . "', comment_need_approval = '" . (int)$data['comment_need_approval'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', top = '" . (isset($data['top']) ? (bool)$data['top'] : '0') . "' WHERE news_id = '" . (int)$news_id . "'");
 		
-		$get_date_added = mysql_query("SELECT * FROM " . DB_PREFIX . "news_description WHERE news_id = '" . (int)$news_id . "'");
-		$date_added = mysql_fetch_array($get_date_added);
-		// $this->session->data['date_added'] = $date_added['date_added'];
-		$this->session->data['date_modified'] = $date_added['date_modified'];
+		$this->session->data['date_modified'] = date("Y-m-d H:i:s");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_description WHERE news_id = '" . (int)$news_id . "'");
 					
 		if($ignore_date_modified){
@@ -59,7 +56,7 @@ class ModelNewsNews extends Model {
 		}
 		
 		foreach ($data['news_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "news_description SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', description = '" . $this->db->escape($value['description']) . "', short_description = '" . $this->db->escape($value['short_description']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', date_added = '" . $this->session->data['date_added'] ."', date_modified = '" . $date_modified . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "news_description SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', description = '" . $this->db->escape($value['description']) . "', short_description = '" . $this->db->escape($value['short_description']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', date_modified = '" . $date_modified . "'");
 		}
 		
 		if (isset($data['image'])) {
