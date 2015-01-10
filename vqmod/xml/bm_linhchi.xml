@@ -150,6 +150,9 @@
 					if ( $affiliate = $this->model_affiliate_affiliate->getAffiliateByCode($code) ) {
 						$data['phone'] = $affiliate['telephone'];
 						$data['address'] = $affiliate['address_1'];
+						if (!empty($affiliate['address_2'])) {
+							$data['address'] .= '<br>' . $affiliate['address_2'];
+						}
 						$data['email'] = $affiliate['email'];
 					} else {
 						$data['phone'] = $this->config->get('config_telephone');
