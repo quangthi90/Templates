@@ -42,6 +42,12 @@ class ControllerCommonHeader extends Controller {
 		$data['text_account'] = $this->language->get('text_account');
 		$data['text_register'] = $this->language->get('text_register');
 		$data['text_login'] = $this->language->get('text_login');
+		//BOMMER register_affiliate		
+		$data['text_register_affiliate'] = $this->language->get('text_register_affiliate');
+		$data['text_login_affiliate'] = $this->language->get('text_login_affiliate');
+		$data['text_register_user'] = $this->language->get('text_register_user');
+		$data['text_login_user'] = $this->language->get('text_login_user');
+		//BOMMER
 		$data['text_order'] = $this->language->get('text_order');
 		$data['text_transaction'] = $this->language->get('text_transaction');
 		$data['text_download'] = $this->language->get('text_download');
@@ -50,6 +56,9 @@ class ControllerCommonHeader extends Controller {
 		$data['text_category'] = $this->language->get('text_category');
 		$data['text_all'] = $this->language->get('text_all');
 
+		//BOMMER register_affiliate
+		$data['register_affiliate'] = $this->url->link('affiliate/register', '', 'SSL');
+		//BOMMER
 		$data['home'] = $this->url->link('common/home');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
 		$data['logged'] = $this->customer->isLogged();
