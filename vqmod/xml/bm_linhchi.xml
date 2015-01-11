@@ -9,6 +9,10 @@
 				$data['text_all'] = $this->language->get('text_all');
 			]]></search>
 			<add><![CDATA[
+				$data['text_register_affiliate'] = $this->language->get('text_register_affiliate');
+				$data['text_login_affiliate'] = $this->language->get('text_login_affiliate');
+				$data['text_register_user'] = $this->language->get('text_register_user');
+				$data['text_login_user'] = $this->language->get('text_login_user');
 				$data['text_product'] = $this->language->get('text_product');
 				$data['contact'] = $this->url->link('information/contact');
 			]]></add>
@@ -18,6 +22,7 @@
 				$data['login'] = $this->url->link('account/login', '', 'SSL');
 			]]></search>
 			<add><![CDATA[
+				$data['register_affiliate'] = $this->url->link('affiliate/register', '', 'SSL');
 				$data['login_affiliate'] = $this->url->link('affiliate/login', '', 'SSL');
 			]]></add>
 		</operation>
@@ -76,6 +81,10 @@
 			]]></search>
 			<add><![CDATA[
 				$_['text_product']       = 'products';
+				$_['text_register_affiliate'] = 'Register as an affiliate';
+				$_['text_login_affiliate'] = 'Login as an affiliate';
+				$_['text_register_user'] = 'Register as a buyer';
+				$_['text_loginser'] = 'Login as a buyer';
 			]]></add>
 		</operation>
 	</file>
@@ -86,6 +95,10 @@
 			]]></search>
 			<add><![CDATA[
 				$_['text_product']       = 'Sản phẩm';
+				$_['text_register_affiliate'] = 'Đăng ký đại lý';
+				$_['text_login_affiliate'] = 'Đăng nhập đại lý';
+				$_['text_register_user'] = 'Đăng ký người mua';
+				$_['text_login_user'] = 'Đăng nhập người mua';
 			]]></add>
 		</operation>
 	</file>
