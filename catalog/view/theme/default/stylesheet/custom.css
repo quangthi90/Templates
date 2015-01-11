@@ -227,14 +227,15 @@ header #menu a.icon-home-sm {
 	text-align: right;
 	border-bottom: 1px solid rgb(229, 176, 57);
 }
-#topbar ul {
+#topbar > ul {
 	list-style: none;
 	margin: 0px;
 	padding: 0px 10px;
 }
-#topbar ul li {
+#topbar > ul > li {
 	display: inline-block;
 	margin: 3px 5px;
+	white-space: nowrap;
 }
 #topbar .login-btns.open .dropdown-toggle  {
 	background-image: none;
@@ -250,6 +251,7 @@ header #menu a.icon-home-sm {
 }
 #topbar .login-btns ul.dropdown-menu li {
 	display: block;
+	padding: 3px;
 }
 #topbar .login-btns ul.dropdown-menu li a {
 	color: #FFF;
@@ -270,6 +272,10 @@ header #menu a.icon-home-sm {
 	margin-left: 28px;
 	text-transform: uppercase;
 	color: #DB6108;
+}
+#cart .dropdown-menu {
+	padding: 10px;
+	border-radius: 0px;
 }
 
 /*END HEADER*/

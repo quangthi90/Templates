@@ -59,7 +59,7 @@
           <?php } ?>
           <ul>
             <?php if($logged){ ?>
-              <li><?php echo $text_logged; ?></li>
+              <li>Xin chào <strong> <?php echo $text_logged; ?> </strong> !</li>
               <li><a href="<?php echo $logout; ?>" class="btn btn-xs btn-default"><?php echo $text_logout; ?></a></li>
             <?php } else { ?>
               <li>
@@ -67,12 +67,21 @@
                   <a class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><?php echo $text_login; ?>&nbsp;&nbsp;<span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="<?php echo $login; ?>" class="btn btn-primary">Login as a user</a>
-                    <li><a href="<?php echo $login_affiliate; ?>" class="btn btn-primary">Login as an affiliate</a>
+                    <li><a href="<?php echo $login; ?>" class="btn btn-primary"><?php echo $text_login_user; ?></a>
+                    <li><a href="<?php echo $login_affiliate; ?>" class="btn btn-primary"><?php echo $text_login_affiliate; ?></a>
                   </ul>
                 </div>
               </li>
-              <li><a href="<?php echo $register; ?>" class="btn btn-xs btn-primary"><?php echo $text_register; ?></a></li>
+              <li>
+                <div class="btn-group login-btns">
+                  <a class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><?php echo $text_register; ?>&nbsp;&nbsp;<span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="<?php echo $register; ?>" class="btn btn-primary"><?php echo $text_register_user; ?></a>
+                    <li><a href="<?php echo $register_affiliate; ?>" class="btn btn-primary"><?php echo $text_register_affiliate; ?></a>
+                  </ul>
+                </div>              
+              </li>
             <?php } ?>
             <li>
               <?php echo $cart; ?>
