@@ -5,7 +5,7 @@
         <div class="order-ad" id="order-ad">
             <a href="#" class="btn btn-main pull-left text-upper" id="link-qa">Hỏi Đáp</a>
             <p class="text-ad">VUI LÒNG GỌI <?php echo $phone; ?> HOẶC ĐẶT HÀNG TRỰC TUYẾN</p>
-            <a href="#" class="btn btn-main pull-right text-upper" id="link-ordernow">Đặt Mua Ngay Bây Giờ</a>
+            <a href="<?php echo $product_catalog; ?>" class="btn btn-main pull-right text-upper" id="link-ordernow">Đặt Mua Ngay Bây Giờ</a>
             <div class="clearfix"></div>
         </div>
         <div class="content-up" id="content-up">            
