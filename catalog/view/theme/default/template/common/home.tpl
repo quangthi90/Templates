@@ -24,7 +24,7 @@
                     <div class="col-xs-4">
                         <div class="panel panel-flat home-topic">
                             <div class="panel-heading">
-                                <h3 class="text-bold" title="Giới thiệu về linh chi đại học Nông Lâm"><a href="#">GIỚI THIỆU</a></h3>
+                                <h3 class="text-bold" title="Giới thiệu về linh chi đại học Nông Lâm"><a href="<?php echo $col_1_link; ?>">GIỚI THIỆU</a></h3>
                             </div>
                             <div class="panel-body">
                                 <?php echo $col_1_html; ?>
@@ -39,7 +39,7 @@
                     <div class="col-xs-4">
                         <div class="panel panel-flat home-topic">
                             <div class="panel-heading">
-                                <h3 class="text-bold" title="Sản phẩm của Linh Chi Nông Lâm"><a href="#">SẢN PHẨM</a></h3>
+                                <h3 class="text-bold" title="Sản phẩm của Linh Chi Nông Lâm"><a href="<?php echo $col_2_link; ?>">SẢN PHẨM</a></h3>
                             </div>
                             <div class="panel-body">
                                 <a href="#">
@@ -56,7 +56,7 @@
                     <div class="col-xs-4">
                         <div class="panel panel-flat home-topic">
                             <div class="panel-heading">
-                                <h3 class="text-bold" title="Tin tức về nấm Linh Chi Nông Lâm"><a href="#">TIN TỨC</a></h3>
+                                <h3 class="text-bold" title="Tin tức về nấm Linh Chi Nông Lâm"><a href="<?php echo $col_3_link; ?>">TIN TỨC</a></h3>
                             </div>
                             <div class="panel-body">
                                 <a href="#">
