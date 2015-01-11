@@ -98,8 +98,24 @@
         <li><a href="#"><?php echo $text_product; ?></a>
           <ul class="dropdown-menu">
           <?php foreach ($categories as $category) { ?>
-            <li class=""><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-          <?php } ?>
+            <li class=""><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
+              <?php if (!empty($category['children'])){ ?>
+              <ul class="dropdown-menu">
+                <?php foreach ($category['children'] as $child) { ?>
+                <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a>
+                  <?php if (!empty($child['children'])){ ?>
+                  <ul class="dropdown-menu">
+                    <?php foreach ($child['children'] as $child_cat) { ?>
+                    <li><a href="<?php echo $child_cat['href']; ?>"><?php echo $child_cat['name']; ?></a></li>
+                    <?php } ?>
+                  </ul>
+                  <?php } ?>
+                </li>
+                <?php } ?>
+              </ul>
+              <?php } ?>
+            </li>
+            <?php } ?>
           </ul>
         </li>
         <?php foreach ($news_categories as $category) { ?>
