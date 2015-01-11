@@ -36,6 +36,9 @@
             <?php } ?>
           </p> 
           <?php } ?>
+          <div class="product-introduction">
+          	<?php echo $meta_description; ?>
+          </div>
           <div id="product" class="product-shopping-cart">
             <div class="text-center">
               <label for="input-quantity"><?php echo $entry_qty; ?></label>
@@ -54,16 +57,14 @@
           </div>
         </div>
       </div>
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab-meta-description" data-toggle="tab"><?php echo $tab_product_intro; ?></a></li>
-        <li><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
+      <ul class="nav nav-tabs">        
+        <li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
         <?php if ($attribute_groups) { ?>
         <li><a href="#tab-specification" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
         <?php } ?>
       </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="tab-meta-description"><?php echo $meta_description; ?></div>
-        <div class="tab-pane" id="tab-description"><?php echo $description; ?></div>
+      <div class="tab-content">        
+        <div class="tab-pane active" id="tab-description"><?php echo $description; ?></div>
         <?php if ($attribute_groups) { ?>
         <div class="tab-pane" id="tab-specification">
           <table class="table table-bordered">
