@@ -42,7 +42,7 @@ $_['entry_bad']         = 'Xấu';
 $_['entry_captcha']     = 'Nhập mã kiểm tra vào ô bên dưới:';
 
 // Tabs
-$_['tab_description']   = 'Mô tả';
+$_['tab_description']   = 'Thông tin sản phẩm';
 $_['tab_attribute']     = 'Đặc tính';
 $_['tab_review']        = 'Đánh giá (%s)';
 

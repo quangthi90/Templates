@@ -14,7 +14,6 @@
 				$data['text_register_user'] = $this->language->get('text_register_user');
 				$data['text_login_user'] = $this->language->get('text_login_user');
 				$data['text_product'] = $this->language->get('text_product');
-				$data['contact'] = $this->url->link('information/contact');
 			]]></add>
 		</operation>
 		<operation>
@@ -24,6 +23,7 @@
 			<add><![CDATA[
 				$data['register_affiliate'] = $this->url->link('affiliate/register', '', 'SSL');
 				$data['login_affiliate'] = $this->url->link('affiliate/login', '', 'SSL');
+				$data['contact'] = $this->url->link('information/contact', '', '');
 			]]></add>
 		</operation>
 		<operation>
@@ -186,6 +186,8 @@
 				$data['column_left'] = $this->load->controller('common/column_left');
 			]]></search>
 			<add><![CDATA[
+				$data['product_catalog'] = $this->url->link('product/categories', '', 'SSL');
+				
 				// check affiliate
 				if ( isset($this->session->data['tracking']) || $this->affiliate->isLogged() ) {
 					if ( !$code = $this->affiliate->getCode() ) {
