@@ -11,32 +11,6 @@
       <?php echo $content_top; ?>
       <h2 class="heading-title"><?php echo $heading_title; ?></h2>
       <div class="break"></div>
-      <?php if ($categories) { ?>
-        <h3><?php echo $text_refine; ?></h3>
-        <?php if (count($categories) <= 5) { ?>
-          <div class="row">
-            <div class="col-sm-3">
-              <ul>
-                <?php foreach ($categories as $category) { ?>
-                <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-                <?php } ?>
-              </ul>
-            </div>
-          </div>
-        <?php } else { ?>
-        <div class="row">
-          <?php foreach (array_chunk($categories, ceil(count($categories) / 4)) as $categories) { ?>
-            <div class="col-sm-3">
-              <ul>
-                <?php foreach ($categories as $category) { ?>
-                  <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-                <?php } ?>
-              </ul>
-            </div>
-          <?php } ?>
-        </div>
-        <?php } ?>
-      <?php } ?>
       <?php if ($products) { ?>
       <div class="product-list">
         <?php foreach ($products as $product) { ?>
