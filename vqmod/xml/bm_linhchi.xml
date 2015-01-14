@@ -315,4 +315,70 @@
 			]]></add>
 		</operation>
 	</file>
+	<file name="admin/controller/marketing/affiliate.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$data['column_balance'] = $this->language->get('column_balance');
+			]]></search>
+			<add><![CDATA[
+				$data['column_total'] = $this->language->get('column_total');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				'unlock'       => $unlock,
+			]]></search>
+			<add><![CDATA[
+				'total'		   => $this->currency->format($result['total'], $this->config->get('config_currency')),
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/english/marketing/affiliate.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['column_balance']            = 'Balance';
+			]]></search>
+			<add><![CDATA[
+				$_['column_total']            = 'Total';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/vietnamese/marketing/affiliate.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['column_balance']            = 'Balance';
+			]]></search>
+			<add><![CDATA[
+				$_['column_total']            = 'Total';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/model/marketing/affiliate.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				$sql = "SELECT *, CONCAT(a.firstname, ' ', a.lastname) AS name, (SELECT SUM(at.amount) FROM " . DB_PREFIX . "affiliate_transaction at WHERE at.affiliate_id = a.affiliate_id GROUP BY at.affiliate_id) AS balance FROM " . DB_PREFIX . "affiliate a";
+			]]></search>
+			<add><![CDATA[
+				$sql = "SELECT *, CONCAT(a.firstname, ' ', a.lastname) AS name, (SELECT SUM(at.amount) FROM " . DB_PREFIX . "affiliate_transaction at WHERE at.affiliate_id = a.affiliate_id GROUP BY at.affiliate_id) AS balance, (SELECT SUM(od.total) FROM " . DB_PREFIX . "`order` od WHERE od.affiliate_id = a.affiliate_id GROUP BY od.affiliate_id) AS total FROM " . DB_PREFIX . "affiliate a";
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/marketing/affiliate_list.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<td class="text-right"><?php echo $column_balance; ?></td>
+			]]></search>
+			<add><![CDATA[
+				<td class="text-right"><?php echo $column_total; ?></td>
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				<td class="text-right"><?php echo $affiliate['balance']; ?></td>
+			]]></search>
+			<add><![CDATA[
+				<td class="text-right"><?php echo $affiliate['total']; ?></td>
+			]]></add>
+		</operation>
+	</file>
 </modification>
