@@ -24,6 +24,7 @@
 				$data['register_affiliate'] = $this->url->link('affiliate/register', '', 'SSL');
 				$data['login_affiliate'] = $this->url->link('affiliate/login', '', 'SSL');
 				$data['contact'] = $this->url->link('information/contact', '', '');
+				$data['account'] = $this->url->link('account/account', '', 'SSL');
 			]]></add>
 		</operation>
 		<operation>

@@ -59,7 +59,7 @@
           <?php } ?>
           <ul>
             <?php if($logged){ ?>
-              <li>Xin chào <strong> <?php echo $text_logged; ?> </strong> !</li>
+              <li>Xin chào <strong> <a href="<?php echo $account; ?>"><?php echo $text_logged; ?></a> </strong> !</li>
               <li><a href="<?php echo $logout; ?>" class="btn btn-xs btn-default"><?php echo $text_logout; ?></a></li>
             <?php } else { ?>
               <li>

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // Heading
 $_['heading_title'] = 'Tài khoản của bạn đã được tạo!';
 
