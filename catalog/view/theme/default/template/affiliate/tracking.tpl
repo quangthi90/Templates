@@ -11,14 +11,14 @@
       <h2 class="heading-title"><?php echo $heading_title; ?></h2>
       <div class="break"></div>
       <p><?php echo $text_description; ?></p>
-      <form class="form-horizontal">
+      <form class="form-horizontal" action="<?php echo $continue; ?>" method="POST">
         <div class="form-group">
           <label class="col-sm-2 control-label" for="input-code"><?php echo $entry_code; ?></label>
           <div class="col-sm-10">
-            <textarea cols="40" rows="5" placeholder="<?php echo $entry_code; ?>" id="input-code" class="form-control"><?php echo $code; ?></textarea>
+            <textarea cols="40" rows="5" placeholder="<?php echo $entry_code; ?>" id="input-code" name="code" class="form-control"><?php echo $code; ?></textarea>
           </div>
         </div>
-        <div class="form-group">
+        <!--div class="form-group">
           <label class="col-sm-2 control-label" for="input-generator"><span data-toggle="tooltip" title="<?php echo $help_generator; ?>"><?php echo $entry_generator; ?></span></label>
           <div class="col-sm-10">
             <input type="text" name="product" value="" placeholder="<?php echo $entry_generator; ?>" id="input-generator" class="form-control" />
@@ -29,11 +29,11 @@
           <div class="col-sm-10">
             <textarea name="link" cols="40" rows="5" placeholder="<?php echo $entry_link; ?>" id="input-link" class="form-control"></textarea>
           </div>
+        </div-->
+        <div class="buttons clearfix">
+          <div class="pull-right"><button type="submit" class="btn btn-primary"><?php echo $button_continue; ?></button></div>
         </div>
       </form>
-      <div class="buttons clearfix">
-        <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
-      </div>
       <?php echo $content_bottom; ?>
     </div>
     <div class="content-down" id="content-down"></div>

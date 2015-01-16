@@ -387,10 +387,64 @@
 				$this->request->get['route'] = $query->row['query'];
 			]]></search>
 			<add><![CDATA[
-				if ($url[0] == 'tracking') {
-					setcookie('tracking', $url[1], time() + 3600 * 24 * 1000, '/');
-					$this->session->data['tracking'] = $url[1];
+				if ($url[0] == 'affiliate_id') {
+					setcookie('tracking', $part, time() + 3600 * 24 * 1000, '/');
+					$this->session->data['tracking'] = $part;
 					$this->request->get['route'] = 'common/home';
+				}
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/affiliate/tracking.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->document->setTitle($this->language->get('heading_title'));
+			]]></search>
+			<add><![CDATA[
+				$this->load->model('affiliate/affiliate');
+
+				if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
+					$this->model_affiliate_affiliate->editTracking($this->request->post);
+
+					$this->response->redirect($this->url->link('affiliate/tracking', '', 'SSL'));
+				}
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+				$data['continue'] = $this->url->link('affiliate/account', '', 'SSL');
+			]]></search>
+			<add><![CDATA[
+				$data['continue'] = $this->url->link('affiliate/tracking', '', 'SSL');
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/model/affiliate/affiliate.php">
+		<operation>
+			<search position="before"><![CDATA[
+				public function deleteLoginAttempts($email) {
+			]]></search>
+			<add><![CDATA[
+				public function editTracking($data) {
+					$this->event->trigger('pre.affiliate.edit.tracking', $data);
+
+					$affiliate_id = $this->affiliate->getId();
+
+					$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "affiliate WHERE code = '" . $this->db->escape($data['code']) . "'");
+					if ($total = $query->row['total'] > 0) {
+						$data['code'] .= '-' . ($total + 1);
+					}
+					$this->db->query("UPDATE " . DB_PREFIX . "affiliate SET code = '" . $this->db->escape($data['code']) . "' WHERE affiliate_id = '" . (int)$affiliate_id . "'");
+
+					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE query = 'affiliate_id=" . $affiliate_id . "'");
+					
+					if (isset($query->row['url_alias_id']) && $alias_id = $query->row['url_alias_id']) {
+						$this->db->query("UPDATE " . DB_PREFIX . "url_alias SET keyword = '" . $data['code'] . "' WHERE url_alias_id = '" . $alias_id . "'");
+					} else {
+						$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET keyword = '" . $data['code'] . "', query = 'affiliate_id=" . $affiliate_id . "'");
+					}
+
+					$this->event->trigger('post.affiliate.edit.tracking', $affiliate_id);
 				}
 			]]></add>
 		</operation>
