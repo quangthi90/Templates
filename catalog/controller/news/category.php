@@ -86,7 +86,8 @@ class ControllerNewsCategory extends Controller {
 				'sort'  => 'n.sort_order, nd.date_added',
 				'order' => 'DESC',
 				'start' => ($page - 1) * $this->config->get('news_setting_news_per_page'),
-				'limit' => $this->config->get('news_setting_news_per_page'),
+				// 'limit' => $this->config->get('news_setting_news_per_page'),
+				'limit' => 100,
 				'filter_news_category_id' => $category_id,
 			);			
 			
