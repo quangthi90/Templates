@@ -3,6 +3,204 @@
 	<version>2.0.x</version>
 	<vqmver>1.0</vqmver>
 	<author>Bommer Luu</author>
+	<file name="admin/controller/sale/order.php">
+		<operation>
+			<search position="after"><![CDATA[
+				'filter_date_modified' => $filter_date_modified,
+			]]></search>
+			<add><![CDATA[
+				'filter_affiliate_id'  => isset($this->request->get['affiliate_id']) ? $this->request->get['affiliate_id'] : null,
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/model/sale/order.php">
+		<operation>
+			<search position="before"><![CDATA[
+				$sort_data = array(
+			]]></search>
+			<add><![CDATA[
+				if (!empty($data['filter_affiliate_id'])) {
+					$sql .= " AND o.affiliate_id = '" . (int)$data['filter_affiliate_id'] . "'";
+				}
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="20"><![CDATA[
+				$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order`";
+			]]></search>
+			<add><![CDATA[
+				if (!empty($data['filter_affiliate_id'])) {
+					$sql .= " AND affiliate_id = '" . (int)$data['filter_affiliate_id'] . "'";
+				}
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/english/default.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['button_currency']               = 'Refresh Currency Values';
+			]]></search>
+			<add><![CDATA[
+				$_['button_orders']                 = 'Orders';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/vietnamese/default.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['button_add_profile']      = 'Add Profile';
+			]]></search>
+			<add><![CDATA[
+				$_['button_orders']           = 'Đơn đặt hàng';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/marketing/affiliate_list.tpl">
+		<operation>
+			<search position="before"><![CDATA[
+				<a href="<?php echo $affiliate['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+			]]></search>
+			<add><![CDATA[
+				<a href="<?php echo $affiliate['orders']; ?>" data-toggle="tooltip" title="<?php echo $button_orders; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/english/catalog/product.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				$_['entry_meta_description'] = 'Meta Tag Description';
+			]]></search>
+			<add><![CDATA[
+				$_['entry_meta_description'] = 'Product introduce';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/vietnamese/catalog/product.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				$_['entry_meta_description'] = 'Mô tả từ khóa:';
+			]]></search>
+			<add><![CDATA[
+				$_['entry_meta_description'] = 'Giới thiệu sản phẩm';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/controller/common/menu.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$data['text_help'] = $this->language->get('text_help');
+			]]></search>
+			<add><![CDATA[
+				$data['text_home_intro'] = $this->language->get('text_home_intro');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				$data['geo_zone'] = $this->url->link('localisation/geo_zone', 'token=' . $this->session->data['token'], 'SSL');
+			]]></search>
+			<add><![CDATA[
+				$data['home_intro'] = $this->url->link('plugin/introduce', 'token=' . $this->session->data['token'], 'SSL');
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/english/common/menu.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['text_geo_zone']                    = 'Geo Zones';
+			]]></search>
+			<add><![CDATA[
+				$_['text_home_intro']                  = 'Home Introduce';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/vietnamese/common/menu.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['text_geo_zone']                    = 'Vùng Geo';
+			]]></search>
+			<add><![CDATA[
+				$_['text_home_intro']                  = 'Giới thiệu ở trang chủ';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/common/menu.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+			]]></search>
+			<add><![CDATA[
+				<li><a href="<?php echo $home_intro; ?>"><?php echo $text_home_intro; ?></a></li>
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/controller/marketing/affiliate.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$data['column_balance'] = $this->language->get('column_balance');
+			]]></search>
+			<add><![CDATA[
+				$data['column_total'] = $this->language->get('column_total');
+				$data['button_orders'] = $this->language->get('button_orders');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				'unlock'       => $unlock,
+			]]></search>
+			<add><![CDATA[
+				'total'		   => $this->currency->format($result['total'], $this->config->get('config_currency')),
+				'orders'       => $this->url->link('sale/order', 'token=' . $this->session->data['token'] . '&affiliate_id=' . $result['affiliate_id'], 'SSL'),
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/english/marketing/affiliate.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['column_balance']            = 'Balance';
+			]]></search>
+			<add><![CDATA[
+				$_['column_total']            = 'Total';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/vietnamese/marketing/affiliate.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['column_balance']            = 'Balance';
+			]]></search>
+			<add><![CDATA[
+				$_['column_total']            = 'Total';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/model/marketing/affiliate.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				$sql = "SELECT *, CONCAT(a.firstname, ' ', a.lastname) AS name, (SELECT SUM(at.amount) FROM " . DB_PREFIX . "affiliate_transaction at WHERE at.affiliate_id = a.affiliate_id GROUP BY at.affiliate_id) AS balance FROM " . DB_PREFIX . "affiliate a";
+			]]></search>
+			<add><![CDATA[
+				$sql = "SELECT *, CONCAT(a.firstname, ' ', a.lastname) AS name, (SELECT SUM(at.amount) FROM " . DB_PREFIX . "affiliate_transaction at WHERE at.affiliate_id = a.affiliate_id GROUP BY at.affiliate_id) AS balance, (SELECT SUM(od.total) FROM " . DB_PREFIX . "`order` od WHERE od.affiliate_id = a.affiliate_id GROUP BY od.affiliate_id) AS total FROM " . DB_PREFIX . "affiliate a";
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/marketing/affiliate_list.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<td class="text-right"><?php echo $column_balance; ?></td>
+			]]></search>
+			<add><![CDATA[
+				<td class="text-right"><?php echo $column_total; ?></td>
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				<td class="text-right"><?php echo $affiliate['balance']; ?></td>
+			]]></search>
+			<add><![CDATA[
+				<td class="text-right"><?php echo $affiliate['total']; ?></td>
+			]]></add>
+		</operation>
+	</file>
 	<file name="catalog/controller/common/header.php">
 		<operation>
 			<search position="after"><![CDATA[
@@ -244,140 +442,6 @@
 						'href' => $this->url->link('news/news', 'news_id=' . $news['news_id'], 'SSL')
 					);
 				}
-			]]></add>
-		</operation>
-	</file>
-	<file name="admin/language/english/catalog/product.php">
-		<operation>
-			<search position="replace"><![CDATA[
-				$_['entry_meta_description'] = 'Meta Tag Description';
-			]]></search>
-			<add><![CDATA[
-				$_['entry_meta_description'] = 'Product introduce';
-			]]></add>
-		</operation>
-	</file>
-	<file name="admin/language/vietnamese/catalog/product.php">
-		<operation>
-			<search position="replace"><![CDATA[
-				$_['entry_meta_description'] = 'Mô tả từ khóa:';
-			]]></search>
-			<add><![CDATA[
-				$_['entry_meta_description'] = 'Giới thiệu sản phẩm';
-			]]></add>
-		</operation>
-	</file>
-	<file name="admin/controller/common/menu.php">
-		<operation>
-			<search position="after"><![CDATA[
-				$data['text_help'] = $this->language->get('text_help');
-			]]></search>
-			<add><![CDATA[
-				$data['text_home_intro'] = $this->language->get('text_home_intro');
-			]]></add>
-		</operation>
-		<operation>
-			<search position="after"><![CDATA[
-				$data['geo_zone'] = $this->url->link('localisation/geo_zone', 'token=' . $this->session->data['token'], 'SSL');
-			]]></search>
-			<add><![CDATA[
-				$data['home_intro'] = $this->url->link('plugin/introduce', 'token=' . $this->session->data['token'], 'SSL');
-			]]></add>
-		</operation>
-	</file>
-	<file name="admin/language/english/common/menu.php">
-		<operation>
-			<search position="after"><![CDATA[
-				$_['text_geo_zone']                    = 'Geo Zones';
-			]]></search>
-			<add><![CDATA[
-				$_['text_home_intro']                  = 'Home Introduce';
-			]]></add>
-		</operation>
-	</file>
-	<file name="admin/language/vietnamese/common/menu.php">
-		<operation>
-			<search position="after"><![CDATA[
-				$_['text_geo_zone']                    = 'Vùng Geo';
-			]]></search>
-			<add><![CDATA[
-				$_['text_home_intro']                  = 'Giới thiệu ở trang chủ';
-			]]></add>
-		</operation>
-	</file>
-	<file name="admin/view/template/common/menu.tpl">
-		<operation>
-			<search position="after"><![CDATA[
-				<li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
-			]]></search>
-			<add><![CDATA[
-				<li><a href="<?php echo $home_intro; ?>"><?php echo $text_home_intro; ?></a></li>
-			]]></add>
-		</operation>
-	</file>
-	<file name="admin/controller/marketing/affiliate.php">
-		<operation>
-			<search position="after"><![CDATA[
-				$data['column_balance'] = $this->language->get('column_balance');
-			]]></search>
-			<add><![CDATA[
-				$data['column_total'] = $this->language->get('column_total');
-			]]></add>
-		</operation>
-		<operation>
-			<search position="after"><![CDATA[
-				'unlock'       => $unlock,
-			]]></search>
-			<add><![CDATA[
-				'total'		   => $this->currency->format($result['total'], $this->config->get('config_currency')),
-			]]></add>
-		</operation>
-	</file>
-	<file name="admin/language/english/marketing/affiliate.php">
-		<operation>
-			<search position="after"><![CDATA[
-				$_['column_balance']            = 'Balance';
-			]]></search>
-			<add><![CDATA[
-				$_['column_total']            = 'Total';
-			]]></add>
-		</operation>
-	</file>
-	<file name="admin/language/vietnamese/marketing/affiliate.php">
-		<operation>
-			<search position="after"><![CDATA[
-				$_['column_balance']            = 'Balance';
-			]]></search>
-			<add><![CDATA[
-				$_['column_total']            = 'Total';
-			]]></add>
-		</operation>
-	</file>
-	<file name="admin/model/marketing/affiliate.php">
-		<operation>
-			<search position="replace"><![CDATA[
-				$sql = "SELECT *, CONCAT(a.firstname, ' ', a.lastname) AS name, (SELECT SUM(at.amount) FROM " . DB_PREFIX . "affiliate_transaction at WHERE at.affiliate_id = a.affiliate_id GROUP BY at.affiliate_id) AS balance FROM " . DB_PREFIX . "affiliate a";
-			]]></search>
-			<add><![CDATA[
-				$sql = "SELECT *, CONCAT(a.firstname, ' ', a.lastname) AS name, (SELECT SUM(at.amount) FROM " . DB_PREFIX . "affiliate_transaction at WHERE at.affiliate_id = a.affiliate_id GROUP BY at.affiliate_id) AS balance, (SELECT SUM(od.total) FROM " . DB_PREFIX . "`order` od WHERE od.affiliate_id = a.affiliate_id GROUP BY od.affiliate_id) AS total FROM " . DB_PREFIX . "affiliate a";
-			]]></add>
-		</operation>
-	</file>
-	<file name="admin/view/template/marketing/affiliate_list.tpl">
-		<operation>
-			<search position="after"><![CDATA[
-				<td class="text-right"><?php echo $column_balance; ?></td>
-			]]></search>
-			<add><![CDATA[
-				<td class="text-right"><?php echo $column_total; ?></td>
-			]]></add>
-		</operation>
-		<operation>
-			<search position="after"><![CDATA[
-				<td class="text-right"><?php echo $affiliate['balance']; ?></td>
-			]]></search>
-			<add><![CDATA[
-				<td class="text-right"><?php echo $affiliate['total']; ?></td>
 			]]></add>
 		</operation>
 	</file>
