@@ -381,4 +381,18 @@
 			]]></add>
 		</operation>
 	</file>
+	<file name="catalog/controller/common/seo_url.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->request->get['route'] = $query->row['query'];
+			]]></search>
+			<add><![CDATA[
+				if ($url[0] == 'tracking') {
+					setcookie('tracking', $url[1], time() + 3600 * 24 * 1000, '/');
+					$this->session->data['tracking'] = $url[1];
+					$this->request->get['route'] = 'common/home';
+				}
+			]]></add>
+		</operation>
+	</file>
 </modification>
