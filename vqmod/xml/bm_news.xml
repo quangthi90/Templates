@@ -51,6 +51,18 @@
 			]]></add>
 		</operation>
 	</file>
+	<file name="admin/language/vietnamese/common/menu.php">
+		<operation>
+			<search position="after"><![CDATA[Modules]]></search>
+			<add><![CDATA[
+				$_['text_news_title']						= 'Tin tức';
+				$_['text_news_category']					= 'Danh mục';
+				$_['text_news_article']						= 'Bài viết';
+				$_['text_news_comment']						= 'Bình luận';
+				$_['text_news_setting']						= 'Cài đặt';
+			]]></add>
+		</operation>
+	</file>
 	<file name="catalog/controller/common/header.php">
 		<operation>
 			<search position="before"><![CDATA[// Menu]]></search>
