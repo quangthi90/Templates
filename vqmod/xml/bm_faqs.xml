@@ -1,0 +1,44 @@
+<modification>
+	<id>FAQs in admin page</id>
+	<version>2.0.x</version>
+	<vqmver>1.0</vqmver>
+	<author>Bommer Luu</author>
+	<file name="admin/view/template/common/menu.tpl">
+		<operation>
+			<search position="after"><![CDATA[<?php echo $text_contact; ?></a></li>]]></search>
+			<add><![CDATA[
+				<li><a href="<?php echo $faq; ?>"><?php echo $text_faq; ?></a></li>
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/controller/common/menu.php">
+		<operation>
+			<search position="after"><![CDATA[language->get('text_module');]]></search>
+			<add><![CDATA[
+				$data['text_faq'] = $this->language->get('text_faq');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[$data['module'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');]]></search>
+			<add><![CDATA[
+				$data['faq'] = $this->url->link('faq/faq', 'token=' . $this->session->data['token'], 'SSL');
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/english/common/menu.php">
+		<operation>
+			<search position="after"><![CDATA[Modules]]></search>
+			<add><![CDATA[
+				$_['text_faq']               		   = 'FAQs';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/vietnamese/common/menu.php">
+		<operation>
+			<search position="after"><![CDATA[Modules]]></search>
+			<add><![CDATA[
+				$_['text_faq']               		   = 'Hỏi đáp';
+			]]></add>
+		</operation>
+	</file>
+</modification>
