@@ -73,8 +73,9 @@
 
 				$categories = $this->model_news_category->getCategories(0);
 				$data['news_categories'] = array();
+				$common_config = $this->config->get('common');
 				foreach ($categories as $category) {
-					if ((isset($this->session->data['tracking']) || $this->affiliate->isLogged()) && $category['news_category_id'] == $this->config->get('common')['affiliate']['remove_news_id']) continue;
+					if ((!empty($this->session->data['tracking']) || $this->affiliate->isLogged()) && $category['news_category_id'] == $common_config['affiliate']['remove_news_id']) continue;
 					if ($category['top']) {
 						// Level 2
 						$children_data = array();
