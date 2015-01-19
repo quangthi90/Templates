@@ -31,6 +31,8 @@ $registry->set('load', $loader);
 $config = new Config();
 $registry->set('config', $config);
 
+$config->load('common');
+
 // Database
 $db = new DB(DB_DRIVER, DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 $registry->set('db', $db);
