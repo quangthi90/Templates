@@ -1,11 +1,11 @@
 <?php
 // Heading 
-$_['heading_title']             = 'Hợp Tác Bán Hàng - Affiliate';
+$_['heading_title']             = 'Hợp Tác Bán Hàng - Đại lý';
 
 // Text
 $_['text_account']              = 'Tài Khoản';
-$_['text_register']             = 'Đăng Ký Affiliate';
-$_['text_account_already']      = 'Nếu bạn đã có tài khoản Affiliate, vui lòng đăng nhập <a href="%s">Tại Đây</a>.';
+$_['text_register']             = 'Đăng Ký Đại lý';
+$_['text_account_already']      = 'Nếu bạn đã có tài khoản Đại lý, vui lòng đăng nhập <a href="%s">Tại Đây</a>.';
 $_['text_signup']               = '<b>Lưu ý:</b><p>1. Các mục có dấu sao <b>màu đỏ</b> không được bỏ trống & phải điền đầy đủ, chính xác.<p>2. Hiện tại chúng tôi chỉ chấp nhận thanh toán trả tiền Hoa Hồng qua các ngân hàng:<p><b>VietCombank (VCB); Á Châu (ACB); HD Bank; Đông Á; Nông nghiệp</b>';
 $_['text_your_details']         = 'Thông tin cá nhân';
 $_['text_your_address']         = 'Địa chỉ của bạn';

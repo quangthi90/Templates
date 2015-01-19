@@ -1,6 +1,6 @@
 ﻿<?php
 // Heading 
-$_['heading_title']    = 'Affiliate';
+$_['heading_title']    = 'Đại lý';
 
 // Text
 $_['text_register']    = 'Đăng ký';

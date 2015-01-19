@@ -1,6 +1,6 @@
 <?php
 // Heading 
-$_['heading_title']    = 'Mã số Affiliate & liên kết theo dõi';
+$_['heading_title']    = 'Mã số Đại lý & liên kết theo dõi';
 
 // Text
 $_['text_account']     = 'Tài khoản';
