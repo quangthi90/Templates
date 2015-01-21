@@ -470,7 +470,7 @@
 				if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
 					$this->model_affiliate_affiliate->editTracking($this->request->post);
 
-					$this->response->redirect($this->url->link('affiliate/tracking', '', 'SSL'));
+					$this->response->redirect($this->url->link('affiliate/account', '', 'SSL'));
 				}
 			]]></add>
 		</operation>
