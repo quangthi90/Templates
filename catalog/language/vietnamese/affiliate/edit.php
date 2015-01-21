@@ -23,6 +23,7 @@ $_['entry_postcode']    = 'Mã Bưu Điện:';
 $_['entry_city']        = 'Thành phố / Huyện:';
 $_['entry_country']     = 'Quốc Gia:';
 $_['entry_zone']        = 'Tỉnh:';
+$_['entry_map_link']        = 'Link Google Maps:';
 
 // Error
 $_['error_exists']      = 'Lỗi: E-Mail đã có người sử dụng!';

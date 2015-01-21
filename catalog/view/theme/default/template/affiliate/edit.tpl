@@ -134,6 +134,12 @@
               <?php } ?>
             </div>
           </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-map-link"><?php echo $entry_map_link ?></label>
+            <div class="col-sm-10">
+              <input type="text" name="map_link" value="<?php echo $map_link ?>" placeholder="<?php echo $map_link ?>" id="input-map-link" class="form-control" />
+            </div>
+          </div>
         </fieldset>
         <div class="buttons clearfix">
           <div class="pull-left"><a href="<?php echo $back; ?>" class="btn btn-default"><?php echo $button_back; ?></a></div>

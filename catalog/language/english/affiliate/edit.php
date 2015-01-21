@@ -23,6 +23,7 @@ $_['entry_postcode']    = 'Post Code';
 $_['entry_city']        = 'City';
 $_['entry_country']     = 'Country';
 $_['entry_zone']        = 'Region / State';
+$_['entry_map_link']        = 'Link Google Maps';
 
 // Error
 $_['error_exists']      = 'Warning: E-Mail address is already registered!';
