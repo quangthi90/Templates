@@ -535,6 +535,14 @@
 			$data['map_link'] = '';
 		}
 			]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[
+				$data['button_continue'] = $this->language->get('button_continue');
+			]]></search>
+			<add><![CDATA[
+				$data['entry_map_link'] = $this->language->get('entry_map_link');
+			]]></add>
 		</operation>		
 	</file>
 	<file name="catalog/language/english/affiliate/edit.php">
