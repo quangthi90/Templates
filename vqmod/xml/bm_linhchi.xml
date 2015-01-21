@@ -523,14 +523,8 @@
 	</file>
 	<file name="catalog/controller/affiliate/edit.php">
 		<operation>
-			<search position="after"><![CDATA[
+			<search position="before"><![CDATA[
 				if (isset($this->request->post['zone_id'])) {
-			$data['zone_id'] = $this->request->post['zone_id'];
-		} elseif (!empty($affiliate_info)) {
-			$data['zone_id'] = $affiliate_info['zone_id'];
-		} else {
-			$data['zone_id'] = '';
-		}
 			]]></search>
 			<add><![CDATA[
 				if (isset($this->request->post['map_link'])) {

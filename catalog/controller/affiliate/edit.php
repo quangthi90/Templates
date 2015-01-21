@@ -70,7 +70,6 @@ class ControllerAffiliateEdit extends Controller {
 		$data['entry_city'] = $this->language->get('entry_city');
 		$data['entry_country'] = $this->language->get('entry_country');
 		$data['entry_zone'] = $this->language->get('entry_zone');
-		$data['entry_map_link'] = $this->language->get('entry_map_link');
 
 		$data['button_continue'] = $this->language->get('button_continue');
 		$data['button_back'] = $this->language->get('button_back');
@@ -242,14 +241,6 @@ class ControllerAffiliateEdit extends Controller {
 			$data['zone_id'] = $affiliate_info['zone_id'];
 		} else {
 			$data['zone_id'] = '';
-		}
-
-		if (isset($this->request->post['map_link'])) {
-			$data['map_link'] = $this->request->post['map_link'];
-		} elseif (!empty($affiliate_info)) {
-			$data['map_link'] = $affiliate_info['map_link'];
-		} else {
-			$data['map_link'] = '';
 		}
 
 		$this->load->model('localisation/country');
