@@ -512,5 +512,53 @@
 				}
 			]]></add>
 		</operation>
+		<operation>
+	        <search position="replace"><![CDATA[
+	        $this->db->query("UPDATE " . DB_PREFIX . "affiliate SET firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', fax = '" . $this->db->escape($data['fax']) . "', company = '" . $this->db->escape($data['company']) . "', website = '" . $this->db->escape($data['website']) . "', address_1 = '" . $this->db->escape($data['address_1']) . "', address_2 = '" . $this->db->escape($data['address_2']) . "', city = '" . $this->db->escape($data['city']) . "', postcode = '" . $this->db->escape($data['postcode']) . "', country_id = '" . (int)$data['country_id'] . "', zone_id = '" . (int)$data['zone_id'] . "' WHERE affiliate_id = '" . (int)$affiliate_id . "'");
+	        ]]></search>
+	        <add><![CDATA[
+	        $this->db->query("UPDATE " . DB_PREFIX . "affiliate SET firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', fax = '" . $this->db->escape($data['fax']) . "', company = '" . $this->db->escape($data['company']) . "', website = '" . $this->db->escape($data['website']) . "', address_1 = '" . $this->db->escape($data['address_1']) . "', address_2 = '" . $this->db->escape($data['address_2']) . "', city = '" . $this->db->escape($data['city']) . "', postcode = '" . $this->db->escape($data['postcode']) . "', country_id = '" . (int)$data['country_id'] . "', zone_id = '" . (int)$data['zone_id'] . "', map_link = '" . $this->db->escape($data['map_link']) . "' WHERE affiliate_id = '" . (int)$affiliate_id . "'");
+	        ]]></add>
+        </operation>
+	</file>
+	<file name="catalog/controller/affiliate/edit.php">
+		<operation>
+			<search position="after"><![CDATA[
+				if (isset($this->request->post['zone_id'])) {
+			$data['zone_id'] = $this->request->post['zone_id'];
+		} elseif (!empty($affiliate_info)) {
+			$data['zone_id'] = $affiliate_info['zone_id'];
+		} else {
+			$data['zone_id'] = '';
+		}
+			]]></search>
+			<add><![CDATA[
+				if (isset($this->request->post['map_link'])) {
+			$data['map_link'] = $this->request->post['map_link'];
+		} elseif (!empty($affiliate_info)) {
+			$data['map_link'] = $affiliate_info['map_link'];
+		} else {
+			$data['map_link'] = '';
+		}
+			]]></add>
+		</operation>		
+	</file>
+	<file name="catalog/language/english/affiliate/edit.php">
+		<operation>
+			<search position="after"><![CDATA[State';]]></search>
+			<add><![CDATA[
+				$_['entry_map_link']        = 'Link Google Maps';
+			]]></add>
+		</operation>		
+	</file>
+	<file name="catalog/language/vietnamese/affiliate/edit.php">
+		<operation>
+			<search position="after"><![CDATA[
+			$_['entry_zone']        = 'Tỉnh:';
+			]]></search>
+			<add><![CDATA[
+				$_['entry_map_link']        = 'Link Google Maps';
+			]]></add>
+		</operation>		
 	</file>
 </modification>
