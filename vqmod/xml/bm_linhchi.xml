@@ -493,6 +493,7 @@
 					$this->event->trigger('pre.affiliate.edit.tracking', $data);
 
 					$affiliate_id = $this->affiliate->getId();
+					if ($data['code'] == $this->affiliate->getCode()) return true;
 
 					$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "affiliate WHERE code = '" . $this->db->escape($data['code']) . "'");
 					if ($total = $query->row['total'] > 0) {
@@ -528,12 +529,20 @@
 			]]></search>
 			<add><![CDATA[
 				if (isset($this->request->post['map_link'])) {
-			$data['map_link'] = $this->request->post['map_link'];
-		} elseif (!empty($affiliate_info)) {
-			$data['map_link'] = $affiliate_info['map_link'];
-		} else {
-			$data['map_link'] = '';
-		}
+					$data['map_link'] = $this->request->post['map_link'];
+				} elseif (!empty($affiliate_info)) {
+					$data['map_link'] = $affiliate_info['map_link'];
+				} else {
+					$data['map_link'] = '';
+				}
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				$data['entry_zone'] = $this->language->get('entry_zone');
+			]]></search>
+			<add><![CDATA[
+				$data['entry_map_link'] = $this->language->get('entry_map_link');
 			]]></add>
 		</operation>		
 	</file>
