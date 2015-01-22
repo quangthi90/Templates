@@ -530,7 +530,7 @@
 			<add><![CDATA[
 				if (isset($this->request->post['map_link'])) {
 					$data['map_link'] = $this->request->post['map_link'];
-				} elseif (!empty($affiliate_info)) {
+				} elseif (!empty($affiliate_info) && !empty($affiliate_info['map_link'])) {
 					$data['map_link'] = $affiliate_info['map_link'];
 				} else {
 					$data['map_link'] = '';
