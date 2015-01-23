@@ -526,9 +526,10 @@
 			<search position="before"><![CDATA[
 				if (isset($this->request->post['zone_id'])) {
 			]]></search>
+			
 			<add><![CDATA[
 				if (isset($this->request->post['map_link'])) {
-			$data['map_link'] = $this->request->post['map_link'];
+			$data['map_link'] = $this->req4uest->post['map_link'];
 		} elseif (!empty($affiliate_info)) {
 			$data['map_link'] = $affiliate_info['map_link'];
 		} else {
@@ -562,5 +563,78 @@
 				$_['entry_map_link']        = 'Link Google Maps';
 			]]></add>
 		</operation>		
+	</file>
+	<file name="admin/language/english/setting/setting.php">
+		<operation>
+			<search position="after"><![CDATA[
+			$_['entry_google_analytics']           = 'Google Analytics Code';
+			]]></search>
+			<add><![CDATA[
+			$_['entry_map_link']                   = 'Link Google Maps';
+			]]></add>
+		</operation>		
+	</file>
+	<file name="admin/language/vietnamese/setting/setting.php">
+		<operation>
+			<search position="after"><![CDATA[
+			$_['entry_name']                   = 'Tên cửa hàng:';
+			]]></search>
+			<add><![CDATA[
+			$_['entry_map_link']                   = 'Link Google Maps';
+			]]></add>
+		</operation>		
+	</file>
+	<file name="admin/controller/setting/setting.php">
+		<operation>
+			<search position="after"><![CDATA[
+			$data['entry_google_analytics'] = $this->language->get('entry_google_analytics');
+			]]></search>
+			<add><![CDATA[
+				$data['entry_map_link'] = $this->language->get('entry_map_link');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+			$data['entry_google_analytics'] = $this->language->get('entry_google_analytics');
+			]]></search>
+			<add><![CDATA[
+				$data['entry_map_link'] = $this->language->get('entry_map_link');
+			]]></add>
+		</operation>		
+		<operation>
+			<search position="before"><![CDATA[
+					if (isset($this->request->post['config_geocode'])) {
+			]]></search>
+			<add><![CDATA[
+			if (isset($this->request->post['config_map_link'])) {
+			$data['config_map_link'] = $this->request->post['config_map_link'];
+		} else {
+			$data['config_map_link'] = $this->config->get('config_map_link');
+		}
+			]]></add>
+		</operation>		
+	</file>
+	<file name="catalog/controller/information/contact.php">
+		<operation>
+			<search position="before"><![CDATA[
+				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/information/contact.tpl')) {
+			]]></search>
+			<add><![CDATA[
+				// check affiliate
+				if ( isset($this->session->data['tracking']) || $this->affiliate->isLogged() ) {
+					if ( !$code = $this->affiliate->getCode() ) {
+						$code = $this->session->data['tracking'];
+					}
+					$this->load->model('affiliate/affiliate');
+					if ( $affiliate = $this->model_affiliate_affiliate->getAffiliateByCode($code) ) {
+						$data['map_link'] = $affiliate['map_link'];						
+					} else {
+						$data['map_link'] = $this->config->get('config_map_link');
+					}
+				} else {
+					$data['map_link'] = $this->config->get('config_map_link');
+				}
+			]]></add>
+		</operation>
 	</file>
 </modification>

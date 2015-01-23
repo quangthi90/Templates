@@ -81,7 +81,7 @@
                   <div class="text-danger"><?php echo $error_address; ?></div>
                   <?php } ?>
                 </div>
-              </div>
+              </div>              
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-geocode"><span data-toggle="tooltip" data-container="#tab-general" title="<?php echo $help_geocode; ?>"><?php echo $entry_geocode; ?></span></label>
                 <div class="col-sm-10">

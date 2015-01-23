@@ -23,7 +23,7 @@
               <strong>Email: </strong> <?php echo $email; ?>
             </p>
             <p style="text-align: center;">
-              <iframe frameborder="0" height="600" longdesc="GoogleMaps Linh Chi Nông Lâm" scrolling="no" src="https://mapsengine.google.com/map/u/0/embed?mid=zjF5tNFfy9iY.kkNnTkYcmgoc" width="800"></iframe>
+              <iframe frameborder="0" height="600" longdesc="GoogleMaps Linh Chi Nông Lâm" scrolling="no" src="<?php echo $map_link?>" width="800"></iframe>
             </p>
           </div>
         </div>
