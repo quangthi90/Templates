@@ -17,6 +17,9 @@
           <div class="panel-body" style="padding: 0px 15px;">
             <p style="margin: 0;">
               <strong><?php echo $text_address; ?>: </strong><?php echo $address; ?>
+              <?php if (isset($address2) && !empty($address2)) { ?>
+              <strong><?php echo $text_address; ?> 2: </strong><?php echo $address2; ?>
+              <?php } ?>
             </p>
             <p>
               <strong><?php echo $text_telephone; ?>: </strong> <?php echo $telephone; ?> - 

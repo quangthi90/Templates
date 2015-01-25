@@ -627,12 +627,22 @@
 					}
 					$this->load->model('affiliate/affiliate');
 					if ( $affiliate = $this->model_affiliate_affiliate->getAffiliateByCode($code) ) {
-						$data['map_link'] = $affiliate['map_link'];						
+						$data['map_link'] = $affiliate['map_link'];		
+						$data['email'] = nl2br($affiliate['email']);
+						$data['telephone'] = $affiliate['telephone'];	
+						$data['address'] = nl2br($affiliate['address_1']);
+						$data['address2'] = nl2br($affiliate['address_2']);		
 					} else {
 						$data['map_link'] = $this->config->get('config_map_link');
+						$data['email'] = nl2br($this->config->get('config_email'));
+						$data['telephone'] = $this->config->get('config_telephone');
+						$data['address'] = nl2br($this->config->get('config_address'));
 					}
 				} else {
 					$data['map_link'] = $this->config->get('config_map_link');
+					$data['email'] = nl2br($this->config->get('config_email'));
+					$data['telephone'] = $this->config->get('config_telephone');
+					$data['address'] = nl2br($this->config->get('config_address'));
 				}
 			]]></add>
 		</operation>
