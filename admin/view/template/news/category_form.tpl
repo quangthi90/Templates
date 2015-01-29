@@ -38,7 +38,7 @@
             <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
           </ul>
           <div class="tab-content">
-            <div class="tab-pane active in" id="tab-general">
+            <div class="tab-pane active" id="tab-general">
               <ul class="nav nav-tabs" id="language">
                 <?php foreach ($languages as $language) { ?>
                 <li><a href="#language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>
