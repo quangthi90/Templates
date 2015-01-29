@@ -222,7 +222,10 @@
 				$data['register_affiliate'] = $this->url->link('affiliate/register', '', 'SSL');
 				$data['login_affiliate'] = $this->url->link('affiliate/login', '', 'SSL');
 				$data['contact'] = $this->url->link('information/contact', '', '');
-				$data['account'] = $this->url->link('account/account', '', 'SSL');
+				if ( $this->affiliate->isLogged() )
+					$data['account'] = $this->url->link('affiliate/account', '', 'SSL');
+				else
+					$data['account'] = $this->url->link('account/account', '', 'SSL');
 			]]></add>
 		</operation>
 		<operation>
@@ -231,7 +234,7 @@
 			]]></search>
 			<add><![CDATA[
 				if ( $this->affiliate->isLogged() )
-					$data['text_logged'] = sprintf($this->affiliate->getFirstName() . ' ' . $this->affiliate->getLastname(), $this->url->link('affiliate/account', '', 'SSL'), $this->affiliate->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
+					$data['text_logged'] = sprintf($this->affiliate->getFirstName() . ' ' . $this->affiliate->getLastname(), $this->url->link('affiliate/account', '', 'SSL'), $this->affiliate->getFirstName(), $this->url->link('affiliate/logout', '', 'SSL'));
 				else
 					$data['text_logged'] = sprintf($this->customer->getFirstName() . ' ' . $this->customer->getLastname(), $this->url->link('account/account', '', 'SSL'), $this->customer->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
 			]]></add>
