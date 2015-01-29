@@ -222,10 +222,7 @@
 				$data['register_affiliate'] = $this->url->link('affiliate/register', '', 'SSL');
 				$data['login_affiliate'] = $this->url->link('affiliate/login', '', 'SSL');
 				$data['contact'] = $this->url->link('information/contact', '', '');
-				if ( $this->affiliate->isLogged() )
-					$data['account'] = $this->url->link('affiliate/account', '', 'SSL');
-				else
-					$data['account'] = $this->url->link('account/account', '', 'SSL');
+				$data['account'] = $this->url->link('account/account', '', 'SSL');
 			]]></add>
 		</operation>
 		<operation>
@@ -234,7 +231,7 @@
 			]]></search>
 			<add><![CDATA[
 				if ( $this->affiliate->isLogged() )
-					$data['text_logged'] = sprintf($this->affiliate->getFirstName() . ' ' . $this->affiliate->getLastname(), $this->url->link('affiliate/account', '', 'SSL'), $this->affiliate->getFirstName(), $this->url->link('affiliate/logout', '', 'SSL'));
+					$data['text_logged'] = sprintf($this->affiliate->getFirstName() . ' ' . $this->affiliate->getLastname(), $this->url->link('affiliate/account', '', 'SSL'), $this->affiliate->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
 				else
 					$data['text_logged'] = sprintf($this->customer->getFirstName() . ' ' . $this->customer->getLastname(), $this->url->link('account/account', '', 'SSL'), $this->customer->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
 			]]></add>
@@ -639,13 +636,16 @@
 			]]></search>
 			<add><![CDATA[
 				// check affiliate
-				if ( isset($this->session->data['tracking']) || $this->affiliate->isLogged() ) {
+				if ( isset($this->session->data['tracking']) || $this->affiliate->isLogged()) {
 					if ( !$code = $this->affiliate->getCode() ) {
 						$code = $this->session->data['tracking'];
 					}
 					$this->load->model('affiliate/affiliate');
 					if ( $affiliate = $this->model_affiliate_affiliate->getAffiliateByCode($code) ) {
-						$data['map_link'] = $affiliate['map_link'];		
+						if ( empty($affiliate['map_link']))
+							$data['map_link'] = $this->config->get('config_map_link');
+						else
+							$data['map_link'] = $affiliate['map_link'];		
 						$data['email'] = nl2br($affiliate['email']);
 						$data['telephone'] = $affiliate['telephone'];	
 						$data['address'] = nl2br($affiliate['address_1']);
