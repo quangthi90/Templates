@@ -8,20 +8,22 @@
   			<div class="row">
   				<div class="col-xs-7">
   					<ul class="list-unstyled question-list">
-  						<?php for ($i = 0; $i < 6 ; $i ++) { ?>
-  							<li>
+  						<?php if ($faqs) { ?>
+			                <?php foreach ($faqs as $faq) { ?>
+			                <li>
 	  							<h3 class="question-title">
 	  								<strong>Q:</strong>
-	  								<a href="index.php?route=faq/detail" title="Làm sao chọn được Nấm Linh Chi đỏ chất lượng tốt nhất ?">Làm sao chọn được Nấm Linh Chi đỏ chất lượng tốt nhất ?</a>
+	  								<a href="<?php echo $faq['href']; ?>" title="<?php echo $faq['question']; ?>"><?php echo $faq['question']; ?></a>
 	  							</h3>
 	  							<div class="question-content">
-	  								Chào Linh Chi Nông Lâm tôi xin được tư vấn cách chọn mua Nấm Linh Chi đỏ chất lượng nhất và cho xin cho biết hiện nay trên thị trường Nấm Linh Chi đỏ nào đã được kiểm định chất lượng tốt nhất và nơi bán nấm linh chi uy tín đáng tin cậy?Tôi đã dùng Nấm Linh.
+	  								<?php echo $faq['cut_answer']; ?>
 	  							</div>
 	  							<div class="pull-right">
-	  								<a href="#" class="view-answer"><?php echo $txt_view_answer; ?></a>
+	  								<a href="<?php echo $faq['href']; ?>" class="view-answer"><?php echo $txt_view_answer; ?></a>
 	  							</div>
-	  						</li>
-  						<?php } ?>  						
+	  						</li>			                
+			                <?php } ?>
+		                <?php } ?>  						 						
   					</ul>
   				</div>
   				<div class="col-xs-5">

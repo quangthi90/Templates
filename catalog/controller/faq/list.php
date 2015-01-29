@@ -20,6 +20,23 @@ class ControllerFaqList extends Controller {
 		$data['submit_action'] = $this->url->link('faq/list');
 		$data['captcha_link'] = $this->url->link('tool/captcha');
 
+		$this->load->model('faq/faq');
+
+		$results = $this->model_faq_faq->getFAQs();
+
+		$data['faqs'] = array();
+
+		foreach ($results as $result) {		
+					
+			$data['faqs'][] = array(
+				'faq_id'  => $result['faq_id'],
+				'question'=> $result['question'],
+				'href'    => $this->url->link('faq/detail', 'faq_id=' . $result['faq_id']),
+				'cut_answer' => substr($result['answer'],0,200),
+				'answer'  => $result['answer']				
+			);
+		}
+
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
@@ -30,5 +47,6 @@ class ControllerFaqList extends Controller {
 		} else {
 			$this->response->setOutput($this->load->view('default/template/faq/list.tpl', $data));
 		}
+
 	}
 }

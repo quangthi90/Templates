@@ -9,6 +9,35 @@ class ControllerFaqDetail extends Controller {
 		$data['txt_related_question'] = $this->language->get('txt_related_question');
 		$data['txt_question'] = $this->language->get('txt_question');
 
+		$this->load->model('faq/faq');
+		$path = '';
+
+		$parts = explode('_', (string)$this->request->get['faq_id']);
+
+		$faq_id = (int)array_pop($parts);
+
+		$results = $this->model_faq_faq->getFAQbyID($faq_id);
+
+		foreach ($results as $result) {		
+			$data['question'] = $result['question'];
+			$data['answer'] = $result['answer'];
+		}
+
+		$data['faqs'] = array();
+
+		$relates = $this->model_faq_faq->getFAQRelatedbyID($faq_id);
+
+		foreach ($relates as $relate) {		
+					
+			$data['faqs'][] = array(
+				'faq_id'  => $relate['faq_id'],
+				'question'=> $relate['question'],
+				'href'    => $this->url->link('faq/detail', 'faq_id=' . $relate['faq_id']),
+				'cut_answer' => substr($relate['answer'],0,200),
+				'answer'  => $relate['answer']				
+			);
+		}
+
 		$this->document->setTitle($data['heading_title']);
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
