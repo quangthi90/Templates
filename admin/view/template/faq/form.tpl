@@ -48,7 +48,7 @@
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-question<?php echo $language['language_id']; ?>"><?php echo $entry_question; ?></label>
                     <div class="col-sm-10">
-                      <input type="text" name="faq_data[<?php echo $language['language_id']; ?>][question]" value="<?php echo isset($faq_data[$language['language_id']]) ? $faq_data[$language['language_id']]['question'] : ''; ?>" placeholder="<?php echo $entry_question; ?>" id="input-question<?php echo $language['language_id']; ?>" class="form-control" />
+                      <input name="faq_data[<?php echo $language['language_id']; ?>][question]" value="<?php echo isset($faq_data[$language['language_id']]) ? $faq_data[$language['language_id']]['question'] : ''; ?>" placeholder="<?php echo $entry_question; ?>" id="input-question<?php echo $language['language_id']; ?>" class="form-control" />
                       <?php if (isset($error_question[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_question[$language['language_id']]; ?></div>
                       <?php } ?>
@@ -57,7 +57,7 @@
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-answer<?php echo $language['language_id']; ?>"><?php echo $entry_answer; ?></label>
                     <div class="col-sm-10">
-                      <textarea type="text" name="faq_data[<?php echo $language['language_id']; ?>][answer]" value="<?php echo isset($faq_data[$language['language_id']]) ? $faq_data[$language['language_id']]['answer'] : ''; ?>" placeholder="<?php echo $entry_answer; ?>" id="input-answer<?php echo $language['language_id']; ?>" class="form-control"></textarea> 
+                      <textarea name="faq_data[<?php echo $language['language_id']; ?>][answer]" placeholder="<?php echo $entry_answer; ?>" id="input-answer<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($faq_data[$language['language_id']]) ? $faq_data[$language['language_id']]['answer'] : ''; ?></textarea> 
                       <?php if (isset($error_answer[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_answer[$language['language_id']]; ?></div>
                       <?php } ?>
