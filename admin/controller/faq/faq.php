@@ -15,7 +15,7 @@ class Controllerfaqfaq extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('faq/faq');
-		
+		 
 		$this->getList();
 	}
 
@@ -107,7 +107,7 @@ class Controllerfaqfaq extends Controller {
 		$data['delete'] = $this->url->link('faq/faq/delete', 'token=' . $this->session->data['token'], 'SSL');
 		
 		$data['faqs'] = array();
-		
+
 		$faq_total = $this->model_faq_faq->getTotalFAQs();
 		
 		$results = $this->model_faq_faq->getFAQs();
@@ -216,7 +216,7 @@ class Controllerfaqfaq extends Controller {
 			$data['action'] = $this->url->link('faq/faq/edit', 'token=' . $this->session->data['token'] . '&faq_id=' . $this->request->get['faq_id'], 'SSL');
 		}
 		
-		$data['cancel'] = $this->url->link('faq/list', 'token=' . $this->session->data['token'], 'SSL');
+		$data['cancel'] = $this->url->link('faq/faq', 'token=' . $this->session->data['token'], 'SSL');
 
 		$data['token'] = $this->session->data['token'];
 		

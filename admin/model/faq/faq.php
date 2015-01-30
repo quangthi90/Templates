@@ -10,7 +10,7 @@ class Modelfaqfaq extends Model {
 	
    	public function addFAQ($data) {
    		foreach ($data['faq_data'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "faqs SET question = '" . $this->db->escape($value['question']) . "', answer = '" . $this->db->escape($value['answer']) . "', language_id = '" . (int)$language_id . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "faqs SET question = '" . $this->db->escape($value['question']) . "', answer = '" . $this->db->escape($value['answer']) . "', language_id = '" . (int)$language_id . "', date_added = '" . date('Y-m-d H:i:s') . "'");
 		}		
 	}
 	
@@ -28,7 +28,7 @@ class Modelfaqfaq extends Model {
 
 		$faqs_data = array();
 		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "faqs f WHERE f.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "faqs f WHERE f.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY date_added DESC");
 		
 		foreach ($query->rows as $result) {
 			$faqs_data[] = array(
