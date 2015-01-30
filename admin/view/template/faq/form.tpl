@@ -76,3 +76,8 @@
   <script type="text/javascript"><!--
 $('#language a:first').tab('show');
 //--></script></div>
+<script type="text/javascript"><!--
+<?php foreach ($languages as $language) { ?>
+$('#input-answer<?php echo $language['language_id']; ?>').summernote({height: 300});
+<?php } ?>
+//--></script>
