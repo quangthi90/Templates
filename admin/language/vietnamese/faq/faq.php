@@ -18,7 +18,6 @@ $_['text_default']           = 'Chỉnh sửa';
 
 // Column
 $_['column_question']        = 'Câu hỏi';
-$_['column_answer']      	 = 'Trả lời';
 $_['column_action']          = 'Hành động';
 
 // Entry

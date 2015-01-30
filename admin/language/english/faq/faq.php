@@ -18,7 +18,6 @@ $_['text_default']           = 'Default';
 
 // Column
 $_['column_question']            = 'Question';
-$_['column_answer']      = 'Answer';
 $_['column_action']          = 'Action';
 
 // Entry
