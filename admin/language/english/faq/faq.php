@@ -19,6 +19,7 @@ $_['text_default']           = 'Default';
 // Column
 $_['column_question']            = 'Question';
 $_['column_action']          = 'Action';
+$_['column_date_added']          = 'Date added';
 
 // Entry
 $_['entry_question']             = 'Question';

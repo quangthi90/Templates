@@ -34,7 +34,8 @@ class Modelfaqfaq extends Model {
 			$faqs_data[] = array(
 				'faq_id'             => $result['faq_id'],
 				'question'     => $result['question'],
-				'answer' => $result['answer']
+				'answer' => $result['answer'],
+				'date_added' => $result['date_added']
 			);
 		}
 		

@@ -124,6 +124,7 @@ class Controllerfaqfaq extends Controller {
 				'faq_id'  => $result['faq_id'],
 				'question'=> $result['question'],
 				'answer'  => $result['answer'],
+				'date_added' => $result['date_added'],
 				'selected'    => isset($this->request->post['selected']) && in_array($result['faq_id'], $this->request->post['selected']),
 				'edit'        => $this->url->link('faq/faq/edit', 'token=' . $this->session->data['token'] . '&faq_id=' . $result['faq_id'] . $url, 'SSL'),
 				'delete'      => $this->url->link('faq/faq/delete', 'token=' . $this->session->data['token'] . '&faq_id=' . $result['faq_id'] . $url, 'SSL')
@@ -139,6 +140,7 @@ class Controllerfaqfaq extends Controller {
 		$data['column_question'] = $this->language->get('column_question');
 		$data['column_answer'] = $this->language->get('column_answer');
 		$data['column_action'] = $this->language->get('column_action');
+		$data['column_date_added'] = $this->language->get('column_date_added');
 
 		$data['button_add'] = $this->language->get('button_add');
 		$data['button_edit'] = $this->language->get('button_edit');

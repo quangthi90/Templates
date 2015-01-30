@@ -19,6 +19,7 @@ $_['text_default']           = 'Chỉnh sửa';
 // Column
 $_['column_question']        = 'Câu hỏi';
 $_['column_action']          = 'Hành động';
+$_['column_date_added']          = 'Ngày giờ thêm vào';
 
 // Entry
 $_['entry_question']         = 'Câu hỏi';
