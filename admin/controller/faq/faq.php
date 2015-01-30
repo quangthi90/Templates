@@ -123,6 +123,7 @@ class Controllerfaqfaq extends Controller {
 			$data['faqs'][] = array(
 				'faq_id'  => $result['faq_id'],
 				'question'=> $result['question'],
+				'answer'  => $result['answer'],
 				'selected'    => isset($this->request->post['selected']) && in_array($result['faq_id'], $this->request->post['selected']),
 				'edit'        => $this->url->link('faq/faq/edit', 'token=' . $this->session->data['token'] . '&faq_id=' . $result['faq_id'] . $url, 'SSL'),
 				'delete'      => $this->url->link('faq/faq/delete', 'token=' . $this->session->data['token'] . '&faq_id=' . $result['faq_id'] . $url, 'SSL')
