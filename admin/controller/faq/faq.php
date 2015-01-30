@@ -15,7 +15,7 @@ class Controllerfaqfaq extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('faq/faq');
-		 
+		
 		$this->getList();
 	}
 
