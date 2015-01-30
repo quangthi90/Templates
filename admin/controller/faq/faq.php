@@ -107,7 +107,7 @@ class Controllerfaqfaq extends Controller {
 		$data['delete'] = $this->url->link('faq/faq/delete', 'token=' . $this->session->data['token'], 'SSL');
 		
 		$data['faqs'] = array();
-
+		
 		$faq_total = $this->model_faq_faq->getTotalFAQs();
 		
 		$results = $this->model_faq_faq->getFAQs();
