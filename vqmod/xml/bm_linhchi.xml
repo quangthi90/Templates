@@ -182,6 +182,29 @@
 				$sql = "SELECT *, CONCAT(a.firstname, ' ', a.lastname) AS name, (SELECT SUM(at.amount) FROM " . DB_PREFIX . "affiliate_transaction at WHERE at.affiliate_id = a.affiliate_id GROUP BY at.affiliate_id) AS balance, (SELECT SUM(od.total) FROM " . DB_PREFIX . "`order` od WHERE od.affiliate_id = a.affiliate_id GROUP BY od.affiliate_id) AS total FROM " . DB_PREFIX . "affiliate a";
 			]]></add>
 		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+				$this->event->trigger('pre.admin.affiliate.edit', $data);
+			]]></search>
+			<add><![CDATA[
+				$affiliate = $this->getAffiliate($affiliate_id);
+				if ($affiliate['code'] == $data['code']) return;
+
+				$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "affiliate WHERE code = '" . $this->db->escape($data['code']) . "'");
+				if ($total = $query->row['total'] > 0) {
+					$data['code'] .= '-' . ($total + 1);
+				}
+				$this->db->query("UPDATE " . DB_PREFIX . "affiliate SET code = '" . $this->db->escape($data['code']) . "' WHERE affiliate_id = '" . (int)$affiliate_id . "'");
+
+				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE query = 'affiliate_id=" . $affiliate_id . "'");
+				
+				if (isset($query->row['url_alias_id']) && $alias_id = $query->row['url_alias_id']) {
+					$this->db->query("UPDATE " . DB_PREFIX . "url_alias SET keyword = '" . $data['code'] . "' WHERE url_alias_id = '" . $alias_id . "'");
+				} else {
+					$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET keyword = '" . $data['code'] . "', query = 'affiliate_id=" . $affiliate_id . "'");
+				}
+			]]></add>
+		</operation>
 	</file>
 	<file name="admin/view/template/marketing/affiliate_list.tpl">
 		<operation>
@@ -470,7 +493,7 @@
 				if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
 					$this->model_affiliate_affiliate->editTracking($this->request->post);
 
-					$this->response->redirect($this->url->link('affiliate/tracking', '', 'SSL'));
+					$this->response->redirect($this->url->link('affiliate/account', '', 'SSL'));
 				}
 			]]></add>
 		</operation>
@@ -491,6 +514,8 @@
 			<add><![CDATA[
 				public function editTracking($data) {
 					$this->event->trigger('pre.affiliate.edit.tracking', $data);
+
+					if ($data['code'] == $this->affiliate->getCode()) return;
 
 					$affiliate_id = $this->affiliate->getId();
 
