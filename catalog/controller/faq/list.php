@@ -20,9 +20,33 @@ class ControllerFaqList extends Controller {
 		$data['submit_action'] = $this->url->link('faq/list');
 		$data['captcha_link'] = $this->url->link('tool/captcha');
 
+		if (isset($this->request->get['page'])) {
+			$page = $this->request->get['page'];
+		} else {
+			$page = 1;
+		}
+
+
+		if (isset($this->request->get['limit'])) {
+			$limit = $this->request->get['limit'];
+		} else {
+			$limit = $this->config->get('config_limit_admin');
+		}
+
+		$url = '';		
+
+		if (isset($this->request->get['page'])) {
+			$url .= '&page=' . $this->request->get['page'];
+		}
+
+		$filter_data = array(			
+			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
+			'limit' => $this->config->get('config_limit_admin')
+		);
+
 		$this->load->model('faq/faq');
 
-		$results = $this->model_faq_faq->getFAQs();
+		$results = $this->model_faq_faq->getFAQs($filter_data);
 
 		$data['faqs'] = array();
 
@@ -36,6 +60,17 @@ class ControllerFaqList extends Controller {
 				'answer'  => $result['answer']				
 			);
 		}
+
+		$faq_total = $this->model_faq_faq->getTotalFAQs();
+
+		$pagination = new Pagination();
+		$pagination->total = $faq_total;
+		$pagination->page = $page;
+		$pagination->limit = $limit;
+		$pagination->url = $this->url->link('faq/list', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
+
+		$data['pagination'] = $pagination->render();
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($faq_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($faq_total - $this->config->get('config_limit_admin'))) ? $faq_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $faq_total, ceil($faq_total / $this->config->get('config_limit_admin')));
 
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');

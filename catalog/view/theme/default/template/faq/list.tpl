@@ -25,6 +25,10 @@
 			                <?php } ?>
 		                <?php } ?>  						 						
   					</ul>
+				<div class="row">
+		          <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
+		          <div class="col-sm-6 text-right"><?php echo $results; ?></div>
+		        </div>
   				</div>
   				<div class="col-xs-5">
   					<div class="panel panel-black">

@@ -1,10 +1,24 @@
 <?php
 class ModelFaqFaq extends Controller {
-	public function getFAQs() {
+	public function getFAQs($data) {
+
+		$sql = "SELECT * FROM " . DB_PREFIX . "faqs f WHERE f.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY date_added DESC";
+
+		if (isset($data['start']) || isset($data['limit'])) {
+			if ($data['start'] < 0) {
+				$data['start'] = 0;
+			}
+
+			if ($data['limit'] < 1) {
+				$data['limit'] = 20;
+			}
+
+			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
+		}
 
 		$faqs_data = array();
 		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "faqs f WHERE f.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY date_added DESC");
+		$query = $this->db->query($sql);
 		
 		foreach ($query->rows as $result) {
 			$faqs_data[] = array(
@@ -51,4 +65,10 @@ class ModelFaqFaq extends Controller {
 		
 		return $faq_data;
 	}
+
+	public function getTotalFAQs() {
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "faqs");
+		
+		return $query->row['total'];
+	}	
 }
