@@ -4,6 +4,9 @@
   		<div class="content-up" id="content-up"></div>
   		<div id="content-mid">
   			<h2 class="heading-title">Question title</h2>
+  			<div class="question" style="text-align: justify;">
+					<h3><?php echo $title; ?></h3> 
+				</div>
   			<div class="break"></div>
   			<div class="faq-info">
 				<div class="question" style="text-align: justify;">

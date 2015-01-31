@@ -17,11 +17,13 @@ $_['text_edit']              = 'Edit FAQ';
 $_['text_default']           = 'Default';
 
 // Column
+$_['column_title']            = 'Title';
 $_['column_question']            = 'Question';
 $_['column_action']          = 'Action';
 $_['column_date_added']          = 'Date added';
 
 // Entry
+$_['entry_title']             = 'Title';
 $_['entry_question']             = 'Question';
 $_['entry_answer'] 	 = 'Answer';
 

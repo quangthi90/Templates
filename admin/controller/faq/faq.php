@@ -122,6 +122,7 @@ class Controllerfaqfaq extends Controller {
 					
 			$data['faqs'][] = array(
 				'faq_id'  => $result['faq_id'],
+				'title'   => $result['title'],
 				'question'=> $result['question'],
 				'answer'  => $result['answer'],
 				'date_added' => $result['date_added'],
@@ -137,6 +138,7 @@ class Controllerfaqfaq extends Controller {
 		$data['text_list'] = $this->language->get('text_list');
 		$data['text_confirm'] = $this->language->get('text_confirm');
 
+		$data['column_title'] = $this->language->get('column_title');
 		$data['column_question'] = $this->language->get('column_question');
 		$data['column_answer'] = $this->language->get('column_answer');
 		$data['column_action'] = $this->language->get('column_action');
@@ -184,6 +186,7 @@ class Controllerfaqfaq extends Controller {
 		$data['text_none'] = $this->language->get('text_none');
 		$data['text_default'] = $this->language->get('text_default');
 				
+		$data['entry_title'] = $this->language->get('entry_title');
 		$data['entry_question'] = $this->language->get('entry_question');
 		$data['entry_answer'] = $this->language->get('entry_answer');
 		

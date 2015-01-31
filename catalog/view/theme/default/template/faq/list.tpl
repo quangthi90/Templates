@@ -16,7 +16,7 @@
 	  								<a href="<?php echo $faq['href']; ?>" title="<?php echo $faq['question']; ?>"><?php echo $faq['question']; ?></a>
 	  							</h3>
 	  							<div class="question-content">
-	  								<?php echo $faq['cut_answer']; ?>
+	  								<?php echo $faq['title']; ?>
 	  							</div>
 	  							<div class="pull-right">
 	  								<a href="<?php echo $faq['href']; ?>" class="view-answer"><?php echo $txt_view_answer; ?></a>

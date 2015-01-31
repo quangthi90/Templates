@@ -17,11 +17,13 @@ $_['text_edit']              = 'Chỉnh sửa AQ';
 $_['text_default']           = 'Chỉnh sửa';
 
 // Column
+$_['column_title']           = 'Chủ đề';
 $_['column_question']        = 'Câu hỏi';
 $_['column_action']          = 'Hành động';
 $_['column_date_added']          = 'Ngày giờ thêm vào';
 
 // Entry
+$_['entry_title']             = 'Chủ đề';
 $_['entry_question']         = 'Câu hỏi';
 $_['entry_answer'] 	 		 = 'Trả lời';
 

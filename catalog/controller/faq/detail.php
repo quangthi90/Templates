@@ -19,6 +19,7 @@ class ControllerFaqDetail extends Controller {
 		$results = $this->model_faq_faq->getFAQbyID($faq_id);
 
 		foreach ($results as $result) {		
+			$data['title'] = $result['title'];
 			$data['question'] = $result['question'];
 			$data['answer'] = $result['answer'];
 		}
@@ -30,11 +31,11 @@ class ControllerFaqDetail extends Controller {
 		foreach ($relates as $relate) {		
 					
 			$data['faqs'][] = array(
-				'faq_id'  => $relate['faq_id'],
+				'faq_id'  => $relate['faq_id'],				
 				'question'=> $relate['question'],
 				'href'    => $this->url->link('faq/detail', 'faq_id=' . $relate['faq_id']),
-				'cut_answer' => substr($relate['answer'],0,200),
-				'answer'  => $relate['answer']				
+				'cut_answer' => html_entity_decode(substr($relate['answer'],0,200)),
+				'answer'  => html_entity_decode($relate['answer'])				
 			);
 		}
 

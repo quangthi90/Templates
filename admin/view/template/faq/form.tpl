@@ -46,6 +46,15 @@
                 <?php foreach ($languages as $language) { ?>
                 <div class="tab-pane" id="language<?php echo $language['language_id']; ?>">
                   <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-title<?php echo $language['language_id']; ?>"><?php echo $entry_title; ?></label>
+                    <div class="col-sm-10">
+                      <input name="faq_data[<?php echo $language['language_id']; ?>][title]" value="<?php echo isset($faq_data[$language['language_id']]) ? $faq_data[$language['language_id']]['title'] : ''; ?>" placeholder="<?php echo $entry_title; ?>" id="input-question<?php echo $language['language_id']; ?>" class="form-control" />
+                      <?php if (isset($error_question[$language['language_id']])) { ?>
+                      <div class="text-danger"><?php echo $error_question[$language['language_id']]; ?></div>
+                      <?php } ?>
+                    </div>
+                  </div> 
+                  <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-question<?php echo $language['language_id']; ?>"><?php echo $entry_question; ?></label>
                     <div class="col-sm-10">
                       <input name="faq_data[<?php echo $language['language_id']; ?>][question]" value="<?php echo isset($faq_data[$language['language_id']]) ? $faq_data[$language['language_id']]['question'] : ''; ?>" placeholder="<?php echo $entry_question; ?>" id="input-question<?php echo $language['language_id']; ?>" class="form-control" />

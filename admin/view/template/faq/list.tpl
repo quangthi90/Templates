@@ -36,6 +36,7 @@
                 <tr>
                   <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
                   
+                  <td class="text-left"><?php echo $column_title; ?></td>
                   <td class="text-left"><?php echo $column_question; ?></td>
                   <td class="text-right"><?php echo $column_date_added; ?></td>
                   <td class="text-right"><?php echo $column_action; ?></td>
@@ -49,7 +50,8 @@
                     <input type="checkbox" name="selected[]" value="<?php echo $faq['faq_id']; ?>" checked="checked" />
                     <?php } else { ?>
                     <input type="checkbox" name="selected[]" value="<?php echo $faq['faq_id']; ?>" />
-                    <?php } ?></td>                  
+                    <?php } ?></td>  
+                  <td class="text-left"><?php echo $faq['title']; ?></td>                
                   <td class="text-left"><?php echo $faq['question']; ?></td>
                   <td class="text-left"><?php echo $faq['date_added']; ?></td>
                   <td class="text-right"><a href="<?php echo $faq['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>

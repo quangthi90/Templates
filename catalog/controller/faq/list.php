@@ -30,9 +30,9 @@ class ControllerFaqList extends Controller {
 					
 			$data['faqs'][] = array(
 				'faq_id'  => $result['faq_id'],
+				'title'   => $result['title'],
 				'question'=> $result['question'],
 				'href'    => $this->url->link('faq/detail', 'faq_id=' . $result['faq_id']),
-				'cut_answer' => substr($result['answer'],0,200),
 				'answer'  => $result['answer']				
 			);
 		}
