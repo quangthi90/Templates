@@ -11,17 +11,28 @@ class Modelfaqfaq extends Model {
    	public function addFAQ($data) {
    		foreach ($data['faq_data'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "faqs SET title = '" . $this->db->escape($value['title']) . "', question = '" . $this->db->escape($value['question']) . "', answer = '" . $this->db->escape($value['answer']) . "', language_id = '" . (int)$language_id . "', date_added = '" . date('Y-m-d H:i:s') . "'");
+			$faq_id = $this->db->getLastId(); 
+			if ($value['keyword']) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'faq_id=" . (int)$faq_id . "', keyword = '" . $this->db->escape($value['keyword']) . "'");
+			}
 		}		
 	}
 	
 	public function editFAQ($faq_id, $data) {
 		foreach ($data['faq_data'] as $language_id => $value) {
-			$this->db->query("UPDATE " . DB_PREFIX . "faqs SET question = '" . $this->db->escape($value['question']) . "', answer = '" . $this->db->escape($value['answer']) . "', language_id = '" . (int)$language_id . "' WHERE faq_id = '" . (int)$faq_id . "'");
+			$this->db->query("UPDATE " . DB_PREFIX . "faqs SET question = '" . $this->db->escape($value['question']) . "', answer = '" . $this->db->escape($value['answer']) . "', language_id = '" . (int)$language_id . "', keyword = '" . $this->db->escape($value['keyword']) . "' WHERE faq_id = '" . (int)$faq_id . "'");
+			
+			$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'faq_id=" . (int)$faq_id . "'");
+		
+			if ($value['keyword']) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'faq_id=" . (int)$faq_id . "', keyword = '" . $this->db->escape($value['keyword']) . "'");
+			}
 		}
 	}
 	
 	public function deleteFAQ($faq_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "faqs WHERE faq_id = '" . (int)$faq_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'faq_id=" . (int)$faq_id . "'");
 	} 
 	
 	public function getFAQs() {
@@ -46,14 +57,15 @@ class Modelfaqfaq extends Model {
 	public function getFAQbyID($faq_id) {
 		$faq_data = array();
 		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "faqs f WHERE f.faq_id ='". (int)$faq_id . "'");
+		$query = $this->db->query("SELECT * , (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'faq_id=" . (int)$faq_id . "') AS keyword FROM " . DB_PREFIX . "faqs f WHERE f.faq_id ='". (int)$faq_id . "'");
 		
 		foreach ($query->rows as $result) {
 			$faq_data[$result['language_id']] = array(
 				'faq_id'             => $result['faq_id'],
 				'title'     => $result['title'],
 				'question'     => $result['question'],
-				'answer' => $result['answer']
+				'answer' => $result['answer'],
+				'keyword'    => $result['keyword']
 			);
 		}
 		

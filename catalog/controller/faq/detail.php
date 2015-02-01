@@ -21,7 +21,7 @@ class ControllerFaqDetail extends Controller {
 		foreach ($results as $result) {		
 			$data['title'] = $result['title'];
 			$data['question'] = $result['question'];
-			$data['answer'] = $result['answer'];
+			$data['answer'] = html_entity_decode($result['answer']);
 		}
 
 		$data['faqs'] = array();

@@ -3,9 +3,8 @@
   	<div id="content" class="content-container">
   		<div class="content-up" id="content-up"></div>
   		<div id="content-mid">
-  			<h2 class="heading-title">Question title</h2>
+  			<h2 class="heading-title"><?php echo $title; ?></h2>
   			<div class="question" style="text-align: justify;">
-					<h3><?php echo $title; ?></h3> 
 				</div>
   			<div class="break"></div>
   			<div class="faq-info">
@@ -27,7 +26,7 @@
 	  								<strong>Q:</strong>
 	  								<a href="<?php echo $faq['href']; ?>" title="<?php echo $faq['question']; ?>"><?php echo $faq['question']; ?></a>
 	  							</h3>
-	  							<div class="question-content" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
+	  							<div class="answer-content" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
 	  								<?php echo $faq['cut_answer']; ?>
 	  							</div>	  							
 	  						</li>			                

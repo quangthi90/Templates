@@ -26,6 +26,10 @@ $_['column_date_added']          = 'Date added';
 $_['entry_title']             = 'Title';
 $_['entry_question']             = 'Question';
 $_['entry_answer'] 	 = 'Answer';
+$_['entry_keyword']          = 'SEO Keyword';
+
+//Help
+$_['help_keyword']           = 'Do not use spaces, instead replace spaces with - and make sure the keyword is globally unique.';
 
 // Error 
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';

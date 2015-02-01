@@ -71,7 +71,13 @@
                       <div class="text-danger"><?php echo $error_answer[$language['language_id']]; ?></div>
                       <?php } ?>
                     </div>
-                  </div>                 
+                  </div>  
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-keyword"><span data-toggle="tooltip" title="<?php echo $help_keyword; ?>"><?php echo $entry_keyword; ?></span></label>
+                    <div class="col-sm-10">
+                      <input type="text" name="faq_data[<?php echo $language['language_id']; ?>][keyword]" value="<?php echo isset($faq_data[$language['language_id']]) ? $faq_data[$language['language_id']]['keyword'] : ''; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />               
+                    </div>
+                  </div>               
                 </div>
                 <?php } ?>
               </div>

@@ -187,11 +187,14 @@ class Controllerfaqfaq extends Controller {
 		$data['text_default'] = $this->language->get('text_default');
 				
 		$data['entry_title'] = $this->language->get('entry_title');
+		$data['entry_keyword'] = $this->language->get('entry_keyword');
 		$data['entry_question'] = $this->language->get('entry_question');
 		$data['entry_answer'] = $this->language->get('entry_answer');
 		
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
+
+		$data['help_keyword'] = $this->language->get('help_keyword');
 
     	$data['tab_general'] = $this->language->get('tab_general');	
 		
@@ -259,6 +262,9 @@ class Controllerfaqfaq extends Controller {
 			}
 			if (strlen(utf8_decode($value['answer'])) < 1) {
 				$this->error['answer'][$language_id] = $this->language->get('error_warning');
+			}
+			if (strlen(utf8_decode($value['title'])) < 1) {
+				$this->error['title'][$language_id] = $this->language->get('error_warning');
 			}
 		}
 		

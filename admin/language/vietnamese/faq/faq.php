@@ -26,6 +26,7 @@ $_['column_date_added']          = 'Ngày giờ thêm vào';
 $_['entry_title']             = 'Chủ đề';
 $_['entry_question']         = 'Câu hỏi';
 $_['entry_answer'] 	 		 = 'Trả lời';
+$_['entry_keyword']          = 'SEO Keyword:<br/><span class="help">This must be globally unique.</span>';
 
 // Error 
 $_['error_warning']          = 'Cảnh báo: Xin điền đầy đủ thông tin!';

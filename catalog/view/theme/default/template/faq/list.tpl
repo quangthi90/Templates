@@ -13,10 +13,10 @@
 			                <li>
 	  							<h3 class="question-title">
 	  								<strong>Q:</strong>
-	  								<a href="<?php echo $faq['href']; ?>" title="<?php echo $faq['question']; ?>"><?php echo $faq['question']; ?></a>
+	  								<a href="<?php echo $faq['href']; ?>" title="<?php echo $faq['title']; ?>"><?php echo $faq['title']; ?></a>
 	  							</h3>
 	  							<div class="question-content">
-	  								<?php echo $faq['title']; ?>
+	  								<?php echo $faq['question']; ?>
 	  							</div>
 	  							<div class="pull-right">
 	  								<a href="<?php echo $faq['href']; ?>" class="view-answer"><?php echo $txt_view_answer; ?></a>

@@ -26,12 +26,7 @@ class ControllerFaqList extends Controller {
 			$page = 1;
 		}
 
-
-		if (isset($this->request->get['limit'])) {
-			$limit = $this->request->get['limit'];
-		} else {
-			$limit = $this->config->get('config_limit_admin');
-		}
+		$limit = 10;
 
 		$url = '';		
 
@@ -40,8 +35,8 @@ class ControllerFaqList extends Controller {
 		}
 
 		$filter_data = array(			
-			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
-			'limit' => $this->config->get('config_limit_admin')
+			'start' => ($page - 1) * $limit,
+			'limit' => $limit
 		);
 
 		$this->load->model('faq/faq');
@@ -67,10 +62,10 @@ class ControllerFaqList extends Controller {
 		$pagination->total = $faq_total;
 		$pagination->page = $page;
 		$pagination->limit = $limit;
-		$pagination->url = $this->url->link('faq/list', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
+		$pagination->url = $this->url->link('faq/list', $url . '&page={page}', 'SSL');
 
 		$data['pagination'] = $pagination->render();
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($faq_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($faq_total - $this->config->get('config_limit_admin'))) ? $faq_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $faq_total, ceil($faq_total / $this->config->get('config_limit_admin')));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($faq_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($faq_total - $limit)) ? $faq_total : ((($page - 1) * $limit) + $limit), $faq_total, ceil($faq_total / $limit));
 
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
