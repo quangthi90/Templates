@@ -20,7 +20,7 @@ class Modelfaqfaq extends Model {
 	
 	public function editFAQ($faq_id, $data) {
 		foreach ($data['faq_data'] as $language_id => $value) {
-			$this->db->query("UPDATE " . DB_PREFIX . "faqs SET question = '" . $this->db->escape($value['question']) . "', answer = '" . $this->db->escape($value['answer']) . "', language_id = '" . (int)$language_id . "', keyword = '" . $this->db->escape($value['keyword']) . "' WHERE faq_id = '" . (int)$faq_id . "'");
+			$this->db->query("UPDATE " . DB_PREFIX . "faqs SET question = '" . $this->db->escape($value['question']) . "', answer = '" . $this->db->escape($value['answer']) . "', language_id = '" . (int)$language_id . "' WHERE faq_id = '" . (int)$faq_id . "'");
 			
 			$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'faq_id=" . (int)$faq_id . "'");
 		

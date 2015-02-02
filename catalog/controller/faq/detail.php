@@ -22,11 +22,12 @@ class ControllerFaqDetail extends Controller {
 			$data['title'] = $result['title'];
 			$data['question'] = $result['question'];
 			$data['answer'] = html_entity_decode($result['answer']);
+			$data['date_added'] = $result['date_added'];
 		}
 
 		$data['faqs'] = array();
 
-		$relates = $this->model_faq_faq->getFAQRelatedbyID($faq_id);
+		$relates = $this->model_faq_faq->getFAQRelatedbyID($data['date_added']);
 
 		foreach ($relates as $relate) {		
 					

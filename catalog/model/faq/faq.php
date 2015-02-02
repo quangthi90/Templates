@@ -42,17 +42,18 @@ class ModelFaqFaq extends Controller {
 				'faq_id'             => $result['faq_id'],
 				'title'     => $result['title'],
 				'question'     => $result['question'],
-				'answer' => $result['answer']
+				'answer' => $result['answer'],
+				'date_added' => $result['date_added']
 			);
 		}
 		
 		return $faq_data;
 	}
 
-	public function getFAQRelatedbyID($faq_id) {
+	public function getFAQRelatedbyID($date_added) {
 		$faq_data = array();
 		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "faqs f WHERE f.faq_id >'". (int)$faq_id . "' LIMIT 5");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "faqs f WHERE f.date_added <'". $date_added . "' LIMIT 5");
 		
 		foreach ($query->rows as $result) {
 			$faq_data[] = array(
