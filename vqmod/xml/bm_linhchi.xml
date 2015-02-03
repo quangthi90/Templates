@@ -568,6 +568,8 @@
 			]]></search>
 			<add><![CDATA[
 				$data['entry_map_link'] = $this->language->get('entry_map_link');
+				$data['entry_guild_map_link'] = $this->language->get('entry_guild_map_link');
+				$data['entry_click'] = $this->language->get('entry_click');
 			]]></add>
 		</operation>		
 	</file>
@@ -576,6 +578,8 @@
 			<search position="after"><![CDATA[State';]]></search>
 			<add><![CDATA[
 				$_['entry_map_link']        = 'Link Google Maps';
+				$_['entry_guild_map_link']        = 'Guild to create Google Maps link, ';
+				$_['entry_click']        = 'click here';
 			]]></add>
 		</operation>		
 	</file>
@@ -586,6 +590,8 @@
 			]]></search>
 			<add><![CDATA[
 				$_['entry_map_link']        = 'Link Google Maps';
+				$_['entry_guild_map_link']        = 'Hướng dẫn tạo Google Maps link, ';
+				$_['entry_click']        = 'click vào đây';
 			]]></add>
 		</operation>		
 	</file>
