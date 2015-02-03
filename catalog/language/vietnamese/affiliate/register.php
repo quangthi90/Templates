@@ -17,8 +17,8 @@ $_['text_bank']                 = 'Chuyển khoản ngân hàng';
 $_['text_agree']                = 'Tôi đã đọc & đồng ý với <a class="fancybox" href="%s" alt="%s"><b>%s</b></a>';
 
 // Entry
-$_['entry_firstname']           = 'Tên:';
-$_['entry_lastname']            = 'Họ và tên lót:';
+$_['entry_firstname']           = 'Họ và tên lót:';
+$_['entry_lastname']            = 'Tên:';
 $_['entry_email']               = 'E-Mail:';
 $_['entry_telephone']           = 'Điện Thoại:';
 $_['entry_fax']                 = 'Fax:';
