@@ -14,6 +14,9 @@
 				<div class="answer" style="text-align: justify;">
 					<?php echo $answer; ?>
 				</div>
+				<div style="padding: 15px 10px;">
+					<a href="<?php echo $back_faqlist; ?>" style="font-weight: bold;text-decoration: underline;"><?php echo $txt_back_faq_list; ?> </a>
+				</div>
 				<div class="break"></div>
 		  		<div class="related-question">
 		  			<h2 class="heading-title" style="margin-bottom: 10px;"><?php echo $txt_related_question; ?></h2>
@@ -27,7 +30,7 @@
 	  								<a href="<?php echo $faq['href']; ?>" title="<?php echo $faq['question']; ?>"><?php echo $faq['question']; ?></a>
 	  							</h3>
 	  							<div class="answer-content" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
-	  								<?php echo $faq['cut_answer']; ?>
+	  								<?php  //echo $faq['cut_answer']; ?>
 	  							</div>	  							
 	  						</li>			                
 			                <?php } ?>
