@@ -41,4 +41,41 @@
 			]]></add>
 		</operation>
 	</file>
+	<file name="catalog/controller/common/seo_url.php">
+		<operation>
+			<search position="before"><![CDATA[
+				if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {
+			]]></search>
+			<add><![CDATA[
+				if ($url[0] == 'faq_id') {
+						$this->request->get['faq_id'] = $url[1];
+					}
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+				if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {
+			]]></search>
+			<add><![CDATA[
+				if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id' && $url[0] != 'faq_id') {
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				$this->request->get['route'] = 'information/information';
+			]]></search>
+			<add><![CDATA[
+				} elseif (isset($this->request->get['faq_id'])) {
+					$this->request->get['route'] = 'faq/detail';
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
+			]]></search>
+			<add><![CDATA[
+				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id') || (($data['route'] == 'faq/detail' && $key == 'faq_id'))) {
+			]]></add>
+		</operation>
+	</file>
 </modification>
