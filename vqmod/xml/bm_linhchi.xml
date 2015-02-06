@@ -696,4 +696,58 @@
 			]]></add>
 		</operation>
 	</file>	
+	<file name="catalog/controller/affiliate/register.php">
+		<operation>
+			<search position="before"><![CDATA[
+				if ($country_info && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
+			]]></search>
+			<add><![CDATA[
+				/*
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[
+				if ($country_info && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
+			]]></search>
+			<add><![CDATA[
+				*/
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/account/register.php">
+		<operation>
+			<search position="before"><![CDATA[
+				if ($country_info && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
+			]]></search>
+			<add><![CDATA[
+				/*
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[
+				if ($country_info && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
+			]]></search>
+			<add><![CDATA[
+				*/
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/checkout/guest.php">
+		<operation>
+			<search position="before"><![CDATA[
+				if ($country_info && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
+			]]></search>
+			<add><![CDATA[
+				/*
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[
+				if ($country_info && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
+			]]></search>
+			<add><![CDATA[
+				*/
+			]]></add>
+		</operation>		
+	</file>
 </modification>

@@ -171,7 +171,7 @@
         <input type="text" name="city" value="<?php echo $city; ?>" placeholder="<?php echo $entry_city; ?>" id="input-payment-city" class="form-control" />
       </div>
       <div class="form-group required">
-        <label class="control-label" for="input-payment-postcode"><?php echo $entry_postcode; ?></label>
+        
         <input type="text" name="postcode" value="<?php echo $postcode; ?>" placeholder="<?php echo $entry_postcode; ?>" id="input-payment-postcode" class="form-control" />
       </div>
       <div class="form-group required">
@@ -431,7 +431,7 @@ $('#collapse-payment-address button[id^=\'button-payment-custom-field\']').on('c
 $('.date').datetimepicker({
 	pickTime: false
 });
-
+$('#input-payment-postcode').hide();
 $('.time').datetimepicker({
 	pickDate: false
 });

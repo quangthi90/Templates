@@ -8,7 +8,6 @@ class ControllerFaqDetail extends Controller {
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['txt_related_question'] = $this->language->get('txt_related_question');
 		$data['txt_question'] = $this->language->get('txt_question');
-		$data['txt_back_faq_list'] = $this->language->get('txt_back_faq_list');
 
 		$this->load->model('faq/faq');
 		$path = '';
@@ -42,7 +41,6 @@ class ControllerFaqDetail extends Controller {
 		}
 
 		$this->document->setTitle($data['heading_title']);
-		$data['back_faqlist'] = $this->url->link('faq/list');
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');

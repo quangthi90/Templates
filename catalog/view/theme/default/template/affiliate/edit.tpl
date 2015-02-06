@@ -135,11 +135,12 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-map-link"><?php echo $entry_map_link ?></label>
+            <label class="col-sm-2 control-label" for="input-map-link"><?php echo $entry_map_link; ?></label>
             <div class="col-sm-10">
               <input type="text" name="map_link" value="<?php echo $map_link ?>" placeholder="<?php echo $map_link ?>" id="input-map-link" class="form-control" />
             </div>
           </div>
+          <p><?php echo $entry_guild_map_link; ?><a href="http://linhchinonglam.edu.vn/huong-dan-them-googlemaps-vao-website"><?php echo $entry_click; ?></a> 
         </fieldset>
         <div class="buttons clearfix">
           <div class="pull-left"><a href="<?php echo $back; ?>" class="btn btn-default"><?php echo $button_back; ?></a></div>
