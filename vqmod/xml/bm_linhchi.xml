@@ -268,6 +268,17 @@
 			]]></add>
 		</operation>
 		<operation>
+			<search position="replace"><![CDATA[
+				$data['account'] = $this->url->link('account/account', '', 'SSL');
+			]]></search>
+			<add><![CDATA[
+				if ( $this->affiliate->isLogged() )
+					$data['account'] = $this->url->link('affiliate/account', '', 'SSL');
+				else
+					$data['account'] = $this->url->link('account/account', '', 'SSL');
+			]]></add>
+		</operation>
+		<operation>
 			<search position="before"><![CDATA[
 				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
 			]]></search>
