@@ -756,7 +756,7 @@
 				$_['text_tracking']        = 'Mã số Đại lý & Tạo các liên kết theo dõi của bạn';
 			]]></search>
 			<add><![CDATA[
-				$_['text_tracking']        = 'Mã số đại lý & liên kết theo dõi';
+				$_['text_tracking']        = 'Mã số đại lý & tùy chọn mã liên kết';
 			]]></add>
 		</operation>
 	</file>
