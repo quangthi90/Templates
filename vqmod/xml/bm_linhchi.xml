@@ -555,7 +555,7 @@
 			<add><![CDATA[
 				if (isset($this->request->post['map_link'])) {
 			$data['map_link'] = $this->req4uest->post['map_link'];
-		} elseif (!empty($affiliate_info)) {
+		} elseif (!empty($affiliate_info) && !empty($affiliate_info['map_link'])) {
 			$data['map_link'] = $affiliate_info['map_link'];
 		} else {
 			$data['map_link'] = '';
@@ -749,5 +749,15 @@
 				*/
 			]]></add>
 		</operation>		
+	</file>
+	<file name="catalog/language/vietnamese/affiliate/account.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				$_['text_tracking']        = 'Mã số Đại lý & Tạo các liên kết theo dõi của bạn';
+			]]></search>
+			<add><![CDATA[
+				$_['text_tracking']        = 'Mã số đại lý & liên kết theo dõi';
+			]]></add>
+		</operation>
 	</file>
 </modification>
