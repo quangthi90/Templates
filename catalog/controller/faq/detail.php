@@ -32,11 +32,11 @@ class ControllerFaqDetail extends Controller {
 		foreach ($relates as $relate) {		
 					
 			$data['faqs'][] = array(
-				'faq_id'  => $relate['faq_id'],				
+				'faq_id'  => $relate['faq_id'],
+				'title'   => $relate['title'],
 				'question'=> $relate['question'],
 				'href'    => $this->url->link('faq/detail', 'faq_id=' . $relate['faq_id']),
-				'cut_answer' => html_entity_decode(substr($relate['answer'],0,200)),
-				'answer'  => html_entity_decode($relate['answer'])				
+				'answer'  => $relate['answer']				
 			);
 		}
 

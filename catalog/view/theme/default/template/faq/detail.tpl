@@ -24,14 +24,14 @@
 			                <li>
 	  							<h3 class="question-title">
 	  								<strong>Q:</strong>
-	  								<a href="<?php echo $faq['href']; ?>" title="<?php echo $faq['question']; ?>"><?php echo $faq['question']; ?></a>
+	  								<a href="<?php echo $faq['href']; ?>" title="<?php echo $faq['title']; ?>"><?php echo $faq['title']; ?></a>
 	  							</h3>
-	  							<div class="answer-content" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
-	  								<?php echo $faq['cut_answer']; ?>
-	  							</div>	  							
-	  						</li>			                
+	  							<div class="question-content">
+	  								<?php echo $faq['question']; ?>
+	  							</div>
+	  						</li>
 			                <?php } ?>
-		                <?php } ?>   						 						
+		                <?php } ?>
   					</ul>
 		  		</div>
 			</div>

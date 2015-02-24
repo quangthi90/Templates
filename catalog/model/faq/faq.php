@@ -1,8 +1,10 @@
 <?php
 class ModelFaqFaq extends Controller {
 	public function getFAQs($data) {
+		$language_id = (int)$this->config->get('config_language_id');
+		$language_id = 1;
 
-		$sql = "SELECT * FROM " . DB_PREFIX . "faqs f WHERE f.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY date_added DESC";
+		$sql = "SELECT * FROM " . DB_PREFIX . "faqs f WHERE f.language_id = '" . $language_id . "' ORDER BY date_added DESC";
 
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
