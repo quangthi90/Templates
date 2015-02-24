@@ -16,6 +16,7 @@
           <label class="col-sm-2 control-label" for="input-code"><?php echo $entry_code; ?></label>
           <div class="col-sm-10">
             <textarea cols="40" rows="5" placeholder="<?php echo $entry_code; ?>" id="input-code" name="code" class="form-control"><?php echo $code; ?></textarea>
+            <span><?php echo $help_generator; ?></span>
           </div>
         </div>
         <!--div class="form-group">
