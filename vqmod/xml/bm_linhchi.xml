@@ -760,4 +760,18 @@
 			]]></add>
 		</operation>
 	</file>
+	<file name="catalog/model/affiliate/affiliate.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				$message .= $this->language->get('text_services') . "\n\n";
+			]]></search>
+			<add><![CDATA[
+				$affiliate = $this->getAffiliate($affiliate_id);
+				if (!empty($affiliate)) {
+					$message .= $this->language->get('text_services');
+					$message .= $this->url->link('common/home') . $affiliate['code'] . "\n\n";
+				}
+			]]></add>
+		</operation>
+	</file>
 </modification>
