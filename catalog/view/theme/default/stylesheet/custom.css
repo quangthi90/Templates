@@ -548,6 +548,8 @@ footer p {
 }
 .news-featured .news-item img {
     width: 230px;	
+    border: 1px solid #F0F0F0;
+    padding: 5px;	
 }
 .news-featured .news-item .news-title {
     display: block;
