@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // Text
 $_['text_new_subject']          = '%s - Đơn hàng mới %s';
 $_['text_new_greeting']         = 'Cám ơn bạn đã quan tâm sản phẩm của %s. Đơn hàng của bạn chúng tôi đã nhận và sẽ được xử lý trong thời gian sớm nhất có thể.';
