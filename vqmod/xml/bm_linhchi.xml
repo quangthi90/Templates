@@ -1,5 +1,5 @@
 <modification>
-	<id>for site linhchinonglam.com</id>
+	<id>for site linhchinonglam.edu.vn</id>
 	<version>2.0.x</version>
 	<vqmver>1.0</vqmver>
 	<author>Bommer Luu</author>
@@ -475,20 +475,6 @@
 						'title' => $news['title'],
 						'href' => $this->url->link('news/news', 'news_id=' . $news['news_id'], 'SSL')
 					);
-				}
-			]]></add>
-		</operation>
-	</file>
-	<file name="catalog/controller/common/seo_url.php">
-		<operation>
-			<search position="after"><![CDATA[
-				$this->request->get['route'] = $query->row['query'];
-			]]></search>
-			<add><![CDATA[
-				if ($url[0] == 'affiliate_id') {
-					setcookie('tracking', $part, time() + 3600 * 24 * 1000, '/');
-					$this->session->data['tracking'] = $part;
-					$this->request->get['route'] = 'common/home';
 				}
 			]]></add>
 		</operation>
