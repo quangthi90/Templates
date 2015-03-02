@@ -3,14 +3,14 @@
     <div class="footer-menu">
       <ul class="list-unstyled menu">
           <li><a href="<?php echo HTTP_SERVER; ?>"> <i class="fa fa-home"></i></a></li>
-          <li><a href="<?php echo HTTP_SERVER; ?>"> Sản phẩm </a></li>
-          <li><a href="<?php echo HTTP_SERVER; ?>"> Giới thiệu</a></li>
-          <li><a href="<?php echo HTTP_SERVER; ?>"> Dịch vụ</a></li>
-          <li><a href="<?php echo HTTP_SERVER; ?>"> Đại lý</a></li>
-          <li><a href="<?php echo HTTP_SERVER; ?>"> Sức khỏe</a></li>
-          <li><a href="<?php echo HTTP_SERVER; ?>"> Tư vấn</a></li>
-          <li><a href="<?php echo HTTP_SERVER; ?>"> Kiểm định</a></li>
-          <li><a href="<?php echo HTTP_SERVER; ?>"> Liên hệ</a></li>
+          <li><a href="<?php echo $product_link; ?>"> Sản phẩm </a></li>
+          <li><a href="<?php echo $intro_link; ?>"> Giới thiệu</a></li>
+          <li><a href="<?php echo $services_link; ?>"> Dịch vụ</a></li>
+          <li><a href="<?php echo $affiliate_link; ?>"> Đại lý</a></li>
+          <li><a href="<?php echo $health_link; ?>"> Sức khỏe</a></li>
+          <li><a href="<?php echo $support_link; ?>"> Tư vấn</a></li>
+          <li><a href="<?php echo $community_link; ?>"> Từ thiện</a></li>
+          <li><a href="<?php echo $contact_link; ?>"> Liên hệ</a></li>
       </ul>
     </div>
     <div class="footer-info">
@@ -23,7 +23,7 @@
     </div>
     <div class="vistor-statistics">
       <p><strong>THỐNG KÊ LƯỢT TRUY CẬP</strong></p>
-      <p>Đang truy cập: 23 lượt | Trong ngày:1.060 lượt | Trong tuần:12.578 lượt | Tổng cộng:907.464 lượt</p>
+      <p>Đang truy cập: 101 lượt | Trong ngày:5.015 lượt | Trong tuần:100.578 lượt | Tổng cộng:1.907.464 lượt</p>
     </div>
     <div style="height: 40px; border-bottom: 1px solid #7E6F43;margin-bottom: 10px;"></div>
     <p class="footer-ship">
