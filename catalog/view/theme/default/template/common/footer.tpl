@@ -11,6 +11,7 @@
           <li><a href="<?php echo $support_link; ?>"> Tư vấn</a></li>
           <li><a href="<?php echo $community_link; ?>"> Từ thiện</a></li>
           <li><a href="<?php echo $contact_link; ?>"> Liên hệ</a></li>
+          <li><a href="<?php echo $sitemap_link; ?>"> Sơ đồ trang</a></li>
       </ul>
     </div>
     <div class="footer-info">

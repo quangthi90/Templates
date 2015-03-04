@@ -52,6 +52,7 @@ class ControllerCommonFooter extends Controller {
 		$data['support_link']  = $this->url->link('product/category', 'path=5');
 		$data['community_link']  = $this->url->link('product/category', 'path=6');
 		$data['contact_link'] = $this->url->link('information/contact', '');
+		$data['sitemap_link'] = $this->url->link('information/sitemap', '');
 
 		$data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
 		$data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
