@@ -651,20 +651,20 @@ ul.question-list li .view-answer {
 	z-index: 10000;
 }
 .fixed-banner.left-top {
-	left: 5px;
+	left: 10px;
 	top: 5px;
 }
 .fixed-banner.right-top {
-	right: 5px;
+	right: 10px;
 	top: 5px;
 }
 .fixed-banner.left-bottom {
-	left: 5px;
-	bottom: 5px;
+	left: 10px;
+	bottom: 30px;
 }
 .fixed-banner.right-bottom {
-	right: 5px;
-	bottom: 5px;
+	right: 10px;
+	bottom: 30px;
 }
 .fixed-banner .banner-header {
 	float: right;
