@@ -43,6 +43,22 @@ class ControllerCommonFooter extends Controller {
 		$data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
 		$data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
 
+		//BOMMER
+		$data['product_link'] = $this->url->link('product/categories', '');
+		$data['intro_link']  = $this->url->link('product/category', 'path=2');
+		$data['services_link']  = $this->url->link('product/category', 'path=2');
+		$data['affiliate_link']  = $this->url->link('product/category', 'path=3');
+		$data['health_link']  = $this->url->link('product/category', 'path=4');
+		$data['support_link']  = $this->url->link('product/category', 'path=5');
+		$data['community_link']  = $this->url->link('product/category', 'path=6');
+		$data['contact_link'] = $this->url->link('information/contact', '');
+		$data['sitemap_link'] = $this->url->link('information/sitemap', '');
+
+		$data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
+		$data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
+		$data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');		
+		$data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
+
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 
 		// Whos Online

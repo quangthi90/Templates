@@ -608,3 +608,39 @@ ul.question-list li .view-answer {
 	line-height: 22px;
 	padding: 10px;
 }
+
+.sitemap-block {
+	margin-left: 15px;
+	margin-right: 10px;
+	margin-bottom: 0px;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+.sitemap-block .panel-heading {
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #BE3D0B;
+	border-bottom: 1px solid #BE3D0B;
+	padding-left: 0;
+	font-size: 15px;
+}
+.sitemap-block .panel-body > ul {
+	padding-left: 0;
+}
+.sitemap-block .panel-body > ul > li > ul {
+}
+.sitemap-block .panel-body > ul > li > ul > li {
+	text-transform: capitalize;
+}
+.sitemap-block .panel-body > ul li {
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+.sitemap-block .panel-body > ul > li {
+	text-transform: uppercase;
+	font-size: 13px;
+}
+.sitemap-block .panel-body > ul li a:hover {
+	text-decoration: underline;
+}

@@ -15,4 +15,10 @@ $_['text_checkout']    = 'Thanh toán';
 $_['text_search']      = 'Tìm kiếm';
 $_['text_information'] = 'Thông tin ';
 $_['text_contact']     = 'Liên hệ';
+
+//BOMMER
+$_['text_productlist']     = 'Danh sách tất cả sản phẩm';
+$_['text_product_links']     = 'Liên kết sản phẩm';
+$_['text_news_links']     = 'Liên kết tin tức';
+$_['text_other_links']     = 'Liên kết khác';
 ?>

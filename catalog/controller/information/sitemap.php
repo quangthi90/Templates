@@ -93,6 +93,82 @@ class ControllerInformationSitemap extends Controller {
 			);
 		}
 
+		//BOMMER Link Names
+		$data['text_product_links'] = $this->language->get('text_product_links');
+		$data['text_news_links'] = $this->language->get('text_news_links');
+		$data['text_other_links'] = $this->language->get('text_other_links');
+
+		// BOMMER All Product
+		$data['product_list'] = $this->url->link('product/categories');
+		$data['text_productlist'] = $this->language->get('text_productlist');
+
+		// BOMMER News Menu
+		$this->load->model('news/category');
+		$this->load->model('news/news');
+
+		$categories = $this->model_news_category->getCategories(0);
+		$data['news_categories'] = array();
+		$common_config = $this->config->get('common');
+		foreach ($categories as $category) {
+			if ((!empty($this->session->data['tracking']) || $this->affiliate->isLogged()) && $category['news_category_id'] == $common_config['affiliate']['remove_news_id']) continue;
+			if ($category['top']) {
+				// Level 2
+				$children_data = array();
+
+				$children = $this->model_news_category->getCategories($category['news_category_id']);
+
+				foreach ($children as $child) {
+					if ($child['top']){
+						// Level 3
+						$children_news_data = array();
+						$child_newss = $this->model_news_news->getNewss(array('filter_news_category_id' => $child['news_category_id']));
+						foreach ($child_newss as $child_news) {
+							if ($child_news['top']){
+								$children_news_data[] = array(
+									'name'  => $child_news['title'],
+									'href'  => $this->url->link('news/news', 'news_id=' . $child_news['news_id']),
+									'sort_order' => $child_news['sort_order']
+								);
+							}
+						}
+						$children_data[] = array(
+							'name'  => $child['name'],
+							'href'  => $this->url->link('news/category', 'path=' . $category['news_category_id'] . '_' . $child['news_category_id']),
+							'sort_order' => $child['sort_order'],
+							'children' => $children_news_data
+						);
+					}
+				}
+
+				$newss = $this->model_news_news->getNewss(array('filter_news_category_id' => $category['news_category_id']));
+
+				foreach ($newss as $news) {
+					if ($news['top']){
+						$children_data[] = array(
+							'name'  => $news['title'],
+							'href'  => $this->url->link('news/news', 'news_id=' . $news['news_id']),
+							'sort_order' => $news['sort_order']
+						);
+					}
+				}
+
+				uasort($children_data, function($a, $b){
+					if ($a['sort_order'] == $b['sort_order']) {
+				        return 0;
+					}
+					return ($a['sort_order'] < $b['sort_order']) ? -1 : 1;
+				});
+				
+				// Level 1
+				$data['news_categories'][] = array(
+					'name'     => $category['name'],
+					'children' => $children_data,
+					'column'   => $category['column'] ? $category['column'] : 1,
+					'href'     => $this->url->link('news/category', 'path=' . $category['news_category_id'])
+				);
+			}
+		}
+
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');

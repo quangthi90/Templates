@@ -15,3 +15,8 @@ $_['text_checkout']    = 'Checkout';
 $_['text_search']      = 'Search';
 $_['text_information'] = 'Information';
 $_['text_contact']     = 'Contact Us';
+//BOMMER
+$_['text_productlist']     = 'All products';
+$_['text_product_links']     = 'Product links';
+$_['text_news_links']     = 'News links';
+$_['text_other_links']     = 'Other links';
