@@ -43,6 +43,14 @@
 <?php foreach ($scripts as $script) { ?>
 <script src="<?php echo $script; ?>" type="text/javascript"></script>
 <?php } ?>
+<script type="text/javascript">
+  setTimeout(function(){
+    AppUtils.generateFixBanner({
+      htmlContent: '<?php echo $left_bottom_banner;  ?>',
+      position: 3
+    });
+  }, 1000);
+</script>
 <?php echo $google_analytics; ?>
 </head>
 <body class="<?php echo $class; ?>">

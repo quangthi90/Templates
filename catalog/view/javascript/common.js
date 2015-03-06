@@ -453,3 +453,65 @@ $(document).delegate('.agree', 'click', function(e) {
 		});
 	}
 })(window.jQuery);
+
+//Fixed banner
+var AppUtils = {
+	generateFixBanner: function(params){
+		var defaults = {
+			position: 3,
+			parentContainer: jQuery("body"),
+			htmlContent: ""
+		};
+		var htmlTemplate = "<div class='fixed-banner'>" +
+								"<div class='banner-header'><span class='dismiss'>X</span></div>" +
+								"<div class='banner-body'></div>" +
+							"</div>";
+
+		var options = jQuery.extend({}, defaults, params);
+
+		//Process
+		if(!options.htmlContent) {
+			return;
+		}
+		var bannerEle = jQuery(htmlTemplate);
+		bannerEle.find("div.banner-body").html(options.htmlContent);
+
+		switch(options.position){
+			case 2:
+				var existing = options.parentContainer.find("fixed-banner.right-top");
+				if(existing.length > 0){
+					existing.remove();
+				}
+				bannerEle.addClass("right-top");
+				break;
+			case 3:
+				var existing = options.parentContainer.find("fixed-banner.left-bottom");
+				if(existing.length > 0){
+					existing.remove();
+				}
+				bannerEle.addClass("left-bottom");
+				break;
+			case 4:
+				var existing = options.parentContainer.find("fixed-banner.right-bottom");
+				if(existing.length > 0){
+					existing.remove();
+				}
+				bannerEle.addClass("right-bottom");
+				break;
+			default: 
+				var existing = options.parentContainer.find("fixed-banner.left-top");
+				if(existing.length > 0){
+					existing.remove();
+				}
+				bannerEle.addClass("left-top");
+		}
+
+		bannerEle.find(".dismiss").on("click", function () {
+			bannerEle.fadeOut(600, function(){
+				$(this).remove();
+			});
+		});
+		//Append to parrent container
+		bannerEle.appendTo(options.parentContainer);
+	}
+};
