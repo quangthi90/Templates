@@ -435,6 +435,8 @@
 				} else {
 					$data['phone'] = $this->config->get('config_telephone');
 				}
+
+				$data['faq'] = $this->url->link('faq/list');
 			]]></add>
 		</operation>
 		<operation>
@@ -767,6 +769,27 @@
 				if (!empty($affiliate)) {
 					$message .= $this->language->get('text_services');
 					$message .= $this->url->link('common/home') . $affiliate['code'] . "\n\n";
+				}
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/model/checkout/order.php">
+		<operation>
+			<search position="before"><![CDATA[
+				// Comment
+			]]></search>
+			<add><![CDATA[
+				$this->load->model('affiliate/affiliate');
+				$affiliate = $this->model_affiliate_affiliate->getAffiliate($order_info['affiliate_id']);
+				if (!empty($affiliate)) {
+					$mail = new Mail($this->config->get('config_mail'));
+					$mail->setTo($affiliate['email']);
+					$mail->setFrom($this->config->get('config_email'));
+					$mail->setSender($order_info['store_name']);
+					$mail->setSubject($subject);
+					$mail->setHtml($html);
+					$mail->setText($text);
+					$mail->send();
 				}
 			]]></add>
 		</operation>
