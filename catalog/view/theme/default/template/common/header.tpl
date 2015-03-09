@@ -144,8 +144,8 @@
           <?php } ?>
         </li>
         <?php } ?>
-        <li><a href="<?php echo $contact; ?>">Liên hệ</a>
-        </li>
+        <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+        <li><a href="<?php echo $faq_link; ?>"><?php echo $text_faq; ?></a></li>
       </ul>
     </nav>
   </div>  

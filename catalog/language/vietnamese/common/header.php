@@ -14,4 +14,6 @@ $_['text_logout']        = 'Thoát';
 $_['text_checkout']      = 'Thanh toán';
 $_['text_search']        = 'Tìm kiếm';
 $_['text_all']           = 'Xem tất cả';
+$_['text_contact']       = 'Liên hệ';
+$_['text_faq']           = 'Hỏi đáp';
 ?>
