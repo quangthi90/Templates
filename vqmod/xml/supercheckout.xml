@@ -1,0 +1,42 @@
+<modification>
+	<id>Super Checkout V1.6</id>
+	<version>1.5.x</version>
+	<vqmver>2.2.1</vqmver>
+	<author>ThuThuatOpenCart.com</author>        
+	<file name="catalog/controller/checkout/checkout.php">
+		<operation>
+			<search position="after"><![CDATA[public function index() {]]></search>
+			<add><![CDATA[ 
+			$this->load->model('setting/setting');
+                        $result = $this->model_setting_setting->getSetting('supercheckout', $this->config->get('config_store_id'));
+                        if(!empty($result)){
+                            //$this->settings = $result['supercheckout'];
+                            //$data['settings']=$result['supercheckout'];                            
+                        }
+                        if(empty($data['settings'])){
+                                        $settings = $this->model_setting_setting->getSetting('default_supercheckout', 0);
+                                        if(!empty($settings)){
+                                            $data['settings'] = $settings['default_supercheckout'];
+                                            $data['supercheckout']=$settings['default_supercheckout'];
+                                        }
+                        }
+                        if(!empty($data['settings']) && $data['settings']['general']['enable']){
+                            $this->response->redirect($this->url->link('supercheckout/supercheckout','','SSL'));
+                        }
+			]]></add>
+		</operation>		
+	</file>
+	<!-- opencart 1.5.1x issue-->
+	<file name="catalog/model/setting/setting.php">
+		<operation error="skip">
+			<search position="replace"><![CDATA[$data[$result['key']] = unserialize($setting['value']);]]></search>
+			<add><![CDATA[$data[$result['key']] = unserialize($result['value']);]]></add>
+		</operation>
+	</file>
+	<file name="admin/model/setting/setting.php">
+		<operation  error="skip">
+			<search position="replace"><![CDATA[$data[$result['key']] = unserialize($setting['value']);]]></search>
+			<add><![CDATA[$data[$result['key']] = unserialize($result['value']);]]></add>
+		</operation>
+	</file>	
+</modification>
