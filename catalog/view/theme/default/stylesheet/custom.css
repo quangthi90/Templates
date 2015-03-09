@@ -682,3 +682,11 @@ ul.question-list li .view-answer {
 }
 .fixed-banner .banner-body {
 }
+
+.product-thumbnails .thumbnails li > a {
+	border: none;
+}
+.product-thumbnails .thumbnails li > a img {
+	border: 1px solid #CCC;
+	padding: 3px;
+}

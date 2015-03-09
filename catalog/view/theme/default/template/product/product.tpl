@@ -9,7 +9,7 @@
     <div class="content-up" id="content-up"></div>
     <div id="content-mid">
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-4 product-thumbnails">
           <?php if ($thumb || $images) { ?>
           <ul class="thumbnails">
             <?php if ($thumb) { ?>
@@ -23,7 +23,7 @@
           </ul>
           <?php } ?>          
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-8">
           <h3 class="heading-title text-left"><?php echo $heading_title; ?></h3>
           <?php if ($price) { ?>
           <p style="padding-top: 10px;">
