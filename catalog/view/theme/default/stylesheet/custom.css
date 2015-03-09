@@ -644,3 +644,41 @@ ul.question-list li .view-answer {
 .sitemap-block .panel-body > ul li a:hover {
 	text-decoration: underline;
 }
+
+.fixed-banner {
+	position: fixed;
+	overflow: hidden;
+	z-index: 10000;
+}
+.fixed-banner.left-top {
+	left: 10px;
+	top: 5px;
+}
+.fixed-banner.right-top {
+	right: 10px;
+	top: 5px;
+}
+.fixed-banner.left-bottom {
+	left: 10px;
+	bottom: 30px;
+}
+.fixed-banner.right-bottom {
+	right: 10px;
+	bottom: 30px;
+}
+.fixed-banner .banner-header {
+	float: right;
+}
+.fixed-banner .dismiss {
+	font-weight: bold;
+	cursor: pointer;
+	display: none;
+}
+.fixed-banner:hover .dismiss {
+	display: inline-block;
+}
+.fixed-banner .banner-header .dismiss:hover {
+	color: #B20711;
+}
+.fixed-banner .banner-body {
+}
