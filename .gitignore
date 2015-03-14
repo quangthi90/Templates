@@ -6,3 +6,5 @@
 /system/logs/error.log
 /config.php
 /admin/config.php
+/system/cache
+/image/cache
