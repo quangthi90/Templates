@@ -98,6 +98,9 @@ div.required .control-label:before {
 	background-image: linear-gradient(to bottom, #D94E4B, #D94E4B);
 	background-repeat: repeat-x;
 }
+#top #currency ul > li > .btn-link {
+	text-transform: capitalize;
+}
 #top .btn-link, #top-links li, #top-links a {
 	color: #545353;
 	text-shadow: 0 1px 0 #FFF;
@@ -547,6 +550,16 @@ footer h5 {
 .product-thumb .caption {
 	text-align: center;
 }
+.product-thumb .p-description {
+	display: none;
+}
+.product-list .product-thumb .caption {
+	text-align: left;
+}
+.product-list .product-thumb .p-description {
+	display: block;
+}
+
 @media (min-width: 767px) {
 .product-list .product-thumb .image {
 	float: left;
@@ -558,10 +571,11 @@ footer h5 {
 }
 .product-thumb .caption {
 	padding: 0 20px;
-	min-height: 180px;
+	min-height: 80px;
 }
 .product-list .product-thumb .caption {
 	margin-left: 230px;
+	min-height: 165px;
 }
 @media (max-width: 1200px) {
 .product-grid .product-thumb .caption {
@@ -601,7 +615,9 @@ h2.price {
 	margin: 0;
 }
 .product-thumb .price {
-	color: #444;
+	color: #D94E4B;
+  	font-weight: bold;
+  	font-size: 14px;
 }
 .product-thumb .price-new {
 	font-weight: 600;
@@ -610,6 +626,7 @@ h2.price {
 	color: #999;
 	text-decoration: line-through;
 	margin-left: 10px;
+	font-weight: normal;
 }
 .product-thumb .price-tax {
 	color: #999;

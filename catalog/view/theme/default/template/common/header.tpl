@@ -41,13 +41,8 @@
 <body class="<?php echo $class; ?>">
 <nav id="top">
   <div class="container">
-    <?php //echo $currency; ?>
-    <?php //echo $language; ?>
-    <div class="nav pull-left">
-      <ul class="list-inline">
-          
-      </ul>
-    </div>
+    <?php echo $currency; ?>
+    <?php echo $language; ?>
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
         <li><a href="#"><i class="fa fa-newspaper-o"></i> <span class="hidden-xs hidden-sm hidden-md">News</span></a></li>
