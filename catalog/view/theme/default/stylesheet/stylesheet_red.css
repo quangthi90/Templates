@@ -544,6 +544,9 @@ footer h5 {
 .product-grid .product-thumb .image {
 	float: none;
 }
+.product-thumb .caption {
+	text-align: center;
+}
 @media (min-width: 767px) {
 .product-list .product-thumb .image {
 	float: left;
