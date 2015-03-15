@@ -1,36 +1,36 @@
 <?php
 // Heading
-$_['heading_title']        = 'Gửi thư';
+$_['heading_title']        = 'Quản lý Email';
 
 // Text
-$_['text_success']         = 'Đã gửi đi thành công!';
-$_['text_sent']            = 'Your message has been successfully sent to %s of %s recipients!';
-$_['text_list']            = 'Danh sách giao diện';
+$_['text_success']         = 'Thư của Bạn đã được gửi!';
+$_['text_sent']            = 'Thư của Bạn đã được gửi thành công tới %s của %s người nhận!';
+$_['text_list']            = 'Danh mục thư';
 $_['text_default']         = 'Mặc định';
-$_['text_newsletter']      = 'Tất cả thư Newsletter đã gửi';
-$_['text_customer_all']    = 'Tất cả khách hàng';
-$_['text_customer_group']  = 'Nhóm khách hàng';
-$_['text_customer']        = 'Khách hàng';
-$_['text_affiliate_all']   = 'Tất cả Affiliates';
-$_['text_affiliate']       = 'Affiliates';
+$_['text_newsletter']      = 'Tất cả Người đăng ký nhận';
+$_['text_customer_all']    = 'Tất cả Khách hàngs';
+$_['text_customer_group']  = 'Nhóm Khách hàng';
+$_['text_customer']        = 'Khách Hàng';
+$_['text_affiliate_all']   = 'Tất cả Liên kết - Affiliate';
+$_['text_affiliate']       = 'Liên kết - Affiliate';
 $_['text_product']         = 'Sản phẩm';
 
 // Entry
-$_['entry_store']          = 'Từ';
-$_['entry_to']             = 'Gửi đến';
-$_['entry_customer_group'] = 'Nhóm khách hàng';
+$_['entry_store']          = 'Từ ';
+$_['entry_to']             = 'Tới';
+$_['entry_customer_group'] = 'Nhóm Khách hàng';
 $_['entry_customer']       = 'Khách hàng';
-$_['entry_affiliate']      = 'Affiliate';
+$_['entry_affiliate']      = 'Liên kết - Affiliate';
 $_['entry_product']        = 'Sản phẩm';
 $_['entry_subject']        = 'Chủ đề';
 $_['entry_message']        = 'Nội dung';
 
 // Help
-$_['help_customer']       = 'Autocomplete';
-$_['help_affiliate']      = 'Autocomplete';
-$_['help_product']        = 'Send only to customers who have ordered products in the list. (Autocomplete)';
+$_['help_customer']       = 'Click để lựa chọn';
+$_['help_affiliate']      = 'Click để lựa chọn';
+$_['help_product']        = 'Chỉ gửi tới Khách hàng đã đặt mua sản phẩm trong Danh sách. (Click để lựa chọn)';
 
 // Error
-$_['error_permission']     = 'Warning: You do not have permission to send E-Mail\'s!';
-$_['error_subject']        = 'E-Mail Subject required!';
-$_['error_message']        = 'E-Mail Message required!';
+$_['error_permission']     = 'Bạn không có quyền gửi thư!';
+$_['error_subject']        = 'Vui lòng nhập chủ đề Email!';
+$_['error_message']        = 'Vui lòng nhập nội dung email!';

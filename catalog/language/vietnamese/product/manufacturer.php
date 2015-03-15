@@ -1,9 +1,9 @@
 <?php
 // Heading
-$_['heading_title']     = 'Tìm thương hiệu ưu thích';
+$_['heading_title']     = 'Tìm thương hiệu ưa thích';
 
 // Text
-$_['text_brand']        = 'Thương hiện';
+$_['text_brand']        = 'Thương hiệu';
 $_['text_index']        = 'Danh sách thương hiệu:';
 $_['text_error']        = 'Không tồn tại!';
 $_['text_empty']        = 'Không có thương hiệu nào trong danh sách.';
@@ -12,7 +12,7 @@ $_['text_manufacturer'] = 'Thương hiệu:';
 $_['text_model']        = 'Mã sản phẩm:'; 
 $_['text_points']       = 'Điểm thưởng:'; 
 $_['text_price']        = 'Giá:'; 
-$_['text_tax']          = 'Trước Thuế:'; 
+$_['text_tax']          = 'Giá chưa VAT:'; 
 $_['text_reviews']      = 'Dựa vào %s đánh giá.'; 
 $_['text_compare']      = 'So sánh sản phẩm (%s)'; 
 $_['text_display']      = 'Hiển thị:';

@@ -1,33 +1,33 @@
 <?php
 // Heading
-$_['heading_title']     = 'Marketing Tracking';
+$_['heading_title']     = 'Theo dõi Marketing';
 
 // Text
-$_['text_success']      = 'Hoàn tất: Bạn vừa chỉnh sửa thành công marketing tracking!';
-$_['text_list']         = 'Marketing Tracking List';
-$_['text_add']          = 'Thêm Marketing Tracking';
-$_['text_edit']         = 'Chỉnh sửa Marketing Tracking';
+$_['text_success']      = 'Chúc mừng! Bạn đã cập nhật thành công!';
+$_['text_list']         = 'Danh mục theo dõi Marketing';
+$_['text_add']          = 'Thêm Marketing';
+$_['text_edit']         = 'Cập nhật theo dõi Marketing';
 
 // Column
-$_['column_name']       = 'Tên chiến dịch';
+$_['column_name']       = 'Tên';
 $_['column_code']       = 'Mã';
-$_['column_clicks']     = 'Lượng Clicks';
-$_['column_orders']     = 'Đơn hàng';
-$_['column_date_added'] = 'Ngày cập nhật';
-$_['column_action']     = 'Hành động';
+$_['column_clicks']     = 'Số Click';
+$_['column_orders']     = 'Số Đơn hàng';
+$_['column_date_added'] = 'Ngày thêm';
+$_['column_action']     = 'Thao tác';
 
 // Entry
-$_['entry_name']        = 'Tên chiến dịch';
-$_['entry_description'] = 'Mô tả chiến dịch';
-$_['entry_code']        = 'Mã Tracking';
+$_['entry_name']        = 'Tên';
+$_['entry_description'] = 'Mô tả';
+$_['entry_code']        = 'Mã theo dõi';
 $_['entry_example']     = 'Ví dụ';
-$_['entry_date_added']  = 'Ngày cập nhật';
+$_['entry_date_added']  = 'Ngày thêm';
 
 // Help
-$_['help_code']         = 'The tracking code that will be used to marketing track campaigns.';
+$_['help_code']         = 'Mã dùng để theo dõi.';
 $_['help_example']      = 'So the system can track refferals you neeed to add the tracking code to the end of the URL linking to your site.';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify marketing tracking!';
-$_['error_name']        = 'Campaign must be between 1 and 32 characters!';
-$_['error_code']        = 'Tracking Code required!';
+$_['error_permission']  = 'Chú ý! Bạn không có quyền thay đổi!';
+$_['error_name']        = 'Tên phải có ít nhất từ 1 đến 32 ký tự!';
+$_['error_code']        = 'Yêu cầu phải có Mã theo dõi!';

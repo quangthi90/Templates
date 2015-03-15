@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title'] = 'Bản đồ thế giới';
+$_['heading_title'] = 'Bản đồ';
 
 $_['text_order']    = 'Đơn hàng';
-$_['text_sale']     = 'Kết quả kinh doanh';
+$_['text_sale']     = 'Giá trị';

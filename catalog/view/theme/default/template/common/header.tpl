@@ -45,9 +45,9 @@
     <?php echo $language; ?>
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
-        <li><a href="#"><i class="fa fa-newspaper-o"></i> <span class="hidden-xs hidden-sm hidden-md">News</span></a></li>
-        <li><a href="#"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">Shops</span></a></li>
-        <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i> <span class="hidden-xs hidden-sm hidden-md">Contact us</span></a></li>
+        <li><a href="#" title="<?php echo $text_news; ?>"><i class="fa fa-newspaper-o"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_news; ?></span></a></li>
+        <li><a href="#" title="<?php echo $text_contact; ?>"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_shops; ?></span></a></li>
+        <li><a href="<?php echo $contact; ?>" title="<?php echo $text_contact; ?>"><i class="fa fa-phone"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_contact; ?></span></a></li>
         <li class="divider">|</li>
         <li><a href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_wishlist; ?></span></a></li>
         <?php if ($logged) { ?>

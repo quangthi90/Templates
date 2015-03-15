@@ -1,7 +1,6 @@
 <?php
 // Heading
 $_['heading_title']     = 'Tìm Kiếm';
-$_['heading_tag']		= 'Tag - ';
  
 // Text
 $_['text_search']       = 'Sản phẩm thỏa điều kiện tìm kiếm';
@@ -12,10 +11,10 @@ $_['text_critea']       = 'Điều kiện tìm kiếm';
 $_['text_empty']        = 'Không có sản phẩm thỏa điều kiện tìm kiếm.';
 $_['text_quantity']     = 'Số lượng:';
 $_['text_manufacturer'] = 'Thương hiệu:';
-$_['text_model']        = 'Mã sản phẩm:'; 
+$_['text_model']        = 'Mã hàng:'; 
 $_['text_points']       = 'Điểm thưởng:'; 
-$_['text_price']        = 'Giá:'; 
-$_['text_tax']          = 'Trước Thuế:'; 
+$_['text_price']        = 'Đơn giá:'; 
+$_['text_tax']          = 'Giá chưa VAT:'; 
 $_['text_reviews']      = 'Dựa trên %s đánh giá.'; 
 $_['text_compare']      = 'So sánh sản phẩm (%s)'; 
 $_['text_display']      = 'Hiển thị:';

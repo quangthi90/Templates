@@ -1,8 +1,8 @@
 <?php
 // Text
-$_['text_title']       = 'Séc / Hướng dẫn đặt hàng';
-$_['text_instruction'] = 'Séc / Giá thành đơn hàng';
-$_['text_payable']     = 'Đặt tiền phải trả cho: ';
-$_['text_address']     = 'Gửi cho: ';
-$_['text_payment']     = 'Đặt hàng của bạn sẽ chưa đưa đi cho đến khi chúng tôi nhận được thanh toán.';
+$_['text_title']       = 'Chuyển tiền qua bưu điện / Séc';
+$_['text_instruction'] = 'HƯỚNG DẪN CHUYỂN TIỀN QUA BƯU ĐIỆN / SÉC';
+$_['text_payable']     = 'Vui lòng gửi tiền Mua hàng và tiền Cước vận chuyển (nếu có) cho: ';
+$_['text_address']     = 'Địa chỉ: ';
+$_['text_payment']     = 'Điện thoại: 0912.66.88.99 <p>Hàng của bạn sẽ chưa đưa đi cho tới khi chúng tôi nhận được thanh toán.';
 ?>

@@ -1,49 +1,50 @@
 <?php
 // Heading
-$_['heading_title']         = 'Custom Fields';
+$_['heading_title']         = 'Mục Tùy Chọn';
 
 // Text
-$_['text_success']          = 'Success: You have modified custom fields!';
-$_['text_list']             = 'Custom Field List';
-$_['text_add']              = 'Add Custom Field';
-$_['text_edit']             = 'Edit Custom Field';
-$_['text_choose']           = 'Choose';
-$_['text_select']           = 'Select';
+$_['text_success']          = 'Chúc mừng! Bạn đã cập nhật thành công!';
+$_['text_list']             = 'Danh mục Tùy chọn';
+$_['text_add']              = 'Thêm mục Tùy chọn';
+$_['text_edit']             = 'Cập nhật mục Tùy chọn';
+$_['text_choose']           = 'Chọn';
+$_['text_select']           = 'Lựa chọn';
 $_['text_radio']            = 'Radio';
 $_['text_checkbox']         = 'Checkbox';
 $_['text_input']            = 'Input';
 $_['text_text']             = 'Text';
 $_['text_textarea']         = 'Textarea';
 $_['text_file']             = 'File';
-$_['text_date']             = 'Date';
-$_['text_datetime']         = 'Date &amp; Time';
-$_['text_time']             = 'Time';
-$_['text_account']          = 'Account';
-$_['text_address']          = 'Address';
+$_['text_date']             = 'Ngày';
+$_['text_datetime']         = 'Ngày &amp; Thời gian';
+$_['text_time']             = 'Thời gian';
+$_['text_account']          = 'Tài khoản';
+$_['text_address']          = 'Địa chỉ';
 
 // Column
-$_['column_name']           = 'Custom Field Name';
-$_['column_location']       = 'Location';
-$_['column_type']           = 'Type';
-$_['column_sort_order']     = 'Sort Order';
-$_['column_action']         = 'Action';
+$_['column_name']           = 'Tên mục Tùy chọn';
+$_['column_location']       = 'Địa điểm';
+$_['column_type']           = 'Kiểu';
+$_['column_sort_order']     = 'Thứ tự';
+$_['column_action']         = 'Thao tác';
 
 // Entry
-$_['entry_name']            = 'Custom Field Name';
-$_['entry_location']        = 'Location';
-$_['entry_type']            = 'Type';
-$_['entry_value']           = 'Value';
-$_['entry_custom_value']    = 'Custom Field Value Name';
-$_['entry_customer_group']  = 'Customer Group';
-$_['entry_required']        = 'Required';
-$_['entry_status']          = 'Status';
-$_['entry_sort_order']      = 'Sort Order';
+$_['entry_name']            = 'Tên mục Tùy chọn';
+$_['entry_location']        = 'Địa điểm';
+$_['entry_type']            = 'Kiểu';
+$_['entry_value']           = 'Giá trị';
+$_['entry_custom_value']    = 'Tên mục Tùy chọn';
+$_['entry_customer_group']  = 'Tên nhóm mục Tùy chọn';
+$_['entry_required']        = 'Yêu cầu';
+$_['entry_status']          = 'Trạng thái';
+$_['entry_sort_order']      = 'Thứ tự';
 
 // Help
 $_['help_sort_order']       = 'Use minus to count backwards from the last field in the set.';
 
 // Error
-$_['error_permission']      = 'Warning: You do not have permission to modify custom fields!';
-$_['error_name']            = 'Custom Field Name must be between 1 and 128 characters!';
-$_['error_type']            = 'Warning: Custom Field Values required!';
-$_['error_custom_value']    = 'Custom Value Name must be between 1 and 128 characters!';
+$_['error_permission']      = 'Chú ý! Bạn không có quyền thay đổi mục này!';
+$_['error_name']            = 'Tên mục Tùy chọn phải từ 1 đến 128 ký tự!';
+$_['error_type']            = 'Chú ý! Mục Tùy chọn được yêu cầu!';
+$_['error_custom_value']    = 'Tên giá trị mục Tùy chọn phải từ 1 đến 128 ký tự!';
+$_['error_custom_value']    = 'Tên giá trị mục Tùy chọn phải từ 1 đến 128 ký tự!';

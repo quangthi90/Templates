@@ -1,3 +1,3 @@
 <?php
-$_['text_sub_total'] = 'Thành tiền:';
+$_['text_sub_total'] = 'Thành tiền';
 ?>

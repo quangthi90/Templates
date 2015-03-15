@@ -5,7 +5,6 @@ $_['heading_title']      = 'PayPal Website Payment Pro';
 // Text 
 $_['text_payment']       = 'Thanh Toán';
 $_['text_success']       = 'Thành Công: Bạn đã thay đổi PayPal Website Payment Pro Checkout!';
-$_['text_edit']                     = 'Edit PayPal Pro';
 $_['text_pp_pro']        = '<a onclick="window.open(\'https://www.paypal.com/uk/mrb/pal=W9TBB5DTD6QJW\');"><img src="view/image/payment/paypal.png" alt="PayPal Website Payment Pro" title="PayPal Website Payment Pro" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_authorization'] = 'Ủy quyền';
 $_['text_sale']          = 'Bán';
@@ -21,10 +20,6 @@ $_['entry_order_status'] = 'Trạng thái đơn hàng:';
 $_['entry_geo_zone']     = 'Vùng tính thuế';
 $_['entry_status']       = 'Trạng thái:';
 $_['entry_sort_order']   = 'Sắp xếp đơn hàng:';
-
-// Help
-$_['help_test']						= 'Use the live or testing (sandbox) gateway server to process transactions?';
-$_['help_total']					= 'The checkout total the order must reach before this payment method becomes active';
 
 // Error
 $_['error_permission']   = 'Cảnh báo:Bạn không có quyền sửa đổi thanh toán PayPal Website Payment Pro Checkout!';

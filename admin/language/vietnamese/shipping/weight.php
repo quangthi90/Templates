@@ -1,21 +1,23 @@
 <?php
 // Heading
-$_['heading_title']    = 'Weight Based Shipping';
+$_['heading_title']    = 'Tính Cước vận chuyển dựa vào Trọng lượng Hàng';
 
 // Text
-$_['text_shipping']    = 'Shipping';
+$_['text_shipping']    = 'Quản lý cước Vận chuyển';
+$_['text_edit']        = 'Cập nhật Phương thức tính cước Vận chuyển theo Trọng lượng';
 $_['text_success']     = 'Thành Công: Bạn đã thay đổi weight based shipping!';
-$_['text_edit']        = 'Edit Weight Based Shipping';
 
 // Entry
-$_['entry_rate']       = 'Rates:<br /><span class="help">Example: 5:10.00,7:12.00 Weight:Cost,Weight:Cost, etc..</span>';
-$_['entry_tax_class']  = 'Thuế:';
+$_['entry_rate']       = 'Mức tính Cước:';
+$_['entry_tax_class']  = 'Phương thức Tính thuế:';
 $_['entry_geo_zone']   = 'Vùng tính thuế';
 $_['entry_status']     = 'Trạng thái:';
-$_['entry_sort_order'] = 'Sắp xếp đơn hàng:';
+$_['entry_sort_order'] = 'Thứ tự:';
 
 // Help
-$_['help_rate']        = 'Example: 5:10.00,7:12.00 Weight:Cost,Weight:Cost, etc..';
+$_['help_rate']        = 'Ví dụ: 5:100.000,6:150.0000. Nghĩa là hàng nặng 5kg, giá cước là 100.000đ, hàng nặng 6kg, giá cước 150.000đ.';
+$_['help_tax_class']   = 'Chọn kiểu thuế muốn áp dụng.';
+
 // Error
-$_['error_permission'] = 'Cảnh báo: Bạn không có quyền chỉnh sửa weight based shipping!';
+$_['error_permission'] = 'Cảnh báo: Bạn không có quyền chỉnh sửa Tính Cước vận chuyển dựa vào Khối lượng Hàng!';
 ?>

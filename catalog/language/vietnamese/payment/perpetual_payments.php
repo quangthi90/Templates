@@ -17,7 +17,4 @@ $_['entry_cc_start_date']  = 'Thẻ hợp lệ Từ ngày:';
 $_['entry_cc_expire_date'] = 'Thẻ hết hạn ngày:';
 $_['entry_cc_cvv2']        = 'Mã thẻ an ninh (CVV2):';
 $_['entry_cc_issue']       = 'Số thẻ phát hành:';
-// Help
-$_['help_start_date']			= '(if available)';
-$_['help_issue']				= '(for Maestro and Solo cards only)';
 ?>

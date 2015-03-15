@@ -1,21 +1,23 @@
 <?php
 // Heading
-$_['heading_title']    = 'Free Shipping';
+$_['heading_title']    = 'Miễn phí Vận chuyển';
 
 // Text 
 $_['text_shipping']    = 'Shipping';
 $_['text_success']     = 'Thành Công: Bạn đã thay đổi free shipping!';
-$_['text_edit']        = 'Edit Free Shipping';
+$_['text_edit']        = 'Cập nhật Phương thức Miễn phí Vận chuyển';
 
 // Entry
-$_['entry_total']      = 'Tổng cộng:<br /><span class="help">Sub-Total amount needed before the free shipping module becomes available.</span>';
-$_['entry_geo_zone']   = 'Vùng tính thuế';
+$_['entry_total']      = 'Giá trị:';
+$_['entry_geo_zone']   = 'Vùng tính thuế: <span class="help">(<i>Chọn vùng muốn áp dụng thuế.</i>)</span>';
 $_['entry_status']     = 'Trạng thái:';
-$_['entry_sort_order'] = 'Sắp xếp đơn hàng:';
+$_['entry_sort_order'] = 'Thứ tự:';
 
 // Help
-$_['help_total']       = 'Sub-Total amount needed before the free shipping module becomes available.';
+$_['help_total']       = 'Giá trị tiền mua hàng khách phải đạt để được MIỄN phí cước vận chuyển, đơn vị tính Đồng.';
+
+
 
 // Error
-$_['error_permission'] = 'Cảnh báo: Bạn không có quyền chỉnh sửa free shipping!';
+$_['error_permission'] = 'Cảnh báo: Bạn không có quyền chỉnh sửa Miễn phí Vận chuyển!';
 ?>

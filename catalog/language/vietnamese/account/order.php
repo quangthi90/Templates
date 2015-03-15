@@ -1,6 +1,6 @@
 <?php
 // Heading 
-$_['heading_title']         = 'Lịch Sử Đơn Hàng';
+$_['heading_title']         = 'Lịch Sử Đặt Hàng';
 
 // Text
 $_['text_account']          = 'Tài khoản';
@@ -19,19 +19,19 @@ $_['text_products']         = 'Sản phẩm:';
 $_['text_total']            = 'Tổng cộng:';
 $_['text_comment']          = 'Ghi chú đơn hàng';
 $_['text_history']          = 'Lịch sử đơn hàng';
-$_['text_success']          = 'Bạn đã thêm thành công các sản phẩm từ ID #%s vào giỏ của bạn!';
+$_['text_success']          = 'Bạn đã thêm thành công các sản phẩm từ ID #%s vào Giỏ Hàng của bạn!';
 $_['text_empty']            = 'Bạn chưa có đơn hàng nào!';
 $_['text_error']            = 'Đơn hàng bạn yêu cầu không có!';
 $_['text_action']           = 'Chọn thao tác:';
 $_['text_selected']         = 'Đã lựa chọn..';
 $_['text_reorder']          = 'Thêm vào giỏ';
-$_['text_return']           = 'Trở về mục sản phẩm';
+$_['text_return']           = 'Đổi / Trả hàng';
 
 // Column
-$_['column_order_id']       = 'Mã ID đơn hàng';
-$_['column_product']        = 'Số Sản phẩm';
-$_['column_customer']       = 'Khách hàng';
 $_['column_name']           = 'Tên sản phẩm';
+$_['column_order_id']       = 'Mã đơn hàng';
+$_['column_product']        = 'Số lượng Đặt mua';
+$_['column_customer']       = 'Khách Hàng';
 $_['column_model']          = 'Mã hàng';
 $_['column_quantity']       = 'Số lượng';
 $_['column_price']          = 'Đơn Giá';
@@ -43,5 +43,4 @@ $_['column_comment']        = 'Ghi chú';
 
 // Error
 $_['error_warning']         = 'Cảnh báo: Bạn phải chọn một vài sản phẩm và thực hiện thành công thao tác!';
-$_['error_reorder']         = '%s is not currently available to be reordered.';
 ?>

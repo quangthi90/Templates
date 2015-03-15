@@ -5,7 +5,6 @@ $_['heading_title']      = 'NOCHEX';
 // Text 
 $_['text_payment']       = 'Thanh Toán';
 $_['text_success']       = 'Thành Công: Bạn đã thay đổi chi tiết tài khoản NOCHEX!';
-$_['text_edit']                     = 'Edit NOCHEX';
 $_['text_nochex']	     = '<a onclick="window.open(\'https://secure.nochex.com/apply/merchant_info.aspx?partner_id=172198798\');"><img src="view/image/payment/nochex.png" alt="NOCHEX" title="NOCHEX" style="border: 1px solid #EEEEEE;" /><br /></a>';
 $_['text_seller']        = 'Tài khoản cá nhân / người bán';
 $_['text_merchant']      = 'Merchant Account';
@@ -22,8 +21,6 @@ $_['entry_geo_zone']     = 'Vùng tính thuế';
 $_['entry_status']       = 'Trạng thái:';
 $_['entry_sort_order']   = 'Sắp xếp đơn hàng:';
 
-// Help
-$_['help_total']					= 'The checkout total the order must reach before this payment method becomes active.';
 // Error
 $_['error_permission']   = 'Cảnh báo:Bạn không có quyền sửa đổi thanh toán NOCHEX!';
 $_['error_email']        = 'Yêu cầu E-Mail!';

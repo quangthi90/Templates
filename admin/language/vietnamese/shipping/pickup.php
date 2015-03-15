@@ -1,17 +1,17 @@
 <?php
 // Heading
-$_['heading_title']    = 'Pickup From Store';
+$_['heading_title']    = 'Nhận Hàng tại kho';
 
 // Text 
 $_['text_shipping']    = 'Shipping';
 $_['text_success']     = 'Thành Công: Bạn đã thay đổi pickup from store!';
-$_['text_edit']        = 'Chỉnh sửa Pickup từ Store Shipping';
+$_['text_edit']        = 'Cập nhật Phương thức Nhận hàng tại kho';
 
 // Entry
 $_['entry_geo_zone']   = 'Vùng tính thuế';
 $_['entry_status']     = 'Trạng thái:';
-$_['entry_sort_order'] = 'Sắp xếp đơn hàng:';
+$_['entry_sort_order'] = 'Thứ tự:';
 
 // Error
-$_['error_permission'] = 'Cảnh báo: Bạn không có quyền chỉnh sửa pickup from store!';
+$_['error_permission'] = 'Cảnh báo: Bạn không có quyền chỉnh sửa Nhận Hàng tại kho!';
 ?>

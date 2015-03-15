@@ -1,19 +1,19 @@
 <?php
 // Heading
-$_['heading_title']     = 'Affiliate Commission Report';
+$_['heading_title']     = 'Báo cáo Hoa hồng của Liên kết - Affiliate';
 
 // Text
-$_['text_list']         = 'Affiliate Commission List';
+$_['text_list']         = 'Danh sách Hoa hồng';
 
 // Column
-$_['column_affiliate']  = 'Affiliate Name';
-$_['column_email']      = 'E-Mail';
-$_['column_status']     = 'Status';
-$_['column_commission'] = 'Commission';
-$_['column_orders']     = 'No. Orders';
-$_['column_total']      = 'Total';
-$_['column_action']     = 'Action';
+$_['column_affiliate']  = 'Tên Liên kết - Affiliate';
+$_['column_email']      = 'Địa chỉ Email';
+$_['column_status']     = 'Trạng thái';
+$_['column_commission'] = 'Hoa hồng';
+$_['column_orders']     = 'Số Đơn hàng';
+$_['column_total']      = 'Tổng cộng';
+$_['column_action']     = 'Thao tác';
 
 // Entry
-$_['entry_date_start']  = 'Date Start';
-$_['entry_date_end']    = 'Date End';
+$_['entry_date_start']  = 'Ngày bắt đầu';
+$_['entry_date_end']    = 'Ngày kết thúc';

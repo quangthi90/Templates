@@ -5,7 +5,6 @@ $_['heading_title']      = 'Perpetual Payments';
 // Text 
 $_['text_payment']       = 'Thanh Toán';
 $_['text_success']       = 'Thành Công: Bạn đã thay đổi chi tiết tài khoản Perpetual Payments!';
-$_['text_edit']                     = 'Edit Perpetual Payments';
 
 // Entry
 $_['entry_auth_id']      = 'Authorization ID:';
@@ -17,9 +16,6 @@ $_['entry_geo_zone']     = 'Vùng tính thuế';
 $_['entry_status']       = 'Trạng thái:';
 $_['entry_sort_order']   = 'Sắp xếp đơn hàng:';
 
-// Help
-$_['help_test']						= 'Use this module in Test (YES) or Production mode (NO)?';
-$_['help_total']					= 'The checkout total the order must reach before this payment method becomes active.';
 // Error
 $_['error_permission']   = 'Cảnh báo:Bạn không có quyền sửa đổi thanh toán Perpetual Payments!';
 $_['error_auth_id']      = 'Yêu cầu Authorization ID!'; 

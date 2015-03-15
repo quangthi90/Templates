@@ -1,21 +1,21 @@
 <?php
 // Heading
-$_['heading_title']     = 'Uploads';
+$_['heading_title']     = 'Quản lý File';
 
 // Text
-$_['text_success']      = 'Success: You have modified uploads!';
-$_['text_list']         = 'Upload List';
+$_['text_success']      = 'Chúc mừng! Bạn đã cập nhật thành công!';
+$_['text_list']         = 'Danh mục File';
 
 // Column
-$_['column_name']       = 'T�n Upload';
-$_['column_filename']   = 'Filename';
-$_['column_date_added'] = 'Ng�y dang';
-$_['column_action']     = 'Thao t�c';
+$_['column_name']       = 'Tên File Upload';
+$_['column_filename']   = 'Tên File';
+$_['column_date_added'] = 'Ngày thêm';
+$_['column_action']     = 'Thao tác';
 
 // Entry
-$_['entry_name']        = 'T�n Upload';
-$_['entry_filename']    = 'Filename';
-$_['entry_date_added'] 	= 'Ng�y th�m';
+$_['entry_name']        = 'Tên File Upload';
+$_['entry_filename']    = 'Tên File';
+$_['entry_date_added'] 	= 'Ngày thêm';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify uploads!';
+$_['error_permission']  = 'Bạn không có quyền chỉnh sửa mục này!';

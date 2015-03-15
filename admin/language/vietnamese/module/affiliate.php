@@ -1,11 +1,10 @@
 <?php
 // Heading
-$_['heading_title']       = 'Đại lý liên kết';
+$_['heading_title']       = 'Liên kết - Affiliate';
 
 // Text
-$_['text_edit']        = 'Chỉnh sửa đại lý Liên kết';
 $_['text_module']         = 'Mô-đun';
-$_['text_success']        = 'Thành công: Bạn đã sửa đổi mô-đun đại lý Liên kết!';
+$_['text_success']        = 'Thành công: Bạn đã sửa đổi mô-đun Liên kết - Affiliate!';
 $_['text_content_top']    = 'Đầu nội dung ';
 $_['text_content_bottom'] = 'Cuối nội dung';
 $_['text_column_left']    = 'Cột trái';
@@ -18,5 +17,5 @@ $_['entry_status']        = 'Trạng thái:';
 $_['entry_sort_order']    = 'Thứ tự:';
 
 // Error
-$_['error_permission']    = 'Cảnh báo: Bạn không có quyền sửa đổi mô-đun đại lý liên kết';
+$_['error_permission']    = 'Cảnh báo: Bạn không có quyền sửa đổi mô-đun Liên kết - Affiliate';
 ?>

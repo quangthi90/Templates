@@ -5,8 +5,6 @@ $_['heading_title']      = 'Paymate';
 // Text 
 $_['text_payment']       = 'Thanh Toán';
 $_['text_success']       = 'Thành Công: Bạn đã thay đổi chi tiết tài khoản Paymate!';
-$_['text_edit']                     = 'Chỉnh sửa Paymate';
-$_['text_paymate']					= '<img src="view/image/payment/paymate.png" alt="Paymate" title="Paymate" style="border: 1px solid #EEEEEE;" />';
 
 // Entry
 $_['entry_username']     = 'Paymate Username:';
@@ -18,9 +16,6 @@ $_['entry_geo_zone']     = 'Vùng tính thuế';
 $_['entry_status']       = 'Trạng thái:';
 $_['entry_sort_order']   = 'Sắp xếp đơn hàng:';
 
-// Help
-$_['help_password']					= 'Just use some random password. This will be used to make sure the payment information is not interfered with after being sent to the payment gateway.';
-$_['help_total']					= 'The checkout total the order must reach before this payment method becomes active.';
 // Error
 $_['error_permission']   = 'Cảnh báo:Bạn không có quyền sửa đổi thanh toán Paymate!';
 $_['error_username']     = 'Yêu cầu username Paymate!';

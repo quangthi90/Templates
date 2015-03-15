@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title'] = 'Tổng thể về đơn hàng';
+$_['heading_title'] = 'Tổng số Đơn hàng';
 
 // Text
-$_['text_view']     = 'Xem chi tiết...';
+$_['text_view']     = 'Xem thêm...';

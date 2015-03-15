@@ -1,24 +1,19 @@
 <?php
 // Heading
-$_['heading_title']      = 'Chuyển khoản ngân hàng';
+$_['heading_title']      = 'Chuyển khoản Ngân hàng';
 
 // Text 
 $_['text_payment']       = 'Thanh Toán';
 $_['text_success']       = 'Thành Công: Bạn đã sửa đổi chi tiết chuyển khoản ngân hàng!';
-$_['text_edit']                     = 'Edit Bank Transfer';
 
 // Entry
-$_['entry_bank']         = 'Cung cấp Chuyển khoản Ngân hàng:';
-$_['entry_total']        = 'Tổng cộng:<br /><span class="help">Kiểm tra tất cả các đơn hàng trước khi thanh toán được kích hoạt.</span>';
-$_['entry_order_status'] = 'Trạng thái đơn hàng:';
-$_['entry_total']					= 'Total';
-$_['entry_order_status']			= 'Order Status';
-$_['entry_geo_zone']     = 'Vùng tính thuế';
+$_['entry_bank']         = 'Thông tin Chủ Tài khoản, Ngân hàng (Chi nhánh) & Số Tài khoản nhận tiền Thanh toán của khách hàng:';
+$_['entry_total']        = 'Mức tiền áp dụng:<br /><span class="help">Kiểm tra mức tiền để áp dụng phương thức Thanh toán này, thường nên đặt là 0</span>';
+$_['entry_order_status'] = 'Trạng thái đơn hàng<span class="help">Nên đặt là "Đang xử lý" (Pending)</span>:';
+$_['entry_geo_zone']     = 'Vùng tính thuế<span class="help">Chọn vùng muốn áp dụng thuế.</span>';
 $_['entry_status']       = 'Trạng thái:';
-$_['entry_sort_order']   = 'Sắp xếp đơn hàng:';
+$_['entry_sort_order']   = 'Thứ tự:';
 
-// Help
-$_['help_total']					= 'The checkout total the order must reach before this payment method becomes active.';
 // Error
 $_['error_permission']   = 'Cảnh báo:Bạn không có quyền sửa đổi thanh toán chuyển khoản ngân hàng!';
 $_['error_bank']         = 'Yêu cầu Cung cấp Chuyển khoản Ngân hàng!';

@@ -5,7 +5,6 @@ $_['heading_title']		      = 'Moneybookers';
 // Text 					
 $_['text_payment']		      = 'Thanh toán';
 $_['text_success']		      = 'Thành Công: Bạn đã thay đổi chi tiết Moneybookers.';
-$_['text_edit']               = 'Chỉnh sửa Moneybookers';
 $_['text_moneybookers']	      = '<a onclick="window.open(\'https://www.moneybookers.com/partners/?p=OpenCart\');"><img src="view/image/payment/moneybookers.png" alt="Moneybookers" title="Moneybookers" style="border: 1px solid #EEEEEE;" /></a>';
 	
 // Entry					
@@ -21,8 +20,6 @@ $_['entry_geo_zone']          = 'Vùng tính thuế';
 $_['entry_status']            = 'Trạng thái:';
 $_['entry_sort_order']        = 'Sắp xếp đơn hàng:';
 
-// Help
-$_['help_total']			  = 'The checkout total the order must reach before this payment method becomes active.';
 // Error					
 $_['error_permission']	      = 'Cảnh báo: Bạn không có quyền chỉnh sửa Moneybookers!'; 
 $_['error_email']		      = 'Yêu cầu E-Mail!';

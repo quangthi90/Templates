@@ -1,26 +1,26 @@
 <?php
 // Heading
-$_['heading_title']        = 'API\'s';
+$_['heading_title']        = 'Quản lý API';
 
 // Text
-$_['text_success']         = 'Success: You have modified API\'s!';
-$_['text_list']            = 'API List';
-$_['text_add']             = 'Add API';
-$_['text_edit']            = 'Edit API';
+$_['text_success']         = 'Chúc mừng! Bạn đã cập nhật thành công!';
+$_['text_list']            = 'Danh mục API';
+$_['text_add']             = 'Thêm API';
+$_['text_edit']            = 'Cập nhật API';
 
 // Column
-$_['column_username']      = 'Username';
-$_['column_status']        = 'Status';
-$_['column_date_added']    = 'Date Added';
-$_['column_date_modified'] = 'Date Modified';
-$_['column_action']        = 'Action';
+$_['column_username']      = 'Tài khoản';
+$_['column_status']        = 'Trạng thái';
+$_['column_date_added']    = 'Ngày thêm';
+$_['column_date_modified'] = 'Ngày cập nhật';
+$_['column_action']        = 'Thao tác';
 
 // Entry
-$_['entry_username']       = 'Username';
-$_['entry_password']       = 'Password';
-$_['entry_status']         = 'Status';
+$_['entry_username']       = 'Tài khoản';
+$_['entry_password']       = 'Mật khẩu';
+$_['entry_status']         = 'Trạng thái';
 
 // Error
-$_['error_permission']     = 'Warning: You do not have permission to modify API\'s!';
-$_['error_username']       = 'Username must be between 3 and 20 characters!';
-$_['error_password']       = 'API password must be between 3 and 256 characters!';
+$_['error_permission']     = 'Bạn không có quyền chỉnh sửa mục này!';
+$_['error_username']       = 'Tài khoản phải từ 3 đến 20 ký tự!';
+$_['error_password']       = 'Mật khẩu API phải từ 3 đến 256 ký tự!';

@@ -1,38 +1,38 @@
 <?php
 // Heading
-$_['heading_title']        = 'Extension Installer';
+$_['heading_title']        = 'Cài Chức năng mở rộng';
 
 // Text
-$_['text_success']         = 'Success: You have installed your extension!';
-$_['text_unzip']           = 'Extracting files!';
-$_['text_ftp']             = 'Copying files!';
-$_['text_sql']             = 'Running SQL!';
-$_['text_xml']             = 'Applying modifications!';
-$_['text_php']             = 'Running PHP!';
-$_['text_remove']          = 'Removing temporary files!';
-$_['text_clear']           = 'Success: You have cleared all temporary files!';
+$_['text_success']         = 'Chúc mừng! Bạn đã cài Thành công!';
+$_['text_unzip']           = 'Đang giải nén!';
+$_['text_ftp']             = 'Đang Copy!';
+$_['text_sql']             = 'Đang chạy SQL!';
+$_['text_xml']             = 'Đang kích hoạt Module!';
+$_['text_php']             = 'Đang chạy PHP!';
+$_['text_remove']          = 'Đang gỡ bỏ File!';
+$_['text_clear']           = 'Chúc mừng! Bạn đã xóa hết các File tạm!';
 
 // Entry
-$_['entry_upload']         = 'Upload File';
-$_['entry_overwrite']      = 'Files that will be overwritten';
-$_['entry_progress']       = 'Progress';
+$_['entry_upload']         = 'Tải File lên';
+$_['entry_overwrite']      = 'File sẽ bị đè';
+$_['entry_progress']       = 'Tiến trình';
 
 // Help
-$_['help_upload']          = 'Requires a Zip or XML modification file.';
+$_['help_upload']          = 'Hỗ trợ định dạng File đuôi .zip hoặc.xml';
 
 // Error
-$_['error_permission']     = 'Warning: You do not have permission to modify extensions!';
-$_['error_temporary']      = 'Warning: There are some temporary files that require deleting. Click the clear button to remove them!';
-$_['error_upload']         = 'File could not be uploaded!';
-$_['error_filetype']       = 'Invalid file type!';
-$_['error_file']           = 'File could not be found!';
-$_['error_unzip']          = 'Không thể mở Zip file được!';
-$_['error_code']           = 'Modification requires a unique ID code!';
-$_['error_exists']         = 'Modification %s is using the same ID code as the one you are trying to upload!';
-$_['error_directory']      = 'Directory containing files to be uploaded could not be found!';
-$_['error_ftp_status']     = 'FTP needs to be enabled in the settings';
-$_['error_ftp_connection'] = 'Could not connect as %s:%s';
-$_['error_ftp_login']      = 'Could not login as %s';
-$_['error_ftp_root']       = 'Could not set root directory as %s';
-$_['error_ftp_directory']  = 'Could not change to directory %s';
-$_['error_ftp_file']       = 'Could not upload file %s';
+$_['error_permission']     = 'Cảnh báo! Bạn không có quyền sửa ứng dụng này!';
+$_['error_temporary']      = 'Chú ý! Có một số File cần phải xóa! Hay thực hiện theo chỉ dẫn!';
+$_['error_upload']         = 'Không thể Upload File!';
+$_['error_filetype']       = 'Định dạng File không phù hợp!';
+$_['error_file']           = 'Không tìm thấy File';
+$_['error_unzip']          = 'File nén này không mở được!';
+$_['error_code']           = 'Module này yêu cầu mã cài đặt!';
+$_['error_exists']         = 'Module %s đang sử dụng chung mã ID với Moudle bạn đang cài đặt!';
+$_['error_directory']      = 'Không tìm thấy thư mục!';
+$_['error_ftp_status']     = 'Vui lòng kích hoạt chức năng FTP trong phần cài đặt hệ thống';
+$_['error_ftp_connection'] = 'Không thể kết nối với %s:%s';
+$_['error_ftp_login']      = 'Không thể đăng nhập với %s';
+$_['error_ftp_root']       = 'Không thể thiết lập thư mục chính với %s';
+$_['error_ftp_directory']  = 'Không thể thay đổi thư mục %s';
+$_['error_ftp_file']       = 'Không thể Upload File %s';

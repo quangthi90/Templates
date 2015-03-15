@@ -1,3 +1,3 @@
 <?php
 // Text
-$_['text_search'] = 'Tìm kiếm';
+$_['text_search'] = 'Nhập từ khóa cần tìm...';

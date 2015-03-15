@@ -1,11 +1,11 @@
 <?php
 // Heading
-$_['heading_title']     = 'Các đơn hàng gần đây';
+$_['heading_title']     = 'Đơn hàng mới nhất';
 
 // Column
-$_['column_order_id']   = 'Số ID đơn hàng';
-$_['column_customer']   = 'Khách hàng';
-$_['column_status']     = 'Trạng thái';
-$_['column_total']      = 'Tổng số';
-$_['column_date_added'] = 'Ngày được đặt';
+$_['column_order_id']   = 'Mã Đơn Hàng';
+$_['column_customer']   = 'Tên Khách Hàng';
+$_['column_status']     = 'Trạng Thái';
+$_['column_total']      = 'Thành Tiền';
+$_['column_date_added'] = 'Thời gian Đặt hàng';
 $_['column_action']     = 'Thao tác';

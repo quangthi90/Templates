@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title'] = 'Lượng người trực tuyến';
+$_['heading_title'] = 'Khách đang xem Website';
 
 // Text
-$_['text_view']     = 'Xem chi tiết...';
+$_['text_view']     = 'Xem thêm...';

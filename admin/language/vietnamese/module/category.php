@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']       = 'Danh mục';
+$_['heading_title']       = 'Danh mục Hàng';
 
 // Text
 $_['text_module']         = 'Mô-đun';
@@ -9,7 +9,7 @@ $_['text_content_top']    = 'Đầu nội dung ';
 $_['text_content_bottom'] = 'Cuối nội dung';
 $_['text_column_left']    = 'Cột trái';
 $_['text_column_right']   = 'Cột phải';
-$_['text_edit']        = 'Chỉnh sửa Mô đun hiện danh mục';
+
 // Entry
 $_['entry_layout']        = 'Bố cục:';
 $_['entry_position']      = 'Vị trí:';
