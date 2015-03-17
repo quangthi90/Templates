@@ -54,6 +54,21 @@ class ControllerCommonHeader extends Controller {
 		$data['text_contact'] = $this->language->get('text_contact');
 		$data['text_faq'] = $this->language->get('text_faq');
 		$data['faq_link'] = $this->url->link('faq/list');
+		$data['product_catalog'] = $this->url->link('product/categories', '', 'SSL');
+		//Check affiliate
+		if ( isset($this->session->data['tracking']) || $this->affiliate->isLogged() ) {
+			if ( !$code = $this->affiliate->getCode() ) {
+				$code = $this->session->data['tracking'];
+			}
+			$this->load->model('affiliate/affiliate');
+			if ( $affiliate = $this->model_affiliate_affiliate->getAffiliateByCode($code) ) {
+				$data['phone'] = $affiliate['telephone'];
+			} else {
+				$data['phone'] = $this->config->get('config_telephone');
+			}
+		} else {
+			$data['phone'] = $this->config->get('config_telephone');
+		}
 
 		$data['home'] = $this->url->link('common/home');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
