@@ -44,7 +44,7 @@ class ControllerSupercheckoutSuperCheckout extends Controller {
 
         }
         if(empty($data['settings']) || !$data['settings']['general']['enable']){
-            $this->redirect($this->url->link('checkout/checkout','','SSL'));
+            $this->response->redirect($this->url->link('checkout/checkout','','SSL'));
         }
 
         if (isset($data['settings']['general']['default_option'])) { //for setting default value for guest or login
@@ -1212,6 +1212,7 @@ class ControllerSupercheckoutSuperCheckout extends Controller {
             $this->load->model('supercheckout/order');
             $this->load->model('tool/image');
             if (!isset($this->session->data['order_id'])) {
+                // print("hehe2");
                 $this->session->data['order_id'] = $this->model_checkout_order->addOrder($pdata);
             } else {
                 $this->model_supercheckout_order->editOrder($this->session->data['order_id'], $pdata);

@@ -48,11 +48,11 @@ class ControllerSupercheckoutPaymentMethod extends Controller {
             $total = 0;
             $taxes = $this->cart->getTaxes();
 
-            $this->load->model('setting/extension');
+            $this->load->model('extension/extension');
 
             $sort_order = array();
 
-            $results = $this->model_setting_extension->getExtensions('total');
+            $results = $this->model_extension_extension->getExtensions('total');
 
             foreach ($results as $key => $value) {
                 $sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
@@ -71,9 +71,9 @@ class ControllerSupercheckoutPaymentMethod extends Controller {
             // Payment Methods
             $method_data = array();
 
-            $this->load->model('setting/extension');
+            $this->load->model('extension/extension');
 
-            $results = $this->model_setting_extension->getExtensions('payment');
+            $results = $this->model_extension_extension->getExtensions('payment');
 
             foreach ($results as $result) {
                 if ($this->config->get($result['code'] . '_status')) {

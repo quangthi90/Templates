@@ -1163,13 +1163,16 @@ function goToConfirm(){
         success: function(html) {
             //$("#progressbar" ).progressbar({ value:100 });
             var href = $("#display_payment .button, #display_payment .btn, #display_payment .button_oc, #display_payment input[type=submit]").attr('href');
+            console.log(href);
             if(href != '' && href != undefined && href != 'javascript://' && href != 'javascript:void(0)') {
+                console.log('hehe1');
                 document.location.href = href;
-                console.log('clicked')	
+                console.log('clicked');	
             }else{
+                console.log('hehe2');
                 $("#display_payment .button, #display_payment .btn, #display_payment .button_oc, #display_payment input[type=submit]").trigger("click", function(){	
-                console.log('clicked')	
-            })
+                console.log('clicked');	
+            });
             }
 //            $("#button-confirm , input[type=submit] , .display_payment .button, #display_payment .button").trigger("click");
         //            $("#button-confirm , input[type=submit]").unbind("click");
@@ -1810,6 +1813,8 @@ function validatePaymentMethodRefresh(){
 }
 
 function goToConfirmRefresh(){
+    console.log('hhaaha');
+    return;
     $.ajax({
         url: 'index.php?route=supercheckout/confirm',
         dataType: 'html',

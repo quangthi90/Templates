@@ -546,9 +546,7 @@ class ControllerSupercheckoutConfirm extends Controller {
                 );
             }
         } else {
-            
             $data['redirect'] = $redirect;
-            
         }
 
         if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/supercheckout/confirm.tpl')) {
