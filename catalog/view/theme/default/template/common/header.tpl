@@ -82,41 +82,76 @@
           <?php } ?>
         </div>
       </div>
-      <div class="col-sm-5"><?php echo $search; ?>
+      <div class="col-sm-6"><?php echo $search; ?>
       </div>
-      <div class="col-sm-3"><?php echo $cart; ?></div>
+      <div class="col-sm-2"><?php echo $cart; ?></div>
     </div>
   </div>
 </header>
 <?php if ($categories) { ?>
 <div class="container">
-  <nav id="menu" class="navbar">
-    <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
-      <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+  <div class="row">
+    <div class="col-md-2" style="padding-right: 0;">
+      <nav id="menu" class="navbar">
+        <div class="navbar-header">
+          <span id="category"><?php echo $text_category; ?></span>
+          <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <?php foreach ($categories as $category) { ?>
+            <?php if ($category['children']) { ?>
+            <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
+              <div class="dropdown-menu">
+                <div class="dropdown-inner">
+                  <a class="dropdown-inner-header" href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a> 
+                  <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
+                  <ul class="list-unstyled">
+                    <?php foreach ($children as $child) { ?>
+                    <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                    <?php } ?>
+                  </ul>
+                  <?php } ?>
+                </div>                
+              </div>
+            </li>
+            <?php } else { ?>
+            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+            <?php } ?>
+            <?php } ?>
+          </ul>
+        </div>
+      </nav>
     </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav">
-        <?php foreach ($categories as $category) { ?>
-        <?php if ($category['children']) { ?>
-        <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
-          <div class="dropdown-menu">
-            <div class="dropdown-inner">
-              <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
-              <ul class="list-unstyled">
-                <?php foreach ($children as $child) { ?>
-                <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                <?php } ?>
-              </ul>
-              <?php } ?>
-            </div>
-            <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
-        </li>
-        <?php } else { ?>
-        <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-        <?php } ?>
-        <?php } ?>
-      </ul>
+    <div class="col-md-10" style="padding-left: 0;">
+      <div id="slideshow_homepage">
+        <div class="item">
+          <img src="http://localhost/safefood/image/catalog/demo/banners/banner1.jpg" alt="dasf" class="img-responsive" />
+        </div>
+        <div class="item">
+          <img src="http://localhost/safefood/image/catalog/demo/banners/banner2.jpg" alt="dasf" class="img-responsive" />
+        </div>
+        <div class="item">
+          <img src="http://localhost/safefood/image/catalog/demo/banners/banner3.jpg" alt="dasf" class="img-responsive" />
+        </div>
+        <div class="item">
+          <img src="http://localhost/safefood/image/catalog/demo/banners/banner4.jpg" alt="dasf" class="img-responsive" />
+        </div>
+        <div class="item">
+          <img src="http://localhost/safefood/image/catalog/demo/banners/banner5.jpg" alt="dasf" class="img-responsive" />
+        </div>
+      </div>
     </div>
-  </nav>
+  </div>
+  <script type="text/javascript"><!--
+  $('#slideshow_homepage').owlCarousel({
+    items: 6,
+    autoPlay: 5000,
+    singleItem: true,
+    navigation: true,
+    navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
+    pagination: false
+  });
+--></script>  
 </div>
 <?php } ?>
