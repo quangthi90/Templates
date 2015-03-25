@@ -59,7 +59,7 @@
             <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
           </ul>
         </li>
-        <?php } ?>        
+        <?php } ?>
         <?php if (!$logged) { ?>
         <li><a href="<?php echo $register; ?>" title="<?php echo $text_register; ?>"><i class="fa fa-user-plus"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_register; ?></span></a></li>
         <li><a href="<?php echo $login; ?>" title="<?php echo $text_login; ?>"><i class="fa fa-sign-in"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_login; ?></span></a></li>
@@ -94,7 +94,7 @@
     <div class="col-md-2" style="padding-right: 0;">
       <nav id="menu" class="navbar">
         <div class="navbar-header">
-          <span id="category"><?php echo $text_category; ?></span>
+          <span id="category">Sản phẩm</span>
           <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
