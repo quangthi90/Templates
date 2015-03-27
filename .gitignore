@@ -9,3 +9,6 @@
 /system/cache
 /image/cache
 /.htaccess
+/vqmod/vqcache
+/vqmod/logs
+/system/logs
