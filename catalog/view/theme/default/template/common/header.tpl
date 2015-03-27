@@ -126,19 +126,19 @@
     <div class="col-md-10" style="padding-left: 0;">
       <div id="slideshow_homepage">
         <div class="item">
-          <img src="http://localhost/safefood/image/catalog/demo/banners/banner1.jpg" alt="dasf" class="img-responsive" />
+          <img src="image/catalog/demo/banners/banner1.jpg" alt="dasf" class="img-responsive" />
         </div>
         <div class="item">
-          <img src="http://localhost/safefood/image/catalog/demo/banners/banner2.jpg" alt="dasf" class="img-responsive" />
+          <img src="image/catalog/demo/banners/banner2.jpg" alt="dasf" class="img-responsive" />
         </div>
         <div class="item">
-          <img src="http://localhost/safefood/image/catalog/demo/banners/banner3.jpg" alt="dasf" class="img-responsive" />
+          <img src="image/catalog/demo/banners/banner3.jpg" alt="dasf" class="img-responsive" />
         </div>
         <div class="item">
-          <img src="http://localhost/safefood/image/catalog/demo/banners/banner4.jpg" alt="dasf" class="img-responsive" />
+          <img src="image/catalog/demo/banners/banner4.jpg" alt="dasf" class="img-responsive" />
         </div>
         <div class="item">
-          <img src="http://localhost/safefood/image/catalog/demo/banners/banner5.jpg" alt="dasf" class="img-responsive" />
+          <img src="image/catalog/demo/banners/banner5.jpg" alt="dasf" class="img-responsive" />
         </div>
       </div>
     </div>
