@@ -46,7 +46,7 @@
 <script type="text/javascript">
   setTimeout(function(){
     AppUtils.generateFixBanner({
-      htmlContent: '<?php echo $left_bottom_banners[0]["image"];  ?>',
+      htmlContent: '<img src="<?php echo $left_bottom_banners[0]["image"]; ?>" />',
       position: 3
     });
   }, 1000);
