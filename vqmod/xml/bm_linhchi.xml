@@ -399,6 +399,27 @@
 					$data['logout'] = $this->url->link('affiliate/logout', '', 'SSL');
 			]]></add>
 		</operation>
+		<operation>
+			<search position="before"><![CDATA[
+				// Menu
+			]]></search>
+			<add><![CDATA[
+				//Load banners
+				$data['left_bottom_banners'] = array();
+
+				$results = $this->model_design_banner->getBanner($this->config->get('config_fixed_banner'));
+
+				foreach ($results as $result) {
+					if (is_file(DIR_IMAGE . $result['image'])) {
+						$data['left_bottom_banners'][] = array(
+							'title' => $result['title'],
+							'link'  => $result['link'],
+							'image' => $this->model_tool_image->resize($result['image'], 180, 180)
+						);
+					}
+				}
+			]]></add>
+		</operation>
 	</file>
 	<file name="catalog/language/english/common/header.php">
 		<operation>

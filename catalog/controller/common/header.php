@@ -99,10 +99,6 @@ class ControllerCommonHeader extends Controller {
 			}
 		}
 
-		//Load banners
-		$common_config = $this->config->get('common');
-		$data['left_bottom_banner'] = $common_config['banners']['left_bottom'];
-
 		// Menu
 		$this->load->model('catalog/category');
 
