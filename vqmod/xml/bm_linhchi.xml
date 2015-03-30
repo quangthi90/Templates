@@ -224,6 +224,99 @@
 			]]></add>
 		</operation>
 	</file>
+	<file name="admin/controller/setting/setting.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$data['entry_icon']
+			]]></search>
+			<add><![CDATA[
+				$data['entry_fixed_banner'] = $this->language->get('entry_fixed_banner');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				$data['help_google_analytics']
+			]]></search>
+			<add><![CDATA[
+				$data['help_fixed_banner'] = $this->language->get('help_fixed_banner');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[
+				if (isset($this->request->post['config_image_category_width'])) {
+			]]></search>
+			<add><![CDATA[
+				if (isset($this->request->post['config_fixed_banner'])) {
+					$data['config_fixed_banner'] = $this->request->post['config_fixed_banner'];
+				} else {
+					$data['config_fixed_banner'] = $this->config->get('config_fixed_banner');
+				}
+
+				$this->load->model('design/banner');
+
+				$data['banners'] = $this->model_design_banner->getBanners();
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/english/setting/setting.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['entry_icon']
+			]]></search>
+			<add><![CDATA[
+				$_['entry_fixed_banner']               = 'Fixed Banner';
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				$_['help_google_analytics']
+			]]></search>
+			<add><![CDATA[
+				$_['help_fixed_banner']				   = 'Banner in left bottom\'s conner';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/vietnamese/setting/setting.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$_['entry_icon']
+			]]></search>
+			<add><![CDATA[
+				$_['entry_fixed_banner']               = 'Fixed Banner';
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+				$_['help_google_analytics']
+			]]></search>
+			<add><![CDATA[
+				$_['help_fixed_banner']				   = 'Banner quảng cáo ở góc trái gần Footer';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/setting/setting.tpl">
+		<operation>
+			<search position="before" offset="1"><![CDATA[
+				for="input-image-category-width"
+			]]></search>
+			<add><![CDATA[
+				<div class="form-group">
+	                <label class="col-sm-2 control-label" for="input-fixed-banner"><span data-toggle="tooltip" title="<?php echo $help_fixed_banner; ?>"><?php echo $entry_fixed_banner; ?></span></label>
+	                <div class="col-sm-10">
+	                  <select name="config_fixed_banner" id="input-fixed-banner" class="form-control">
+	                      <?php foreach ($banners as $banner) { ?>
+	                      <?php if ($banner['banner_id'] == $config_fixed_banner) { ?>
+	                      <option value="<?php echo $banner['banner_id']; ?>" selected="selected"><?php echo $banner['name']; ?></option>
+	                      <?php } else { ?>
+	                      <option value="<?php echo $banner['banner_id']; ?>"><?php echo $banner['name']; ?></option>
+	                      <?php } ?>
+	                      <?php } ?>
+	                    </select>
+	                </div>
+	              </div>
+			]]></add>
+		</operation>
+	</file>
 	<file name="catalog/controller/common/header.php">
 		<operation>
 			<search position="after"><![CDATA[
