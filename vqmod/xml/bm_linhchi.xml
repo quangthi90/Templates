@@ -407,6 +407,8 @@
 				//Load banners
 				$data['left_bottom_banners'] = array();
 
+				$this->load->model('design/banner');
+				$this->load->model('tool/image');
 				$results = $this->model_design_banner->getBanner($this->config->get('config_fixed_banner'));
 
 				foreach ($results as $result) {
