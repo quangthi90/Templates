@@ -897,7 +897,7 @@
 			<add><![CDATA[
 				$this->load->model('affiliate/transaction');
 				if (!empty($order_info['affiliate_id'])) {
-					$tran_description = '<a href="#">Order#' . $order_id . '</a>';
+					$tran_description = '<a href="' . $this->url->link('affiliate/order', 'order_id=' . $order_id, 'SSL') . '">Order ID: #' . $order_id . '</a>';
 					$tran_amount = $order_info['total'] * 0.2;
 					$this->model_affiliate_transaction->addTransaction($order_info['affiliate_id'], $tran_description, $tran_amount, $order_id);
 				}
@@ -939,6 +939,16 @@
 						return $affiliate_transaction_id;
 					}
 				}
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/model/account/order.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				$order_query = $this->db->query
+			]]></search>
+			<add><![CDATA[
+				$order_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order` WHERE order_id = '" . (int)$order_id . "' AND (customer_id = '" . (int)$this->customer->getId() . "' OR affiliate_id = '" . (int)$this->affiliate->getId() . "') AND order_status_id > '0'");
 			]]></add>
 		</operation>
 	</file>
