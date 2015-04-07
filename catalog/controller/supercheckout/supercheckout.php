@@ -1212,7 +1212,17 @@ class ControllerSupercheckoutSuperCheckout extends Controller {
             $this->load->model('supercheckout/order');
             $this->load->model('tool/image');
             if (!isset($this->session->data['order_id'])) {
-                // print("hehe2");
+                // Marketing
+                $this->load->model('checkout/marketing');
+
+                $marketing_info = $this->model_checkout_marketing->getMarketingByCode($this->request->cookie['tracking']);
+
+                if ($marketing_info) {
+                    $order_data['marketing_id'] = $marketing_info['marketing_id'];
+                } else {
+                    $order_data['marketing_id'] = 0;
+                }
+                
                 $this->session->data['order_id'] = $this->model_checkout_order->addOrder($pdata);
             } else {
                 $this->model_supercheckout_order->editOrder($this->session->data['order_id'], $pdata);

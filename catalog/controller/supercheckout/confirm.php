@@ -452,7 +452,17 @@ class ControllerSupercheckoutConfirm extends Controller {
             $this->load->model('tool/image');
             //creates order for the first time
             if (!isset($this->session->data['order_id'])) {
+                // Marketing
+                $this->load->model('checkout/marketing');
 
+                $marketing_info = $this->model_checkout_marketing->getMarketingByCode($this->request->cookie['tracking']);
+
+                if ($marketing_info) {
+                    $order_data['marketing_id'] = $marketing_info['marketing_id'];
+                } else {
+                    $order_data['marketing_id'] = 0;
+                }
+                
                 $this->session->data['order_id'] = $this->model_checkout_order->addOrder($pdata);
                 
             }

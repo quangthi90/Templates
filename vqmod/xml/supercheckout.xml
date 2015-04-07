@@ -10,8 +10,8 @@
 			$this->load->model('setting/setting');
                         $result = $this->model_setting_setting->getSetting('supercheckout', $this->config->get('config_store_id'));
                         if(!empty($result)){
-                            //$this->settings = $result['supercheckout'];
-                            //$data['settings']=$result['supercheckout'];                            
+                            $this->settings = $result['supercheckout'];
+                            $data['settings']=$result['supercheckout'];                            
                         }
                         if(empty($data['settings'])){
                                         $settings = $this->model_setting_setting->getSetting('default_supercheckout', 0);
