@@ -455,7 +455,11 @@ class ControllerSupercheckoutConfirm extends Controller {
                 // Marketing
                 $this->load->model('checkout/marketing');
 
-                $marketing_info = $this->model_checkout_marketing->getMarketingByCode($this->request->cookie['tracking']);
+                if (isset($this->request->cookie['tracking'])) {
+                    $marketing_info = $this->model_checkout_marketing->getMarketingByCode($this->request->cookie['tracking']);
+                } else {
+                    $marketing_info = null;
+                }
 
                 if ($marketing_info) {
                     $order_data['marketing_id'] = $marketing_info['marketing_id'];
