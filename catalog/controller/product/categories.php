@@ -1,12 +1,17 @@
 <?php
 class ControllerProductCategories extends Controller {
 	public function index() {
+		$this->load->language('product/categories');
+
 		$this->load->model('catalog/category');
 		$this->load->model('catalog/product');
 		$this->load->model('tool/image');
 
 		$data['categories'] = array();
 		$data['products'] = array();
+
+		$this->document->setTitle($this->language->get('heading_title'));
+		$data['heading_title'] = $this->language->get('heading_title');
 
 		$categories = $this->model_catalog_category->getCategories(0);
 
