@@ -79,11 +79,11 @@ class ControllerSupercheckoutSuperCheckout extends Controller {
         $data['shipping_address_sort_order'] = $this->settings['step']['shipping_address'];
         $data['address_id'] = 0;
         //zone code fix
-            $this->load->model('localisation/country');
+        $this->load->model('localisation/country');
 
-            $country_info_guest = $this->model_localisation_country->getCountry($this->config->get('config_country_id'));            
-            $this->session->data['country_info_guest']=$country_info_guest;
-            $data['country_info_guest']=$country_info_guest;
+        $country_info_guest = $this->model_localisation_country->getCountry($this->config->get('config_country_id'));            
+        $this->session->data['country_info_guest']=$country_info_guest;
+        $data['country_info_guest']=$country_info_guest;
         //zone code fix
         if (!$this->customer->isLogged()) {
             
@@ -245,6 +245,7 @@ class ControllerSupercheckoutSuperCheckout extends Controller {
         $data['text_notification'] = $this->language->get('text_notification');
         $data['voucher_deleted'] = $this->language->get('voucher_deleted');
         $data['coupon_deleted'] = $this->language->get('coupon_deleted');
+        $data['heading_title'] = $this->language->get('heading_title');
 
         $data['entry_email'] = $this->language->get('entry_email');
         $data['entry_password'] = $this->language->get('entry_password');

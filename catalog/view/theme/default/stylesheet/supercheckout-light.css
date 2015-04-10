@@ -79,7 +79,7 @@
 
 #supercheckout-fieldset a, #supercheckout-fieldset a b {
     color:#2D87B1 !important;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 #supercheckout-fieldset ul {
@@ -102,7 +102,7 @@
 
 #supercheckout-fieldset select {
     margin: 0 !important;
-    padding: 4px 3px 4px !important;
+    padding: 6px 3px 6px 3px !important;
 }
 
 #supercheckout-fieldset small {
@@ -375,7 +375,7 @@
 
 #supercheckout-fieldset .supercheckout-totals td,
 #supercheckout-fieldset .supercheckout-summary td {
-    border-bottom: 1px solid #c5c5c5 !important;
+    border-bottom: 1px solid #F0F0F0 !important;
 }
 
 #supercheckout-fieldset .supercheckout-totals td.title {
@@ -396,7 +396,7 @@
     background-color: #ffffff !important;
     border: 1px solid #cccccc !important;
     border: 1px solid rgba(0, 0, 0, 0.2) !important;
-    border-radius: 6px !important;
+    border-radius: 2px !important;
     -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     background-clip: padding-box !important;
@@ -426,7 +426,7 @@
     line-height: 18px;
     background-color: #f7f7f7 !important;
     border-bottom: 1px solid #ebebeb !important;
-    border-radius: 5px 5px 0 0 !important;
+    border-radius: 2px 2px 0 0 !important;
 }
 
 #supercheckout-fieldset .popover-content {
@@ -559,9 +559,8 @@
     text-decoration: none;
     background-color:#F77219;
     background: linear-gradient(to bottom, #F77219 1%, #FEC6A7 3%, #F77219 7%, #F75B16 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
-    border: 1px solid #EC6723 !important;
     font-size: 17px !important;
-/*    padding: 8px 0px!important;*/
+    padding: 3px 12px!important;
     width: auto !important;  
     border-radius: 2px !important;
     color: #F9F9F9 !important;
@@ -572,7 +571,7 @@
     text-transform: uppercase !important;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F77219', endColorstr='#F75B16') !important;
     font-weight: bold;
-    border-bottom:3px solid #C52F2F !important;
+    border-bottom:1px solid #C52F2F !important;
     height: 35px;
     border-bottom-left-radius:2px !important; 
     border-bottom-right-radius: 2px !important;
@@ -581,9 +580,7 @@
 #supercheckout-fieldset .orangebutton:hover {
     background-color:#F77219;
     background: linear-gradient(to bottom, #F28941 1%, #FEC6A7 3%, #F28941 7%, #F75B16 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F28941', endColorstr='#F75B16') !important;
-    border: 1px solid #EE3A39 !important;
-    border-bottom:3px solid #C52F2F !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F28941', endColorstr='#F75B16') !important;    
 }
 
 #supercheckout-fieldset .orangebuttonsmall {
@@ -640,7 +637,7 @@
 #supercheckout-fieldset .medium.supercheckout-button:visited {
     font-size: 13px !important;
     font-weight: bold !important; line-height: 1;
-    border-radius: 7px !important;
+    border-radius: 2px !important;
     text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
 }
 
@@ -791,7 +788,6 @@
 }
 
 #supercheckout-fieldset div.supercheckout-container {
-    border-top: 1px solid #D8D2C7 !important;
     min-height: 33em;
     overflow: hidden;
     width:100%;
@@ -1072,9 +1068,9 @@
 #supercheckout-fieldset #addressreview {
     width: 750px;
     min-height: 430px;
-    -webkit-border-radius: 4px !important;
-    -moz-border-radius: 4px !important;
-    border-radius: 4px !important;
+    -webkit-border-radius: 2px !important;
+    -moz-border-radius: 2px !important;
+    border-radius: 2px !important;
     background: #E9EAEE !important;
     border: 2px solid white !important;
     padding: 15px 40px 20px 40px !important;
@@ -1158,7 +1154,7 @@
     background-color: transparent !important;
     color: #000000 !important;
     min-height: 23px !important;
-    border-radius: 3px !important;
+    border-radius: 0px !important;
 }
 
 #supercheckout-fieldset select {
@@ -1358,12 +1354,12 @@
 
 #supercheckout-fieldset input.supercheckout-large-field  {
     width: 97%;
-    border-radius:3px !important;
+    border-radius:0px !important;
 }
 
 #supercheckout-fieldset select.supercheckout-large-field {
     width: 98%;    
-    border-radius:3px !important;
+    border-radius:0px !important;
 }
 
 #supercheckout-fieldset .supercheckout-extra-wrap {
@@ -1395,12 +1391,13 @@
 
 #supercheckout-fieldset table.supercheckout-form input[type='text'],
 #supercheckout-fieldset table.supercheckout-form input[type='email'] {
-    /*    min-width: 250px;*/
+    /*min-width: 250px;*/
 }
 
 #supercheckout-fieldset .supercheckout-name a, #supercheckout-fieldset .supercheckout-qty a small {
-    color:#2D87B1 !important;
-    text-decoration: underline;
+    color: #F76116 !important;
+    font-size: 14px;
+    text-decoration: none;
 }
 
 #supercheckout-fieldset .supercheckout-name a:hover {
@@ -1540,11 +1537,11 @@
 
 #supercheckout-fieldset #columnleft-1,
 #supercheckout-fieldset #columnleft-3 {
-    background-color: rgba(7, 8, 5, 0.02) !important;
-    border-bottom: 1px solid #F2F2F2 !important;
+    background-color: #FFFFFF !important;
+    border-bottom: none !important;
     border-image: none !important;
-    border-left: 1px solid #F2F2F2 !important;
-    border-right: 1px solid #F2F2F2 !important;
+    border-left: none !important;
+    border-right: none !important;
 }
 
 #supercheckout-fieldset .radio .price {
@@ -1574,7 +1571,7 @@
 #supercheckout-fieldset .permanent-warning {
     background: url("../image/supercheckout/supercheckout-warning.png") no-repeat scroll 10px center #FFD1D1 !important;
     border: 1px solid #F8ACAC !important;
-    border-radius: 5px !important;
+    border-radius: 2px !important;
     position: static;
     height: auto !important;
     width: 100%;
@@ -1586,7 +1583,7 @@
 #supercheckout-fieldset .warning {
     background: url("../image/supercheckout/supercheckout-warning.png") no-repeat scroll 10px center #FFD1D1 !important;
     border: 1px solid #F8ACAC !important;
-    border-radius: 5px !important;
+    border-radius: 2px !important;
     position: static;
     height: auto !important;
     width: 100%;
@@ -1667,7 +1664,7 @@
 }
 #supercheckout-fieldset .supercheckout-small-field { 
     width: 45%;
-    border-radius:3px !important;
+    border-radius: 0px !important;
 }
 #supercheckout-fieldset .supercheckout_password_fields {
 /*    float: left;*/
@@ -1681,14 +1678,13 @@
     background-color:#F77219; 
     background: linear-gradient(to bottom, #F77219 1%, #FEC6A7 3%, #F77219 7%, #F75B16 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F77219', endColorstr='#F75B16') !important;
-    border: 1px solid #EC6723 !important;
     font-size: 11px !important;    
     width: auto !important;
     border-radius: 2px !important;
     color: #F9F9F9 !important;
     cursor: pointer !important;
     display: inline-block !important;
-    padding: 5px !important;
+    padding: 4px 6px !important;
     text-align: center !important;    
     font-weight: bold;
 }
@@ -1696,14 +1692,13 @@
 #supercheckout-fieldset .orangebuttonapply:hover {
     background-color:#F77219;
     background: linear-gradient(to bottom, #F28941 1%, #FEC6A7 3%, #F28941 7%, #F75B16 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F28941', endColorstr='#F75B16');
-    border: 1px solid #EE3A39 !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F28941', endColorstr='#F75B16');    
 }
 #supercheckout-fieldset .panel {
   
   background-color: #ffffff;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 2px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
