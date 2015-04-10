@@ -15,9 +15,9 @@ class ControllerSupercheckoutPaymentDisplay extends Controller {
         }
 		
         if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/supercheckout/payment_display.tpl')) {
-            $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/supercheckout/payment_display.tpl', $data));
+            return $this->load->view($this->config->get('config_template') . '/template/supercheckout/payment_display.tpl', $data);
         } else {
-            $this->response->setOutput($this->load->view('default/template/supercheckout/payment_display.tpl', $data));
+            return $this->load->view('default/template/supercheckout/payment_display.tpl', $data);
         }
     }
     

@@ -1161,21 +1161,18 @@ function goToConfirm(){
         url: 'index.php?route=supercheckout/confirm',
         dataType: 'html',
         success: function(html) {
-            //$("#progressbar" ).progressbar({ value:100 });
-            var href = $("#display_payment .button, #display_payment .btn, #display_payment .button_oc, #display_payment input[type=submit]").attr('href');
-            console.log(href);
+            // $("#progressbar" ).progressbar({ value:100 });
+            var href = $("#button-confirm, #display_payment .button, #display_payment .btn, #display_payment .button_oc, #display_payment input[type=submit]").attr('href');
             if(href != '' && href != undefined && href != 'javascript://' && href != 'javascript:void(0)') {
-                console.log('hehe1');
                 document.location.href = href;
                 console.log('clicked');	
             }else{
-                console.log('hehe2');
-                $("#display_payment .button, #display_payment .btn, #display_payment .button_oc, #display_payment input[type=submit]").trigger("click", function(){	
+                $("#button-confirm, #display_payment .button, #display_payment .btn, #display_payment .button_oc, #display_payment input[type=submit]").trigger("click", function(){	
                 console.log('clicked');	
             });
             }
-//            $("#button-confirm , input[type=submit] , .display_payment .button, #display_payment .button").trigger("click");
-        //            $("#button-confirm , input[type=submit]").unbind("click");
+           // $("#button-confirm , input[type=submit] , .display_payment .button, #display_payment .button").trigger("click");
+           //         $("#button-confirm , input[type=submit]").unbind("click");
         },
         error: function(xhr, ajaxOptions, thrownError) {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -1813,8 +1810,6 @@ function validatePaymentMethodRefresh(){
 }
 
 function goToConfirmRefresh(){
-    console.log('hhaaha');
-    return;
     $.ajax({
         url: 'index.php?route=supercheckout/confirm',
         dataType: 'html',
@@ -2875,7 +2870,7 @@ $('#voucher_code').keypress(function(event){
 });
 $(document).ready(function(){
     //payment address sorting
-    $('#button-confirm').unbind('click');
+    // $('#button-confirm').unbind('click');
 <?php if($settings['general']['layout']=='3-Column'){ ?>
 // FOR SORTING BLOCK AND FIELDS IN SUPERCHECKOUT PAGE
 

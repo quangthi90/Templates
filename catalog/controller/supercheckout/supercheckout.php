@@ -148,7 +148,7 @@ class ControllerSupercheckoutSuperCheckout extends Controller {
         // Validate cart has products and has stock.
         if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 
-            $this->redirect($this->url->link('checkout/cart'));
+            $this->response->redirect($this->url->link('checkout/cart'));
 
         }
 
@@ -189,7 +189,7 @@ class ControllerSupercheckoutSuperCheckout extends Controller {
             }
 
             if ($product['minimum'] > $product_total) {
-                $this->redirect($this->url->link('checkout/cart'));
+                $this->response->redirect($this->url->link('checkout/cart'));
             }
         }
 
@@ -1345,6 +1345,8 @@ class ControllerSupercheckoutSuperCheckout extends Controller {
         $data['content_bottom'] = $this->load->controller('common/content_bottom');
         $data['footer'] = $this->load->controller('common/footer');
         $data['header'] = $this->load->controller('common/header');
+
+        $data['payment'] = $this->load->controller('payment/' . $this->session->data['payment_method']['code']);
 
         if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/supercheckout/supercheckout.tpl')) {
             $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/supercheckout/supercheckout.tpl', $data));
