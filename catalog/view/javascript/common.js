@@ -463,8 +463,9 @@ var AppUtils = {
 			htmlContent: ""
 		};
 		var htmlTemplate = "<div class='fixed-banner'>" +
+								"<div class='banner-tooltip' style='display: none;'><a class='banner-trigger'>Banner</a></div>" +
 								"<div class='banner-header'><span class='dismiss'>X</span></div>" +
-								"<div class='banner-body'></div>" +
+								"<div class='banner-body'></div>" +								
 							"</div>";
 
 		var options = jQuery.extend({}, defaults, params);
@@ -506,11 +507,22 @@ var AppUtils = {
 				bannerEle.addClass("left-top");
 		}
 
-		bannerEle.find(".dismiss").on("click", function () {
-			bannerEle.fadeOut(600, function(){
-				$(this).remove();
+		bannerEle.find(".dismiss").on("click", function (e) {
+			e.preventDefault();
+			$(this).hide();;
+			bannerEle.find(".banner-body").slideUp(500, function(){				
+				bannerEle.find(".banner-tooltip").show(0);
 			});
 		});
+
+		bannerEle.find(".banner-trigger").on("click", function (e) {
+			e.preventDefault();
+			$(this).parent().hide();
+			bannerEle.find(".banner-body").slideDown(500, function(){
+				bannerEle.find(".dismiss").show(0);
+			});
+		});
+
 		//Append to parrent container
 		bannerEle.appendTo(options.parentContainer);
 	}

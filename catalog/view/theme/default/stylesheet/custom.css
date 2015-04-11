@@ -690,3 +690,18 @@ ul.question-list li .view-answer {
 	border: 1px solid #CCC;
 	padding: 3px;
 }
+
+.banner-trigger {
+	display: block;
+	  width: 160px;
+	  padding: 3px 10px;
+	  border: 1px solid #BE3D0B;
+	  background-color: #FFD6C6;
+	  font-size: 12px;
+	  font-weight: bold;
+	  text-align: center;
+}
+.banner-trigger:hover {
+	color: #BE3D0B;
+	cursor: pointer;
+}
