@@ -576,6 +576,16 @@
     border-bottom-left-radius:2px !important; 
     border-bottom-right-radius: 2px !important;
 }
+#supercheckout-fieldset .orangebutton[disabled] {
+    background-color:#FEC6A7;
+    background: linear-gradient(to bottom, #FEC6A7 1%, #FEC6A7 3%, #FEC6A7 7%, #FEC6A7 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    border-bottom:1px solid #FEC6A7 !important;
+}
+#supercheckout-fieldset .orangebutton[disabled]:hover {
+    background-color:#FEC6A7;
+    background: linear-gradient(to bottom, #FEC6A7 1%, #FEC6A7 3%, #FEC6A7 7%, #FEC6A7 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    border-bottom:1px solid #FEC6A7 !important;
+}
 
 #supercheckout-fieldset .orangebutton:hover {
     background-color:#F77219;

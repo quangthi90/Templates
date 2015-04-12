@@ -542,7 +542,7 @@
                         <?php } ?>
                         <div id="placeorderButton">
                             <div id="buttonWithProgres">
-                                <div id="confirm_order" class="orangebutton" style="position: relative;">
+                                <div id="confirm_order" class="orangebutton" disabled="disabled" style="position: relative;">
                                     <?php echo $button_place_order; ?>                                    
                                 </div> 
                                 <div id="checkout-progressbar" class="progress" style="display: none;">
@@ -583,16 +583,17 @@
         <?php } ?>
         <script type="text/javascript">
             /*** DISABLING CONFIRM BUTTON FOR 5 SEC AFTER IT IS CLICKED ONCE */
-            $("#confirm_order").click(function() {
-                $('#confirm_order').attr('disabled', true);
+            $("#confirm_order").click(function(e) {
+                e.preventDefault();
                 var btn = $(this);
-                btn.prop('disabled', true);
-                setTimeout(function(){
-                    btn.prop('disabled', false);
-                }, 5000);
-                if(window.confirmclick==true){
-                    window.callconfirm=true;
-                }else{
+                if(btn.attr("disabled") !== undefined) {
+                    return;
+                }
+                btn.attr("disabled", "disabled");
+                $("#supercheckout-fieldset input").prop("disabled", true);
+                if(window.confirmclick == true){
+                    window.callconfirm = true;
+                } else {
                     validateCheckout();
                 }        
             });
@@ -715,6 +716,14 @@
                         alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
                     }
                 });
+            });
+
+            $("#supercheckout-agree input[type='checkbox']").on('change', function(){
+                if(!$(this).is(":checked")){
+                    $("#confirm_order").attr("disabled", "disabled");
+                }else {
+                    $("#confirm_order").removeAttr("disabled");
+                }
             });
 
             // ON CONFIRM CLICK VALIDATING THE WHOLE PAGE AT ONCE AND DISPLAYS ERROR ACCORDINGLY
@@ -1792,9 +1801,9 @@
                             }
                         });
                         if(window.callconfirm==true){
-                                    validateCheckout();
-                                    window.callconfirm=false;
-                                    window.confirmclick=false;
+                            validateCheckout();
+                            window.callconfirm=false;
+                            window.confirmclick=false;
                         }
                         window.callconfirm=false;
                         window.confirmclick=false;
