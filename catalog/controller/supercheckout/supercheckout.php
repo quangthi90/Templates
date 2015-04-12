@@ -1222,14 +1222,16 @@ class ControllerSupercheckoutSuperCheckout extends Controller {
 
                 if (isset($this->request->cookie['tracking'])) {
                     $marketing_info = $this->model_checkout_marketing->getMarketingByCode($this->request->cookie['tracking']);
+                    $pdata['tracking'] = $this->request->cookie['tracking'];
                 } else {
                     $marketing_info = null;
+                    $pdata['tracking'] = '';
                 }
 
                 if ($marketing_info) {
-                    $order_data['marketing_id'] = $marketing_info['marketing_id'];
+                    $pdata['marketing_id'] = $marketing_info['marketing_id'];
                 } else {
-                    $order_data['marketing_id'] = 0;
+                    $pdata['marketing_id'] = 0;
                 }
                 
                 $this->session->data['order_id'] = $this->model_checkout_order->addOrder($pdata);

@@ -1,8 +1,8 @@
 <?php
 //general
 // Heading 
-$_['heading_title']                  = 'Checkout';
-$_['error_warning']                  = 'There was a problem while trying to process your order! If the problem persists please try selecting a different payment method or you can contact the store owner by <a href="%s">clicking here</a>.';
+$_['heading_title']                  = 'Thanh toán';
+$_['error_warning']                  = 'Xảy ra lỗi trong quá trình tạo đơn đặt hàng, bạn vui lòng thử lại! Nếu lỗi vẫn xảy ra, vui lòng chọn lại phương thức thanh toán khác hoặc liên hệ với <a href="%s">chúng tôi</a>.';
 
 //login
 
