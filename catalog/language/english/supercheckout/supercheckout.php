@@ -32,7 +32,6 @@ $_['text_create_account']            = 'Create an Account for later use';
 $_['text_register_account']          = 'By creating an account you will be able to shop faster, be up to date on an order\'s status, and keep track of the orders you have previously made.';
 
 
-
 //payment & shipping address
 $_['text_address_new']               = 'I want to use a new address';
 $_['text_address_existing']          = 'I want to use an existing address';
@@ -122,6 +121,7 @@ $_['error_coupon']                   = 'Warning: Coupon is either invalid, expir
 $_['error_coupon_used']              = 'Warning: You are not allowed to use another Coupon!';
 $_['text_confirm_order']             = 'Confirm your Order';
 $_['text_agree']                     = 'I have read and agree to the <a class="colorbox" href="%s" alt="%s"><b>%s</b></a>';
+$_['checkout_waiting_processing']    = 'Completing checkout process !';
 
 $_['voucher_deleted']                = 'Voucher deleted successfully';
 $_['coupon_deleted']                 = 'Coupon deleted successfully';

@@ -74,6 +74,7 @@ $_['error_company']                  = 'Company must be between 1 and 32 alphanu
 $_['error_company_id']               = 'Company ID must be between 1 and 32 alphanumeric characters!';
 $_['error_tax_id']                   = 'Tax ID must be between 1 and 32 alphanumeric characters!';
 $_['error_address']                  = 'Chú ý! Bạn phải nhập một địa chỉ Hợp lệ';
+$_['checkout_waiting_processing']    = 'Đang hoàn thành thủ tục đặt hàng !';
 
 //shipping method
 $_['text_shipping_method']           = 'Phương Thức Vận Chuyển';

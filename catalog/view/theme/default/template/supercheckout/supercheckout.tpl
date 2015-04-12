@@ -729,6 +729,9 @@
                     progressControl.show(0);
                     progressbar.width(value + "%");
                     progressbar.text(value + "%");
+                    if(value === 100){
+                        progressbar.text('<?php echo $checkout_waiting_processing; ?>');
+                    }
                 }
             }
             function goToByScroll(id) {
