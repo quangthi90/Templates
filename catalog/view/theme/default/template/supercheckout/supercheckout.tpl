@@ -5,6 +5,7 @@
     $login_boxes_width=47.7;
 }
 ?>
+
 <style>
     
 .supercheckout_top_boxes{width:<?php echo $login_boxes_width; ?>%;}
@@ -1903,8 +1904,6 @@
                     validateCheckoutRefresh();
                 }
             });
-        </script>
-        <script type="text/javascript">
             // GENERAL SETTING FOR HIDING DISPLAYING NEW & EXISTING SHIPPING ADDRESS
             $('#shipping-existing select[name=\'address_id\']').bind('change', function() {
                 validateCheckoutRefresh();
@@ -1957,8 +1956,6 @@
                     }
                 });
             });
-        </script>
-        <script type="text/javascript">
             // GENERAL SETTING FOR HIDING DISPLAYING NEW & EXISTING BILLING ADDRESS
             $('#checkoutBillingAddress input[name=\'payment_address\']').on('change', function() {
                 if (this.value == 'new') {
