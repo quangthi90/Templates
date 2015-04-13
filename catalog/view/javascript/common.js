@@ -458,52 +458,27 @@ $(document).delegate('.agree', 'click', function(e) {
 var AppUtils = {
 	generateFixBanner: function(params){
 		var defaults = {
-			position: 3,
-			parentContainer: jQuery("body"),
-			htmlContent: ""
+			position: 3
 		};
-		var htmlTemplate = "<div class='fixed-banner'>" +
-								"<div class='banner-tooltip' style='display: none;'><a class='banner-trigger'>Banner</a></div>" +
-								"<div class='banner-header'><span class='dismiss'>X</span></div>" +
-								"<div class='banner-body'></div>" +								
-							"</div>";
 
 		var options = jQuery.extend({}, defaults, params);
 
 		//Process
-		if(!options.htmlContent) {
+		if(!options.element || options.element.length === 0) {
 			return;
 		}
-		var bannerEle = jQuery(htmlTemplate);
-		bannerEle.find("div.banner-body").html(options.htmlContent);
-
+		var bannerEle = options.element;
 		switch(options.position){
 			case 2:
-				var existing = options.parentContainer.find("fixed-banner.right-top");
-				if(existing.length > 0){
-					existing.remove();
-				}
 				bannerEle.addClass("right-top");
 				break;
 			case 3:
-				var existing = options.parentContainer.find("fixed-banner.left-bottom");
-				if(existing.length > 0){
-					existing.remove();
-				}
 				bannerEle.addClass("left-bottom");
 				break;
 			case 4:
-				var existing = options.parentContainer.find("fixed-banner.right-bottom");
-				if(existing.length > 0){
-					existing.remove();
-				}
 				bannerEle.addClass("right-bottom");
 				break;
 			default: 
-				var existing = options.parentContainer.find("fixed-banner.left-top");
-				if(existing.length > 0){
-					existing.remove();
-				}
 				bannerEle.addClass("left-top");
 		}
 
@@ -523,7 +498,12 @@ var AppUtils = {
 			});
 		});
 
-		//Append to parrent container
-		bannerEle.appendTo(options.parentContainer);
+		bannerEle.find('.banner-container').owlCarousel({
+			items: 1,
+			autoPlay: 3000,
+			singleItem: true,
+			navigation: false,
+			pagination: false
+		});
 	}
 };

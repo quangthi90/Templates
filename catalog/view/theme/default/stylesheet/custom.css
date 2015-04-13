@@ -660,11 +660,11 @@ ul.question-list li .view-answer {
 }
 .fixed-banner.left-bottom {
 	left: 10px;
-	bottom: 30px;
+	bottom: 20px;
 }
 .fixed-banner.right-bottom {
 	right: 10px;
-	bottom: 30px;
+	bottom: 20px;
 }
 .fixed-banner .banner-header {
 	float: right;

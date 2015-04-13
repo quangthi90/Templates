@@ -44,12 +44,14 @@
 <script src="<?php echo $script; ?>" type="text/javascript"></script>
 <?php } ?>
 <script type="text/javascript">
-  setTimeout(function(){
-    AppUtils.generateFixBanner({
-      htmlContent: '<img src="<?php echo $left_bottom_banners[0]["image"]; ?>" />',
-      position: 3
-    });
-  }, 1000);
+  $(document).ready(function(){
+    setTimeout(function(){
+      AppUtils.generateFixBanner({
+        element: $("#fixed-banners"),
+        position: 3
+      });
+    }, 1000);
+  });  
 </script>
 <?php echo $google_analytics; ?>
 </head>
@@ -158,3 +160,17 @@
     <?php } ?>    
   </div>  
 </header>
+<?php if(count($left_bottom_banners) > 0) { ?>
+<div class='fixed-banner' id="fixed-banners" style="width: 200px;">
+    <div class='banner-tooltip' style='display: none;'><a class='banner-trigger'>Banner</a></div>
+    <div class='banner-header'><span class='dismiss'>X</span></div>
+    <div class='banner-body'>
+      <div class="banner-container">
+        <?php foreach ($left_bottom_banners as $banner) { ?>
+          <img class="banner-img" src="<?php echo $banner["image"]; ?>" alt="" width="200" />
+        <?php } ?>
+      </div>
+    </div>
+</div>
+<?php } ?>
+
