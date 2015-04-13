@@ -23,8 +23,6 @@ class ControllerSupercheckoutSuperCheckout extends Controller {
         //adding script to the page<!-- Gritter Notifications Plugin -->
         $this->load->model('checkout/order');
         $this->document->addScript('catalog/view/javascript/supercheckout/tinysort/jquery.tinysort.min.js');
-        $this->document->addScript('catalog/view/javascript/supercheckout/common.js');
-        $this->document->addScript('catalog/view/javascript/supercheckout/bootstrap.js');
         $this->document->addScript('catalog/view/javascript/supercheckout/jquery.colorbox.js');
         $this->document->addScript('catalog/view/javascript/supercheckout/theme/plugins/notifications/Gritter/js/jquery.gritter.min.js');
         $this->document->addScript('catalog/view/javascript/supercheckout/theme/plugins/notifications/notyfy/jquery.notyfy.js');
