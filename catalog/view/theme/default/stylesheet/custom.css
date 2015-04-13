@@ -667,7 +667,9 @@ ul.question-list li .view-answer {
 	bottom: 20px;
 }
 .fixed-banner .banner-header {
-	float: right;
+	text-align: right;
+	width: 100%;
+	z-index: 10000;
 }
 .fixed-banner .dismiss {
 	font-weight: bold;
