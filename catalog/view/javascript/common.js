@@ -505,5 +505,6 @@ var AppUtils = {
 			navigation: false,
 			pagination: false
 		});
+		bannerEle.css("opacity", "1");
 	}
 };

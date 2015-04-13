@@ -50,7 +50,7 @@
         element: $("#fixed-banners"),
         position: 3
       });
-    }, 1000);
+    }, 100);
   });  
 </script>
 <?php echo $google_analytics; ?>
@@ -161,7 +161,7 @@
   </div>  
 </header>
 <?php if(count($left_bottom_banners) > 0) { ?>
-<div class='fixed-banner' id="fixed-banners" style="width: 200px;">
+<div class='fixed-banner' id="fixed-banners" style="width: 200px; opacity: 0;">
     <div class='banner-tooltip' style='display: none;'><a class='banner-trigger'>Banner</a></div>
     <div class='banner-header'><span class='dismiss'>X</span></div>
     <div class='banner-body'>
