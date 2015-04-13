@@ -443,7 +443,6 @@
                         </ul>
                         <div id="confirmCheckout">
                             <div class="supercheckout-checkout-content">
-
                             </div>
                             <?php if (!isset($redirect)) { ?>
                             
@@ -542,12 +541,16 @@
                         </div>                
                         <?php } ?>
                         <div id="placeorderButton">
-                            <div id="buttonWithProgres" style="width:206px;">
-                                <div id="confirm_order" class="orangebutton" >
-                                    <?php echo $button_place_order; ?>
-                                    <div id="progressbar" style="text-align:center;margin-top: 0px;"></div>
-                                </div>
-                            </div>
+                            <div id="buttonWithProgres">
+                                <div id="confirm_order" class="orangebutton" disabled="disabled" style="position: relative;">
+                                    <?php echo $button_place_order; ?>                                    
+                                </div> 
+                                <div id="checkout-progressbar" class="progress" style="display: none;">
+                                  <div class="progress-bar progress-bar-striped active" role="progressbar"
+                                  aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                  </div>
+                                </div>                               
+                            </div>                            
                         </div>
                     </div>
                     <?php foreach($sort_block['html'] as $sort_html){ ?>
@@ -580,16 +583,17 @@
         <?php } ?>
         <script type="text/javascript">
             /*** DISABLING CONFIRM BUTTON FOR 5 SEC AFTER IT IS CLICKED ONCE */
-            $("#confirm_order").click(function() {
-                $('#confirm_order').attr('disabled', true);
+            $("#confirm_order").click(function(e) {
+                e.preventDefault();
                 var btn = $(this);
-                btn.prop('disabled', true);
-                setTimeout(function(){
-                    btn.prop('disabled', false);
-                }, 5000);
-                if(window.confirmclick==true){
-                    window.callconfirm=true;
-                }else{
+                if(btn.attr("disabled") !== undefined) {
+                    return;
+                }
+                btn.attr("disabled", "disabled");
+                $("#supercheckout-fieldset input").prop("disabled", true);
+                if(window.confirmclick == true){
+                    window.callconfirm = true;
+                } else {
                     validateCheckout();
                 }        
             });
@@ -714,14 +718,37 @@
                 });
             });
 
+            $("#supercheckout-agree input[type='checkbox']").on('change', function(){
+                if(!$(this).is(":checked")){
+                    $("#confirm_order").attr("disabled", "disabled");
+                }else {
+                    $("#confirm_order").removeAttr("disabled");
+                }
+            });
+
             // ON CONFIRM CLICK VALIDATING THE WHOLE PAGE AT ONCE AND DISPLAYS ERROR ACCORDINGLY
+            function showProgressbar (value) {
+                var progressControl = $("#checkout-progressbar");
+                var progressbar = $("#checkout-progressbar .progress-bar");
+                value = value || 0;
+
+                if(value === 0) {
+                    progressControl.hide(0);
+                }else {
+                    progressControl.show(0);
+                    progressbar.width(value + "%");
+                    progressbar.text(value + "%");
+                    if(value === 100){
+                        progressbar.text('<?php echo $checkout_waiting_processing; ?>');
+                    }
+                }
+            }
             function goToByScroll(id) {
                 // Remove "link" from the ID
                 id = id.replace("link", "");
                 // Scroll
                 $('html,body').animate({scrollTop: $("#"+id).offset().top}, 'slow');
             }
-
             function validatePaymentAddress() {
                 var paymentAddressEnable="1";
                 if(paymentAddressEnable==1) {
@@ -796,13 +823,13 @@
                                     $('#payment-new select[name=\'zone_id\']').after('<span class="errorsmall">' + json['error']['zone'] + '</span>');
                                 }
                             } else {
-                                // $("#progressbar" ).progressbar({ value:35 });
+                                showProgressbar(35);
                                 validateLoginShippingAddress();
                             }
                         }
                     });
                 } else {
-                    $("#progressbar" ).progressbar({ value:35 });
+                    showProgressbar(35);
                     validateLoginShippingAddress();
                 }
             }
@@ -875,7 +902,7 @@
                                         $('#shipping-new select[name=\'zone_id\']').after('<span class="errorsmall">' + json['error']['zone'] + '</span>');
                                     }
                                 } else {
-                                    $("#progressbar" ).progressbar({ value:50 });
+                                    showProgressbar(50);
                                     if(shippingMethodEnable==1){
                                         validateShippingMethod();
                                     }else{
@@ -976,7 +1003,7 @@
                                     $('#shipping-new select[name=\'zone_id\']').after('<span class="errorsmall">' + json['error']['zone'] + '</span>');
                                 }
                             } else {
-                                $("#progressbar" ).progressbar({ value:50 });
+                                showProgressbar(50);
                                 if(shippingMethodEnable==1){
                                     validateShippingMethod();
                                 }else{
@@ -1024,7 +1051,7 @@
                                 $('.warning').fadeIn('slow');
                             }
                         } else {
-                            //$("#progressbar" ).progressbar({ value:65 });
+                            showProgressbar(65);
                             if(paymentMethodEnable==1){
                                 validatePaymentMethod();
                             }else{
@@ -1071,7 +1098,7 @@
                                 goToByScroll('payment_display_block');
                             }
                         } else {
-                            //$("#progressbar" ).progressbar({ value:80 });
+                            showProgressbar(80);
                             var agreeRequire="<?php if($logged){ if($settings['option']['logged']['confirm']['fields']['agree']['require']){ echo'loginblock';} }else{ if($settings['option']['guest']['confirm']['fields']['agree']['require']){ echo'guestblock';}} ?>";
                             var comment="<?php if($logged){ if($settings['option']['logged']['confirm']['fields']['comment']['display']){ echo'loginblock';} }else{ if($settings['option']['guest']['confirm']['fields']['comment']['display']){ echo'guestblock';}} ?>";
                             if(comment=='loginblock' || comment=='guestblock'){
@@ -1127,7 +1154,7 @@
                     type:'post',
                     data: $('#checkoutLogin input[type=\'text\']'),
                     success: function(html) {            
-                        $("#progressbar" ).progressbar({ value:60 });
+                        showProgressbar(60);
                     },
                     error: function(xhr, ajaxOptions, thrownError) {
                         alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -1139,7 +1166,7 @@
                     url: 'index.php?route=supercheckout/confirm',
                     dataType: 'html',
                     success: function(html) {
-                        // $("#progressbar" ).progressbar({ value:100 });
+                        showProgressbar(100);
                         var href = $("#button-confirm, #display_payment .button, #display_payment .btn, #display_payment .button_oc, #display_payment input[type=submit]").attr('href');
                         if(href != '' && href != undefined && href != 'javascript://' && href != 'javascript:void(0)') {
                             document.location.href = href;
@@ -1174,7 +1201,7 @@
                             }
                         }
                         else {
-                            $("#progressbar" ).progressbar({ value: 20 });
+                            showProgressbar(20);
                             validateGuestPaymentAddress();
                         }
 
@@ -1209,7 +1236,7 @@
                                 goToByScroll('checkoutLogin');
                             }
                         }else {
-                            $("#progressbar" ).progressbar({ value: 20 });
+                            showProgressbar(20);
                             validateGuestPaymentAddress();
                         }
 
@@ -1328,7 +1355,7 @@
                                     goToByScroll('checkoutBillingAddress');
                                 }
                                 else {
-                                    $("#progressbar" ).progressbar({ value: 35 });
+                                    showProgressbar(35);
                                     checkGuestShippingAddress();
                                 }
                             }
@@ -1409,7 +1436,7 @@
                                     goToByScroll('checkoutBillingAddress');
                                 }
                                 else {
-                                    $("#progressbar" ).progressbar({ value: 35 });
+                                    showProgressbar(35);
                                     checkGuestShippingAddress();
                                 }
                             }
@@ -1478,7 +1505,7 @@
                             }
                             goToByScroll('checkoutShippingAddress');
                         } else {
-                            $("#progressbar" ).progressbar({ value:50 });
+                            showProgressbar(50);
                             var checkGuestRegisterEnable="<?php echo $settings['general']['guestenable']; ?>";
                             var checkRegisterManualEnable="<?php echo $settings['general']['guest_manual']; ?>";
                             var use_password_string = "";
@@ -1501,7 +1528,7 @@
                                                 goToByScroll('checkoutLogin');
                                             }
                                         }else{
-                                            $("#progressbar" ).progressbar({ value:60 });
+                                            showProgressbar(60);
                                             if(shippingMethodEnable==1){
                                                 validateShippingMethod();
                                             }else{
@@ -1575,7 +1602,7 @@
                                                 goToByScroll('checkoutLogin');
                                             }
                                         }else{
-                                            $("#progressbar" ).progressbar({ value:60 });
+                                            showProgressbar(60);
                                             if(shippingMethodEnable==1){
                                                 validateShippingMethod();
                                             }else{
@@ -1774,9 +1801,9 @@
                             }
                         });
                         if(window.callconfirm==true){
-                                    validateCheckout();
-                                    window.callconfirm=false;
-                                    window.confirmclick=false;
+                            validateCheckout();
+                            window.callconfirm=false;
+                            window.confirmclick=false;
                         }
                         window.callconfirm=false;
                         window.confirmclick=false;
@@ -2434,8 +2461,6 @@
                                                         });
                                                         window.cart_modified=false;
                                                 }
-                                    //            validatePaymentMethodRefresh();
-
                                             },
                                             error: function(xhr, ajaxOptions, thrownError) {
                                             }
@@ -2780,17 +2805,12 @@
                 $('#columnleft-1 > .supercheckout-blocks').each(function() {
                     $(this).appendTo('#columnleft-1' );
                 }); 
+
+                $('.colorbox').colorbox({
+                    width: 640,
+                    height: 480
+                });
             });
-        </script>
-        <script type="text/javascript">
-            $('.colorbox').colorbox({
-                width: 640,
-                height: 480
-            });
-        </script> 
-        <script>
-            var button_width = $('#confirm_order').width() + 76;
-            $('#progressbar').css('width', button_width + 'px');
         </script>
     </div>
     <div class="content-down" id="content-down"></div>

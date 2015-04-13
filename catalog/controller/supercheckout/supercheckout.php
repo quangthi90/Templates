@@ -246,6 +246,7 @@ class ControllerSupercheckoutSuperCheckout extends Controller {
         $data['voucher_deleted'] = $this->language->get('voucher_deleted');
         $data['coupon_deleted'] = $this->language->get('coupon_deleted');
         $data['heading_title'] = $this->language->get('heading_title');
+        $data['checkout_waiting_processing'] = $this->language->get('checkout_waiting_processing');
 
         $data['entry_email'] = $this->language->get('entry_email');
         $data['entry_password'] = $this->language->get('entry_password');
