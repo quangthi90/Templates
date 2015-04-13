@@ -45,7 +45,7 @@
                     <div  class="supercheckout-blocks" data-column="<?php echo $sort_block['login'][$layout_name]['column']; ?>" data-row="<?php echo $sort_block['login'][$layout_name]['row']; ?>" data-column-inside="<?php echo $sort_block['login'][$layout_name]['column-inside']; ?>"  >
                         <ul class="headingCheckout">
                             <li>
-                                <p class="supercheckout-numbers supercheckout-numbers-1"><?php if(!$logged){ echo $text_login_option;}else{echo 'Welcome '.$firstName. ' '.$lastName;} ?></p>
+                                <p class="supercheckout-numbers supercheckout-numbers-1"><?php if(!$logged){ echo $text_login_option;}else{echo 'Xin chào '.$firstName. ' '.$lastName;} ?></p>
 
                             </li>
                         </ul>
