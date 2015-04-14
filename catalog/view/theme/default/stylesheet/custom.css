@@ -541,6 +541,15 @@ footer p {
 .news-featured {
 	overflow: hidden;
 }
+.news-featured.news-list-2 {
+	width: 550px;
+	margin: 0 auto;
+}
+.news-featured.news-list-1 {
+	width: 300px;
+	margin: 0 auto;	
+}
+
 .news-featured .news-item {
     float: left;	
     width: 230px;

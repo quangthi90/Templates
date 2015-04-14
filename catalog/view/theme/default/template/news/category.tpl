@@ -12,7 +12,7 @@
   			<div class="break"></div>
   			<?php if($newss) { ?>
   				<?php if(count($newss) > 3) { ?>
-  					<div class="news-featured">
+  					<div class="news-featured news-list-<?php echo count($newss); ?>">
   						<?php for ($i = 0; $i < 3; $i++) { $news = $newss[$i]; ?>
 							<div class="news-item">
 								<?php if($news['image']){ ?>
@@ -38,7 +38,7 @@
   						</ul>  						
   					</div>  					
   				<?php } else { ?>
-  					<div class="news-featured">
+  					<div class="news-featured news-list-<?php echo count($newss); ?>">
   						<?php for ($i = 0; $i < count($newss); $i++) { $news = $newss[$i]; ?>
 							<div class="news-item">
 								<?php if($news['image']){ ?>
@@ -46,7 +46,7 @@
 										<img src="<?php echo $news['image']; ?>" alt="<?php echo $news['title']; ?>" title="<?php echo $news['title']; ?>" />
 									</a>
 								<?php } ?>
-								<a href="<?php echo $news['href']; ?>" class="text-bold"><?php echo $news['title']; ?></a>
+								<a href="<?php echo $news['href']; ?>" class="news-title text-bold"><?php echo $news['title']; ?></a>
 							</div>							
 						<?php } ?>
 						<div style="clear:both"></div>
