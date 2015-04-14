@@ -952,4 +952,14 @@
 			]]></add>
 		</operation>
 	</file>
+	<file name="catalog/controller/information/contact.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				$mail->setSender($this->request->post['name']);
+			]]></search>
+			<add><![CDATA[
+				$mail->setSender($this->request->post['email']);
+			]]></add>
+		</operation>
+	</file>
 </modification>
