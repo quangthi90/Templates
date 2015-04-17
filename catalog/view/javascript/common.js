@@ -132,6 +132,39 @@ $(document).ready(function() {
 	$(document).ajaxStop(function() {
 		$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
 	});
+
+	//Header Sticky
+	var cbpAnimatedHeader = (function() {
+		var docElem = $("body"),
+			didScroll = false,
+			changeHeaderOn = 150;
+
+		function init() {
+			$(window).on("scroll", function(){
+				if( !didScroll ) {
+					didScroll = true;
+					setTimeout(scrollPage, 250);
+				}
+			});
+		}
+
+		function scrollPage() {
+			var sy = scrollY();
+			if ( sy >= changeHeaderOn ) {
+				docElem.addClass('header-sticky');
+			}
+			else {
+				docElem.removeClass('header-sticky');
+			}
+			didScroll = false;
+		}
+
+		function scrollY() {
+			return window.pageYOffset || docElem.scrollTop();
+		}
+
+		init();
+	})();
 });
 
 // Cart add remove functions

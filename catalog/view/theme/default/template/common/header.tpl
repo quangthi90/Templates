@@ -70,6 +70,33 @@
     </div>
   </div>
 </nav>
+<nav id="top-float">
+  <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <button type="button" class="btn btn-primary btn-lg btn-navbar" data-toggle="collapse">
+          <i class="fa fa-bars"></i> Sản phẩm
+          </button>
+        </div>
+        <div class="col-sm-5">
+          <?php echo $search; ?>
+        </div>
+        <div class="col-sm-2">
+          <?php echo $cart; ?>
+        </div>
+        <div class="col-sm-2">
+          <ul class="list-inline user-menu">
+            <?php if (!$logged) { ?>
+              <li><a href="<?php echo $register; ?>" title="<?php echo $text_register; ?>"><i class="fa fa-user-plus"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_register; ?></span></a></li>
+              <li><a href="<?php echo $login; ?>" title="<?php echo $text_login; ?>"><i class="fa fa-sign-in"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_login; ?></span></a></li>
+              <?php } else { ?>
+              <li><a href="<?php echo $logout; ?>" title="<?php echo $text_logout; ?>"><i class="fa fa-sign-out"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_logout; ?></span></a></li>
+            <?php } ?>
+          </ul>
+        </div>
+      </div>
+  </div>
+</nav>
 <header>
   <div class="container">
     <div class="row">

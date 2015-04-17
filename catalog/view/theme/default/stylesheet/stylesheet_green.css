@@ -129,6 +129,56 @@ div.required .control-label:before {
 #top-links a + a {
 	margin-left: 15px;
 }
+
+#top-float {
+	display: none;
+	padding: 10px 0px;
+  	background-color: #FFF;
+	border-bottom: 1px solid #f0f0f0;
+	margin-bottom: 20px;
+	box-shadow: 0px 1px 0px 0px #DDD;
+	-webkit-transition: all .4s linear;
+	-moz-transition: all .4s linear;
+	-o-transition: all .4s linear;
+	transition: all .4s linear;
+}
+#top-float .user-menu {
+	margin-bottom: 0;
+	margin-top: 10px;
+	text-align: right;
+}
+#top-float .user-menu a {
+	color: #444;
+}
+#top-float .user-menu a:hover {
+	color: #D94E4B;
+}
+#top-float #cart {
+	margin-bottom: 0;
+}
+#top-float #search {
+	margin-bottom: 0;
+}
+#top-float .btn-navbar {
+	text-align: center;
+}
+#top-float .btn-navbar i {
+	margin-right: 4px;
+}
+
+/* Start Show/Hide navigation */
+.header-sticky #top-float {
+	display: block;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 999999;
+}
+.header-sticky #top {
+	display: none;
+}
+/* End Show/Hide navigation */
+
 /* logo */
 #logo {
 	margin: 0 0 10px 0;
@@ -155,12 +205,13 @@ div.required .control-label:before {
 #cart > .btn {
 	font-size: 12px;
 	line-height: 18px;
-	color: #FFF;
+	color: #444;
+	border: none;
+	box-shadow: none;
+	text-align: right;
 }
 #cart.open > .btn {
-	background-image: none;
 	background-color: #FFFFFF;
-	border: 1px solid #E6E6E6;
 	color: #666;
 	box-shadow: none;
 	text-shadow: none;
@@ -168,8 +219,15 @@ div.required .control-label:before {
 #cart.open > .btn:hover {
 	color: #444;
 }
+#cart > .btn > i {
+	font-size: 24px;
+	margin-right: 5px;
+}
+#cart > .btn > span.label {
+	top: -4px;
+	padding: 3px 8px;
+}
 #cart .dropdown-menu {
-	background: #eee;
 	z-index: 1001;
 }
 #cart .dropdown-menu {
