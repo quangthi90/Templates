@@ -137,7 +137,7 @@ $(document).ready(function() {
 	var cbpAnimatedHeader = (function() {
 		var docElem = $("body"),
 			didScroll = false,
-			changeHeaderOn = 150;
+			changeHeaderOn = 200;
 
 		function init() {
 			$(window).on("scroll", function(){
