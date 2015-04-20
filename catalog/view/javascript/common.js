@@ -155,6 +155,7 @@ $(document).ready(function() {
 			}
 			else {
 				docElem.removeClass('header-sticky');
+				docElem.trigger("MENU_FLOAT_HIDED");
 			}
 			didScroll = false;
 		}
@@ -164,6 +165,24 @@ $(document).ready(function() {
 		}
 
 		init();
+	})();
+
+	var categoryShow = (function(){
+		var trigger = $("#btn-category-trigger");
+		var body = $("body");
+
+		trigger.on("click", function(){
+			if(body.hasClass("category-opening")){
+				body.removeClass("category-opening");
+				$(this).addClass("btn-primary");
+			}else{
+				body.addClass("category-opening");
+				$(this).removeClass("btn-primary");
+			}
+		});
+		body.on("MENU_FLOAT_HIDED", function(){
+			body.removeClass("category-opening");
+		});
 	})();
 });
 
