@@ -23,9 +23,6 @@
                         </div>
                         <div class="pro-name"><a href="#">Lan hồng hoàng</a></div>
                         <div class="pro-price">230.000 đ</div>
-                        <div class="pro-add-cart">
-                            <button class="btn btn-primary btn-sm">Mua hàng</button>
-                        </div>
                     </div>
                     <div class="item product">
                         <div class="pro-img">
@@ -35,9 +32,6 @@
                         </div>
                         <div class="pro-name"><a href="#">Lan hồ điệp trắng</a></div>
                         <div class="pro-price">530.000 đ</div>
-                        <div class="pro-add-cart">
-                            <button class="btn btn-primary btn-sm">Mua hàng</button>
-                        </div>
                     </div>
                     <div class="item product">
                         <div class="pro-img">
@@ -47,9 +41,6 @@
                         </div>
                         <div class="pro-name"><a href="#">Quả kiwi</a></div>
                         <div class="pro-price">120.000 đ</div>
-                        <div class="pro-add-cart">
-                            <button class="btn btn-primary btn-sm">Mua hàng</button>
-                        </div>
                     </div>
                     <div class="item product">
                         <div class="pro-img">
@@ -59,9 +50,6 @@
                         </div>
                         <div class="pro-name"><a href="#">Cherry (quả Anh Đào)</a></div>
                         <div class="pro-price">330.000 đ</div>
-                        <div class="pro-add-cart">
-                            <button class="btn btn-primary btn-sm">Mua hàng</button>
-                        </div>
                     </div>
                     <div class="item product">
                         <div class="pro-img">
@@ -71,9 +59,6 @@
                         </div>
                         <div class="pro-name"><a href="#">Máy hàn MMA 200 LG Welder</a></div>
                         <div class="pro-price">1.330.000 đ</div>
-                        <div class="pro-add-cart">
-                            <button class="btn btn-primary btn-sm">Mua hàng</button>
-                        </div>
                     </div>
                     <div class="item product">
                         <div class="pro-img">
@@ -83,9 +68,6 @@
                         </div>
                         <div class="pro-name"><a href="#">Máy mài góc GA4031</a></div>
                         <div class="pro-price">Giá: Liên hệ</div>
-                        <div class="pro-add-cart">
-                            <button class="btn btn-primary btn-sm">Mua hàng</button>
-                        </div>
                     </div>
                     <div class="item product">
                         <div class="pro-img">
@@ -95,9 +77,6 @@
                         </div>
                         <div class="pro-name"><a href="#">Thịt gà ta</a></div>
                         <div class="pro-price">210.000 đ</div>
-                        <div class="pro-add-cart">
-                            <button class="btn btn-primary btn-sm">Mua hàng</button>
-                        </div>
                     </div>
                     <div class="item product">
                         <div class="pro-img">
@@ -107,9 +86,6 @@
                         </div>
                         <div class="pro-name"><a href="#">Lan hồ điệp trắng</a></div>
                         <div class="pro-price">530.000 đ</div>
-                        <div class="pro-add-cart">
-                            <button class="btn btn-primary btn-sm">Mua hàng</button>
-                        </div>
                     </div>
                     <div class="item product">
                         <div class="pro-img">
@@ -119,9 +95,6 @@
                         </div>
                         <div class="pro-name"><a href="#">Quả kiwi</a></div>
                         <div class="pro-price">120.000 đ</div>
-                        <div class="pro-add-cart">
-                            <button class="btn btn-primary btn-sm">Mua hàng</button>
-                        </div>
                     </div>
                     <div class="item product">
                         <div class="pro-img">
@@ -131,9 +104,6 @@
                         </div>
                         <div class="pro-name"><a href="#">Máy hàn MMA 200 LG Welder</a></div>
                         <div class="pro-price">1.330.000 đ</div>
-                        <div class="pro-add-cart">
-                            <button class="btn btn-primary btn-sm">Mua hàng</button>
-                        </div>
                     </div>
                 </div>                
             </div>
@@ -160,38 +130,77 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab-prod-lastest">
+                        <?php for ($f=0; $f < 2; $f++) { ?>
                         <div class="row products">
-                            <?php for ($i=0; $i < 8; $i++) { ?>
+                            <?php for ($i=0; $i < 4; $i++) { ?>
                                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 product">
                                     <div class="pro-img">
                                         <a href="#"> 
                                             <img class="img-responsive" src="http://thitruongnongnghiep.vn/Portals/0/SanPham/t-Chim-tri-thit-2-14310119615.jpg" alt="" style="display: inline-block;">
                                         </a>
                                     </div>
-                                    <div class="pro-name"><a href="#">Chim Trĩ đỏ thịt <?php echo ($i + 1); ?></a></div>
                                     <div class="pro-price">Giá: Liên hệ</div>
+                                    <div class="pro-name">
+                                        <a href="#">Chim Trĩ đỏ thịt <?php echo ($i + 1); ?></a>
+                                    </div>
+                                    <div class="pro-sta">
+                                        <div class="row">
+                                            <div class="col-xs-4 s-item">
+                                                <i class="fa fa-shopping-cart"></i> 
+                                                <span class="pro-number">212</span>
+                                            </div>
+                                            <div class="col-xs-4 s-item">
+                                                <i class="fa fa-eye"></i> 
+                                                <span class="pro-number">3k</span>
+                                            </div>
+                                            <div class="col-xs-4 s-item">
+                                                <i class="fa fa-user"></i>
+                                                <span class="pro-number">20</span>
+                                            </div>
+                                        </div>
+                                    </div>                           
                                 </div>
                             <?php } ?>
                         </div>
+                        <?php } ?>
                     </div>
                     <div class="tab-pane" id="tab-prod-bestseller">
+                        <?php for ($j=0; $j < 2; $j++) { ?>
                         <div class="row products">
-                            <?php for ($i=0; $i < 8; $i++) { ?>
+                            <?php for ($i=0; $i < 4; $i++) { ?>
                                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 product">
                                     <div class="pro-img">
                                         <a href="#"> 
                                             <img class="img-responsive" src="http://thitruongnongnghiep.vn/Portals/0/SanPham/t-ca-bo-hom-1-z141216145245227.jpg">
                                         </a>
-                                    </div>
-                                    <div class="pro-name"><a href="#">Cá Bò Hòm <?php echo ($i + 1); ?></a></div>                                        
+                                    </div>                                                                      
                                     <div class="pro-price">185.000 đ</div>
+                                    <div class="pro-name"><a href="#">Cá Bò Hòm <?php echo ($i + 1); ?></a></div>
+                                    <div class="pro-sta">
+                                        <div class="row">
+                                            <div class="col-xs-4 s-item">
+                                                <i class="fa fa-shopping-cart"></i> 
+                                                <span class="pro-number">212</span>
+                                            </div>
+                                            <div class="col-xs-4 s-item">
+                                                <i class="fa fa-eye"></i> 
+                                                <span class="pro-number">3k</span>
+                                            </div>
+                                            <div class="col-xs-4 s-item">
+                                                <i class="fa fa-user"></i>
+                                                <span class="pro-number">20</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             <?php } ?>
                         </div>
+                        <?php } ?>
                     </div>
                     <div class="tab-pane" id="tab-prod-specials">
+                        <?php for ($h=0; $h < 2; $h++) { ?>
                         <div class="row products">
-                            <?php for ($i=0; $i < 8; $i++) { ?>
+                            <?php for ($i=0; $i < 4; $i++) { ?>
                                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 product">
                                     <div class="pro-img">
                                         <a href="#"> 
@@ -200,9 +209,26 @@
                                     </div>
                                     <div class="pro-name"><a href="#">Bưởi Năm Roi FC014 <?php echo ($i + 1); ?></a></div>
                                     <div class="pro-price">60.000 đ</div>
+                                    <div class="pro-sta">
+                                        <div class="row">
+                                            <div class="col-xs-4 s-item">
+                                                <i class="fa fa-shopping-cart"></i> 
+                                                <span class="pro-number">212</span>
+                                            </div>
+                                            <div class="col-xs-4 s-item">
+                                                <i class="fa fa-eye"></i> 
+                                                <span class="pro-number">3k</span>
+                                            </div>
+                                            <div class="col-xs-4 s-item">
+                                                <i class="fa fa-user"></i>
+                                                <span class="pro-number">20</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             <?php } ?>
                         </div>
+                        <?php } ?>
                     </div>
                 </div>                        
             </div>

@@ -56,6 +56,13 @@ select.form-control, textarea.form-control, input[type="text"].form-control, inp
 	font-size: 12px;
 	height: 30px;
 }
+
+.btn-primary:hover, .btn-primary:focus, 
+.btn-primary.focus, .btn-primary:active, 
+.btn-primary.active, .open>.dropdown-toggle.btn-primary {
+	border-color: transparent;
+}
+
 /* Fix some bootstrap issues */
 span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 	display: inline;
@@ -883,14 +890,31 @@ h2.price {
 	font-size: 15px;
 	font-weight: bold;
 } 
+.product-block .row.products {
+	margin-right: 0;
+	margin-left: 0;
+}
 .product-block .products .product {
-	padding-bottom: 15px;
+	padding: 0;
 	text-align: center;
+	border-top: 1px solid #F0F0F0;
+	border-left: 1px solid #F0F0F0;
+}
+.product-block .products .product:last-child {
+	border-right: 1px solid #F0F0F0;
+}
+.product-block .products:last-child .product {
+	border-bottom: 1px solid #F0F0F0;
 }
 .product-block .products .product .pro-img {
+	padding: 15px;
+	padding-bottom: 0;
 }
 .product-block .products .product .pro-name {	
-	padding: 5px 0px;
+  	padding: 7px 0px;
+  	height: 50px;
+  	overflow: hidden;
+  	line-height: 14px
 }
 .product-block .products .product .pro-name a {
 	color: #555;
@@ -901,6 +925,21 @@ h2.price {
 }
 .product-block .product .pro-price {
 	color: #7EAE4A;
+	padding-top: 7px;
+}
+.product-block .product .pro-sta {
+	border-top: 1px solid #F0F0F0;
+}
+.product-block .product .pro-sta .row {
+	margin-left: 0;
+	margin-right: 0;
+}
+.product-block .product .pro-sta .s-item {
+	border-right: 1px solid #F0F0F0;
+	padding: 5px 10px;
+}
+.product-block .product .pro-sta .s-item:last-child {
+	border-right: none;
 }
 .product-block .heading {
 	font-weight: bold;
@@ -908,7 +947,6 @@ h2.price {
 	text-transform: uppercase;
 }
 .product-category-block .product.special {
-
 }
 .product-category-block .product.special .pro-name {
 	font-size: 14px;
@@ -917,6 +955,7 @@ h2.price {
 	max-width: inherit;
 	width: 100%;
 }
+
 .shops-list {	
 }
 .shops-list .shops {
@@ -1032,6 +1071,14 @@ h2.price {
 	}
 }
 
+#top-products .products .product {
+	border: none;
+	border-right: 1px solid #F0F0F0;
+	padding-bottom: 15px;
+}
+#top-products .products .product .pro-name {
+	height: 35px;
+}
 #top-products .owl-carousel {
 	overflow: inherit;
 }
@@ -1057,8 +1104,7 @@ h2.price {
 	border: none;
 	margin-bottom: 0px;
 }
-#top-products .products .product .pro-img {
-	border-right: 1px solid #F0F0F0;
-	border-bottom: 1px solid #F0F0F0;
-}
+
+
+
 /* End Custom*/
