@@ -959,12 +959,20 @@ h2.price {
 .shops-list {	
 }
 .shops-list .shops {
+	margin: 0;
 }
 .shops-list .shops .shop {
     position: relative;
     text-align: center;
     padding: 0;
-    border: 1px solid #F0F0F0;
+    border-top: 1px solid #F0F0F0;
+    border-left: 1px solid #F0F0F0;
+}
+.shops-list .shops .shop:last-child {
+	border-right: 1px solid #F0F0F0;	
+}
+.shops-list .shops:last-child .shop {
+	border-bottom: 1px solid #F0F0F0;	
 }
 .shops-list .shops .shop .shop-img {
     padding: 10px;

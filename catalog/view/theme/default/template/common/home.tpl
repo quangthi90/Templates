@@ -242,60 +242,70 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab-prod-cat-01">
-                        <div class="row products">
-                            <div class="col-xs-12 col-sm-6 col-md-4 product special">
-                                <div class="pro-img">
-                                    <a href="#"> 
-                                        <img class="img-responsive" src="http://thitruongnongnghiep.vn/Portals/0/SanPham/gao-nep-cai-hoa-vang-02616261656.jpg" alt="" style="display: inline-block;">
-                                    </a>
-                                </div>
-                                <div class="pro-name"><a href="#">Gạo nếp Cái Hoa Vàng</a></div>
-                                <div class="pro-price">40.000 đ</div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-8 ">
-                                <div class="row">
-                                  <?php for ($i=0; $i < 8; $i++) { ?>
-                                    <div class="col-xs-12 col-sm-4 col-md-3 product">
+                        <?php for ($j=0; $j < 2; $j++) { ?>
+                            <div class="row products">
+                                <?php for ($i=0; $i < 4; $i++) { ?>
+                                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 product">
                                         <div class="pro-img">
                                             <a href="#"> 
-                                                <img class="img-responsive" src="http://thitruongnongnghiep.vn/Portals/0/SanPham/gao-bac-huong-5kg-05616461646.jpg" alt="" style="display: inline-block;">
+                                                <img class="img-responsive" src="http://thitruongnongnghiep.vn/Portals/0/SanPham/gao-dai-loan-eximfood-j140905121335568.jpg">
                                             </a>
+                                        </div>                                                                      
+                                        <div class="pro-price">15.000 đ</div>
+                                        <div class="pro-name"><a href="#">Gao <?php echo ($i + 1); ?></a></div>
+                                        <div class="pro-sta">
+                                            <div class="row">
+                                                <div class="col-xs-4 s-item">
+                                                    <i class="fa fa-shopping-cart"></i> 
+                                                    <span class="pro-number">212</span>
+                                                </div>
+                                                <div class="col-xs-4 s-item">
+                                                    <i class="fa fa-eye"></i> 
+                                                    <span class="pro-number">3k</span>
+                                                </div>
+                                                <div class="col-xs-4 s-item">
+                                                    <i class="fa fa-user"></i>
+                                                    <span class="pro-number">20</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="pro-name"><a href="#">Gạo Bắc Hương <?php echo ($i + 1); ?></a></div>
-                                        <div class="pro-price">90.000 đ</div>
                                     </div>
-                                <?php } ?>  
-                                </div>
-                            </div>                            
-                        </div>
+                                <?php } ?>
+                            </div>
+                        <?php } ?> 
                     </div>
                     <div class="tab-pane" id="tab-prod-cat-05">
-                        <div class="row products">
-                            <div class="col-xs-12 col-sm-6 col-md-4 product special">
-                                <div class="pro-img">
-                                    <a href="#"> 
-                                        <img class="img-responsive" src="http://thitruongnongnghiep.vn/Portals/0/SanPham/hoang-thao-lua-vang-j141007101006342.jpg" alt="" style="display: inline-block;">
-                                    </a>
-                                </div>
-                                <div class="pro-name"><a href="#">Hoàng thảo lụa vàng</a></div>
-                                <div class="pro-price">320.000 đ</div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-8 ">
-                                <div class="row">
-                                  <?php for ($i=0; $i < 8; $i++) { ?>
-                                    <div class="col-xs-12 col-sm-4 col-md-3 product">
+                        <?php for ($j=0; $j < 2; $j++) { ?>
+                            <div class="row products">
+                                <?php for ($i=0; $i < 4; $i++) { ?>
+                                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 product">
                                         <div class="pro-img">
                                             <a href="#"> 
-                                                <img class="img-responsive" src="http://thitruongnongnghiep.vn/Portals/0/SanPham/lan-ngoc-diem-shld-j141007114919371.jpg" alt="" style="display: inline-block;">
+                                                <img class="img-responsive" src="http://thitruongnongnghiep.vn/Portals/0/SanPham/lan-vani-khong-la-j141007105631921.jpg">
                                             </a>
+                                        </div>                                                                      
+                                        <div class="pro-price">185.000 đ</div>
+                                        <div class="pro-name"><a href="#">Hoa Lan <?php echo ($i + 1); ?></a></div>
+                                        <div class="pro-sta">
+                                            <div class="row">
+                                                <div class="col-xs-4 s-item">
+                                                    <i class="fa fa-shopping-cart"></i> 
+                                                    <span class="pro-number">212</span>
+                                                </div>
+                                                <div class="col-xs-4 s-item">
+                                                    <i class="fa fa-eye"></i> 
+                                                    <span class="pro-number">3k</span>
+                                                </div>
+                                                <div class="col-xs-4 s-item">
+                                                    <i class="fa fa-user"></i>
+                                                    <span class="pro-number">20</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="pro-name"><a href="#">Lan ngọc điểm <?php echo ($i + 1); ?></a></div>
-                                        <div class="pro-price">190.000 đ</div>
                                     </div>
-                                <?php } ?>  
-                                </div>
-                            </div>                            
-                        </div>
+                                <?php } ?>
+                            </div>
+                        <?php } ?> 
                     </div>
                 </div>  
             </div>
@@ -304,9 +314,9 @@
             <!-- Start Shops Block -->
             <div class="product-block shops-list" id="top-shops-list">
                 <h3 class="heading">TOP Gian Hàng</h3>
-                <div class="shops">
-                    <div class="row" style="margin: 0;">
-                        <?php for ($i=0; $i < 4; $i++) { ?>
+                <?php for ($j=0; $j < 2; $j++) { ?>
+                <div class="row shops">
+                    <?php for ($i=0; $i < 6; $i++) { ?>
                         <div class="col-xs-12 col-sm-4 col-md-2 shop">
                             <div class="shop-img" title="Đặc sản Phan Thiết - Công ty TNHH MTV Hải sản Phan Thiết">
                                 <img src="http://img4.wikia.nocookie.net/__cb20150308015108/logopedia/images/b/ba/CN_Fridays_logo_2003.svg" class="img-responsive" style="display: inline-block;">
@@ -314,26 +324,10 @@
                             <div class="shop-name">
                                 <a href="#">Đặc sản Phan Thiết - Công ty TNHH MTV Hải sản Phan Thiết</a>
                             </div>
-                        </div> 
-                        <div class="col-xs-12 col-sm-4 col-md-2 shop">
-                            <div class="shop-img" title="Chợ Tết - Sắm Tết Online">
-                                <img src="http://www.greenliferetreats.com/images/conference/fic_logo.png" class="img-responsive" style="display: inline-block;">
-                            </div>
-                            <div class="shop-name">
-                                <a href="#">Chợ Tết - Sắm Tết Online</a>
-                            </div>
                         </div>
-                        <div class="col-xs-12 col-sm-4 col-md-2 shop">
-                            <div class="shop-img" title="Google">
-                                <img src="http://upload.wikimedia.org/wikipedia/en/thumb/2/2e/Coats_logo.svg/120px-Coats_logo.svg.png" class="img-responsive" style="display: inline-block;">
-                            </div>
-                            <div class="shop-name">
-                                <a href="#">Google</a>
-                            </div>
-                        </div>
-                        <?php } ?>                  
-                    </div>
+                    <?php } ?>
                 </div>
+                <?php } ?>
             </div>
             <!-- End Shops Block -->
             <div class="separator-line" style="height: 30px;"></div>
