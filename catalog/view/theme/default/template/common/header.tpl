@@ -104,7 +104,7 @@
         <li><a href="<?php echo $href_home; ?>" class="icon-home-sm"></a></li>
         <?php } ?>
         <li><a href="<?php echo $home; ?>"><i class="fa fa-home fa-4x" style="font-size: 20px;"></i></a></li>
-        <li><a href="#"><?php echo $text_product; ?></a>
+        <li><a href="<?php echo $product_catalog; ?>"><?php echo $text_product; ?></a>
           <ul class="dropdown-menu">
           <?php foreach ($categories as $category) { ?>
             <li class=""><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
@@ -154,7 +154,7 @@
       <div class="order-ad" id="order-ad">
         <a href="<?php echo $faq_link; ?>" class="btn btn-main pull-left text-upper" id="link-qa"><?php echo $text_faq; ?></a>
         <p class="text-ad">VUI LÒNG GỌI <?php echo $phone; ?> HOẶC ĐẶT HÀNG TRỰC TUYẾN</p>
-        <a href="<?php echo $product_catalog; ?>" class="btn btn-main pull-right text-upper" id="link-ordernow">Đặt Mua Ngay Bây Giờ</a>
+        <a href="http://foodsafe.vn/" class="btn btn-main pull-right text-upper" id="link-ordernow" target="_blank">Tạo gian hàng miễn phí</a>
         <div class="clearfix"></div>
       </div>
     <?php } ?>    
