@@ -365,16 +365,14 @@ footer p {
 /* END CONTENT */
 
 /* COMMON HOME */
-.common-home {
-}
-.common-home .owl-carousel {
+.owl-carousel.fixed-banners {
 	border-radius: 0px;
 	border: none;
 	box-shadow: none;
 	background-color: transparent;
 	margin-bottom: 15px;
 }
-.common-home .owl-carousel .owl-pagination {
+.owl-carousel.fixed-banners .owl-pagination {
 	top: 10px;
 }
 

@@ -503,7 +503,8 @@ var AppUtils = {
 			autoPlay: 3000,
 			singleItem: true,
 			navigation: false,
-			pagination: false
+			pagination: false,
+			baseClass: "owl-carousel fixed-banners"
 		});
 		bannerEle.css("opacity", "1");
 	}
