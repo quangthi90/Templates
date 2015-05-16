@@ -333,10 +333,7 @@
             <div class="separator-line" style="height: 30px;"></div>
             <?php echo $content_bottom; ?>
         </div>
-        <div class="col-sm-3">
-            <div class="column-box">
-                <a href="#" class="btn btn-primary btn-lg text-uppercase block"><i class="fa fa-plus"></i> Khởi tạo gian hàng</a>
-            </div>
+        <div class="col-sm-3">            
             <div class="column-box">
                 <div class="tabs">
                     <ul class="nav nav-tabs">
