@@ -4,8 +4,6 @@
 /system/logs/index.html
 /system/logs/openbay.log
 /system/logs/error.log
-/config.php
-/admin/config.php
 /system/cache
 /image/cache
 /.htaccess
