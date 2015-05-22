@@ -8,6 +8,7 @@ $_['text_default']      = 'Mặc định';
 $_['text_list']           = 'Danh mục Bố cục';
 $_['text_add']            = 'Thêm Bố cục mới';
 $_['text_edit']           = 'Cập nhật Bố cục';
+$_['text_product_tab']    = 'Product Tab';
 
 // Column
 $_['column_name']       = 'Tên bố cục';
