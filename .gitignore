@@ -10,3 +10,5 @@
 /vqmod/vqcache
 /vqmod/logs
 /system/logs
+/config.php
+/admin/config.php
