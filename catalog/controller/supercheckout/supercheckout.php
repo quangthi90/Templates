@@ -2705,17 +2705,17 @@ class ControllerSupercheckoutSuperCheckout extends Controller {
 
         //loading setting from database or from default settings for supercheckout plugin
         $this->load->model('setting/setting');
-        //$result = $this->model_setting_setting->getSetting('supercheckout', $this->config->get('config_store_id'));
-        //$this->settings = $result['supercheckout'];
-        //$data['settings'] = $result['supercheckout'];
+        $result = $this->model_setting_setting->getSetting('supercheckout', $this->config->get('config_store_id'));
+        $this->settings = $result['supercheckout'];
+        $data['settings'] = $result['supercheckout'];
 
-        /*if (empty($data['settings'])) {
+        if (empty($data['settings'])) {
 
             $settings = $this->model_setting_setting->getSetting('default_supercheckout', 0);            
             $data['settings'] = $settings['default_supercheckout'];
             $data['supercheckout']=$settings['default_supercheckout'];
 
-        }*/
+        }
         $this->language->load('supercheckout/supercheckout');
 
 

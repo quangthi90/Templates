@@ -649,7 +649,8 @@
                                             url: 'index.php?route=supercheckout/payment_display',
                                             dataType: 'html',
                                             success: function(html) {
-                                                $('#display_payment').html(html);
+                                                if (html != '')
+                                                    $('#display_payment').html(html);
                                                 //validatePaymentMethodRefresh();
                                             },
                                             error: function(xhr, ajaxOptions, thrownError) {
@@ -1177,6 +1178,7 @@
                         success: function(html) {
                             showProgressbar(100);
                             var href = $("#button-confirm, #display_payment .button, #display_payment .btn, #display_payment .button_oc, #display_payment input[type=submit]").attr('href');
+                            
                             if(href != '' && href != undefined && href != 'javascript://' && href != 'javascript:void(0)') {
                                 document.location.href = href;
                                 console.log('clicked'); 
@@ -1801,7 +1803,8 @@
                                 url: 'index.php?route=supercheckout/payment_display',
                                 dataType: 'html',
                                 success: function(html) {
-                                    $('#display_payment').html(html);
+                                    if (html != '')
+                                        $('#display_payment').html(html);
                                 },
                                 error: function(xhr, ajaxOptions, thrownError) {
                                     alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -2240,7 +2243,8 @@
                                         url: 'index.php?route=supercheckout/payment_display',
                                         dataType: 'html',
                                         success: function(html) {
-                                            $('#display_payment').html(html);
+                                            if (html != '')
+                                                $('#display_payment').html(html);
                                         },
                                         error: function(xhr, ajaxOptions, thrownError) {
                                             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -2440,8 +2444,8 @@
                                                 url: 'index.php?route=supercheckout/payment_display',
                                                 dataType: 'html',
                                                 success: function(html) {
-
-                                                    $('#display_payment').html(html);
+                                                    if (html != '')
+                                                        $('#display_payment').html(html);
                                                     if(window.callconfirm==true){
                                                         validateCheckout();
                                                         window.callconfirm=false;
@@ -2763,7 +2767,8 @@
                                 url: 'index.php?route=supercheckout/payment_display',
                                 dataType: 'html',
                                 success: function(html) {
-                                    $('#display_payment').html(html);
+                                    if (html != '')
+                                        $('#display_payment').html(html);
                                 },
                                 error: function(xhr, ajaxOptions, thrownError) {
                                     alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
